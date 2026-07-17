@@ -1,0 +1,659 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="夏の学習">
+<meta name="theme-color" content="#1F6E5C">
+<title>夏休み学習アプリ 2026</title>
+<style>
+:root{
+  --bg:#F5F3EC; --card:#FFFFFF; --card2:#FAF9F4; --ink:#26282E; --ink2:#6B6E76; --line:#E2DFD5;
+  --brand:#1F6E5C; --brand-ink:#FFFFFF;
+  --koku:#D64545; --su:#3B7DD8; --ei:#2F9E63; --ri:#E8842C; --sha:#8E5BC0; --fuku:#7A8494; --eiken:#B8912A; --sou:#5B8A8F; --juku:#1F3A68;
+  --ok:#2F9E63; --late:#D64545; --ahead:#3B7DD8;
+  --offbg:#E3EEF9; --testbg:#FBE9E9; --obonbg:#FBF2E0;
+  --shadow:0 1px 3px rgba(30,30,40,.08);
+}
+@media (prefers-color-scheme: dark){
+  :root{ --bg:#15171C; --card:#1F2229; --card2:#242832; --ink:#E8E6E1; --ink2:#9A9DA6; --line:#33363F;
+    --brand:#2E8B75; --offbg:#1D2733; --testbg:#33211F; --obonbg:#2E2820; --shadow:none; }
+}
+:root[data-theme="light"]{ --bg:#F5F3EC; --card:#FFFFFF; --card2:#FAF9F4; --ink:#26282E; --ink2:#6B6E76; --line:#E2DFD5;
+  --brand:#1F6E5C; --offbg:#E3EEF9; --testbg:#FBE9E9; --obonbg:#FBF2E0; --shadow:0 1px 3px rgba(30,30,40,.08); }
+:root[data-theme="dark"]{ --bg:#15171C; --card:#1F2229; --card2:#242832; --ink:#E8E6E1; --ink2:#9A9DA6; --line:#33363F;
+  --brand:#2E8B75; --offbg:#1D2733; --testbg:#33211F; --obonbg:#2E2820; --shadow:none; }
+
+*{box-sizing:border-box; -webkit-tap-highlight-color:transparent}
+body{margin:0; background:var(--bg); color:var(--ink); font-family:"Hiragino Sans","Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif; font-size:15px; line-height:1.5;}
+.app{max-width:560px; margin:0 auto; padding:0 12px calc(76px + env(safe-area-inset-bottom));}
+
+/* ── ヘッダ ── */
+.top{position:sticky; top:0; z-index:20; background:var(--bg); padding:10px 0 8px;}
+.topcard{background:linear-gradient(120deg,var(--brand),#2F9E63); color:#fff; border-radius:16px; padding:14px 16px;}
+.topcard .date{font-size:20px; font-weight:800; font-variant-numeric:tabular-nums;}
+.topcard .sub{font-size:12px; opacity:.9; margin-top:2px;}
+.topbadges{display:flex; flex-wrap:wrap; gap:6px; margin-top:8px;}
+.bdg{font-size:11px; font-weight:700; border-radius:999px; padding:2px 10px; background:rgba(255,255,255,.22); color:#fff;}
+.bdg.hot{background:#fff; color:var(--brand);}
+
+/* ── セクション/カード ── */
+h2.sec{font-size:13px; color:var(--ink2); letter-spacing:.06em; margin:18px 4px 8px; font-weight:700;}
+.card{background:var(--card); border:1px solid var(--line); border-radius:14px; overflow:hidden; box-shadow:var(--shadow); margin-bottom:10px;}
+.empty{color:var(--ink2); font-size:13px; padding:14px 16px; text-align:center;}
+
+/* ── タスク行 ── */
+.trow{display:flex; align-items:center; gap:10px; padding:11px 12px; min-height:48px; border-bottom:1px solid var(--line); cursor:pointer; user-select:none; -webkit-user-select:none; position:relative;}
+.trow:last-child{border-bottom:none;}
+.trow .stripe{position:absolute; left:0; top:0; bottom:0; width:4px;}
+.cbx{flex:none; width:24px; height:24px; border:2px solid var(--ink2); border-radius:7px; display:flex; align-items:center; justify-content:center; font-size:15px; color:#fff; background:transparent; transition:transform .12s;}
+.trow.done .cbx{background:var(--ok); border-color:var(--ok);}
+.trow.done .txt{color:var(--ink2); text-decoration:line-through; text-decoration-thickness:1.5px;}
+.trow:active .cbx{transform:scale(1.15);}
+.tbody{flex:1; min-width:0;}
+.txt{font-size:14px;}
+.meta{display:flex; gap:5px; align-items:center; margin-top:2px; flex-wrap:wrap;}
+.subj{flex:none; font-size:10.5px; font-weight:800; color:#fff; border-radius:5px; padding:1px 6px;}
+.ktag{font-size:10px; font-weight:800; color:#fff; border-radius:4px; padding:1px 5px;}
+.k-h{background:#2F9E63}.k-j{background:#1F3A68}.k-t{background:#D64545}
+.pill{font-size:10.5px; font-weight:700; border-radius:999px; padding:1px 8px;}
+.pill.late{background:var(--late); color:#fff;}
+.pill.saki{background:var(--ahead); color:#fff;}
+.pill.donedate{background:var(--card2); color:var(--ink2); border:1px solid var(--line);}
+.s-koku{background:var(--koku)}.s-su{background:var(--su)}.s-ei{background:var(--ei)}.s-ri{background:var(--ri)}
+.s-sha{background:var(--sha)}.s-fuku{background:var(--fuku)}.s-eiken{background:var(--eiken)}.s-sou{background:var(--sou)}
+
+/* 遅れカード */
+.card.alert{border-color:var(--late);}
+.card.alert .head{background:var(--late); color:#fff; font-size:12.5px; font-weight:800; padding:6px 12px;}
+
+/* オフ */
+.offbox{background:var(--offbg); border-radius:14px; padding:26px 16px; text-align:center; font-size:15px; font-weight:700; color:#3E6C99; margin-bottom:10px;}
+.offbox small{display:block; font-weight:400; font-size:12px; margin-top:6px; color:var(--ink2);}
+
+/* 先取り */
+.sakidori .trow{background:var(--card2);}
+.more{display:block; width:100%; border:none; background:none; color:var(--brand); font-weight:700; font-size:13px; padding:11px; cursor:pointer;}
+
+/* ── 全体タブ(日付×教科グリッド) ── */
+.week{margin-bottom:10px;}
+.whead{display:flex; align-items:center; gap:8px; width:100%; border:none; text-align:left; background:var(--card); border:1px solid var(--line); border-radius:12px; padding:12px 14px; font-size:14.5px; font-weight:800; color:var(--ink); cursor:pointer;}
+.whead .ph{margin-left:auto; font-size:10.5px; color:#fff; border-radius:999px; padding:2px 9px; font-weight:700;}
+.ph1{background:#2F9E63}.ph2{background:#3B7DD8}.ph3{background:#8E5BC0}.ph4{background:#D64545}
+.gwrap{overflow-x:auto; margin-top:8px; border:1px solid var(--line); border-radius:12px; background:var(--card); -webkit-overflow-scrolling:touch;}
+table.gtable{border-collapse:separate; border-spacing:0; min-width:900px; width:100%;}
+.gtable th{position:sticky; top:0; z-index:2; font-size:11px; color:#fff; padding:6px 4px; text-align:center; border-bottom:1px solid var(--line);}
+.gtable th.gd{position:sticky; left:0; z-index:3; background:#4A4A55; min-width:64px;}
+.gtable td{border-bottom:1px solid var(--line); border-right:1px solid var(--line); vertical-align:top; padding:3px; min-width:100px; font-size:10.5px; background:var(--card);}
+.gtable td.gdate{position:sticky; left:0; z-index:1; background:var(--card2); min-width:64px; font-weight:800; font-variant-numeric:tabular-nums; font-size:12.5px; padding:5px 6px;}
+.gdate small{font-weight:700; color:var(--ink2); font-size:10px;}
+.gdate small.sat{color:var(--su)} .gdate small.sun{color:var(--koku)}
+.gdate .ebd{display:inline-block; font-size:8.5px; font-weight:700; color:#fff; background:var(--juku); border-radius:999px; padding:1px 6px; margin-top:3px;}
+.gdate .ebd.ev{background:#E8842C}.gdate .ebd.ts{background:#D64545}.gdate .ebd.of{background:#3B7DD8}
+tr.off td{background:var(--offbg)} tr.off td.gdate{background:var(--offbg)}
+tr.test td{background:var(--testbg)} tr.test td.gdate{background:var(--testbg)}
+tr.obon td{background:var(--obonbg)} tr.obon td.gdate{background:var(--obonbg)}
+td.gband{vertical-align:middle; text-align:left; font-size:12px; font-weight:700; color:#4A6B8A; padding:10px;}
+tr.test td.gband{color:#B03A3A;}
+.chip{display:flex; gap:4px; align-items:flex-start; border-radius:7px; padding:4px 5px; margin:2px 0; background:var(--card2); border:1px solid var(--line); cursor:pointer; line-height:1.3; user-select:none; -webkit-user-select:none;}
+.chip .st{flex:none; font-weight:800;}
+.chip.cdone{color:var(--ink2); background:transparent; border-style:dashed;}
+.chip.cdone .ct{text-decoration:line-through;}
+.chip.cdone .st{color:var(--ok);}
+.chip.clate{border-color:var(--late);}
+.chip.clate .st{color:var(--late);}
+.ghint{font-size:11px; color:var(--ink2); margin:2px 4px 8px;}
+
+/* ── 進捗タブ ── */
+.stats{display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-bottom:10px;}
+.stat{background:var(--card); border:1px solid var(--line); border-radius:14px; padding:12px 14px;}
+.stat .big{font-size:24px; font-weight:800; font-variant-numeric:tabular-nums;}
+.stat .lbl{font-size:11px; color:var(--ink2);}
+.pbar-row{padding:10px 14px; border-bottom:1px solid var(--line);}
+.pbar-row:last-child{border-bottom:none;}
+.pbar-top{display:flex; align-items:center; gap:8px; font-size:13px; font-weight:700;}
+.pbar-top .num{margin-left:auto; font-size:12px; color:var(--ink2); font-variant-numeric:tabular-nums;}
+.pace{font-size:10.5px; font-weight:700; border-radius:999px; padding:1px 8px; color:#fff;}
+.pace.ahead{background:var(--ahead)} .pace.late{background:var(--late)} .pace.on{background:var(--fuku)}
+.pbar{height:8px; border-radius:999px; background:var(--card2); border:1px solid var(--line); margin-top:6px; overflow:hidden;}
+.pbar>div{height:100%; border-radius:999px;}
+.logday{padding:10px 14px; border-bottom:1px solid var(--line); font-size:13px;}
+.logday:last-child{border-bottom:none;}
+.logday b{font-variant-numeric:tabular-nums;}
+.logday ul{margin:4px 0 0; padding-left:18px; color:var(--ink2); font-size:12.5px;}
+.btnrow{display:flex; gap:8px; flex-wrap:wrap; padding:12px 14px;}
+button.act{border:1px solid var(--line); background:var(--card2); color:var(--ink); border-radius:10px; padding:10px 14px; font-size:13px; font-weight:700; cursor:pointer;}
+button.act.danger{color:var(--late); border-color:var(--late);}
+textarea.io{width:100%; height:110px; border:1px solid var(--line); border-radius:10px; background:var(--card2); color:var(--ink); font-size:11px; padding:8px; margin:0 0 8px;}
+
+/* ── タブバー ── */
+.tabbar{position:fixed; left:0; right:0; bottom:0; z-index:30; background:var(--card); border-top:1px solid var(--line); display:flex; padding-bottom:env(safe-area-inset-bottom);}
+.tabbar button{flex:1; border:none; background:none; padding:9px 0 7px; font-size:11px; font-weight:700; color:var(--ink2); cursor:pointer; font-family:inherit;}
+.tabbar button .ic{display:block; font-size:20px; line-height:1.2;}
+.tabbar button.on{color:var(--brand);}
+.warnbar{background:#B8912A; color:#fff; font-size:12px; padding:7px 12px; border-radius:10px; margin:8px 0;}
+.toast{position:fixed; bottom:calc(84px + env(safe-area-inset-bottom)); left:50%; transform:translateX(-50%); background:var(--ink); color:var(--bg); font-size:13px; font-weight:700; border-radius:999px; padding:8px 18px; opacity:0; transition:opacity .25s; pointer-events:none; z-index:40; white-space:nowrap;}
+.toast.show{opacity:.94;}
+@media (prefers-reduced-motion: reduce){ *{transition:none !important; animation:none !important;} }
+button:focus-visible,.trow:focus-visible,.whead:focus-visible{outline:2px solid var(--brand); outline-offset:2px;}
+</style>
+
+<div class="app">
+  <div class="top"><div class="topcard" id="topcard"></div></div>
+  <div id="warn"></div>
+  <div id="view"></div>
+</div>
+<nav class="tabbar">
+  <button id="tab-today" onclick="go('today')"><span class="ic">☀️</span>今日</button>
+  <button id="tab-all" onclick="go('all')"><span class="ic">🗓️</span>全体</button>
+  <button id="tab-stats" onclick="go('stats')"><span class="ic">📊</span>進捗</button>
+</nav>
+<div class="toast" id="toast"></div>
+
+<script>
+'use strict';
+/* ============ データ ============ */
+var Y=2026;
+function d(md){return Y+'-'+md.slice(0,2)+'-'+md.slice(2);}
+var SUBJ={koku:['国語','s-koku'],su:['数学','s-su'],ei:['英語','s-ei'],ri:['理科','s-ri'],sha:['社会','s-sha'],fuku:['副教科','s-fuku'],eiken:['英検','s-eiken'],sou:['総合','s-sou']};
+var TAG={h:['宿','k-h'],j:['塾','k-j'],t:['テ','k-t']};
+var QUEUE_SUBJECTS=['koku','su','ei','ri','sha','fuku'];
+
+/* [id, subj, tag, type(q/f/d), 'MMDD', text] */
+var RAW=[
+['kanji1','koku','h','q','0718','漢字ノート①〜⑥'],
+['dok1','koku','h','q','0718','読書課題の本を決めて30分読む'],
+['anki1p','koku','j','f','0718','暗記集P2〜5を暗記(月曜ミニテスト①)'],
+['work1','su','h','q','0718','ワーク2章 P36〜39'],
+['u3tango','ei','t','q','0718','Unit3新出単語を書いて覚える(教科書P46〜55)'],
+['kanji2','koku','h','q','0719','漢字ノート⑦〜⑫'],
+['dok2','koku','h','q','0719','読書30分'],
+['work2','su','h','q','0719','ワーク P40〜43'],
+['rinote1','ri','h','q','0719','理科ノート完成①: 授業プリントを貼る+穴埋め確認'],
+['anki1r','koku','j','f','0720','朝: 暗記集P2〜5を見直し(ミニテスト①)'],
+['dok3','koku','h','q','0720','読書20分'],
+['gojun1','ei','h','q','0720','語順トレ p.1〜3'],
+['kanzen1','ri','t','q','0720','完全学習P54〜55(1章先取り)'],
+['kanji3','koku','h','q','0721','漢字ノート⑬〜⑱(漢字完了🎉)'],
+['shochu','koku','h','q','0721','暑中見舞いを書いて投函📮'],
+['dok4','koku','h','q','0721','読書30分'],
+['anki2p','koku','j','f','0721','暗記集P6〜9を暗記'],
+['work3','su','h','q','0721','ワーク P44〜47'],
+['anki2r','koku','j','f','0722','朝: 暗記集P6〜9を見直し(ミニテスト②)'],
+['dok5','koku','h','q','0722','読書20分'],
+['gojun2','ei','h','q','0722','語順トレ p.4〜6'],
+['u3ondoku','ei','t','q','0722','Unit3本文を音読3回'],
+['dok6','koku','h','q','0723','読書20分'],
+['anki3p','koku','j','f','0723','暗記集P10〜13を暗記'],
+['work4','su','h','q','0723','ワーク P48〜51'],
+['poster1','sha','h','q','0723','地理ポスター: 国決め+調べ'],
+['shanote1','sha','h','q','0723','社会ノート完成①: 授業プリントを貼る+整理'],
+['anki3r','koku','j','f','0724','朝: 暗記集P10〜13を見直し(ミニテスト③)'],
+['dok7','koku','h','q','0724','読書: 今日で読了!'],
+['gojun3','ei','h','q','0724','語順トレ p.7〜9'],
+['kanzen2','ri','t','q','0724','完全学習P56〜57'],
+['pop','koku','h','q','0725','読書課題: ポップ・スピーチメモ作成'],
+['work5','su','h','q','0725','ワーク P52〜54'],
+['shapri1','sha','t','q','0725','学習プリント17〜18を解く'],
+['saigai','fuku','h','q','0725','[総合]災害への備え+ジョブインタビュー(夜、家族と)'],
+['ongaku1','fuku','t','q','0725','音楽: 歌唱4曲を聴いて歌詞確認'],
+['hoshi','koku','h','q','0727','「星の花」P106〜115+ワークシート'],
+['anki4p','koku','j','f','0727','暗記集P14〜17を暗記'],
+['work6','su','h','q','0727','ワーク P55〜57(2章完了🎉)'],
+['jiyu1','ri','h','q','0727','自由研究: テーマ決め+準備'],
+['kansho','fuku','h','q','0727','鑑賞カードを書く'],
+['anki4r','koku','j','f','0728','朝: 暗記集P14〜17を見直し(ミニテスト④)'],
+['gojun4','ei','h','q','0728','語順トレ p.10〜12'],
+['u4tango','ei','t','q','0728','Unit4新出単語を書いて覚える'],
+['anki5p','koku','j','f','0729','暗記集P18〜21を暗記'],
+['jiyu2','ri','h','q','0729','自由研究: 実験・観察を実行'],
+['rinote2','ri','h','q','0729','理科ノート完成②: 仕上げ(完成🎉)'],
+['poster2','sha','h','q','0729','地理ポスター: 下書き→清書'],
+['anki5r','koku','j','f','0730','朝: 暗記集P18〜21を見直し(ミニテスト⑤)'],
+['gojun5','ei','h','q','0730','語順トレ p.13〜15(完了🎉)'],
+['souji','fuku','h','q','0730','掃除をして「掃除レポート」を書く'],
+['jiyu3','ri','h','q','0731','自由研究: まとめ(完成🎉)'],
+['shanote2','sha','h','q','0731','社会ノート完成②: プリント19〜21も貼って仕上げ(完成🎉)'],
+['suiei','fuku','h','q','0731','水泳レポートを書く'],
+['hotai1','fuku','h','q','0731','保体資料ノート(保健P8〜17+実技4種、答え合わせまで)'],
+['tcheck1','sou','h','f','0731','夜: 提出物ぜんぶ完了チェック🎒(篠笛以外の宿題は今日で完了!)'],
+['anki6p','koku','j','f','0801','暗記集P22〜25を暗記'],
+['su1sho','su','t','q','0801','数学教科書1章の復習問題(夏テストは1章も出る)'],
+['hoteisaki','su','j','q','0801','方程式テキスト 先取り(〜P8)'],
+['anki6r','koku','j','f','0803','朝: 暗記集P22〜25を見直し(ミニテスト⑥)'],
+['seifu','su','j','q','0803','サマーT: 正負の数 復習'],
+['kanzen3','ri','t','q','0803','完全学習P58〜59'],
+['bijutsu1','fuku','t','q','0803','美術: 色の三要素(資料集P3,4,5)を覚える'],
+['ankif1','koku','j','q','0804','暗記集1〜3回(P2〜13)復習'],
+['anki7p','koku','j','f','0804','暗記集P26〜29を暗記'],
+['hotei1','su','j','q','0804','方程式テキスト 前半(〜P16)'],
+['bunpo1','ei','j','q','0804','be動詞/一般動詞・三単現のs ドリル'],
+['kanzen4','ri','t','q','0804','完全学習P60〜62'],
+['anki7r','koku','j','f','0805','朝: 暗記集P26〜29を見直し(ミニテスト⑦)'],
+['lis1','ei','j','q','0805','リスニング1セット'],
+['round1','ei','t','q','0805','ラウンドWB P8,9'],
+['ankif2','koku','j','q','0806','暗記集4〜6回(P14〜25)復習'],
+['anki8p','koku','j','f','0806','暗記集P30〜33を暗記'],
+['hotei2','su','j','q','0806','方程式テキスト つづき(〜P24)'],
+['bunpo2','ei','j','q','0806','疑問詞(What/How many/What time)+can'],
+['shakyo1','sha','t','q','0806','教科書P38〜45を読む(地理前半)'],
+['anki8r','koku','j','f','0807','朝: 暗記集P30〜33を見直し(ミニテスト⑧)'],
+['mojishiki','su','j','q','0807','文字式の復習'],
+['ongaku2','fuku','t','q','0807','音楽: 鑑賞曲を聴く+リコーダー指づかい確認'],
+['ankif3','koku','j','q','0808','暗記集7〜8回(P26〜33)復習'],
+['hotei3','su','j','q','0808','方程式テキスト P31まで(模試範囲完了🎉)'],
+['sougou1','ei','j','q','0808','サマーT総合問題'],
+['kanzen5','ri','t','q','0808','完全学習P63〜65'],
+['bunsho1','koku','j','q','0810','文章題1題(時間を計る)'],
+['mix1','su','j','q','0810','正負・文字式・方程式ミックス演習'],
+['naoshi1','ei','j','q','0810','文法まちがい直し'],
+['hoken1','fuku','t','q','0810','保体: 保健教科書P26〜35を読む'],
+['ankif4','koku','j','q','0811','暗記集9〜10回(P34〜41)復習'],
+['nigate1','su','j','q','0811','苦手単元やり直し'],
+['lis2','ei','j','q','0811','リスニング+単語'],
+['gas1','ri','t','q','0811','ガスバーナーの使い方+実験レポート見直し'],
+['riha-k','koku','j','q','0812','模試リハ: 国1セット+直し(時間を計る)'],
+['riha-s','su','j','q','0812','模試リハ: 数1セット+直し'],
+['riha-e','ei','j','q','0812','模試リハ: 英1セット+直し'],
+['obonA-s','su','j','q','0813','[お盆タスクA]方程式総仕上げ'],
+['obonA-e','ei','j','q','0813','[お盆タスクA]文法弱点直し'],
+['obonB','koku','j','q','0814','[お盆タスクB]暗記集P2〜41ざっと1周+文章題1題'],
+['anki9r','koku','j','f','0817','朝: 暗記集P34〜37を見直し(ミニテスト⑨)'],
+['lis3','ei','j','q','0817','リスニング1セット'],
+['gika1','fuku','t','q','0817','技家: 技術教科書P26〜31を読む'],
+['jakuten','koku','j','q','0818','暗記集の弱点つぶし'],
+['anki10p','koku','j','f','0818','暗記集P38〜41を暗記'],
+['soshiage','su','j','q','0818','総仕上げ演習'],
+['shiage-e','ei','j','q','0818','文法・リスニング仕上げ'],
+['gika2','fuku','t','q','0818','技家: 技術P32〜37,52,53'],
+['anki10r','koku','j','f','0819','朝: 暗記集P38〜41を見直し(ミニテスト⑩最終回)'],
+['minaoshi','su','j','q','0819','模試へ軽く全体見直し'],
+['ongaku3','fuku','t','q','0819','音楽: 歌唱曲の歌詞・鑑賞ポイント確認'],
+['zenj-k','koku','j','f','0820','暗記集P2〜41パラパラ最終確認(新しい問題はやらない)'],
+['zenj-s','su','j','f','0820','公式・解き方の最終確認'],
+['zenj-e','ei','j','f','0820','単語・文法ポイント確認'],
+['moshi','sou','j','f','0821','🔥夏期講習模試(英・数・国)全力で!'],
+['kanji80','koku','t','q','0822','漢字⑧〜⑱セルフテスト(80問テスト対策)'],
+['worknaoshi','su','t','q','0822','学校ワーク2章 直し1周目(ワークテスト対策)'],
+['asia1','sha','t','q','0822','アジア州: 教科書P46〜61(単元テスト対策)'],
+['kanji80b','koku','t','q','0824','漢字: ×だった字だけ2周目'],
+['narabekae','ei','t','q','0824','並べかえ対策: 語順トレp.10〜15やり直し'],
+['kanzen6','ri','t','q','0824','完全学習P66〜68'],
+['asia2','sha','t','q','0824','資料集P36〜51+プリント19〜21'],
+['jukutk1','koku','t','q','0825','塾テキスト国語(文法)'],
+['jukuts1','su','t','q','0825','2章仕上げ+塾T(文字と式)'],
+['kanzen7','ri','t','q','0825','完全学習P69〜71(1周完了🎉)'],
+['hotai2','fuku','t','q','0825','保体: 資料ノートP8〜17見直し'],
+['unit34','ei','t','q','0826','Unit3・4単語+教科書P46〜71音読'],
+['jiji1','sha','t','q','0826','時事: 7〜8月ニュースまとめ'],
+['bijutsu2','fuku','t','q','0826','美術: レタリング・色を暗記'],
+['tcheck2','sou','h','f','0826','夜: 🎒提出物ぜんぶ最終チェック→カバンへ'],
+['teishutsu1','sou','h','f','0827','提出: 自由研究・水泳レポ/資料ノート・掃除レポ・災害/ジョブ'],
+['kcheck','koku','t','f','0827','帰宅後: 漢字・並べかえ・アジア州をさっと最終確認'],
+['jukute1','ei','t','q','0828','塾テキスト英語(Unit3文法)'],
+['ongakuwk1','fuku','t','q','0828','音楽: ワーク一問一答に○(9/11提出)'],
+['jukuts2','su','t','q','0829','塾T: 2章文字と式・3章方程式'],
+['joyful1','ei','t','q','0829','ジョイフルWB P25〜35'],
+['jukutsha1','sha','t','q','0829','塾T: 地理'],
+['bijutsu3','fuku','t','q','0829','美術: レタリング・色 2回目'],
+['jukutk2','koku','t','q','0831','塾T国語+漢字キープ'],
+['ongaku4','fuku','t','q','0831','音楽: 歌唱4曲・リコーダー・篠笛練習'],
+['jukute2','ei','t','q','0901','塾T英語+教科書P46〜71音読+ラウンドWB P18,19,30,31'],
+['hotai3','fuku','t','q','0901','保体: 実技ポイント(マット・ハードル・クロール)見直し'],
+['jukuts3','su','t','q','0902','塾T方程式+教科書P86〜97(1章の復習も)'],
+['gika3','fuku','t','q','0902','技家: 家庭P232〜239を読む'],
+['jukutr1','ri','t','q','0903','塾T理科+完全学習の×直し+ガスバーナー・巻末P192'],
+['gika4','fuku','t','q','0903','技家: 家庭P240〜245+総合ノートP109〜113'],
+['jukutsha2','sha','t','q','0904','塾T社会+教科書P62〜77+プリント17〜23'],
+['shanote3','sha','h','q','0904','社会ノート最終チェック(7月完成済み・9/11提出)'],
+['hoken2','fuku','t','q','0904','保体: 保健P26〜35+資料ノートP8〜17'],
+['nk','koku','t','q','0905','塾Tまちがい直し(国)'],
+['ns','su','t','q','0905','塾Tまちがい直し(数)'],
+['ne','ei','t','q','0905','塾Tまちがい直し(英)+ジョイフルWB P36〜49'],
+['nr','ri','t','q','0905','塾Tまちがい直し(理)'],
+['nsha','sha','t','q','0905','塾Tまちがい直し(社)+時事最終確認'],
+['gika5','fuku','t','q','0905','技家: 技術・家庭の総仕上げ'],
+['ongakuwk2','fuku','t','q','0905','音楽: ワーク仕上げ(9/11提出)'],
+['fink','koku','t','q','0907','漢字・文法+「ちょっと立ち止まって」「星の花」読み直し'],
+['finsha','sha','t','q','0907','プリント17〜23・資料集(高山地域も)総確認'],
+['finbi','fuku','t','q','0907','美術: レタリング/色 最終暗記'],
+['zen2-k','koku','t','f','0908','国社美: ノート・プリント最終チェック(早寝!🛌)'],
+['zen2-s','su','t','f','0908','総仕上げ1セット'],
+['zen2-e','ei','t','f','0908','単語・本文をざっと(あさって英語)'],
+['test1','sou','t','f','0909','📝夏テスト1日目(国・社・美)全力!'],
+['after1','sou','t','f','0909','帰宅後: あすの英・数・音を最終確認'],
+['test2','sou','t','f','0910','📝夏テスト2日目(英・数・音)全力!'],
+['after2','sou','t','f','0910','帰宅後: あすの理・保体・技家を最終確認'],
+['test3','sou','t','f','0911','📝夏テスト3日目(理・保体・技家)全力!'],
+['teishutsu2','sou','h','f','0911','提出: 漢字ノート・音楽ワーク/鑑賞カード・社会ノート(帰り学活)']
+];
+
+/* 毎日型: 篠笛 */
+var SHINOBUE={'0721':1,'0724':1,'0725':1,'0728':1,'0730':1,'0801':1,'0804':1,'0806':1,'0808':1,'0811':1,'0818':1,'0822':1,'0824':1,'0825':1,'0826':'篠笛: 「たこたこあがれ」仕上げ!','0827':'篠笛をさらっと(あすからテスト!)'};
+/* 毎日型: ニュースメモ(土曜) */
+var NEWS={'0725':1,'0801':1,'0808':1,'0822':1,'0829':1};
+
+var OFF={'0726':1,'0802':1,'0809':1,'0816':1,'0823':1,'0830':1,'0906':1};
+var JUKU={'0720':'塾① P2〜5','0722':'塾② P6〜9','0724':'塾③ P10〜13','0728':'塾④ P14〜17','0730':'塾⑤ P18〜21','0803':'塾⑥ P22〜25','0805':'塾⑦ P26〜29','0807':'塾⑧ P30〜33','0817':'塾⑨ P34〜37','0819':'塾⑩ P38〜41'};
+var EVENTS={'0731':['宿題仕上げ','ev'],'0801':['予備日','ev'],'0812':['模試リハ','ev'],'0813':['お盆','ev'],'0814':['お盆','ev'],'0815':['お盆・予備日','ev'],'0820':['模試前日','ev'],'0821':['🔥模試本番','ts'],'0826':['前日準備','ev'],'0827':['🏫始業式','ev'],'0828':['休み明けテスト','ev'],'0907':['9/9教科仕上げ','ev'],'0908':['テスト前日','ev'],'0909':['📝夏テスト1日目','ts'],'0910':['📝夏テスト2日目','ts'],'0911':['📝夏テスト3日目','ts']};
+var DAYNOTE={'0815':'タスクA・Bが終わっていれば完全オフ!(3日で2日学習+1日オフ)','0816':'夜に暗記集P34〜37を5分見ると安心','0820':'新しい問題はやらない・早寝🛌','0826':'夜: 提出物を全部カバンへ'};
+
+/* 期間の全日付 */
+function allDates(){ var out=[], t=new Date(Y,6,18); for(var i=0;i<56;i++){ out.push(md(t)); t.setDate(t.getDate()+1);} return out; }
+function md(dt){ return ('0'+(dt.getMonth()+1)).slice(-2)+('0'+dt.getDate()).slice(-2); }
+function dowOf(mdd){ var dt=new Date(Y, parseInt(mdd.slice(0,2),10)-1, parseInt(mdd.slice(2),10)); return dt.getDay(); }
+var DOWJ=['日','月','火','水','木','金','土'];
+var DATES=allDates();
+
+/* 英検・篠笛・ニュースを毎日型として生成 */
+var TASKS=RAW.map(function(r){ return {id:r[0],subj:r[1],tag:r[2],type:r[3],date:r[4],text:r[5]}; });
+DATES.forEach(function(mdd){
+  if(OFF[mdd]||mdd==='0815') return;
+  var txt='パス単40語';
+  if(mdd==='0820'||mdd==='0907') txt='単語5分だけ';
+  else if(mdd>'0907') txt='単語5分だけ(テスト週は維持モード)';
+  else if(mdd==='0821') txt='夜: 単語だけ軽く(模試おつかれ!)';
+  else if(mdd==='0822') txt='今週の単語をまとめて復習(1周目完了🎉)';
+  else if(mdd==='0824') txt='パス単40語(2周目スタート)';
+  else if(dowOf(mdd)===6) txt='今週の単語をまとめて復習(土曜恒例)';
+  TASKS.push({id:'eik'+mdd,subj:'eiken',tag:'',type:'d',date:mdd,text:txt});
+});
+Object.keys(SHINOBUE).forEach(function(mdd){
+  TASKS.push({id:'shino'+mdd,subj:'fuku',tag:'h',type:'d',date:mdd,text:(SHINOBUE[mdd]===1?'篠笛「たこたこあがれ」10分':SHINOBUE[mdd])});
+});
+Object.keys(NEWS).forEach(function(mdd){
+  TASKS.push({id:'news'+mdd,subj:'sha',tag:'t',type:'d',date:mdd,text:'今週のニュースを3つメモ(時事対策)'});
+});
+var BYID={}; TASKS.forEach(function(t){BYID[t.id]=t;});
+
+/* ============ 状態 ============ */
+var storeOK=true, mem={};
+function lsGet(){ try{ var s=localStorage.getItem('haruma-plan-2026'); return s?JSON.parse(s):{done:{}}; }catch(e){ storeOK=false; return mem.state||{done:{}}; } }
+function lsSet(st){ try{ localStorage.setItem('haruma-plan-2026',JSON.stringify(st)); }catch(e){ storeOK=false; mem.state=st; } }
+var state=lsGet(); if(!state.done) state.done={};
+
+/* 今日(?date=YYYY-MM-DD で上書き可) */
+function todayMD(){
+  var m=location.search.match(/[?&]date=(\d{4})-(\d{2})-(\d{2})/);
+  var dt = m? new Date(+m[1],+m[2]-1,+m[3]) : new Date();
+  if(dt.getFullYear()<Y || (dt.getFullYear()===Y && md(dt)<'0718')) return '0718';
+  if(dt.getFullYear()>Y || md(dt)>'0911') return '0911';
+  return md(dt);
+}
+var TODAY=todayMD();
+function fmt(mdd){ return (+mdd.slice(0,2))+'/'+(+mdd.slice(2)); }
+function daysBetween(a,b){ var da=new Date(Y,+a.slice(0,2)-1,+a.slice(2)), db=new Date(Y,+b.slice(0,2)-1,+b.slice(2)); return Math.round((db-da)/86400000); }
+
+/* ============ 操作 ============ */
+function toggle(id){
+  var t=BYID[id]; if(!t) return;
+  if(state.done[id]){ delete state.done[id]; toast('チェックを取り消しました'); }
+  else{
+    state.done[id]=TODAY;
+    var q=nextInQueue(t.subj);
+    if(t.type==='q' && t.date>TODAY){ toast('先取り!✨ 次: '+(q&&q.date>TODAY?short(q.text):'なし')); }
+    else toast('よくできました!✅');
+  }
+  lsSet(state); render();
+}
+function short(s){ return s.length>14? s.slice(0,14)+'…' : s; }
+function nextInQueue(subj){
+  var list=TASKS.filter(function(t){return t.subj===subj&&t.type==='q'&&!state.done[t.id];});
+  list.sort(function(a,b){return a.date<b.date?-1:1;});
+  return list[0]||null;
+}
+var toastTimer=null;
+function toast(msg){ var el=document.getElementById('toast'); el.textContent=msg; el.classList.add('show'); clearTimeout(toastTimer); toastTimer=setTimeout(function(){el.classList.remove('show');},1600); }
+
+/* ============ 描画部品 ============ */
+function esc(s){ return s.replace(/&/g,'&amp;').replace(/</g,'&lt;'); }
+function rowHTML(t, opts){
+  opts=opts||{};
+  var done=!!state.done[t.id];
+  var pills='';
+  if(done) pills+='<span class="pill donedate">済 '+fmt(state.done[t.id])+'</span>';
+  else if(opts.late>0) pills+='<span class="pill late">'+opts.late+'日遅れ</span>';
+  else if(opts.saki) pills+='<span class="pill saki">先取りOK</span>';
+  var tag=t.tag? '<span class="ktag '+TAG[t.tag][1]+'">'+TAG[t.tag][0]+'</span>':'';
+  var s=SUBJ[t.subj];
+  return '<div class="trow'+(done?' done':'')+'" role="button" tabindex="0" data-id="'+t.id+'">'
+    +'<span class="stripe '+s[1]+'"></span>'
+    +'<span class="cbx">'+(done?'✓':'')+'</span>'
+    +'<div class="tbody"><div class="txt">'+esc(t.text)+'</div>'
+    +'<div class="meta"><span class="subj '+s[1]+'">'+s[0]+'</span>'+tag+pills+'</div></div></div>';
+}
+function bindRows(root){
+  var rows=root.querySelectorAll('.trow[data-id],.chip[data-id]');
+  for(var i=0;i<rows.length;i++){
+    (function(el){
+      el.addEventListener('click',function(){toggle(el.getAttribute('data-id'));});
+      el.addEventListener('keydown',function(e){ if(e.key===' '||e.key==='Enter'){e.preventDefault();toggle(el.getAttribute('data-id'));} });
+    })(rows[i]);
+  }
+}
+
+/* ============ 今日タブ ============ */
+var sakiOpen=1;
+function renderToday(){
+  var mdd=TODAY, html='';
+  var isOff=!!OFF[mdd];
+  /* 遅れfixed */
+  var lateFixed=TASKS.filter(function(t){return t.type==='f'&&t.date<mdd&&!state.done[t.id];});
+  if(lateFixed.length){
+    html+='<div class="card alert"><div class="head">⚠️ 期限が過ぎています(早めに片づけよう)</div>';
+    lateFixed.forEach(function(t){ html+=rowHTML(t,{late:daysBetween(t.date,mdd)}); });
+    html+='</div>';
+  }
+  if(isOff){
+    html+='<div class="offbox">🏖️ 今日は完全オフ!<small>よく遊び、よく休もう。やる気があれば下の先取りもOK</small></div>';
+  }else{
+    /* ノルマ: queue(date<=today 未完了) + daily(today) + fixed(today) */
+    var norm=TASKS.filter(function(t){
+      if(state.done[t.id]) return false;
+      if(t.type==='q') return t.date<=mdd;
+      return t.date===mdd;
+    });
+    norm.sort(function(a,b){ return a.date<b.date?-1: a.date>b.date?1:0; });
+    html+='<h2 class="sec">📋 今日のノルマ('+norm.length+'件)</h2><div class="card">';
+    if(norm.length===0) html+='<div class="empty">ぜんぶ完了! 下から先取りしよう🚀</div>';
+    norm.forEach(function(t){ var late=(t.type==='q'&&t.date<mdd)?daysBetween(t.date,mdd):0; html+=rowHTML(t,{late:late}); });
+    html+='</div>';
+  }
+  /* 先取り */
+  var sakiHTML='', count=0;
+  QUEUE_SUBJECTS.forEach(function(s){
+    var list=TASKS.filter(function(t){return t.subj===s&&t.type==='q'&&!state.done[t.id]&&t.date>mdd;});
+    list.sort(function(a,b){return a.date<b.date?-1:1;});
+    for(var i=0;i<Math.min(sakiOpen,list.length);i++){ sakiHTML+=rowHTML(list[i],{saki:true}); count++; }
+  });
+  if(count){
+    html+='<h2 class="sec">🚀 先取りOK(チェックすると次が出てくる)</h2><div class="card sakidori">'+sakiHTML
+      +'<button class="more" id="morebtn">'+(sakiOpen===1?'もっと先取りする ▼':'表示を減らす ▲')+'</button></div>';
+  }
+  /* 今日やったこと */
+  var doneToday=TASKS.filter(function(t){return state.done[t.id]===mdd;});
+  if(doneToday.length){
+    html+='<h2 class="sec">✅ 今日やったこと('+doneToday.length+'件・タップで取り消し)</h2><div class="card">';
+    doneToday.forEach(function(t){ html+=rowHTML(t); });
+    html+='</div>';
+  }
+  return html;
+}
+
+/* ============ 全体タブ ============ */
+var WEEKS=[
+['第1週 7/18〜7/24','ph1','Phase1 宿題スプリント',['0718','0719','0720','0721','0722','0723','0724']],
+['第2週 7/25〜7/31','ph1','Phase1 宿題の大物+仕上げ',['0725','0726','0727','0728','0729','0730','0731']],
+['第3週 8/1〜8/7','ph2','Phase2 塾模試対策',['0801','0802','0803','0804','0805','0806','0807']],
+['第4週 8/8〜8/14','ph2','Phase2 模試演習+お盆',['0808','0809','0810','0811','0812','0813','0814']],
+['第5週 8/15〜8/21','ph2','Phase2ラスト 8/21模試🔥',['0815','0816','0817','0818','0819','0820','0821']],
+['第6週 8/22〜8/28','ph3','Phase3 夏テスト対策+始業式',['0822','0823','0824','0825','0826','0827','0828']],
+['第7週 8/29〜9/4','ph3','Phase3 塾テキストで対策',['0829','0830','0831','0901','0902','0903','0904']],
+['最終週 9/5〜9/11','ph4','総仕上げ→夏テスト本番📝',['0905','0906','0907','0908','0909','0910','0911']]
+];
+var openWeeks={};
+(function(){ WEEKS.forEach(function(w,i){ if(w[3].indexOf(TODAY)>=0) openWeeks[i]=true; }); })();
+var GRID_SUBJ=['koku','su','ei','ri','sha','fuku','eiken','sou'];
+function chipHTML(t){
+  var done=!!state.done[t.id];
+  var late=!done && t.date<TODAY;
+  var st = done? '✓' : '☐';
+  var sub = done? '<small>'+fmt(state.done[t.id])+'</small>' : '';
+  return '<div class="chip'+(done?' cdone':late?' clate':'')+'" role="button" tabindex="0" data-id="'+t.id+'" title="'+esc(t.text)+'">'
+    +'<span class="st">'+st+sub+'</span><span class="ct">'+esc(t.text)+'</span></div>';
+}
+function renderAll(){
+  var html='<div class="ghint">セルのタスクをタップでチェック(✓の横の日付=実施日)。表は横にスクロールできます→</div>';
+  WEEKS.forEach(function(w,i){
+    var open=!!openWeeks[i];
+    html+='<div class="week"><button class="whead" data-w="'+i+'">'+(open?'▼':'▶')+' '+w[0]
+      +'<span class="ph '+w[1]+'">'+w[2]+'</span></button>';
+    if(open){
+      html+='<div class="gwrap"><table class="gtable"><tr><th class="gd">日付</th>';
+      GRID_SUBJ.forEach(function(s){ html+='<th class="'+SUBJ[s][1]+'">'+SUBJ[s][0]+'</th>'; });
+      html+='</tr>';
+      w[3].forEach(function(mdd){
+        var dow=dowOf(mdd), cls='';
+        if(OFF[mdd]) cls=' class="off"'; else if(EVENTS[mdd]&&EVENTS[mdd][1]==='ts') cls=' class="test"'; else if(mdd>='0813'&&mdd<='0815') cls=' class="obon"';
+        var bd='';
+        if(JUKU[mdd]) bd+='<span class="ebd">'+JUKU[mdd].split(' ')[0]+'</span>';
+        if(EVENTS[mdd]) bd+='<span class="ebd '+EVENTS[mdd][1]+'">'+EVENTS[mdd][0]+'</span>';
+        if(OFF[mdd]) bd+='<span class="ebd of">オフ</span>';
+        var dateCell='<td class="gdate"'+(DAYNOTE[mdd]?' title="'+esc(DAYNOTE[mdd])+'"':'')+'>'+fmt(mdd)+'<small class="'+(dow===0?'sun':dow===6?'sat':'')+'">('+DOWJ[dow]+')</small>'+(bd?'<br>'+bd:'')+'</td>';
+        html+='<tr'+cls+'>'+dateCell;
+        if(OFF[mdd]){
+          html+='<td class="gband" colspan="'+GRID_SUBJ.length+'">🏖️ 完全オフ! よく遊びよく休もう</td></tr>';
+          return;
+        }
+        GRID_SUBJ.forEach(function(s){
+          var list=TASKS.filter(function(t){return t.date===mdd&&t.subj===s;});
+          html+='<td>';
+          list.forEach(function(t){ html+=chipHTML(t); });
+          html+='</td>';
+        });
+        html+='</tr>';
+      });
+      html+='</table></div>';
+    }
+    html+='</div>';
+  });
+  return html;
+}
+
+/* ============ 進捗タブ ============ */
+function pace(subj){
+  var next=nextInQueue(subj);
+  if(!next) return null;
+  if(next.date<TODAY) return -daysBetween(next.date,TODAY);
+  /* 今日のぶんが未完なら「ペース通り」扱い、全部済んでいれば先行 */
+  var todayLeft=TASKS.some(function(t){return t.subj===subj&&t.type==='q'&&t.date<=TODAY&&!state.done[t.id];});
+  if(todayLeft) return 0;
+  return daysBetween(TODAY,next.date);
+}
+function streak(){
+  var s=0, dt=new Date(Y,+TODAY.slice(0,2)-1,+TODAY.slice(2));
+  for(;;){
+    var mdd=md(dt);
+    if(mdd<'0718') break;
+    var didAny=TASKS.some(function(t){return state.done[t.id]===mdd;});
+    if(OFF[mdd]&&!didAny){ dt.setDate(dt.getDate()-1); continue; }
+    if(didAny){ s++; dt.setDate(dt.getDate()-1); }
+    else{ if(mdd===TODAY){ dt.setDate(dt.getDate()-1); continue; } break; }
+  }
+  return s;
+}
+function renderStats(){
+  var total=0, done=0;
+  TASKS.forEach(function(t){ if(t.type!=='d'){ total++; if(state.done[t.id]) done++; } });
+  var doneAll=Object.keys(state.done).length;
+  var html='<div class="stats">'
+    +'<div class="stat"><div class="big">'+streak()+'日🔥</div><div class="lbl">連続学習ストリーク</div></div>'
+    +'<div class="stat"><div class="big">'+done+'<span style="font-size:14px;color:var(--ink2)">/'+total+'</span></div><div class="lbl">課題タスク完了(毎日型を除く)</div></div>'
+    +'</div>';
+  html+='<h2 class="sec">📚 教科別の進捗とペース</h2><div class="card">';
+  QUEUE_SUBJECTS.concat(['sou']).forEach(function(s){
+    var list=TASKS.filter(function(t){return t.subj===s&&t.type!=='d';});
+    if(!list.length) return;
+    var dn=list.filter(function(t){return state.done[t.id];}).length;
+    var pct=Math.round(dn/list.length*100);
+    var p=pace(s), ptag='';
+    if(p===null) ptag = dn===list.length ? '<span class="pace ahead">全部完了🎉</span>' : '';
+    else if(p>0) ptag='<span class="pace ahead">'+p+'日先行</span>';
+    else if(p<0) ptag='<span class="pace late">'+(-p)+'日遅れ</span>';
+    else ptag='<span class="pace on">ペース通り</span>';
+    var sj=SUBJ[s];
+    html+='<div class="pbar-row"><div class="pbar-top"><span class="subj '+sj[1]+'">'+sj[0]+'</span>'+ptag
+      +'<span class="num">'+dn+'/'+list.length+'('+pct+'%)</span></div>'
+      +'<div class="pbar"><div class="'+sj[1]+'" style="width:'+pct+'%"></div></div></div>';
+  });
+  html+='</div>';
+  /* 英検 */
+  var eikDone=TASKS.filter(function(t){return t.subj==='eiken'&&state.done[t.id];}).length;
+  var eikPast=TASKS.filter(function(t){return t.subj==='eiken'&&t.date<=TODAY;}).length;
+  html+='<div class="card"><div class="pbar-row"><div class="pbar-top"><span class="subj s-eiken">英検</span>'
+    +'<span class="num">ここまで '+eikDone+'/'+eikPast+'日 実施</span></div>'
+    +'<div class="pbar"><div class="s-eiken" style="width:'+(eikPast?Math.round(eikDone/eikPast*100):0)+'%"></div></div></div></div>';
+  /* ログ */
+  var byDate={};
+  TASKS.forEach(function(t){ var dd=state.done[t.id]; if(dd){ (byDate[dd]=byDate[dd]||[]).push(t); } });
+  var dates=Object.keys(byDate).sort().reverse();
+  html+='<h2 class="sec">📖 日別の完了ログ</h2><div class="card">';
+  if(!dates.length) html+='<div class="empty">まだ記録がありません。今日タブでチェックしよう!</div>';
+  dates.slice(0,14).forEach(function(dd){
+    html+='<div class="logday"><b>'+fmt(dd)+'('+DOWJ[dowOf(dd)]+')</b> — '+byDate[dd].length+'件<ul>';
+    byDate[dd].forEach(function(t){ html+='<li>'+esc(t.text)+'</li>'; });
+    html+='</ul></div>';
+  });
+  html+='</div>';
+  /* バックアップ */
+  html+='<h2 class="sec">💾 バックアップ</h2><div class="card"><div class="btnrow" style="flex-direction:column; align-items:stretch">'
+    +'<textarea class="io" id="io" placeholder="「書き出す」でここにデータが出ます。別端末では貼り付けて「読み込む」"></textarea>'
+    +'<div style="display:flex; gap:8px; flex-wrap:wrap">'
+    +'<button class="act" id="exp">書き出す</button>'
+    +'<button class="act" id="imp">読み込む</button>'
+    +'<button class="act danger" id="rst">リセット</button></div></div></div>';
+  return html;
+}
+
+/* ============ ルート描画 ============ */
+var TAB='today';
+(function(){ var m=location.search.match(/[?&]tab=(today|all|stats)/); if(m) TAB=m[1]; })();
+function go(t){ TAB=t; render(); window.scrollTo(0,0); }
+function render(){
+  /* ヘッダ */
+  var mdd=TODAY, dow=dowOf(mdd);
+  var badges='';
+  if(JUKU[mdd]) badges+='<span class="bdg hot">'+JUKU[mdd]+'</span>';
+  if(EVENTS[mdd]) badges+='<span class="bdg hot">'+EVENTS[mdd][0]+'</span>';
+  if(OFF[mdd]) badges+='<span class="bdg">🏖️オフ</span>';
+  var doneToday=TASKS.filter(function(t){return state.done[t.id]===mdd;}).length;
+  badges+='<span class="bdg">今日 '+doneToday+'件 完了</span>';
+  var remainTest=daysBetween(mdd,'0909');
+  if(remainTest>0) badges+='<span class="bdg">夏テストまで'+remainTest+'日</span>';
+  document.getElementById('topcard').innerHTML=
+    '<div class="date">'+fmt(mdd)+'('+DOWJ[dow]+')</div>'
+    +'<div class="sub">夏休み学習 2026 ｜ 宿題→塾模試→夏テスト→英検準2級</div>'
+    +'<div class="topbadges">'+badges+'</div>';
+  document.getElementById('warn').innerHTML = storeOK? '' : '<div class="warnbar">⚠️ この環境では進捗が保存されません。SafariかChromeでURLを直接開いてください。</div>';
+  var v=document.getElementById('view');
+  v.innerHTML = TAB==='today'? renderToday() : TAB==='all'? renderAll() : renderStats();
+  bindRows(v);
+  ['today','all','stats'].forEach(function(t){ document.getElementById('tab-'+t).className = (t===TAB?'on':''); });
+  /* 追加バインド */
+  var mb=document.getElementById('morebtn');
+  if(mb) mb.addEventListener('click',function(){ sakiOpen = sakiOpen===1?3:1; render(); });
+  var wh=v.querySelectorAll('.whead');
+  for(var i=0;i<wh.length;i++){ (function(el){ el.addEventListener('click',function(){ var k=el.getAttribute('data-w'); openWeeks[k]=!openWeeks[k]; render(); }); })(wh[i]); }
+  var exp=document.getElementById('exp');
+  if(exp){
+    exp.addEventListener('click',function(){ document.getElementById('io').value=JSON.stringify(state); toast('書き出しました。全選択してコピー!'); });
+    document.getElementById('imp').addEventListener('click',function(){
+      try{ var st=JSON.parse(document.getElementById('io').value); if(st&&st.done){ state=st; lsSet(state); render(); toast('読み込みました✅'); } else toast('データ形式がちがいます'); }
+      catch(e){ toast('読み込めませんでした'); }
+    });
+    document.getElementById('rst').addEventListener('click',function(){
+      if(confirm('進捗をぜんぶ消します。いいですか?') && confirm('本当に消しますか?(元に戻せません)')){ state={done:{}}; lsSet(state); render(); toast('リセットしました'); }
+    });
+  }
+}
+render();
+</script>
