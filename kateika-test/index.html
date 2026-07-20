@@ -1,0 +1,1517 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>家庭科 夏テスト予想問題集 2026（住生活）</title>
+<style>
+:root{
+  --blue:#2563EB; --blue-d:#1D4ED8; --blue-bg:#DBEAFE;
+  --orange:#F97316; --orange-bg:#FFF7ED;
+  --red:#DC2626; --green:#16A34A; --green-bg:#F0FDF4;
+  --purple:#6D28D9; --purple-bg:#EDE9FE;
+  --ink:#1E293B; --sub:#475569; --line:#CBD5E1; --line-soft:#E2E8F0;
+  --bg:#F1F5F9; --card:#FFFFFF;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{
+  font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Yu Gothic Medium","Yu Gothic",Meiryo,sans-serif;
+  color:var(--ink); background:var(--bg); line-height:1.75; font-size:15px;
+  -webkit-text-size-adjust:100%;
+}
+.page{max-width:840px;margin:0 auto;padding:20px 16px 60px}
+
+/* ===== 表紙 ===== */
+.cover{
+  background:linear-gradient(135deg,#1E3A8A 0%,#2563EB 55%,#3B82F6 100%);
+  color:#fff;border-radius:16px;padding:34px 30px;margin-bottom:22px;
+}
+.cover .tag{display:inline-block;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.4);
+  border-radius:999px;padding:3px 14px;font-size:12.5px;letter-spacing:.08em;margin-bottom:14px}
+.cover h1{margin:0 0 6px;font-size:27px;line-height:1.4}
+.cover .sub{font-size:14px;opacity:.92;margin:0}
+.cover .meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.cover .meta span{background:rgba(255,255,255,.14);border-radius:8px;padding:4px 12px;font-size:12.5px}
+
+/* ===== 共通見出し ===== */
+h2.unit{
+  display:flex;align-items:center;gap:10px;font-size:19px;margin:34px 0 6px;
+  padding:10px 14px;background:var(--card);border-left:6px solid var(--blue);
+  border-radius:8px;box-shadow:0 1px 3px rgba(15,23,42,.08);
+}
+h2.unit .no{
+  background:var(--blue);color:#fff;border-radius:8px;min-width:52px;text-align:center;
+  font-size:12.5px;padding:3px 8px;flex-shrink:0;
+}
+h2.unit .pg{font-size:12px;color:var(--sub);font-weight:normal;margin-left:auto;flex-shrink:0}
+.unit-lead{font-size:13px;color:var(--sub);margin:0 4px 14px}
+
+/* ===== 問題カード ===== */
+.q{
+  background:var(--card);border:1px solid var(--line-soft);border-radius:12px;
+  padding:16px 18px 14px;margin:14px 0;box-shadow:0 1px 2px rgba(15,23,42,.05);
+  break-inside:avoid;page-break-inside:avoid;
+}
+.q-head{display:flex;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:8px}
+.qnum{font-weight:800;color:var(--blue-d);font-size:16px}
+.stars{font-size:13px;font-weight:700;letter-spacing:.1em}
+.stars.s3{color:var(--red)}
+.stars.s2{color:var(--orange)}
+.stars.s1{color:#64748B}
+.chip{font-size:11px;border-radius:999px;padding:2px 10px;font-weight:600;white-space:nowrap}
+.chip.chigi{background:var(--blue-bg);color:var(--blue-d)}
+.chip.shihan{background:var(--purple-bg);color:var(--purple)}
+.chip.kata{background:#F1F5F9;color:var(--sub);border:1px solid var(--line-soft)}
+.chip.pgc{background:#FFFBEB;color:#92400E;border:1px solid #FDE68A;margin-left:auto}
+.ans-item .pgx{color:#92400E;font-size:10.5px;font-weight:600;margin-left:6px}
+.q-body p{margin:6px 0}
+.q-body ol.abc{margin:6px 0;padding-left:10px;list-style:none}
+.q-body ol.abc li{margin:3px 0}
+.choices{margin:8px 0 4px;padding:0;list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:4px 16px}
+.choices li{padding:2px 0}
+.choices.one-col{grid-template-columns:1fr}
+.gokun{
+  border:1.5px dashed var(--line);border-radius:10px;background:#F8FAFC;
+  padding:8px 14px;margin:10px 0;font-size:14px;
+}
+.gokun b{color:var(--blue-d);font-size:12px;display:block;margin-bottom:2px}
+.note{font-size:12.5px;color:var(--sub)}
+
+/* ===== 図版 ===== */
+.fig{margin:12px auto;text-align:center;max-width:100%;overflow-x:auto}
+.fig svg{max-width:100%;height:auto}
+.fig .cap{font-size:12px;color:var(--sub);margin-top:2px}
+
+/* ===== 解答トグル（画面のみ）===== */
+.toggle-btn{
+  display:inline-flex;align-items:center;gap:6px;cursor:pointer;
+  background:var(--green-bg);color:#15803D;border:1.5px solid #86EFAC;
+  border-radius:999px;padding:5px 16px;font-size:13px;font-weight:700;margin-top:10px;
+  transition:background .2s;
+}
+.toggle-btn:hover{background:#DCFCE7}
+.ans-panel{display:none;margin-top:10px;background:var(--green-bg);border-left:4px solid var(--green);
+  border-radius:0 10px 10px 0;padding:10px 14px;font-size:14px}
+.ans-panel.open{display:block}
+.ans-panel .a{font-weight:800;color:#15803D}
+.ans-panel .exp{margin-top:4px}
+.memo{
+  background:var(--orange-bg);border-left:4px solid var(--orange);border-radius:0 10px 10px 0;
+  padding:8px 12px;margin-top:8px;font-size:13.5px;
+}
+.memo b{color:#C2410C}
+
+/* ===== 書き込み欄（印刷時のみ表示）===== */
+.write{display:none}
+.write .wline{border-bottom:1px solid #94A3B8;height:9mm}
+.write.small .wline{height:8mm}
+
+/* ===== 単元マップ ===== */
+table.map{width:100%;border-collapse:collapse;background:var(--card);border-radius:12px;overflow:hidden;
+  box-shadow:0 1px 3px rgba(15,23,42,.08);font-size:13.5px;margin:12px 0}
+table.map th{background:#1E3A8A;color:#fff;padding:8px 10px;font-size:12.5px;text-align:left;white-space:nowrap}
+table.map td{padding:8px 10px;border-top:1px solid var(--line-soft);vertical-align:top}
+table.map td.imp{white-space:nowrap;font-weight:700}
+table.map tr.hot td{background:#FFF8F3}
+
+.howto{
+  background:var(--card);border:1.5px solid var(--blue-bg);border-radius:12px;
+  padding:14px 18px;margin:16px 0;font-size:14px;
+}
+.howto h3{margin:0 0 8px;font-size:15px;color:var(--blue-d)}
+.howto ol{margin:0;padding-left:22px}
+.howto li{margin:4px 0}
+
+/* ===== 巻末解答 ===== */
+.answers-title{
+  page-break-before:always;break-before:page;
+  background:linear-gradient(135deg,#14532D,#16A34A);color:#fff;border-radius:14px;
+  padding:20px 24px;margin:40px 0 18px;
+}
+.answers-title h2{margin:0;font-size:22px}
+.answers-title p{margin:4px 0 0;font-size:13px;opacity:.92}
+.ans-item{
+  background:var(--card);border:1px solid var(--line-soft);border-radius:12px;
+  padding:12px 16px;margin:10px 0;font-size:14px;break-inside:avoid;page-break-inside:avoid;
+}
+.ans-item .head{font-weight:800;color:#15803D;margin-bottom:2px}
+.ans-item .head .qq{color:var(--blue-d);margin-right:8px}
+.ans-item .exp{margin:2px 0}
+
+/* ===== 全体操作バー（画面のみ）===== */
+.ctrl{
+  position:sticky;top:8px;z-index:50;display:flex;gap:8px;justify-content:flex-end;
+  margin:0 0 8px;
+}
+.ctrl button{
+  cursor:pointer;border:1.5px solid var(--line);background:#fff;color:var(--sub);
+  border-radius:999px;padding:6px 14px;font-size:12.5px;font-weight:700;
+  box-shadow:0 1px 4px rgba(15,23,42,.12);transition:all .2s;
+}
+.ctrl button:hover{border-color:var(--blue);color:var(--blue-d)}
+
+/* ===== 印刷 ===== */
+@page{size:A4 portrait;margin:13mm 11mm}
+@media print{
+  body{background:#fff;font-size:10.5pt;line-height:1.65}
+  .page{max-width:none;padding:0}
+  .cover{border-radius:8px;padding:22px 24px;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .ctrl,.toggle-btn,.ans-panel{display:none!important}
+  .write{display:block;margin-top:8px}
+  .q{box-shadow:none;margin:9px 0;padding:12px 14px 10px}
+  h2.unit{box-shadow:none;page-break-after:avoid;margin-top:20px}
+  table.map th{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .answers-title,.chip,.stars,.memo,.gokun,.ans-item{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .fig svg{max-height:none}
+  a{color:inherit;text-decoration:none}
+}
+@media (max-width:480px){
+  body{font-size:14.5px}
+  .cover h1{font-size:22px}
+  .choices{grid-template-columns:1fr}
+}
+/* ===== 印刷圧縮（ページ数削減・見やすさ維持）===== */
+@media print{
+  body{font-size:9.8pt;line-height:1.55}
+  .cover{padding:16px 20px;margin-bottom:12px}
+  .cover h1{font-size:20px}
+  .cover .sub{font-size:11px}
+  .howto{padding:8px 14px;margin:8px 0;font-size:9.5pt}
+  .howto li{margin:2px 0}
+  table.map{font-size:9pt;margin:8px 0}
+  table.map th,table.map td{padding:4px 8px}
+  h2.unit{margin:12px 0 3px;padding:5px 10px;font-size:14.5px}
+  .unit-lead{margin:0 4px 7px;font-size:9pt}
+  .q{margin:5px 0;padding:8px 12px 7px;border-radius:8px}
+  .q-head{margin-bottom:4px;gap:6px}
+  .q-body p{margin:3px 0}
+  .q-body ol.abc{margin:3px 0}
+  .q-body ol.abc li{margin:1px 0}
+  .choices{gap:2px 12px;margin:4px 0 2px}
+  .gokun{padding:4px 10px;margin:5px 0}
+  .fig{margin:5px auto}
+  .fig svg{max-width:82%}
+  .write{margin-top:3px}
+  .write .wline{height:7mm}
+  .answers-title{padding:12px 18px;margin:16px 0 10px;border-radius:10px}
+  .answers-title h2{font-size:17px}
+  .answers-title p{font-size:10.5px}
+  #answers-container{column-count:2;column-gap:7mm}
+  .ans-item{margin:0 0 3mm;padding:7px 10px;font-size:9pt;border-radius:8px}
+  .ans-item .exp{margin:1px 0}
+  .ans-item .head{font-size:10pt}
+  .memo{padding:4px 8px;margin-top:4px;font-size:8.5pt}
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+<div class="ctrl">
+  <button onclick="toggleAll(true)">すべての解答を表示</button>
+  <button onclick="toggleAll(false)">すべて隠す</button>
+  <button onclick="window.print()">印刷 / PDF</button>
+</div>
+
+<div class="cover">
+  <span class="tag">2026年 夏テスト対策</span>
+  <h1>家庭科 予想問題集<br>「住生活」</h1>
+  <p class="sub">テスト範囲：教科書 p.232〜245　｜　全62問（単元別・重要度つき）＋巻末解答解説</p>
+  <div class="meta">
+    <span>目標：85点</span>
+    <span>1周目 約2.5時間</span>
+    <span>2周目は間違えた問題＋★★★だけでOK</span>
+  </div>
+</div>
+
+<div class="howto">
+  <h3>この問題集の使い方</h3>
+  <ol>
+    <li><b>★★★（必出）</b>＝テストに出る可能性がとても高い基本事項。まずここを完璧に（これだけで70点台後半まで到達）。</li>
+    <li><b>★★（よく出る）</b>＝差がつく標準問題。85点にはここまで必要。</li>
+    <li><b>★（応用）</b>＝仕上げ用。時間がなければ後回しでOK。</li>
+    <li>画面では「解答を見る」をタップ。印刷すると解答欄つきのテスト形式になり、答えは巻末にまとまります。</li>
+    <li>問題番号の横のタグは学校テストの観点：<span class="chip chigi">知技</span>=知識・技能、<span class="chip shihan">思判表</span>=思考・判断・表現。</li>
+  </ol>
+</div>
+
+<h2 class="unit" style="border-left-color:#1E3A8A"><span class="no" style="background:#1E3A8A">MAP</span>単元別 重要度マップ</h2>
+<p class="unit-lead">テスト範囲全体の「どこが狙われやすいか」一覧。★★★の単元から仕上げよう。</p>
+<table class="map">
+<thead><tr><th>単元（教科書ページ）</th><th>重要度</th><th>問題</th><th>最重要ポイント</th></tr></thead>
+<tbody>
+<tr><td>1. 人間にとっての住まい（p.232〜235）</td><td class="imp" style="color:#F97316">★★</td><td>問1〜10</td><td>住まいの働き（環境・外敵から守る／保育・教育・看護・介護）／住まいは人権・世界人権宣言（1948年）／防災公園（ベンチ→かまど）</td></tr>
+<tr><td>2. 生活行為と住空間（p.236〜237）</td><td class="imp" style="color:#DC2626">★★★</td><td>問11〜21</td><td>空間の分類（個人生活⇔共同生活）／L・D・Kの意味／動線／床座⇔いす座と和洋折衷／引き戸⇔開き戸</td></tr>
+<tr><td>3. 家族の変化と空間の使い方（p.238〜239）</td><td class="imp" style="color:#DC2626">★★★</td><td>問22〜30</td><td><b>食寝分離・就寝分離・プライバシーの尊重</b>の区別／住要求／間取り図を見て答える問題</td></tr>
+<tr class="hot"><td>4. 気候風土と伝統的な住まい（p.240〜241）</td><td class="imp" style="color:#DC2626">★★★</td><td>問31〜42</td><td><b>図問題の本命。</b>地域と住まいの工夫の組み合わせ（雁木・屋敷林・茅の屋根…）／和室の名称／軒の働き（夏と冬）／畳・障子の特徴</td></tr>
+<tr class="hot"><td>5. 家庭内事故への備え（p.242〜243）</td><td class="imp" style="color:#DC2626">★★★</td><td>問43〜52</td><td>幼児＝<b>窒息</b>最多⇔高齢者＝<b>溺死</b>最多のグラフ問題／ヒートショック（湯温41度以下など対策4つ）／ヒヤリ・ハット</td></tr>
+<tr class="hot"><td>6. 室内環境と換気（p.244〜245）</td><td class="imp" style="color:#DC2626">★★★</td><td>問53〜62</td><td>結露→カビ・ダニの発生と対策／シックハウス症候群／一酸化炭素（無色・無臭）／換気は「対面する2つの窓」</td></tr>
+</tbody>
+</table>
+<!-- ================= 単元1 ================= -->
+<h2 class="unit"><span class="no">単元1</span>人間にとっての住まい<span class="pg">教科書 p.232〜235</span></h2>
+<p class="unit-lead">「住まいにはどんな働きがあるか」「なぜ住まいは人権といわれるのか」。導入問題として出やすいところ。</p>
+
+<div class="q">
+  <div class="q-head"><span class="qnum">問1</span><span class="stars s3">★★★</span><span class="chip chigi">知技</span><span class="chip kata">語群</span><span class="chip pgc">教科書p.234</span></div>
+  <div class="q-body">
+    <p>住まいの働きについて、次の文の（①）・（②）にあてはまる言葉を、あとの語群からそれぞれ選び、記号で答えなさい。</p>
+    <p>「住まいは、暑さや寒さ、（①）、風雪雨などの家の外の厳しい環境や（②）から私たちを守っている。」</p>
+    <div class="gokun"><b>語群</b>ア：騒音　　イ：日射　　ウ：外敵　　エ：地震</div>
+  </div>
+  <div class="write"><div class="wline"></div></div>
+  <button class="toggle-btn" onclick="tg(this)">解答を見る</button>
+  <div class="ans-panel"><span class="a">答え：①イ（日射）　②ウ（外敵）</span>
+    <p class="exp">教科書の本文どおり「<b>暑さや寒さ、日射、風雪雨</b>などの厳しい環境や<b>外敵</b>から守る」。まずこのセットを正確に。</p>
+    <div class="memo"><b>覚え方</b>：「<b>あつさむ・日射・風雪雨（ふうせつう）</b>」とリズムで暗記。</div>
+  </div>
+</div>
+
+<div class="q">
+  <div class="q-head"><span class="qnum">問2</span><span class="stars s3">★★★</span><span class="chip chigi">知技</span><span class="chip kata">語群</span><span class="chip pgc">教科書p.234</span></div>
+  <div class="q-body">
+    <p>住まいの中で行われることについて、次の文の（①）〜（③）にあてはまる言葉を、あとの語群からそれぞれ選び、記号で答えなさい。</p>
+    <p>「住まいでは、衣・食・住や、保育・教育・（①）・介護などが行われる。また、安心してくつろぎ、（②）を行い、趣味や余暇を楽しむなど、（③）を生み出す場になっている。」</p>
+    <div class="gokun"><b>語群</b>ア：団らん　　イ：看護　　ウ：明日への活力　　エ：労働</div>
+  </div>
+  <div class="write"><div class="wline"></div></div>
+  <button class="toggle-btn" onclick="tg(this)">解答を見る</button>
+  <div class="ans-panel"><span class="a">答え：①イ（看護）　②ア（団らん）　③ウ（明日への活力）</span>
+    <p class="exp">住まいで行われる4つのお世話は「<b>保育・教育・看護・介護</b>」。住まいは人間のあらゆる活動を支えている。</p>
+    <div class="memo"><b>覚え方</b>：「<b>ほ・きょう・かん・かい</b>」（保・教・看・介）。育てて、教えて、看て、介ける。</div>
+  </div>
+</div>
+
+<div class="q">
+  <div class="q-head"><span class="qnum">問3</span><span class="stars s3">★★★</span><span class="chip chigi">知技</span><span class="chip kata">語句</span><span class="chip pgc">教科書p.235</span></div>
+  <div class="q-body">
+    <p>「帰るところがあって布団で眠れることは、人間にとって当たり前のこと」という意味で、「住まいは（　　）である」といわれる。（　　）にあてはまる言葉を漢字2字で答えなさい。</p>
+  </div>
+  <div class="write"><div class="wline"></div></div>
+  <button class="toggle-btn" onclick="tg(this)">解答を見る</button>
+  <div class="ans-panel"><span class="a">答え：人権</span>
+    <p class="exp">住まいがあることは、<b>人が人として生きていくための権利</b>。世界中で人権尊重への対応が行われ、SDGsでも目指されている。</p>
+  </div>
+</div>
+
+<div class="q">
+  <div class="q-head"><span class="qnum">問4</span><span class="stars s2">★★</span><span class="chip chigi">知技</span><span class="chip kata">語句</span><span class="chip pgc">教科書p.235</span></div>
+  <div class="q-body">
+    <p>1948年に国連で採択された、「すべて人は、衣食住、医療及び必要な社会的施設等により、健康及び福祉に十分な生活水準を保持する権利を有する」（第25条）などを定めた宣言を何というか。</p>
+  </div>
+  <div class="write"><div class="wline"></div></div>
+  <button class="toggle-btn" onclick="tg(this)">解答を見る</button>
+  <div class="ans-panel"><span class="a">答え：世界人権宣言</span>
+    <p class="exp">第二次世界大戦への反省から、全世界が人々の人権を守るために採択した。住まいがなくなったとき「助けてほしい」と言ってよい権利を述べている。</p>
+    <div class="memo"><b>覚え方</b>：「<b>いくしば（1948）年、世界みんなの人権宣言</b>」。国連＋1948年＋第25条「衣食住」をセットで。</div>
+  </div>
+</div>
+
+<div class="q">
+  <div class="q-head"><span class="qnum">問5</span><span class="stars s2">★★</span><span class="chip chigi">知技</span><span class="chip kata">○×</span><span class="chip pgc">教科書p.235</span></div>
+  <div class="q-body">
+    <p>住まいと人権について、次の文が正しければ○、間違っていれば×を書きなさい。</p>
+    <ol class="abc">
+      <li>① 世界人権宣言は、住まいがなくなってしまったとき、助けてほしいと言ってよい（権利がある）ことを述べている。</li>
+      <li>② 子どもの権利条約には、子どもが自分に関係のあることについて自由に意見を表す権利が定められている。</li>
+      <li>③ 住まいの人権尊重への対応は、SDGsでも目指されている。</li>
+    </ol>
+  </div>
+  <div class="write"><div class="wline"></div></div>
+  <button class="toggle-btn" onclick="tg(this)">解答を見る</button>
+  <div class="ans-panel"><span class="a">答え：①○　②○　③○</span>
+    <p class="exp">②は子どもの権利条約<b>第12条「意見を表す権利」</b>。ぜんぶ○のパターンもある、と知っておくとひっかけに強くなる。</p>
+  </div>
+</div>
+
+<div class="q">
+  <div class="q-head"><span class="qnum">問6</span><span class="stars s3">★★★</span><span class="chip chigi">知技</span><span class="chip kata">記号</span><span class="chip pgc">教科書p.232〜233</span></div>
+  <div class="q-body">
+    <p>防災機能をもつ公園（防災公園）では、災害時に公園の設備が別の使い方をされる。次の①・②は災害時に何として利用できるか。あとの語群からそれぞれ選び、記号で答えなさい。</p>
+    <ol class="abc">
+      <li>① ベンチ（座席部を外す）</li>
+      <li>② 休憩所（テントを張る）</li>
+    </ol>
+    <div class="gokun"><b>語群</b>ア：救護所　　イ：かまど　　ウ：倉庫　　エ：トイレ</div>
+  </div>
+  <div class="write"><div class="wline"></div></div>
+  <button class="toggle-btn" onclick="tg(this)">解答を見る</button>
+  <div class="ans-panel"><span class="a">答え：①イ（かまど）　②ア（救護所）</span>
+    <p class="exp">教科書の写真ページ（大洲防災公園・千葉県市川市）から。<b>ベンチ→かまど、休憩所→救護所</b>のペアで覚える。</p>
+    <div class="memo"><b>覚え方</b>：「<b>ベンチでご飯（かまど）、休んで手当て（救護所）</b>」。</div>
+  </div>
+</div>
+
+<div class="q">
+  <div class="q-head"><span class="qnum">問7</span><span class="stars s2">★★</span><span class="chip chigi">知技</span><span class="chip kata">語句</span><span class="chip pgc">教科書p.233</span></div>
+  <div class="q-body">
+    <p>大きな地震がきたとき、公園や校庭は何になるか。「一時的な」に続く形で答えなさい。</p>
+    <p>一時的な（　　　　　）</p>
+  </div>
+  <div class="write"><div class="wline"></div></div>
+  <button class="toggle-btn" onclick="tg(this)">解答を見る</button>
+  <div class="ans-panel"><span class="a">答え：避難場所</span>
+    <p class="exp">公園は、子どもが遊んだり地域の人が交流したりするだけでなく、災害時には<b>一時的な避難場所</b>になる。</p>
+  </div>
+</div>
+
+<div class="q">
+  <div class="q-head"><span class="qnum">問8</span><span class="stars s1">★</span><span class="chip shihan">思判表</span><span class="chip kata">記述</span><span class="chip pgc">教科書p.235</span></div>
+  <div class="q-body">
+    <p>「住まいは人権である」といわれる理由を、「当たり前」という言葉を使って簡単に説明しなさい。</p>
+  </div>
+  <div class="write"><div class="wline"></div><div class="wline"></div></div>
+  <button class="toggle-btn" onclick="tg(this)">解答を見る</button>
+  <div class="ans-panel"><span class="a">答え（例）：帰れる部屋があり布団で眠れることは、私たちにとって当たり前だが、当たり前でない人もいて、住まいがあることは人が人として生きていくための権利だから。</span>
+    <p class="exp">教科書の参考コラム（ビッグイシューの話）から。「<b>当たり前でない人もいる</b>」＋「<b>生きていくための権利</b>」の2点が書ければ満点。</p>
+  </div>
+</div>
+
+<div class="q">
+  <div class="q-head"><span class="qnum">問9</span><span class="stars s1">★</span><span class="chip chigi">知技</span><span class="chip kata">記号</span><span class="chip pgc">教科書p.235</span></div>
+  <div class="q-body">
+    <p>世界人権宣言などの歴史は、SDGsのある目標につながった。その目標の番号を、次のア〜ウから選び、記号で答えなさい。</p>
+    <ul class="choices">
+      <li>ア　目標3</li>
+      <li>イ　目標11</li>
+      <li>ウ　目標14</li>
+    </ul>
+  </div>
+  <div class="write"><div class="wline"></div></div>
+  <button class="toggle-btn" onclick="tg(this)">解答を見る</button>
+  <div class="ans-panel"><span class="a">答え：イ（目標11）</span>
+    <p class="exp">教科書の本文に「これらの歴史がSDGsの<b>目標11</b>につながりました」とある（目標11＝住み続けられるまちづくりを）。</p>
+    <div class="memo"><b>覚え方</b>：「<b>いい（11）住まい</b>」。</div>
+  </div>
+</div>
+
+<div class="q">
+  <div class="q-head"><span class="qnum">問10</span><span class="stars s2">★★</span><span class="chip shihan">思判表</span><span class="chip kata">記述</span><span class="chip pgc">教科書p.234</span></div>
+  <div class="q-body">
+    <p>住まいが「明日への活力を生み出す場」といわれるのはなぜか。住まいの中で行われることを2つ以上あげて説明しなさい。</p>
+  </div>
+  <div class="write"><div class="wline"></div><div class="wline"></div></div>
+  <button class="toggle-btn" onclick="tg(this)">解答を見る</button>
+  <div class="ans-panel"><span class="a">答え（例）：住まいでは、安心してくつろいだり、家族と団らんを行ったり、趣味や余暇を楽しんだりできるから。</span>
+    <p class="exp">「<b>くつろぎ・団らん・趣味や余暇</b>」のうち2つ以上が書ければ正解。</p>
+  </div>
+</div>
+
+<!-- ================= 単元2 ================= -->
+<h2 class="unit"><span class="no">単元2</span>生活行為と住空間<span class="pg">教科書 p.236〜237</span></h2>
+<p class="unit-lead">空間の分類（生活行為による分類／使い方による分類）と、床座・いす座。用語の区別がそのままテストに出る。</p>
+
+<div class="q">
+  <div class="q-head"><span class="qnum">問11</span><span class="stars s3">★★★</span><span class="chip chigi">知技</span><span class="chip kata">語群</span><span class="chip pgc">教科書p.236</span></div>
+  <div class="q-body">
+    <p>住まいを生活行為で分類すると、次の①〜④の空間などに分けられる。それぞれの空間の名前を、あとの語群から選び、記号で答えなさい。</p>
+    <ol class="abc">
+      <li>① 眠るための空間</li>
+      <li>② 食事をするための空間</li>
+      <li>③ 調理や洗濯などをするための空間</li>
+      <li>④ 入浴や洗面などのための空間</li>
+    </ol>
+    <div class="gokun"><b>語群</b>ア：家事作業の空間　　イ：生理・衛生の空間　　ウ：睡眠の空間　　エ：食事の空間</div>
+  </div>
+  <div class="write"><div class="wline"></div></div>
+  <button class="toggle-btn" onclick="tg(this)">解答を見る</button>
+  <div class="ans-panel"><span class="a">答え：①ウ　②エ　③ア　④イ</span>
+    <p class="exp">生活行為による分類は「<b>睡眠・食事・家事作業・生理衛生</b>」の4つ＋収納・通行。<b>入浴・洗面・排せつ＝生理・衛生の空間</b>がテストで狙われやすい。</p>
+    <div class="memo"><b>覚え方</b>：「<b>寝る・食べる・働く・洗う</b>」の4行為。お風呂は「洗う」＝生理・衛生。</div>
+  </div>
+</div>
+
+<div class="q">
+  <div class="q-head"><span class="qnum">問12</span><span class="stars s3">★★★</span><span class="chip chigi">知技</span><span class="chip kata">語句</span><span class="chip pgc">教科書p.236</span></div>
+  <div class="q-body">
+    <p>住まいの空間を「使い方」で分類すると、2つに分けられる。次の文の（①）・（②）にあてはまる言葉を答えなさい。</p>
+    <p>「住まいの空間は、（①）生活の空間と（②）生活の空間に分けられる。同じ部屋でも、使う時間によって（①）生活の空間になったり、（②）生活の空間になったりする。」</p>
+  </div>
+  <div class="write"><div class="wline"></div></div>
+  <button class="toggle-btn" onclick="tg(this)">解答を見る</button>
+  <div class="ans-panel"><span class="a">答え：①個人　②共同</span>
+    <p class="exp">使い方による分類＝<b>個人生活の空間</b>と<b>共同生活の空間</b>。「同じ部屋でも時間帯で変わる」がポイント（例：リビングで一人で勉強→個人、家族で団らん→共同）。</p>
+  </div>
+</div>
+
+<div class="q">
+  <div class="q-head"><span class="qnum">問13</span><span class="stars s3">★★★</span><span class="chip chigi">知技</span><span class="chip kata">語群</span><span class="chip pgc">教科書p.236</span></div>
+  <div class="q-body">
+    <p>次の①〜⑥の行為が行われる空間の名前を、あとの語群からそれぞれ選び、記号で答えなさい。</p>
+    <ol class="abc">
+      <li>① 睡眠、学習、趣味、仕事など</li>
+      <li>② 調理、洗濯、アイロンかけ、ごみ処理など</li>
+      <li>③ 入浴、洗面、排せつなど</li>
+      <li>④ 食事、団らん、遊び、接客など</li>
+      <li>⑤ 押入れ、クローゼットなど</li>
+      <li>⑥ 廊下、玄関など</li>
+    </ol>
+    <div class="gokun"><b>語群</b>ア：家族生活の空間　　イ：通行のための空間　　ウ：個人生活の空間　　エ：収納　　オ：家事作業の空間　　カ：生理・衛生の空間</div>
+  </div>
+  <div class="write"><div class="wline"></div></div>
+  <button class="toggle-btn" onclick="tg(this)">解答を見る</button>
+  <div class="ans-panel"><span class="a">答え：①ウ　②オ　③カ　④ア　⑤エ　⑥イ</span>
+    <p class="exp">教科書の図1の分類そのまま。<b>②家事作業・③生理衛生・④家族生活は「共同生活の空間」</b>に含まれることもセットで覚える。</p>
+    <div class="memo"><b>覚え方</b>：一人でする「睡眠・学習・趣味・仕事」＝個人。みんなに関わる「料理・風呂・団らん」＝共同。</div>
+  </div>
+</div>
+
+<div class="q">
+  <div class="q-head"><span class="qnum">問14</span><span class="stars s3">★★★</span><span class="chip chigi">知技</span><span class="chip kata">記号</span><span class="chip pgc">教科書p.236</span></div>
+  <div class="q-body">
+    <p>共同生活の空間である居間・食堂・台所は、アルファベットで表される。次の①〜③にあてはまる記号を、あとの語群から選び、記号で答えなさい。</p>
+    <ol class="abc">
+      <li>① 居間</li>
+      <li>② 食堂</li>
+      <li>③ 台所</li>
+    </ol>
+    <div class="gokun"><b>語群</b>ア：D　　イ：K　　ウ：L</div>
+  </div>
+  <div class="write"><div class="wline"></div></div>
+  <button class="toggle-btn" onclick="tg(this)">解答を見る</button>
+  <div class="ans-panel"><span class="a">答え：①ウ（L）　②ア（D）　③イ（K）</span>
+    <p class="exp">居間＝<b>L</b>（リビング）、食堂＝<b>D</b>（ダイニング）、台所＝<b>K</b>（キッチン）。つながり方によってLDK一体型、L＋DK型、LD＋K型などに分類される。</p>
+    <div class="memo"><b>覚え方</b>：「3LDK」の間取り広告でおなじみ。<b>L居間・D食堂・K台所</b>。</div>
+  </div>
+</div>
+
+<div class="q">
+  <div class="q-head"><span class="qnum">問15</span><span class="stars s1">★</span><span class="chip chigi">知技</span><span class="chip kata">記号</span><span class="chip pgc">教科書p.236</span></div>
+  <div class="q-body">
+    <p>現在、多くの家庭にある浴室が登場したのはいつ以降か。次のア〜エから選び、記号で答えなさい。</p>
+    <ul class="choices">
+      <li>ア　1920年代</li>
+      <li>イ　1940年代</li>
+      <li>ウ　1960年代</li>
+      <li>エ　1990年代</li>
+    </ul>
+  </div>
+  <div class="write"><div class="wline"></div></div>
+  <button class="toggle-btn" onclick="tg(this)">解答を見る</button>
+  <div class="ans-panel"><span class="a">答え：ウ（1960年代）</span>
+    <p class="exp">参考コラム「変化する住まいの空間」から。住まいの空間は、技術の進歩・生活文化への関心・社会経済の影響を受けて変化していく。</p>
+  </div>
+</div>
+
+<div class="q">
+  <div class="q-head"><span class="qnum">問16</span><span class="stars s3">★★★</span><span class="chip chigi">知技</span><span class="chip kata">語句</span><span class="chip pgc">教科書p.237</span></div>
+  <div class="q-body">
+    <p>住まいの中で、人が移動するときに通る経路のことを何というか。漢字2字で答えなさい。</p>
+  </div>
+  <div class="write"><div class="wline"></div></div>
+  <button class="toggle-btn" onclick="tg(this)">解答を見る</button>
+  <div class="ans-panel"><span class="a">答え：動線</span>
+    <p class="exp">教科書の太字用語。<b>動線が複雑に交差しない</b>ように工夫すると、住まいの空間をより心地よく生活できる。</p>
+    <div class="memo"><b>覚え方</b>：「動く線」と書いて動線。「導線」と書かないよう漢字にも注意。</div>
+  </div>
+</div>
+
+<div class="q">
+  <div class="q-head"><span class="qnum">問17</span><span class="stars s2">★★</span><span class="chip shihan">思判表</span><span class="chip kata">記述</span><span class="chip pgc">教科書p.237</span></div>
+  <div class="q-body">
+    <p>人と人との動線が複雑に交差しないようにするためには、何を工夫すればよいか。「家具」という言葉を使って説明しなさい。</p>
+  </div>
+  <div class="write"><div class="wline"></div><div class="wline"></div></div>
+  <button class="toggle-btn" onclick="tg(this)">解答を見る</button>
+  <div class="ans-panel"><span class="a">答え（例）：家具などの物の大きさ、数や配置を工夫する。</span>
+    <p class="exp">「<b>大きさ・数・配置</b>」の3点セット。動作に必要な空間を確保すると快適に過ごせる。</p>
+  </div>
+</div>
+
+<div class="q">
+  <div class="q-head"><span class="qnum">問18</span><span class="stars s3">★★★</span><span class="chip chigi">知技</span><span class="chip kata">語群</span><span class="chip pgc">教科書p.237</span></div>
+  <div class="q-body">
+    <p>住まい方について、次の文の（①）〜（③）にあてはまる言葉を、あとの語群からそれぞれ選び、記号で答えなさい。</p>
+    <p>「日本の伝統的な住まい方は、玄関で履物を脱いで一段高い床にあがり、座卓と座布団を使う（①）が特徴である。欧米の住まい方は、テーブル・いすなどの家具を使う（②）が特徴である。現代の日本の住まいでは、日本と欧米のそれぞれの特徴をいかした（③）の住まい方が多く見られる。」</p>
+    <div class="gokun"><b>語群</b>ア：いす座　　イ：和洋折衷　　ウ：床座</div>
+  </div>
+  <div class="write"><div class="wline"></div></div>
+  <button class="toggle-btn" onclick="tg(this)">解答を見る</button>
+  <div class="ans-panel"><span class="a">答え：①ウ（床座）　②ア（いす座）　③イ（和洋折衷）</span>
+    <p class="exp">日本＝<b>床座</b>（座卓・座布団）、欧米＝<b>いす座</b>（テーブル・いす）。混同させるひっかけが定番なので注意。</p>
+    <div class="memo"><b>覚え方</b>：「<b>和は床に座る、洋はいすに座る</b>」。まぜたら「和洋折衷（せっちゅう）」。</div>
+  </div>
+</div>
+
+<div class="q">
+  <div class="q-head"><span class="qnum">問19</span><span class="stars s2">★★</span><span class="chip chigi">知技</span><span class="chip kata">記号</span><span class="chip pgc">教科書p.237</span></div>
+  <div class="q-body">
+    <p>引き戸と開き戸について、正しい文を次のア〜エから<b>2つ</b>選び、記号で答えなさい。</p>
+    <ul class="choices one-col">
+      <li>ア　引き戸は日本の住まいに多く、開き戸は欧米の住まいに多い。</li>
+      <li>イ　開き戸は日本の住まいに多く、引き戸は欧米の住まいに多い。</li>
+      <li>ウ　引き戸は、開けるための空間が必要である。</li>
+      <li>エ　開き戸は、開けるための空間が必要である。</li>
+    </ul>
+  </div>
+  <div class="write"><div class="wline"></div></div>
+  <button class="toggle-btn" onclick="tg(this)">解答を見る</button>
+  <div class="ans-panel"><span class="a">答え：ア・エ</span>
+    <p class="exp"><b>引き戸＝日本</b>（横にスライド）、<b>開き戸＝欧米</b>（手前や奥に開くので、開けるための空間が必要）。</p>
+    <div class="memo"><b>覚え方</b>：ふすまや障子はぜんぶ「引き戸」→日本は引き戸文化。</div>
+  </div>
+</div>
+
+<div class="q">
+  <div class="q-head"><span class="qnum">問20</span><span class="stars s2">★★</span><span class="chip chigi">知技</span><span class="chip kata">○×</span><span class="chip pgc">教科書p.237</span></div>
+  <div class="q-body">
+    <p>和洋折衷の住まい方について、次の文が正しければ○、間違っていれば×を書きなさい。</p>
+    <ol class="abc">
+      <li>① 座卓は移動しやすいので、部屋を様々な用途に使える。</li>
+      <li>② 座卓に座ると、いすに座るよりも視点が高くなる。</li>
+      <li>③ 押入れは、布団を三つ折りにして収納するのに適したサイズである。</li>
+      <li>④ ベッドや洋式トイレは、高齢者が起き上がりやすく、介護しやすい。</li>
+    </ol>
+  </div>
+  <div class="write"><div class="wline"></div></div>
+  <button class="toggle-btn" onclick="tg(this)">解答を見る</button>
+  <div class="ans-panel"><span class="a">答え：①○　②×　③○　④○</span>
+    <p class="exp">②座卓は視点が<b>低く</b>なるため、天井が高く、部屋を<b>より広く</b>感じることができる。クローゼットは洋服の収納に適したサイズ、もセットで覚える。</p>
+    <div class="memo"><b>覚え方</b>：「<b>低く座れば広く見える</b>」。</div>
+  </div>
+</div>
+
+<div class="q">
+  <div class="q-head"><span class="qnum">問21</span><span class="stars s1">★</span><span class="chip chigi">知技</span><span class="chip kata">語群</span><span class="chip pgc">教科書p.237</span></div>
+  <div class="q-body">
+    <p>現代の住宅について、次の文の（①）・（②）にあてはまる言葉を、あとの語群からそれぞれ選び、記号で答えなさい。</p>
+    <p>「現代の住宅は、技術革新により鉄筋・コンクリート・ガラスなどが使用できるようになり、敷地が狭くても（①）で居住面積がある程度（②）できるようになった。」</p>
+    <div class="gokun"><b>語群</b>ア：平屋　　イ：高層　　ウ：確保　　エ：削減</div>
+  </div>
+  <div class="write"><div class="wline"></div></div>
+  <button class="toggle-btn" onclick="tg(this)">解答を見る</button>
+  <div class="ans-panel"><span class="a">答え：①イ（高層）　②ウ（確保）</span>
+    <p class="exp">教科書の欄外から。材料の技術革新（鉄筋・コンクリート・ガラス）→<b>高層化</b>→狭い敷地でも居住面積を確保、という流れ。</p>
+  </div>
+</div>
+<!-- ================= 単元3 ================= -->
+<h2 class="unit"><span class="no">単元3</span>家族の変化と空間の使い方<span class="pg">教科書 p.238〜239</span></h2>
+<p class="unit-lead">「食寝分離・就寝分離・プライバシーの尊重」の3つの考え方が最重要。間取り図問題もここで練習。</p>
+
+<div class="q">
+  <div class="q-head"><span class="qnum">問22</span><span class="stars s3">★★★</span><span class="chip chigi">知技</span><span class="chip kata">語句</span><span class="chip pgc">教科書p.238</span></div>
+  <div class="q-body">
+    <p>衛生面や精神面から、食事と就寝の空間を分けることを何というか。漢字4字で答えなさい。</p>
+  </div>
+  <div class="write"><div class="wline"></div></div>
+  <button class="toggle-btn" onclick="tg(this)">解答を見る</button>
+  <div class="ans-panel"><span class="a">答え：食寝分離</span>
+    <p class="exp">「しょくしんぶんり」。<b>食</b>事と就<b>寝</b>を<b>分離</b>する。理由（衛生面・精神面）までセットで問われる。</p>
+    <div class="memo"><b>覚え方</b>：「ご飯を食べる場所で寝ない」＝食寝分離。</div>
+  </div>
+</div>
+
+<div class="q">
+  <div class="q-head"><span class="qnum">問23</span><span class="stars s3">★★★</span><span class="chip chigi">知技</span><span class="chip kata">語句</span><span class="chip pgc">教科書p.238</span></div>
+  <div class="q-body">
+    <p>家族の性別や年齢に応じて、就寝の空間を分けることを何というか。漢字4字で答えなさい。</p>
+  </div>
+  <div class="write"><div class="wline"></div></div>
+  <button class="toggle-btn" onclick="tg(this)">解答を見る</button>
+  <div class="ans-panel"><span class="a">答え：就寝分離</span>
+    <p class="exp">「しゅうしんぶんり」。食寝分離（食事と寝る場所を分ける）との<b>混同ひっかけが定番</b>。「性別や年齢に応じて」ときたら就寝分離。</p>
+    <div class="memo"><b>覚え方</b>：食寝分離＝<b>ご飯と布団</b>を分ける／就寝分離＝<b>寝る部屋どうし</b>を分ける。</div>
+  </div>
+</div>
+
+<div class="q">
+  <div class="q-head"><span class="qnum">問24</span><span class="stars s3">★★★</span><span class="chip chigi">知技</span><span class="chip kata">語群</span><span class="chip pgc">教科書p.238</span></div>
+  <div class="q-body">
+    <p>日本の住まいに一般的に取り入れられている空間の考え方について、次の①〜③の説明にあてはまる言葉を、あとの語群からそれぞれ選び、記号で答えなさい。</p>
+    <ol class="abc">
+      <li>① 衛生面や精神面から、食事と就寝の空間を分けること。</li>
+      <li>② 家族の性別や年齢に応じて、就寝の空間を分けること。</li>
+      <li>③ 家族のコミュニケーションを大切にしながら、家族それぞれのプライバシーを尊重すること。</li>
+    </ol>
+    <div class="gokun"><b>語群</b>ア：就寝分離　　イ：家族相互のプライバシーの尊重　　ウ：食寝分離</div>
+  </div>
+  <div class="write"><div class="wline"></div></div>
+  <button class="toggle-btn" onclick="tg(this)">解答を見る</button>
+  <div class="ans-panel"><span class="a">答え：①ウ　②ア　③イ</span>
+    <p class="exp">教科書の表1「住まいにおける空間の考え方」の3点セット。③は「コミュニケーションを大切にしながら」の部分まで含めて覚える。</p>
+  </div>
+</div>
+
+<div class="q">
+  <div class="q-head"><span class="qnum">問25</span><span class="stars s2">★★</span><span class="chip chigi">知技</span><span class="chip kata">語句</span><span class="chip pgc">教科書p.238</span></div>
+  <div class="q-body">
+    <p>住まいに対する要求のことを何というか。漢字3字で答えなさい。</p>
+  </div>
+  <div class="write"><div class="wline"></div></div>
+  <button class="toggle-btn" onclick="tg(this)">解答を見る</button>
+  <div class="ans-panel"><span class="a">答え：住要求</span>
+    <p class="exp">「じゅうようきゅう」。住要求は<b>個人ごとや家族構成によっても異なり、変化していく</b>。将来どのような変化が出てきそうかを考えておくことで、計画的に準備することができる。</p>
+  </div>
+</div>
+
+<div class="q">
+  <div class="q-head"><span class="qnum">問26</span><span class="stars s2">★★</span><span class="chip chigi">知技</span><span class="chip kata">記号</span><span class="chip pgc">教科書p.238</span></div>
+  <div class="q-body">
+    <p>住まいへの要求は世代によって変わる。次の①〜④の要求は、どの世代のものと考えられるか。あとの語群からそれぞれ選び、記号で答えなさい。</p>
+    <ol class="abc">
+      <li>① 親がいつも近くにいてくれたらよかった。</li>
+      <li>② 集中して勉強できる場所がいいな。ときどき、家に友だちを呼べたらいいな。</li>
+      <li>③ 自分の仕事などができる場所がほしい。趣味を落ち着いてできる空間がほしい。</li>
+      <li>④ 足腰が弱ってきたので、1階の部屋がよい。</li>
+    </ol>
+    <div class="gokun"><b>語群</b>ア：成人期　　イ：幼児期　　ウ：高齢期　　エ：青年期</div>
+  </div>
+  <div class="write"><div class="wline"></div></div>
+  <button class="toggle-btn" onclick="tg(this)">解答を見る</button>
+  <div class="ans-panel"><span class="a">答え：①イ（幼児期）　②エ（青年期）　③ア（成人期）　④ウ（高齢期）</span>
+    <p class="exp">世代の異なる人の望んでいることを想像し<b>配慮し合う関係</b>になると、住まいは<b>居心地のよい場所</b>になる。</p>
+  </div>
+</div>
+
+<div class="q">
+  <div class="q-head"><span class="qnum">問27</span><span class="stars s2">★★</span><span class="chip shihan">思判表</span><span class="chip kata">記述</span><span class="chip pgc">教科書p.238</span></div>
+  <div class="q-body">
+    <p>家族の今や未来の空間の使い方は、「変化していく」ということを前提に考える必要がある。その理由を「家族」という言葉を使って簡単に説明しなさい。</p>
+  </div>
+  <div class="write"><div class="wline"></div><div class="wline"></div></div>
+  <button class="toggle-btn" onclick="tg(this)">解答を見る</button>
+  <div class="ans-panel"><span class="a">答え（例）：年月とともに家族はそれぞれ発達・変化し、家族構成が変化することもあるから。（生活の中で、育児や介護などのように優先されることが変わってくるから。）</span>
+    <p class="exp">「<b>家族が発達・変化する</b>」「<b>家族構成が変化する</b>」のどちらかが書ければ正解。育児や介護の例を添えるとより良い。</p>
+  </div>
+</div>
+
+<div class="q">
+  <div class="q-head"><span class="qnum">問28</span><span class="stars s2">★★</span><span class="chip shihan">思判表</span><span class="chip kata">図+記述</span><span class="chip pgc">教科書p.239</span></div>
+  <div class="q-body">
+    <p>下の図は、Aさん家族（父・母・Aさん・妹・祖母）の住まいの間取り図である。「日中は家でのんびりしたいから、日当たりのいい部屋がいいわね。」という祖母の希望に最も合う部屋はどこか。部屋の名前を答え、その理由も説明しなさい。</p>
+    <div class="fig">
+      <svg viewBox="0 0 640 400" width="640" height="400" role="img" aria-label="Aさん家族の間取り図">
+        <!-- 外壁 -->
+        <rect x="60" y="40" width="520" height="280" fill="#FFFDF7" stroke="#334155" stroke-width="3"/>
+        <!-- 水回り -->
+        <rect x="60" y="40" width="90" height="70" fill="#E0F2FE" stroke="#64748B" stroke-width="1.5"/>
+        <text x="105" y="80" text-anchor="middle" font-size="12" fill="#334155">浴室</text>
+        <rect x="150" y="40" width="90" height="70" fill="#E0F2FE" stroke="#64748B" stroke-width="1.5"/>
+        <text x="195" y="80" text-anchor="middle" font-size="12" fill="#334155">洗面室</text>
+        <rect x="150" y="110" width="90" height="50" fill="#E0F2FE" stroke="#64748B" stroke-width="1.5"/>
+        <text x="195" y="140" text-anchor="middle" font-size="12" fill="#334155">トイレ</text>
+        <!-- 玄関・廊下 -->
+        <rect x="60" y="110" width="90" height="80" fill="#F1F5F9" stroke="#64748B" stroke-width="1.5"/>
+        <text x="105" y="153" text-anchor="middle" font-size="12" fill="#334155">玄関</text>
+        <rect x="60" y="190" width="180" height="40" fill="#F8FAFC" stroke="#64748B" stroke-width="1.5"/>
+        <text x="150" y="215" text-anchor="middle" font-size="12" fill="#334155">廊下</text>
+        <!-- 台所・食事室 -->
+        <rect x="240" y="40" width="170" height="70" fill="#FEF9C3" stroke="#64748B" stroke-width="1.5"/>
+        <text x="325" y="80" text-anchor="middle" font-size="12" fill="#334155">台所</text>
+        <rect x="240" y="110" width="170" height="120" fill="#FFFBEB" stroke="#64748B" stroke-width="1.5"/>
+        <text x="325" y="175" text-anchor="middle" font-size="12" fill="#334155">食事室</text>
+        <!-- 洋室6.5 -->
+        <rect x="410" y="40" width="170" height="100" fill="#FFF" stroke="#64748B" stroke-width="1.5"/>
+        <text x="495" y="95" text-anchor="middle" font-size="12" fill="#334155">洋室（6.5畳）</text>
+        <!-- 押入れ・床の間 -->
+        <rect x="410" y="140" width="100" height="50" fill="#F1F5F9" stroke="#64748B" stroke-width="1.5"/>
+        <text x="460" y="170" text-anchor="middle" font-size="11" fill="#334155">押入れ</text>
+        <rect x="510" y="140" width="70" height="50" fill="#F1F5F9" stroke="#64748B" stroke-width="1.5"/>
+        <text x="545" y="170" text-anchor="middle" font-size="11" fill="#334155">床の間</text>
+        <!-- 洋室6・居間・和室6 -->
+        <rect x="60" y="230" width="180" height="90" fill="#FFF" stroke="#64748B" stroke-width="1.5"/>
+        <text x="150" y="280" text-anchor="middle" font-size="12" fill="#334155">洋室（6畳）</text>
+        <rect x="240" y="230" width="170" height="90" fill="#FFF" stroke="#64748B" stroke-width="1.5"/>
+        <text x="325" y="280" text-anchor="middle" font-size="12" fill="#334155">居間</text>
+        <rect x="410" y="190" width="170" height="130" fill="#F7FEE7" stroke="#64748B" stroke-width="1.5"/>
+        <text x="495" y="260" text-anchor="middle" font-size="12" fill="#334155">和室（6畳）</text>
+        <!-- ベランダ -->
+        <rect x="240" y="320" width="340" height="36" fill="#F1F5F9" stroke="#94A3B8" stroke-width="1.5" stroke-dasharray="6 3"/>
+        <text x="410" y="343" text-anchor="middle" font-size="12" fill="#475569">ベランダ（南向き）</text>
+        <!-- 方位 -->
+        <g transform="translate(612,60)">
+          <circle cx="0" cy="0" r="17" fill="#fff" stroke="#334155" stroke-width="1.5"/>
+          <line x1="0" y1="12" x2="0" y2="-8" stroke="#334155" stroke-width="2"/>
+          <polygon points="0,-14 -5,-4 5,-4" fill="#334155"/>
+          <text x="0" y="34" text-anchor="middle" font-size="12" fill="#334155">北</text>
+        </g>
+      </svg>
+      <p class="cap">Aさん家族の住まいの間取り図（教科書p.239をもとに作成）</p>
+    </div>
+  </div>
+  <div class="write"><div class="wline"></div><div class="wline"></div></div>
+  <button class="toggle-btn" onclick="tg(this)">解答を見る</button>
+  <div class="ans-panel"><span class="a">答え（例）：和室（6畳）。南向きのベランダに面していて日当たりがよく、押入れがあり布団で寝られるなど、日中をのんびり過ごすのに適しているから。</span>
+    <p class="exp">間取り図問題は「<b>方位（北の印）を確認→南側の部屋＝日当たりがよい</b>」の手順で解く。家族の希望と部屋の特徴を結びつけて説明できればOK。</p>
+    <div class="memo"><b>覚え方</b>：間取り図はまず<b>北マークを探す</b>。ベランダ側はふつう南。</div>
+  </div>
+</div>
+
+<div class="q">
+  <div class="q-head"><span class="qnum">問29</span><span class="stars s1">★</span><span class="chip chigi">知技</span><span class="chip kata">記号</span><span class="chip pgc">教科書p.239</span></div>
+  <div class="q-body">
+    <p>間取りの変更が必要になった場合の対応として、教科書で紹介されているものを、次のア〜ウから<b>2つ</b>選び、記号で答えなさい。</p>
+    <ul class="choices one-col">
+      <li>ア　リフォームをする。</li>
+      <li>イ　スケルトンインフィル住宅や可動式の家具・設備などを活用して、空間を自由に変更する。</li>
+      <li>ウ　住まいを取り壊して、必ず新築する。</li>
+    </ul>
+  </div>
+  <div class="write"><div class="wline"></div></div>
+  <button class="toggle-btn" onclick="tg(this)">解答を見る</button>
+  <div class="ans-panel"><span class="a">答え：ア・イ</span>
+    <p class="exp">教科書の豆知識から。<b>スケルトンインフィル住宅</b>＝空間を自由に変更できる住宅、という用語だけ押さえればOK。</p>
+  </div>
+</div>
+
+<div class="q">
+  <div class="q-head"><span class="qnum">問30</span><span class="stars s2">★★</span><span class="chip chigi">知技</span><span class="chip kata">語句</span><span class="chip pgc">教科書p.238</span></div>
+  <div class="q-body">
+    <p>次の文の（①）・（②）にあてはまる言葉を答えなさい。</p>
+    <p>「世代の異なる人の望んでいることを想像し（①）し合う関係になると、住まいは（②）のよい場所になることができる。」</p>
+  </div>
+  <div class="write"><div class="wline"></div></div>
+  <button class="toggle-btn" onclick="tg(this)">解答を見る</button>
+  <div class="ans-panel"><span class="a">答え：①配慮　②居心地</span>
+    <p class="exp">家族それぞれの住要求はちがう。おたがいに<b>配慮し合う</b>ことで住まいが<b>居心地のよい場所</b>になる、という単元のまとめの一文。</p>
+  </div>
+</div>
+
+<!-- ================= 単元4 ================= -->
+<h2 class="unit"><span class="no">単元4</span>気候風土と伝統的な住まい<span class="pg">教科書 p.240〜241</span></h2>
+<p class="unit-lead">図問題の本命。「地域×住まいの工夫」の組み合わせと、和室の名称・軒の働きは確実に出る。</p>
+
+<div class="q">
+  <div class="q-head"><span class="qnum">問31</span><span class="stars s3">★★★</span><span class="chip chigi">知技</span><span class="chip kata">語群</span><span class="chip pgc">教科書p.240</span></div>
+  <div class="q-body">
+    <p>住まいの多くは、地域の気候風土に合わせて工夫されている。次の①〜⑥の地域の住まいの特徴を、あとの語群からそれぞれ選び、記号で答えなさい。</p>
+    <ol class="abc">
+      <li>① 北海道札幌市</li>
+      <li>② 富山県砺波市</li>
+      <li>③ 新潟県上越市</li>
+      <li>④ 岐阜県白川村</li>
+      <li>⑤ 岐阜県海津市</li>
+      <li>⑥ 沖縄県竹富町</li>
+    </ol>
+    <div class="gokun"><b>語群</b><br>
+      ア：断熱効果がある茅（かや）を材料にして、雪が落ちやすい屋根の形をしている。<br>
+      イ：融雪装置のついた屋根や、寒気の侵入を防ぐ二重の玄関や窓がある。<br>
+      ウ：深い軒が日射を遮り、広い開口部は通風によい。石垣が暴風を防ぐ。<br>
+      エ：洪水に備え、盛土して石垣を組んだ上に建物がある。<br>
+      オ：雪でも歩行できるよう、庇（ひさし）を伸ばした雁木（がんぎ）がある。<br>
+      カ：フェーン現象や風雪から家屋を守り、燃料や肥料にもなる屋敷林がある。
+    </div>
+  </div>
+  <div class="write"><div class="wline"></div></div>
+  <button class="toggle-btn" onclick="tg(this)">解答を見る</button>
+  <div class="ans-panel"><span class="a">答え：①イ　②カ　③オ　④ア　⑤エ　⑥ウ</span>
+    <p class="exp">教科書の図1の写真ページ。<b>雪国3つの区別</b>（札幌＝融雪装置・二重玄関／上越＝雁木／白川村＝茅の屋根）がひっかけどころ。</p>
+    <div class="memo"><b>覚え方</b>：「<b>札幌とかす・上越歩く・白川落とす</b>」（雪を融かす／雪でも歩ける雁木／雪が落ちる屋根）。海津は「水攻めに盛土」、竹富は「台風に石垣」。</div>
+  </div>
+</div>
+
+<div class="q">
+  <div class="q-head"><span class="qnum">問32</span><span class="stars s3">★★★</span><span class="chip chigi">知技</span><span class="chip kata">語句</span><span class="chip pgc">教科書p.240</span></div>
+  <div class="q-body">
+    <p>新潟県上越市などに見られる、雪の日でも歩行できるように庇（ひさし）を伸ばしたつくりを何というか。</p>
+  </div>
+  <div class="write"><div class="wline"></div></div>
+  <button class="toggle-btn" onclick="tg(this)">解答を見る</button>
+  <div class="ans-panel"><span class="a">答え：雁木（がんぎ）</span>
+    <p class="exp">通りに面した家々が庇を伸ばし、雪よけのアーケードのようになったもの。<b>「雪でも歩行できる」がキーワード</b>。</p>
+    <div class="memo"><b>覚え方</b>：「雁木の下をガンガン歩ける」。</div>
+  </div>
+</div>
+
+<div class="q">
+  <div class="q-head"><span class="qnum">問33</span><span class="stars s2">★★</span><span class="chip chigi">知技</span><span class="chip kata">記号</span><span class="chip pgc">教科書p.240</span></div>
+  <div class="q-body">
+    <p>富山県砺波市の住まいに見られる屋敷林の役割として正しいものを、次のア〜エから<b>2つ</b>選び、記号で答えなさい。</p>
+    <ul class="choices one-col">
+      <li>ア　フェーン現象や風雪から家屋を守る。</li>
+      <li>イ　洪水のときの避難場所になる。</li>
+      <li>ウ　燃料や肥料にもなる。</li>
+      <li>エ　日射を室内に取り込む。</li>
+    </ul>
+  </div>
+  <div class="write"><div class="wline"></div></div>
+  <button class="toggle-btn" onclick="tg(this)">解答を見る</button>
+  <div class="ans-panel"><span class="a">答え：ア・ウ</span>
+    <p class="exp">屋敷林は「<b>守る</b>」＋「<b>使える</b>（燃料・肥料）」の2つの役割。フェーン現象という言葉も教科書どおり覚えておく。</p>
+  </div>
+</div>
+
+<div class="q">
+  <div class="q-head"><span class="qnum">問34</span><span class="stars s2">★★</span><span class="chip chigi">知技</span><span class="chip kata">記号</span><span class="chip pgc">教科書p.240</span></div>
+  <div class="q-body">
+    <p>次の①・②の説明にあてはまる地域を、あとの語群からそれぞれ選び、記号で答えなさい。</p>
+    <ol class="abc">
+      <li>① 1階が舟のガレージで、2階が住まいになっている。</li>
+      <li>② 防風林が日本海からの強い風を防いでいる。</li>
+    </ol>
+    <div class="gokun"><b>語群</b>ア：島根県出雲市　　イ：京都府伊根町　　ウ：千葉県市川市</div>
+  </div>
+  <div class="write"><div class="wline"></div></div>
+  <button class="toggle-btn" onclick="tg(this)">解答を見る</button>
+  <div class="ans-panel"><span class="a">答え：①イ（京都府伊根町）　②ア（島根県出雲市）</span>
+    <p class="exp">伊根町の「舟屋」は海のすぐそばの住まい。出雲市は<b>防風林</b>、砺波市は<b>屋敷林</b>——名前が似ているので区別する。</p>
+    <div class="memo"><b>覚え方</b>：「伊根は舟（いね＝ふね と韻）」「出雲は風の国＝防風林」。</div>
+  </div>
+</div>
+
+<div class="q">
+  <div class="q-head"><span class="qnum">問35</span><span class="stars s2">★★</span><span class="chip chigi">知技</span><span class="chip kata">○×</span><span class="chip pgc">教科書p.240</span></div>
+  <div class="q-body">
+    <p>日本の気候について、次の文が正しければ○、間違っていれば×を書きなさい。</p>
+    <ol class="abc">
+      <li>① 日本海側は、雪が多く、冬の降水量が多い。</li>
+      <li>② 太平洋側は、冬に雨や雪が多く、夏は乾燥する。</li>
+      <li>③ 南西諸島は、1年中暖かく降水量が多い。</li>
+      <li>④ 瀬戸内は、温和で降水量が少ない。</li>
+    </ol>
+  </div>
+  <div class="write"><div class="wline"></div></div>
+  <button class="toggle-btn" onclick="tg(this)">解答を見る</button>
+  <div class="ans-panel"><span class="a">答え：①○　②×　③○　④○</span>
+    <p class="exp">②は逆。太平洋側は<b>冬は晴れて乾燥し、夏は降水量が多い</b>。北海道＝冬の寒さが厳しく降水量が少ない、内陸＝夏と冬の気温差が大きい、も確認。</p>
+  </div>
+</div>
+
+<div class="q">
+  <div class="q-head"><span class="qnum">問36</span><span class="stars s2">★★</span><span class="chip chigi">知技</span><span class="chip kata">記号</span><span class="chip pgc">教科書p.240</span></div>
+  <div class="q-body">
+    <p>町屋の多くに通りに面してつけられている「格子（こうし）」の役割として正しいものを、次のア〜エから<b>すべて</b>選び、記号で答えなさい。</p>
+    <ul class="choices">
+      <li>ア　採光</li>
+      <li>イ　通風</li>
+      <li>ウ　防犯</li>
+      <li>エ　防音</li>
+    </ul>
+  </div>
+  <div class="write"><div class="wline"></div></div>
+  <button class="toggle-btn" onclick="tg(this)">解答を見る</button>
+  <div class="ans-panel"><span class="a">答え：ア・イ・ウ</span>
+    <p class="exp">室内よりも外のほうが明るいため、<b>外から中は見えにくく、中から外はよく見える</b>→防犯の役割。採光・通風＋防犯の3つ。</p>
+  </div>
+</div>
+
+<div class="q">
+  <div class="q-head"><span class="qnum">問37</span><span class="stars s3">★★★</span><span class="chip chigi">知技</span><span class="chip kata">図+語群</span><span class="chip pgc">教科書p.241</span></div>
+  <div class="q-body">
+    <p>下の図は和の住まい（和室）を表したものである。①〜⑤の名称を、あとの語群からそれぞれ選び、記号で答えなさい。</p>
+    <div class="fig">
+      <svg viewBox="0 0 620 330" width="620" height="330" role="img" aria-label="和室の名称">
+        <!-- 壁 -->
+        <rect x="30" y="30" width="560" height="230" fill="#FDF6E3" stroke="#8B6534" stroke-width="2"/>
+        <!-- 床の間 -->
+        <rect x="60" y="60" width="170" height="200" fill="#FAF0D7" stroke="#8B6534" stroke-width="2"/>
+        <rect x="60" y="240" width="170" height="20" fill="#D2A96C" stroke="#8B6534" stroke-width="1.5"/>
+        <!-- 掛け軸 -->
+        <rect x="115" y="75" width="56" height="130" fill="#FFF" stroke="#8B6534" stroke-width="1.5"/>
+        <rect x="112" y="70" width="62" height="8" fill="#7C5A2E"/>
+        <rect x="112" y="203" width="62" height="8" fill="#7C5A2E"/>
+        <path d="M143,150 q-12,-22 4,-34 q14,12 -4,34" fill="none" stroke="#DC2626" stroke-width="2"/>
+        <line x1="143" y1="150" x2="143" y2="185" stroke="#16A34A" stroke-width="2"/>
+        <!-- ふすま -->
+        <rect x="360" y="60" width="105" height="200" fill="#F5F0E4" stroke="#8B6534" stroke-width="2"/>
+        <rect x="465" y="60" width="105" height="200" fill="#EFE8D8" stroke="#8B6534" stroke-width="2"/>
+        <circle cx="452" cy="165" r="5" fill="none" stroke="#7C5A2E" stroke-width="2"/>
+        <circle cx="478" cy="165" r="5" fill="none" stroke="#7C5A2E" stroke-width="2"/>
+        <path d="M385,95 q18,14 0,30 M415,180 q14,10 0,26" fill="none" stroke="#B9A47C" stroke-width="1.5"/>
+        <!-- 畳（床） -->
+        <rect x="30" y="260" width="560" height="50" fill="#E9F2CE" stroke="#8B6534" stroke-width="2"/>
+        <line x1="220" y1="260" x2="200" y2="310" stroke="#A3B27A" stroke-width="1.5"/>
+        <line x1="420" y1="260" x2="440" y2="310" stroke="#A3B27A" stroke-width="1.5"/>
+        <!-- 座卓 -->
+        <rect x="255" y="255" width="120" height="14" rx="3" fill="#8B6534" stroke="#5C3D1E" stroke-width="1.5"/>
+        <line x1="268" y1="269" x2="268" y2="292" stroke="#5C3D1E" stroke-width="4"/>
+        <line x1="362" y1="269" x2="362" y2="292" stroke="#5C3D1E" stroke-width="4"/>
+        <!-- ラベル -->
+        <line x1="143" y1="82" x2="90" y2="48" stroke="#334155" stroke-width="1.2"/>
+        <circle cx="82" cy="44" r="12" fill="#1E3A8A"/><text x="82" y="49" text-anchor="middle" font-size="12" fill="#fff" font-weight="bold">①</text>
+        <line x1="200" y1="248" x2="248" y2="220" stroke="#334155" stroke-width="1.2"/>
+        <circle cx="258" cy="215" r="12" fill="#1E3A8A"/><text x="258" y="220" text-anchor="middle" font-size="12" fill="#fff" font-weight="bold">②</text>
+        <line x1="512" y1="120" x2="540" y2="90" stroke="#334155" stroke-width="1.2"/>
+        <circle cx="548" cy="84" r="12" fill="#1E3A8A"/><text x="548" y="89" text-anchor="middle" font-size="12" fill="#fff" font-weight="bold">③</text>
+        <line x1="120" y1="285" x2="90" y2="300" stroke="#334155" stroke-width="1.2"/>
+        <circle cx="78" cy="303" r="12" fill="#1E3A8A"/><text x="78" y="308" text-anchor="middle" font-size="12" fill="#fff" font-weight="bold">④</text>
+        <line x1="315" y1="262" x2="315" y2="235" stroke="#334155" stroke-width="1.2"/>
+        <circle cx="315" cy="228" r="12" fill="#1E3A8A"/><text x="315" y="233" text-anchor="middle" font-size="12" fill="#fff" font-weight="bold">⑤</text>
+      </svg>
+      <p class="cap">和の住まいの名称（教科書p.241 図4をもとに作成）</p>
+    </div>
+    <div class="gokun"><b>語群</b>ア：畳　　イ：床の間　　ウ：座卓　　エ：掛け軸　　オ：ふすま</div>
+  </div>
+  <div class="write"><div class="wline"></div></div>
+  <button class="toggle-btn" onclick="tg(this)">解答を見る</button>
+  <div class="ans-panel"><span class="a">答え：①エ（掛け軸）　②イ（床の間）　③オ（ふすま）　④ア（畳）　⑤ウ（座卓）</span>
+    <p class="exp">床の間＝一段高くなった飾りの空間、その中に掛かっているのが<b>掛け軸</b>。季節や行事に合わせて掛け軸・置物・花などを飾り、<b>自然を家の中に取り入れる</b>工夫をしている。</p>
+  </div>
+</div>
+
+<div class="q">
+  <div class="q-head"><span class="qnum">問38</span><span class="stars s3">★★★</span><span class="chip chigi">知技</span><span class="chip kata">記号</span><span class="chip pgc">教科書p.241</span></div>
+  <div class="q-body">
+    <p>ふすまと障子について、正しい文を次のア〜エから<b>2つ</b>選び、記号で答えなさい。</p>
+    <ul class="choices one-col">
+      <li>ア　木枠に布や紙を張ってつくられ、湿気を吸収・放出して空気環境を調整する。</li>
+      <li>イ　ガラスでつくられ、湿気をまったく通さない。</li>
+      <li>ウ　障子は、光のまぶしさを軽減する。</li>
+      <li>エ　障子は、光を完全にさえぎって部屋を暗くする。</li>
+    </ul>
+  </div>
+  <div class="write"><div class="wline"></div></div>
+  <button class="toggle-btn" onclick="tg(this)">解答を見る</button>
+  <div class="ans-panel"><span class="a">答え：ア・ウ</span>
+    <p class="exp">ふすま・障子＝<b>湿気を吸収・放出</b>＋障子＝<b>光のまぶしさを軽減</b>（庭からの反射光を柔らかく通す）。「完全にさえぎる」ではない。</p>
+    <div class="memo"><b>覚え方</b>：「紙は呼吸する」——湿気も光もほどよく通す。</div>
+  </div>
+</div>
+
+<div class="q">
+  <div class="q-head"><span class="qnum">問39</span><span class="stars s3">★★★</span><span class="chip chigi">知技</span><span class="chip kata">語群</span><span class="chip pgc">教科書p.241</span></div>
+  <div class="q-body">
+    <p>畳について、次の文の（①）〜（③）にあてはまる言葉を、あとの語群からそれぞれ選び、記号で答えなさい。</p>
+    <p>「畳は、（①）の細長い茎を織り込んだ畳表を、藁（わら）の土台に縫いつけた床材である。（②）性や、遮音・保温・（③）に優れている。」</p>
+    <div class="gokun"><b>語群</b>ア：弾力　　イ：い草　　ウ：調湿　　エ：竹　　オ：防水</div>
+  </div>
+  <div class="write"><div class="wline"></div></div>
+  <button class="toggle-btn" onclick="tg(this)">解答を見る</button>
+  <div class="ans-panel"><span class="a">答え：①イ（い草）　②ア（弾力）　③ウ（調湿）</span>
+    <p class="exp">畳の4つの長所＝<b>弾力性・遮音・保温・調湿</b>。材料は「い草＋藁」。</p>
+    <div class="memo"><b>覚え方</b>：「<b>だん・しゃ・ほ・ちょう</b>」（弾・遮・保・調）。畳はやわらかく静かで暖かく湿気も調整。</div>
+  </div>
+</div>
+
+<div class="q">
+  <div class="q-head"><span class="qnum">問40</span><span class="stars s3">★★★</span><span class="chip chigi">知技</span><span class="chip kata">図+記号</span><span class="chip pgc">教科書p.241</span></div>
+  <div class="q-body">
+    <p>下の図は、夏と冬の日差しと軒（のき）の関係を表したものである。あとの問いに答えなさい。</p>
+    <div class="fig">
+      <svg viewBox="0 0 640 250" width="640" height="250" role="img" aria-label="軒と夏冬の日差し">
+        <!-- 夏 -->
+        <g transform="translate(20,10)">
+          <text x="140" y="18" text-anchor="middle" font-size="14" font-weight="bold" fill="#DC2626">A：太陽高度が高い</text>
+          <circle cx="60" cy="50" r="16" fill="#FCD34D" stroke="#F59E0B" stroke-width="2"/>
+          <!-- 屋根と軒 -->
+          <polygon points="90,80 230,80 250,100 110,100" fill="#94A3B8" stroke="#475569" stroke-width="1.5"/>
+          <rect x="130" y="100" width="100" height="90" fill="#FDF6E3" stroke="#475569" stroke-width="1.5"/>
+          <line x1="110" y1="190" x2="270" y2="190" stroke="#475569" stroke-width="2"/>
+          <text x="180" y="150" text-anchor="middle" font-size="11" fill="#475569">室内</text>
+          <!-- 急な日差し(軒でさえぎられる) -->
+          <line x1="72" y1="62" x2="118" y2="96" stroke="#F59E0B" stroke-width="2.5"/>
+          <polygon points="122,99 110,94 116,86" fill="#F59E0B"/>
+          <text x="66" y="115" text-anchor="middle" font-size="11" fill="#B45309">軒でさえぎる</text>
+        </g>
+        <!-- 冬 -->
+        <g transform="translate(330,10)">
+          <text x="140" y="18" text-anchor="middle" font-size="14" font-weight="bold" fill="#2563EB">B：太陽高度が低い</text>
+          <circle cx="30" cy="105" r="16" fill="#FCD34D" stroke="#F59E0B" stroke-width="2"/>
+          <polygon points="90,80 230,80 250,100 110,100" fill="#94A3B8" stroke="#475569" stroke-width="1.5"/>
+          <rect x="130" y="100" width="100" height="90" fill="#FDF6E3" stroke="#475569" stroke-width="1.5"/>
+          <line x1="110" y1="190" x2="270" y2="190" stroke="#475569" stroke-width="2"/>
+          <text x="185" y="150" text-anchor="middle" font-size="11" fill="#475569">室内</text>
+          <!-- 浅い日差し(奥まで入る) -->
+          <line x1="48" y1="112" x2="200" y2="170" stroke="#F59E0B" stroke-width="2.5"/>
+          <polygon points="205,172 192,171 196,162" fill="#F59E0B"/>
+          <text x="105" y="215" text-anchor="middle" font-size="11" fill="#B45309">室内の奥まで届く</text>
+        </g>
+      </svg>
+      <p class="cap">軒と日差しの関係（教科書p.241 図3をもとに作成）</p>
+    </div>
+    <ol class="abc">
+      <li>① 図のA・Bは、それぞれ夏・冬のどちらか。</li>
+      <li>② 屋根の端が外壁より出ている部分を何というか。</li>
+    </ol>
+  </div>
+  <div class="write"><div class="wline"></div><div class="wline"></div></div>
+  <button class="toggle-btn" onclick="tg(this)">解答を見る</button>
+  <div class="ans-panel"><span class="a">答え：①A＝夏、B＝冬　②軒（のき）</span>
+    <p class="exp"><b>夏＝太陽高度が高い→軒が日射をさえぎる。冬＝太陽高度が低い→日射を室内に取り込める。</b>この一文がそのまま記述問題でも出る。</p>
+    <div class="memo"><b>覚え方</b>：「夏は上から（高い）、冬は横から（低い）」。軒は「夏ブロック・冬ウェルカム」。</div>
+  </div>
+</div>
+
+<div class="q">
+  <div class="q-head"><span class="qnum">問41</span><span class="stars s2">★★</span><span class="chip chigi">知技</span><span class="chip kata">語句</span><span class="chip pgc">教科書p.241</span></div>
+  <div class="q-body">
+    <p>座敷の外側にある板敷きの通路で、内と外をつなぐ空間としての役割をもつ場所を何というか。また、この場所の外と内の間に何の層ができることで、冬は外の寒さを和らげることができるか。</p>
+    <p>場所：（　　　）　層：（　　　）の層</p>
+  </div>
+  <div class="write"><div class="wline"></div></div>
+  <button class="toggle-btn" onclick="tg(this)">解答を見る</button>
+  <div class="ans-panel"><span class="a">答え：場所＝縁側（えんがわ）　層＝空気（の層）</span>
+    <p class="exp">縁側の外と内の間に<b>空気の層</b>ができ、冬は外の寒さを和らげる。軒や縁側は<b>空気環境や太陽光の調整</b>に役立っている。</p>
+  </div>
+</div>
+
+<div class="q">
+  <div class="q-head"><span class="qnum">問42</span><span class="stars s1">★</span><span class="chip shihan">思判表</span><span class="chip kata">記述</span><span class="chip pgc">教科書p.241</span></div>
+  <div class="q-body">
+    <p>滋賀県高島市には、湧き水を「壺池（つぼいけ）→端池（はたいけ）→水路」の順に流して利用する、自然を利用した住まいのしくみ（かばた）がある。端池で鯉（こい）を飼うことには、水をどうする働きがあるか。簡単に説明しなさい。</p>
+  </div>
+  <div class="write"><div class="wline"></div><div class="wline"></div></div>
+  <button class="toggle-btn" onclick="tg(this)">解答を見る</button>
+  <div class="ans-panel"><span class="a">答え（例）：鯉が残飯を食べることで、水がきれいに保たれる。（その結果、琵琶湖を汚さない。）</span>
+    <p class="exp">壺池の湧水で野菜を冷やし→あふれた水は端池へ→<b>鯉が残飯を食べて水をきれいに</b>→水路から近所へ→<b>琵琶湖を汚さない</b>、という流れ。</p>
+  </div>
+</div>
+<!-- ================= 単元5 ================= -->
+<h2 class="unit"><span class="no">単元5</span>家庭内事故への備え<span class="pg">教科書 p.242〜243</span></h2>
+<p class="unit-lead">「幼児＝窒息が最多、高齢者＝溺死が最多」のグラフ問題と、ヒートショック対策4つが最頻出。</p>
+
+<div class="q">
+  <div class="q-head"><span class="qnum">問43</span><span class="stars s3">★★★</span><span class="chip chigi">知技</span><span class="chip kata">語群</span><span class="chip pgc">教科書p.242</span></div>
+  <div class="q-body">
+    <p>家庭内での事故について、次の①〜③の説明にあてはまる言葉を、あとの語群からそれぞれ選び、記号で答えなさい。</p>
+    <ol class="abc">
+      <li>① 食べ物などが気管に入ること。</li>
+      <li>② 水におぼれること。</li>
+      <li>③ 息がつまって呼吸ができなくなること。</li>
+    </ol>
+    <div class="gokun"><b>語群</b>ア：窒息　　イ：誤えん　　ウ：溺水　　エ：転落</div>
+  </div>
+  <div class="write"><div class="wline"></div></div>
+  <button class="toggle-btn" onclick="tg(this)">解答を見る</button>
+  <div class="ans-panel"><span class="a">答え：①イ（誤えん）　②ウ（溺水）　③ア（窒息）</span>
+    <p class="exp">家庭内事故の種類＝<b>転倒・転落・墜落、溺水、誤えん、窒息</b>など。誤えんは、高齢になり吐き出す力が弱まると気管に入り<b>肺炎</b>になる場合がある。</p>
+    <div class="memo"><b>覚え方</b>：誤えん＝「<b>誤って気管へ</b>」。むせて吐き出せれば通常はセーフ。</div>
+  </div>
+</div>
+
+<div class="q">
+  <div class="q-head"><span class="qnum">問44</span><span class="stars s3">★★★</span><span class="chip chigi">知技</span><span class="chip kata">語句</span><span class="chip pgc">教科書p.242</span></div>
+  <div class="q-body">
+    <p>日常生活の中で、事故にはならなかったが、ヒヤリとしたりハッとしたりすることを何というか。カタカナで答えなさい。</p>
+  </div>
+  <div class="write"><div class="wline"></div></div>
+  <button class="toggle-btn" onclick="tg(this)">解答を見る</button>
+  <div class="ans-panel"><span class="a">答え：ヒヤリ・ハット</span>
+    <p class="exp">ヒヤリ・ハットが<b>事故につながることがある</b>ため、事故を防ぐ対策が重要。1件の重大事故の背景には29件の軽微な事故と300件のヒヤリ・ハットがあるという経験的な法則もある。</p>
+    <div class="memo"><b>覚え方</b>：「<b>1：29：300</b>」——重大1・軽微29・ヒヤリ300。</div>
+  </div>
+</div>
+
+<div class="q">
+  <div class="q-head"><span class="qnum">問45</span><span class="stars s3">★★★</span><span class="chip chigi">知技</span><span class="chip kata">図+語群</span><span class="chip pgc">教科書p.242</span></div>
+  <div class="q-body">
+    <p>下のグラフは、年齢別にみた家庭内事故死の原因（2022年）を表したものである。A〜Cにあてはまる原因を、あとの語群からそれぞれ選び、記号で答えなさい。</p>
+    <div class="fig">
+      <svg viewBox="0 0 660 230" width="660" height="230" role="img" aria-label="年齢別にみた家庭内事故死の原因">
+        <!-- 凡例 -->
+        <g font-size="12" fill="#334155">
+          <rect x="120" y="14" width="14" height="14" fill="#93C5FD" stroke="#64748B" stroke-width="1"/><text x="140" y="26">A</text>
+          <rect x="180" y="14" width="14" height="14" fill="#FCA5A5" stroke="#64748B" stroke-width="1"/><text x="200" y="26">B</text>
+          <rect x="240" y="14" width="14" height="14" fill="#FDE68A" stroke="#64748B" stroke-width="1"/><text x="260" y="26">C</text>
+          <rect x="300" y="14" width="14" height="14" fill="#E2E8F0" stroke="#64748B" stroke-width="1"/><text x="320" y="26">その他</text>
+        </g>
+        <!-- 1〜4歳 -->
+        <text x="110" y="80" text-anchor="end" font-size="12.5" fill="#334155">1〜4歳</text>
+        <g stroke="#64748B" stroke-width="1">
+          <rect x="120" y="55" width="125" height="40" fill="#93C5FD"/>
+          <rect x="245" y="55" width="83.5" height="40" fill="#FCA5A5"/>
+          <rect x="328.5" y="55" width="291.5" height="40" fill="#FDE68A"/>
+        </g>
+        <g font-size="12" fill="#334155" text-anchor="middle">
+          <text x="182" y="80">25.0</text>
+          <text x="287" y="80">16.7</text>
+          <text x="474" y="80" font-weight="bold">58.3</text>
+        </g>
+        <!-- 65歳〜 -->
+        <text x="110" y="160" text-anchor="end" font-size="12.5" fill="#334155">65歳以上</text>
+        <g stroke="#64748B" stroke-width="1">
+          <rect x="120" y="135" width="97.5" height="40" fill="#93C5FD"/>
+          <rect x="217.5" y="135" width="250" height="40" fill="#FCA5A5"/>
+          <rect x="467.5" y="135" width="123.5" height="40" fill="#FDE68A"/>
+          <rect x="591" y="135" width="29" height="40" fill="#E2E8F0"/>
+        </g>
+        <g font-size="12" fill="#334155" text-anchor="middle">
+          <text x="169" y="160">19.5</text>
+          <text x="342" y="160" font-weight="bold">50.0</text>
+          <text x="529" y="160">24.7</text>
+          <text x="605" y="160" font-size="10">5.8</text>
+        </g>
+        <!-- 軸 -->
+        <line x1="120" y1="185" x2="620" y2="185" stroke="#94A3B8" stroke-width="1"/>
+        <g font-size="11" fill="#64748B" text-anchor="middle">
+          <text x="120" y="202">0</text><text x="245" y="202">25</text><text x="370" y="202">50</text><text x="495" y="202">75</text><text x="616" y="202">100（%）</text>
+        </g>
+      </svg>
+      <p class="cap">年齢別にみた家庭内事故死の原因・2022年（教科書p.242 図1をもとに作成）</p>
+    </div>
+    <div class="gokun"><b>語群</b>ア：溺死及び溺水　　イ：窒息　　ウ：転倒・転落・墜落</div>
+  </div>
+  <div class="write"><div class="wline"></div></div>
+  <button class="toggle-btn" onclick="tg(this)">解答を見る</button>
+  <div class="ans-panel"><span class="a">答え：A＝ウ（転倒・転落・墜落）　B＝ア（溺死及び溺水）　C＝イ（窒息）</span>
+    <p class="exp">グラフの決め手は「<b>1〜4歳で最も多い（58.3%）＝窒息</b>」「<b>65歳以上で最も多い（50.0%）＝溺死及び溺水</b>」。幼児＝窒息、高齢者＝おぼれる（浴室）とセットで覚える。</p>
+    <div class="memo"><b>覚え方</b>：「<b>赤ちゃんはのど、おじいちゃんはお風呂</b>」。逆にするひっかけが定番！</div>
+  </div>
+</div>
+
+<div class="q">
+  <div class="q-head"><span class="qnum">問46</span><span class="stars s3">★★★</span><span class="chip chigi">知技</span><span class="chip kata">記号</span><span class="chip pgc">教科書p.242</span></div>
+  <div class="q-body">
+    <p>幼児に家庭内事故が起こりやすい理由として正しいものを、次のア〜エから<b>すべて</b>選び、記号で答えなさい。</p>
+    <ul class="choices one-col">
+      <li>ア　何にでも興味があり、活発に動き、物を触ったり口の中に入れたりする。</li>
+      <li>イ　体が小さくて頭が重いので、転倒や転落をしやすい。</li>
+      <li>ウ　身長が低く視野が狭いので、上に置いてある物や遠くの物は見えない。</li>
+      <li>エ　暑さやのどの渇きを感じにくく、汗をかきにくい。</li>
+    </ul>
+  </div>
+  <div class="write"><div class="wline"></div></div>
+  <button class="toggle-btn" onclick="tg(this)">解答を見る</button>
+  <div class="ans-panel"><span class="a">答え：ア・イ・ウ</span>
+    <p class="exp">エは<b>高齢者</b>の熱中症の特徴。幼児と高齢者の特徴を入れかえるひっかけに注意。</p>
+    <div class="memo"><b>覚え方</b>：幼児は「<b>口に入れる・頭が重い・見えない</b>」の3点セット。</div>
+  </div>
+</div>
+
+<div class="q">
+  <div class="q-head"><span class="qnum">問47</span><span class="stars s3">★★★</span><span class="chip chigi">知技</span><span class="chip kata">語句</span><span class="chip pgc">教科書p.243</span></div>
+  <div class="q-body">
+    <p>冬、暖かい部屋と寒いトイレ・脱衣室・浴室などとの温度差が大きくなると、血圧の大きな変動により心筋梗塞や脳卒中などを発症して倒れることがある。この現象を何というか。カタカナで答えなさい。</p>
+  </div>
+  <div class="write"><div class="wline"></div></div>
+  <button class="toggle-btn" onclick="tg(this)">解答を見る</button>
+  <div class="ans-panel"><span class="a">答え：ヒートショック</span>
+    <p class="exp">「<b>温度差→血圧の大きな変動→心筋梗塞・脳卒中</b>」という流れごと覚える。記述問題でもこの3段階を書けるように。</p>
+    <div class="memo"><b>覚え方</b>：「ヒート（熱）のショック」＝温度の急変が体にショックを与える。</div>
+  </div>
+</div>
+
+<div class="q">
+  <div class="q-head"><span class="qnum">問48</span><span class="stars s3">★★★</span><span class="chip chigi">知技</span><span class="chip kata">○×</span><span class="chip pgc">教科書p.243</span></div>
+  <div class="q-body">
+    <p>ヒートショックの対策について、次の文が正しければ○、間違っていれば×を書きなさい。</p>
+    <ol class="abc">
+      <li>① 浴室はシャワーでお湯を張ったり、浴そうのふたを取ったりして暖める。</li>
+      <li>② 入浴は、気温が下がった深夜にするとよい。</li>
+      <li>③ 浴そうのお湯の温度は41度以下にする。</li>
+      <li>④ 脱衣所を暖房器具で暖める。</li>
+    </ol>
+  </div>
+  <div class="write"><div class="wline"></div></div>
+  <button class="toggle-btn" onclick="tg(this)">解答を見る</button>
+  <div class="ans-panel"><span class="a">答え：①○　②×　③○　④○</span>
+    <p class="exp">②は「<b>気温が下がっていない日没前</b>に入浴する」が正しい。対策4つ＝<b>浴室を暖める／日没前入浴／湯温41度以下／脱衣所を暖房</b>。</p>
+    <div class="memo"><b>覚え方</b>：「<b>あたためて、early（早めに）、41度、脱衣所も</b>」。数字の41は「よい（41）お風呂」。</div>
+  </div>
+</div>
+
+<div class="q">
+  <div class="q-head"><span class="qnum">問49</span><span class="stars s2">★★</span><span class="chip chigi">知技</span><span class="chip kata">語群</span><span class="chip pgc">教科書p.243</span></div>
+  <div class="q-body">
+    <p>高齢者の身体の変化と起こりやすい事故について、次の①〜③にあてはまる組み合わせを、あとの語群からそれぞれ選び、記号で答えなさい。</p>
+    <ol class="abc">
+      <li>① 脚力や平衡感覚の低下</li>
+      <li>② 視力の低下</li>
+      <li>③ 飲み込む力の衰え</li>
+    </ol>
+    <div class="gokun"><b>語群</b><br>ア：床に置いてある物に気づかず、転びやすくなる。<br>イ：脚が上がりにくくなり、小さな段差でもつまずく。<br>ウ：誤えんしやすくなる。</div>
+  </div>
+  <div class="write"><div class="wline"></div></div>
+  <button class="toggle-btn" onclick="tg(this)">解答を見る</button>
+  <div class="ans-panel"><span class="a">答え：①イ　②ア　③ウ</span>
+    <p class="exp">「体のどこが衰える→どんな事故につながる」を対応させて覚える。①②はどちらも「転ぶ」だが、<b>段差＝脚力・平衡感覚、床の物＝視力</b>と区別。</p>
+  </div>
+</div>
+
+<div class="q">
+  <div class="q-head"><span class="qnum">問50</span><span class="stars s2">★★</span><span class="chip chigi">知技</span><span class="chip kata">○×</span><span class="chip pgc">教科書p.243</span></div>
+  <div class="q-body">
+    <p>高齢者の熱中症について、次の文が正しければ○、間違っていれば×を書きなさい。</p>
+    <ol class="abc">
+      <li>① 夏は室内の温度や湿度が高くなり、熱中症になりやすい。</li>
+      <li>② 高齢者は、暑さやのどの渇きを人一倍感じやすい。</li>
+      <li>③ 高齢者は汗をかきにくいため、対策が遅れる傾向がある。</li>
+      <li>④ エアコン・温湿度計・扇風機の利用や、水分補給が対策になる。</li>
+    </ol>
+  </div>
+  <div class="write"><div class="wline"></div></div>
+  <button class="toggle-btn" onclick="tg(this)">解答を見る</button>
+  <div class="ans-panel"><span class="a">答え：①○　②×　③○　④○</span>
+    <p class="exp">②高齢者は暑さやのどの渇きを<b>感じにくい</b>。だから対策が遅れて熱中症になりやすい。</p>
+  </div>
+</div>
+
+<div class="q">
+  <div class="q-head"><span class="qnum">問51</span><span class="stars s1">★</span><span class="chip chigi">知技</span><span class="chip kata">記号</span><span class="chip pgc">教科書p.242</span></div>
+  <div class="q-body">
+    <p>「1件の重大事故の背景には、（①）件の軽微な事故と（②）件のヒヤリ・ハットがある」という経験的な法則が知られている。①・②にあてはまる数字の組み合わせを、次のア〜ウから選び、記号で答えなさい。</p>
+    <ul class="choices">
+      <li>ア　①9　②100</li>
+      <li>イ　①29　②300</li>
+      <li>ウ　①50　②500</li>
+    </ul>
+  </div>
+  <div class="write"><div class="wline"></div></div>
+  <button class="toggle-btn" onclick="tg(this)">解答を見る</button>
+  <div class="ans-panel"><span class="a">答え：イ（①29　②300）</span>
+    <p class="exp">教科書の豆知識から。<b>1：29：300</b>。ヒヤリ・ハットの段階で対策することが重大事故を防ぐ。</p>
+  </div>
+</div>
+
+<div class="q">
+  <div class="q-head"><span class="qnum">問52</span><span class="stars s2">★★</span><span class="chip shihan">思判表</span><span class="chip kata">記述</span><span class="chip pgc">教科書p.242〜243</span></div>
+  <div class="q-body">
+    <p>安全な住まい方について、次の①・②に答えなさい。</p>
+    <ol class="abc">
+      <li>① 幼児の家庭内事故を防ぐための対策を1つ答えなさい。</li>
+      <li>② 高齢者は身体のバランスを取ることが難しく、脚が上がりにくいことがある。玄関やトイレにどのような改善をすればよいか、1つ答えなさい。</li>
+    </ol>
+  </div>
+  <div class="write"><div class="wline"></div><div class="wline"></div></div>
+  <button class="toggle-btn" onclick="tg(this)">解答を見る</button>
+  <div class="ans-panel"><span class="a">答え（例）：①口に入る小さな物を幼児の手の届く所に置かない／浴そうの水を抜いておく／階段や窓からの転落を防ぐ柵をつける　など1つ　②手すりをつける</span>
+    <p class="exp">①は「幼児の特徴（口に入れる・転落しやすい・おぼれる）」に対応した対策になっていれば正解。②は教科書の「考えてみよう」の例が<b>手すり</b>。</p>
+  </div>
+</div>
+
+<!-- ================= 単元6 ================= -->
+<h2 class="unit"><span class="no">単元6</span>室内環境と換気<span class="pg">教科書 p.244〜245</span></h2>
+<p class="unit-lead">結露→カビ・ダニ、シックハウス症候群、一酸化炭素、そして「効果的な換気」。図とセットで押さえる。</p>
+
+<div class="q">
+  <div class="q-head"><span class="qnum">問53</span><span class="stars s3">★★★</span><span class="chip chigi">知技</span><span class="chip kata">図+語句</span><span class="chip pgc">教科書p.244</span></div>
+  <div class="q-body">
+    <p>下の図のように、冬に窓ガラスの室内側に水滴がつく現象を何というか。漢字2字で答えなさい。</p>
+    <div class="fig">
+      <svg viewBox="0 0 480 210" width="480" height="210" role="img" aria-label="窓ガラスの結露">
+        <rect x="215" y="20" width="14" height="160" fill="#BFDBFE" stroke="#64748B" stroke-width="1.5"/>
+        <text x="222" y="200" text-anchor="middle" font-size="12" fill="#475569">窓ガラス</text>
+        <text x="105" y="50" text-anchor="middle" font-size="13" fill="#2563EB" font-weight="bold">外</text>
+        <text x="105" y="72" text-anchor="middle" font-size="12" fill="#2563EB">冷たい空気</text>
+        <text x="345" y="50" text-anchor="middle" font-size="13" fill="#DC2626" font-weight="bold">室内</text>
+        <text x="345" y="72" text-anchor="middle" font-size="12" fill="#DC2626">暖かく、水蒸気を含む空気</text>
+        <g stroke="#2563EB" stroke-width="2.5" fill="none">
+          <path d="M60,100 h90"/><path d="M60,130 h90"/>
+        </g>
+        <polygon points="158,100 146,94 146,106" fill="#2563EB"/>
+        <polygon points="158,130 146,124 146,136" fill="#2563EB"/>
+        <g stroke="#F97316" stroke-width="2.5" fill="none">
+          <path d="M390,100 h-90"/><path d="M390,130 h-90"/>
+        </g>
+        <polygon points="292,100 304,94 304,106" fill="#F97316"/>
+        <polygon points="292,130 304,124 304,136" fill="#F97316"/>
+        <g fill="#38BDF8">
+          <circle cx="236" cy="90" r="4"/><circle cx="238" cy="115" r="5"/><circle cx="235" cy="142" r="4"/><circle cx="239" cy="165" r="5"/>
+        </g>
+        <text x="290" y="170" font-size="11" fill="#0284C7">水滴</text>
+      </svg>
+      <p class="cap">窓ガラスにつく水滴（教科書p.244 図7をもとに作成）</p>
+    </div>
+  </div>
+  <div class="write"><div class="wline"></div></div>
+  <button class="toggle-btn" onclick="tg(this)">解答を見る</button>
+  <div class="ans-panel"><span class="a">答え：結露</span>
+    <p class="exp">屋内は暖かく水蒸気が多く、屋外の温度が低いなどのために、<b>温度が低くなった窓や壁</b>の表面に水滴がつく。押入れなどでも発生する。</p>
+    <div class="memo"><b>覚え方</b>：「冷えたコップの外側」と同じしくみが窓で起きる＝結露。</div>
+  </div>
+</div>
+
+<div class="q">
+  <div class="q-head"><span class="qnum">問54</span><span class="stars s3">★★★</span><span class="chip chigi">知技</span><span class="chip kata">記号</span><span class="chip pgc">教科書p.244</span></div>
+  <div class="q-body">
+    <p>日本は湿度が高く、カビやダニが発生しやすい。カビ・ダニについて、正しい文を次のア〜エから<b>2つ</b>選び、記号で答えなさい。</p>
+    <ul class="choices one-col">
+      <li>ア　カビの胞子は、アレルギーやぜん息の発症や悪化の原因になる。</li>
+      <li>イ　カビは乾燥した場所で最も繁殖しやすい。</li>
+      <li>ウ　対策には、空気を循環させ、水蒸気が滞らないようにすることが有効である。</li>
+      <li>エ　家具は壁にすき間なくぴったりつけて置くとよい。</li>
+    </ul>
+  </div>
+  <div class="write"><div class="wline"></div></div>
+  <button class="toggle-btn" onclick="tg(this)">解答を見る</button>
+  <div class="ans-panel"><span class="a">答え：ア・ウ</span>
+    <p class="exp">カビは<b>湿度が高い</b>ところで発生。対策＝<b>空気の循環</b>。だから「家具と後ろの壁の間にすき間をあける」「押入れにはすのこを敷く」が正しい（エは逆）。</p>
+    <div class="memo"><b>覚え方</b>：カビ対策は「<b>風の通り道をつくる</b>」——すき間・すのこ・換気。</div>
+  </div>
+</div>
+
+<div class="q">
+  <div class="q-head"><span class="qnum">問55</span><span class="stars s3">★★★</span><span class="chip chigi">知技</span><span class="chip kata">語句</span><span class="chip pgc">教科書p.244</span></div>
+  <div class="q-body">
+    <p>建材や内装材に含まれる接着剤や塗料などから出る化学物質を吸うことで、頭痛や目の痛みなどの症状が出る病気を何というか。カタカナを含む9字で答えなさい。</p>
+  </div>
+  <div class="write"><div class="wline"></div></div>
+  <button class="toggle-btn" onclick="tg(this)">解答を見る</button>
+  <div class="ans-panel"><span class="a">答え：シックハウス症候群</span>
+    <p class="exp">住まいの<b>気密化が進んだ</b>ことで、化学物質が室内にこもりやすくなったのが背景。天井・壁紙・フローリングの接着剤、家具の塗料、芳香剤などから化学物質が出る。</p>
+    <div class="memo"><b>覚え方</b>：シック（sick＝病気の）＋ハウス（家）＝「家が原因の病気」。</div>
+  </div>
+</div>
+
+<div class="q">
+  <div class="q-head"><span class="qnum">問56</span><span class="stars s2">★★</span><span class="chip chigi">知技</span><span class="chip kata">記号</span><span class="chip pgc">教科書p.244</span></div>
+  <div class="q-body">
+    <p>シックハウス症候群と化学物質過敏症のちがいについて、次の文の（　）にあてはまる言葉を、あとのア〜ウから選び、記号で答えなさい。</p>
+    <p>「化学物質過敏症は、家の中だけでなく、洗剤や芳香剤などの化学物質に接触したり吸い込んだりすることで（　）発症する。」</p>
+    <ul class="choices">
+      <li>ア　家の中でだけ</li>
+      <li>イ　どこでも</li>
+      <li>ウ　屋外でだけ</li>
+    </ul>
+  </div>
+  <div class="write"><div class="wline"></div></div>
+  <button class="toggle-btn" onclick="tg(this)">解答を見る</button>
+  <div class="ans-panel"><span class="a">答え：イ（どこでも）</span>
+    <p class="exp"><b>シックハウス症候群＝住まいや室内の物が原因</b>／<b>化学物質過敏症＝どこでも発症</b>。過度の化学物質の使用を避け、汚れた空気を室内にため込まないことが大切。</p>
+  </div>
+</div>
+
+<div class="q">
+  <div class="q-head"><span class="qnum">問57</span><span class="stars s2">★★</span><span class="chip chigi">知技</span><span class="chip kata">語群</span><span class="chip pgc">教科書p.244</span></div>
+  <div class="q-body">
+    <p>室内の空気の汚れについて、次の文の（①）・（②）にあてはまる言葉を、あとの語群からそれぞれ選び、記号で答えなさい。</p>
+    <p>「室内の空気には、（①）、埃（ほこり）、カビの胞子、ダニの糞や死がい、ウイルスや細菌などが含まれている。また、建材や内装材に含まれる接着剤や塗料などから（②）が出ることがある。」</p>
+    <div class="gokun"><b>語群</b>ア：酸素　　イ：二酸化炭素　　ウ：化学物質　　エ：水蒸気</div>
+  </div>
+  <div class="write"><div class="wline"></div></div>
+  <button class="toggle-btn" onclick="tg(this)">解答を見る</button>
+  <div class="ans-panel"><span class="a">答え：①イ（二酸化炭素）　②ウ（化学物質）</span>
+    <p class="exp">室内空気の汚れの原因を列挙できるように。<b>住まいの気密化</b>で汚れがこもりやすくなった→換気の重要性が増した、という流れにつながる。</p>
+  </div>
+</div>
+
+<div class="q">
+  <div class="q-head"><span class="qnum">問58</span><span class="stars s3">★★★</span><span class="chip chigi">知技</span><span class="chip kata">○×</span><span class="chip pgc">教科書p.244</span></div>
+  <div class="q-body">
+    <p>一酸化炭素（CO）について、次の文が正しければ○、間違っていれば×を書きなさい。</p>
+    <ol class="abc">
+      <li>① 調理や暖房などの燃焼器具を使うとき、換気をしないと酸素が不足して不完全燃焼が起こり、一酸化炭素が発生しやすくなる。</li>
+      <li>② 一酸化炭素は無色・無臭である。</li>
+      <li>③ 一酸化炭素は、大量に吸わなければ人体に影響はない。</li>
+    </ol>
+  </div>
+  <div class="write"><div class="wline"></div></div>
+  <button class="toggle-btn" onclick="tg(this)">解答を見る</button>
+  <div class="ans-panel"><span class="a">答え：①○　②○　③×</span>
+    <p class="exp">③一酸化炭素は<b>微量でも</b>吸い込むと意識不明となり、死に至ることもある。無色・無臭で気づけないからこそ危険。</p>
+    <div class="memo"><b>覚え方</b>：CO＝「<b>音もなく、色もなく、少しでも危ない</b>」。</div>
+  </div>
+</div>
+
+<div class="q">
+  <div class="q-head"><span class="qnum">問59</span><span class="stars s3">★★★</span><span class="chip chigi">知技</span><span class="chip kata">図+記号</span><span class="chip pgc">教科書p.245</span></div>
+  <div class="q-body">
+    <p>下の図は、部屋の換気のしかたを表したものである。あとの問いに答えなさい。</p>
+    <div class="fig">
+      <svg viewBox="0 0 640 230" width="640" height="230" role="img" aria-label="換気の方法の比較">
+        <!-- A: 窓1つ -->
+        <g transform="translate(30,30)">
+          <text x="130" y="0" text-anchor="middle" font-size="14" font-weight="bold" fill="#334155">A：窓を1つ開ける</text>
+          <rect x="10" y="15" width="240" height="150" fill="#FFF7ED" stroke="#475569" stroke-width="2.5"/>
+          <rect x="4" y="60" width="6" height="60" fill="#93C5FD" stroke="#2563EB" stroke-width="1.5"/>
+          <path d="M40,90 q40,-45 90,-20 q45,25 0,55 q-50,25 -60,-15" fill="none" stroke="#F97316" stroke-width="2.5"/>
+          <polygon points="68,112 80,106 78,120" fill="#F97316"/>
+          <text x="130" y="185" text-anchor="middle" font-size="12" fill="#B45309">汚れた空気が部屋に残りやすい</text>
+        </g>
+        <!-- B: 対面する窓2つ -->
+        <g transform="translate(350,30)">
+          <text x="130" y="0" text-anchor="middle" font-size="14" font-weight="bold" fill="#334155">B：対面する2つの窓を開ける</text>
+          <rect x="10" y="15" width="240" height="150" fill="#F0F9FF" stroke="#475569" stroke-width="2.5"/>
+          <rect x="4" y="60" width="6" height="60" fill="#93C5FD" stroke="#2563EB" stroke-width="1.5"/>
+          <rect x="250" y="60" width="6" height="60" fill="#93C5FD" stroke="#2563EB" stroke-width="1.5"/>
+          <line x1="15" y1="90" x2="115" y2="90" stroke="#2563EB" stroke-width="3"/>
+          <polygon points="128,90 112,82 112,98" fill="#2563EB"/>
+          <line x1="135" y1="90" x2="235" y2="90" stroke="#F97316" stroke-width="3"/>
+          <polygon points="248,90 232,82 232,98" fill="#F97316"/>
+          <text x="130" y="185" text-anchor="middle" font-size="12" fill="#0369A1">外気が入り、室内空気が出やすい</text>
+        </g>
+      </svg>
+      <p class="cap">換気方法の比較（教科書p.245 図11をもとに作成）　青＝新鮮な外気、オレンジ＝室内の汚れた空気</p>
+    </div>
+    <ol class="abc">
+      <li>① 短時間で室内の空気が入れ替わるのは、A・Bのどちらか。</li>
+      <li>② 換気の方法として正しい文を、次のア〜ウからすべて選び、記号で答えなさい。</li>
+    </ol>
+    <ul class="choices one-col">
+      <li>ア　流入する空気を妨げないように、カーテンを開ける。</li>
+      <li>イ　カーテンを閉めたままでも、空気が入れ替わる時間は変わらない。</li>
+      <li>ウ　換気扇や扇風機などで室内空気を排出するのも有効である。</li>
+    </ul>
+  </div>
+  <div class="write"><div class="wline"></div><div class="wline"></div></div>
+  <button class="toggle-btn" onclick="tg(this)">解答を見る</button>
+  <div class="ans-panel"><span class="a">答え：①B　②ア・ウ</span>
+    <p class="exp">換気＝<b>新鮮な外気と室内の汚れた空気を入れ換える</b>こと。<b>2つ以上の窓や戸</b>を大きく開けると、外気が入りやすく室内空気が出やすくなり、短時間で入れ替わる。カーテンを閉めていると時間が<b>長く</b>なる（イは×）。</p>
+    <div class="memo"><b>覚え方</b>：「<b>入口と出口をつくる</b>」のが換気のコツ。窓1つ＝入口だけ。</div>
+  </div>
+</div>
+
+<div class="q">
+  <div class="q-head"><span class="qnum">問60</span><span class="stars s2">★★</span><span class="chip chigi">知技</span><span class="chip kata">記号</span><span class="chip pgc">教科書p.245</span></div>
+  <div class="q-body">
+    <p>伝統的な日本の家と現代の家について、次の①〜④は、それぞれどちらの特徴か。「伝統」または「現代」で答えなさい。</p>
+    <ol class="abc">
+      <li>① 気密性が低く、通気性がよい。</li>
+      <li>② 気密性が高く、冷暖房の効率がよい。</li>
+      <li>③ 窓や戸の面積が大きく、熱の出入りが大きい。</li>
+      <li>④ 通気性が低く、換気が不十分になることがある。</li>
+    </ol>
+  </div>
+  <div class="write"><div class="wline"></div></div>
+  <button class="toggle-btn" onclick="tg(this)">解答を見る</button>
+  <div class="ans-panel"><span class="a">答え：①伝統　②現代　③伝統　④現代</span>
+    <p class="exp">現代の家は気密性が高い分、<b>換気が不十分になりやすい</b>→だから「換気の重要性が増している」。</p>
+    <div class="memo"><b>覚え方</b>：「昔＝スカスカで風通しよし、今＝ピッタリで効率よし・でも息苦しい」。</div>
+  </div>
+</div>
+
+<div class="q">
+  <div class="q-head"><span class="qnum">問61</span><span class="stars s2">★★</span><span class="chip chigi">知技</span><span class="chip kata">語句</span><span class="chip pgc">教科書p.245</span></div>
+  <div class="q-body">
+    <p>次の文の（①）・（②）にあてはまる言葉を答えなさい。</p>
+    <p>「換気とは、新鮮な（①）と室内の汚れた空気を入れ換えることである。（②）時間換気システムがある場合には、常時動かすようにする。」</p>
+  </div>
+  <div class="write"><div class="wline"></div></div>
+  <button class="toggle-btn" onclick="tg(this)">解答を見る</button>
+  <div class="ans-panel"><span class="a">答え：①外気　②24</span>
+    <p class="exp"><b>24時間換気システム</b>には、機械で給気して機械で排気するもの、自然に給気して機械で排気するものなどがある。「常時動かす」がポイント。</p>
+  </div>
+</div>
+
+<div class="q">
+  <div class="q-head"><span class="qnum">問62</span><span class="stars s2">★★</span><span class="chip shihan">思判表</span><span class="chip kata">記述</span><span class="chip pgc">教科書p.244〜245</span></div>
+  <div class="q-body">
+    <p>住まいの中でカビが発生しやすいのはどのような場所か。1つあげ、その対策とともに答えなさい。</p>
+  </div>
+  <div class="write"><div class="wline"></div><div class="wline"></div></div>
+  <button class="toggle-btn" onclick="tg(this)">解答を見る</button>
+  <div class="ans-panel"><span class="a">答え（例）：浴室や押入れ、結露しやすい窓の近くなど、水蒸気が多く温度が低くなりやすい場所。対策は、換気をして空気を循環させ、水蒸気が滞らないようにする（押入れにはすのこを敷く、家具と壁の間にすき間をあける）。</span>
+    <p class="exp">「<b>湿気が多い場所</b>」＋「<b>空気を循環させる対策</b>」の2点が書ければ満点。模試や本番の記述で出やすい総合問題。</p>
+  </div>
+</div>
+
+<!-- ================= 巻末解答 ================= -->
+<div class="answers-title">
+  <h2>解答・解説（まとめ）</h2>
+  <p>全62問の解答一覧。丸付けはここで。解説・覚え方は各問題の下（画面表示時）にもあります。</p>
+</div>
+<div id="answers-container"></div>
+
+</div><!-- /.page -->
+<script>
+function tg(btn){
+  var p = btn.nextElementSibling;
+  p.classList.toggle('open');
+  btn.textContent = p.classList.contains('open') ? '解答を隠す' : '解答を見る';
+}
+function toggleAll(show){
+  document.querySelectorAll('.ans-panel').forEach(function(p){
+    p.classList.toggle('open', show);
+  });
+  document.querySelectorAll('.toggle-btn').forEach(function(b){
+    b.textContent = show ? '解答を隠す' : '解答を見る';
+  });
+}
+/* 巻末解答を各問題の解答パネルから自動生成（内容の食い違いを防ぐ） */
+(function(){
+  var container = document.getElementById('answers-container');
+  document.querySelectorAll('.q').forEach(function(q){
+    var num = q.querySelector('.qnum');
+    var panel = q.querySelector('.ans-panel');
+    if(!num || !panel) return;
+    var item = document.createElement('div');
+    item.className = 'ans-item';
+    var pg = q.querySelector('.chip.pgc');
+    item.innerHTML = '<div class="head"><span class="qq">' + num.textContent + '</span>' + (pg ? '<span class="pgx">（' + pg.textContent + '）</span>' : '') + '</div>' + panel.innerHTML;
+    container.appendChild(item);
+  });
+})();
+</script>
+</body>
+</html>

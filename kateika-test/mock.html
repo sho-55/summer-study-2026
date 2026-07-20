@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>家庭科 夏テスト予想 模擬テスト 2026（住生活）</title>
+<style>
+:root{
+  --blue:#2563EB; --blue-d:#1D4ED8; --blue-bg:#DBEAFE;
+  --orange:#F97316; --red:#DC2626; --green:#16A34A; --green-bg:#F0FDF4;
+  --purple:#6D28D9; --purple-bg:#EDE9FE;
+  --ink:#1E293B; --sub:#475569; --line:#CBD5E1; --line-soft:#E2E8F0;
+  --bg:#F1F5F9; --card:#FFFFFF;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{
+  font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Yu Gothic Medium","Yu Gothic",Meiryo,sans-serif;
+  color:var(--ink); background:var(--bg); line-height:1.8; font-size:15px;
+  -webkit-text-size-adjust:100%;
+}
+.page{max-width:840px;margin:0 auto;padding:20px 16px 60px}
+
+/* ===== テストヘッダー ===== */
+.test-head{
+  background:var(--card);border:2.5px solid var(--ink);border-radius:6px;
+  padding:18px 22px;margin-bottom:8px;
+}
+.test-head .row1{display:flex;flex-wrap:wrap;align-items:baseline;gap:10px;border-bottom:2px solid var(--ink);padding-bottom:10px}
+.test-head h1{margin:0;font-size:21px;letter-spacing:.04em}
+.test-head .row1 .grade{font-size:13px;color:var(--sub)}
+.test-head .row2{display:flex;flex-wrap:wrap;gap:14px;align-items:center;margin-top:12px;font-size:13.5px}
+.namebox{display:flex;align-items:center;gap:6px;margin-left:auto}
+.namebox .nb{border:1.5px solid var(--ink);width:170px;height:34px;border-radius:4px;background:#fff}
+.scorebox{display:flex;align-items:center;gap:6px}
+.scorebox .sb{border:1.5px solid var(--ink);width:82px;height:34px;border-radius:4px;background:#fff;position:relative}
+.scorebox .sb::after{content:"／100";position:absolute;right:6px;bottom:2px;font-size:11px;color:var(--sub)}
+.notice{
+  background:var(--card);border:1px solid var(--line-soft);border-radius:8px;
+  padding:10px 16px;margin:10px 0 20px;font-size:13px;color:var(--sub);
+}
+.notice b{color:var(--ink)}
+
+/* ===== 大問 ===== */
+.daimon{
+  background:var(--card);border:1px solid var(--line-soft);border-radius:12px;
+  padding:16px 20px;margin:16px 0;box-shadow:0 1px 2px rgba(15,23,42,.05);
+}
+.daimon-head{
+  display:flex;align-items:center;gap:10px;flex-wrap:wrap;
+  border-bottom:2px solid var(--ink);padding-bottom:8px;margin-bottom:12px;
+}
+.daimon-head .dn{
+  background:var(--ink);color:#fff;border-radius:6px;padding:2px 12px;
+  font-size:15px;font-weight:800;flex-shrink:0;
+}
+.daimon-head .dt{font-weight:700;font-size:16px}
+.daimon-head .pts{margin-left:auto;font-size:12px;color:var(--sub);white-space:nowrap}
+.chip{font-size:11px;border-radius:999px;padding:1px 9px;font-weight:600;white-space:nowrap}
+.chip.chigi{background:var(--blue-bg);color:var(--blue-d)}
+.chip.shihan{background:var(--purple-bg);color:var(--purple)}
+.subq{margin:12px 0}
+.subq .sq{font-weight:700}
+.subq .haiten{font-size:12px;color:var(--sub)}
+ol.abc{margin:6px 0;padding-left:10px;list-style:none}
+ol.abc li{margin:4px 0}
+.gokun{
+  border:1.5px dashed var(--line);border-radius:10px;background:#F8FAFC;
+  padding:8px 14px;margin:10px 0;font-size:14px;
+}
+.gokun b{color:var(--blue-d);font-size:12px;display:block;margin-bottom:2px}
+.choices{margin:8px 0 4px;padding:0;list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:4px 16px}
+.choices li{padding:2px 0}
+.choices.one-col{grid-template-columns:1fr}
+
+/* ===== 解答記入欄 ===== */
+.ansline{display:inline-block;min-width:110px;border-bottom:1.5px solid var(--ink);height:1.5em;vertical-align:bottom;margin:0 4px}
+.ansline.wide{min-width:220px}
+table.ansgrid{border-collapse:collapse;margin:10px 0;width:100%}
+table.ansgrid th{background:#F1F5F9;font-size:12px;font-weight:600;color:var(--sub)}
+table.ansgrid th,table.ansgrid td{border:1.5px solid var(--ink);padding:6px 8px;text-align:center;min-width:52px;height:34px}
+.kijutsu{border:1.5px solid var(--ink);border-radius:4px;min-height:64px;margin:8px 0;background:#fff}
+.kijutsu.tall{min-height:84px}
+
+/* ===== 図版 ===== */
+.fig{margin:12px auto;text-align:center;max-width:100%;overflow-x:auto}
+.fig svg{max-width:100%;height:auto}
+.fig .cap{font-size:12px;color:var(--sub);margin-top:2px}
+
+/* ===== 巻末解答 ===== */
+.mock-answers{display:none}
+.mock-answers.open{display:block}
+.answers-title{
+  page-break-before:always;break-before:page;
+  background:linear-gradient(135deg,#14532D,#16A34A);color:#fff;border-radius:14px;
+  padding:20px 24px;margin:40px 0 18px;
+}
+.answers-title h2{margin:0;font-size:22px}
+.answers-title p{margin:4px 0 0;font-size:13px;opacity:.92}
+.ans-item{
+  background:var(--card);border:1px solid var(--line-soft);border-radius:12px;
+  padding:12px 16px;margin:10px 0;font-size:14px;break-inside:avoid;page-break-inside:avoid;
+}
+.ans-item .head{font-weight:800;color:#15803D;margin-bottom:4px;font-size:15px}
+.ans-item p{margin:4px 0}
+.ans-item .a{font-weight:700;color:#15803D}
+.memo{
+  background:#FFF7ED;border-left:4px solid var(--orange);border-radius:0 10px 10px 0;
+  padding:8px 12px;margin-top:8px;font-size:13.5px;
+}
+.memo b{color:#C2410C}
+.goukaku{
+  background:var(--card);border:1.5px solid var(--line-soft);border-radius:12px;
+  padding:12px 18px;margin:14px 0;font-size:14px;
+}
+.goukaku b{color:var(--blue-d)}
+
+/* ===== 操作バー（画面のみ）===== */
+.ctrl{position:sticky;top:8px;z-index:50;display:flex;gap:8px;justify-content:flex-end;margin:0 0 8px}
+.ctrl button{
+  cursor:pointer;border:1.5px solid var(--line);background:#fff;color:var(--sub);
+  border-radius:999px;padding:6px 14px;font-size:12.5px;font-weight:700;
+  box-shadow:0 1px 4px rgba(15,23,42,.12);transition:all .2s;
+}
+.ctrl button:hover{border-color:var(--blue);color:var(--blue-d)}
+
+/* ===== 印刷 ===== */
+@page{size:A4 portrait;margin:13mm 11mm}
+@media print{
+  body{background:#fff;font-size:10.5pt;line-height:1.7}
+  .page{max-width:none;padding:0}
+  .ctrl{display:none!important}
+  .daimon{box-shadow:none;margin:10px 0}
+  .mock-answers{display:block!important}
+  .answers-title,.chip,.memo,.gokun{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .daimon-head .dn{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .subq{page-break-inside:avoid}
+  .daimon{page-break-before:always}
+  .notice + .daimon{page-break-before:auto}
+}
+@media (max-width:480px){
+  body{font-size:14.5px}
+  .choices{grid-template-columns:1fr}
+  .namebox .nb{width:120px}
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+<div class="ctrl">
+  <button onclick="toggleAnswers()" id="ansbtn">解答・解説を表示</button>
+  <button onclick="window.print()">印刷 / PDF</button>
+</div>
+
+<div class="test-head">
+  <div class="row1">
+    <h1>技術・家庭科〔家庭分野〕　夏テスト予想　模擬テスト</h1>
+    <span class="grade">第1学年</span>
+  </div>
+  <div class="row2">
+    <span>制限時間：<b>40分</b></span>
+    <span>満点：<b>100点</b></span>
+    <div class="namebox"><span>氏名</span><span class="nb"></span></div>
+    <div class="scorebox"><span>得点</span><span class="sb"></span></div>
+  </div>
+</div>
+
+<div class="notice">
+  <b>注意</b>：出題範囲は教科書「住生活」p.232〜245。（　）内は観点別の配点です（<span class="chip chigi">知技</span>＝知識・技能、<span class="chip shihan">思判表</span>＝思考・判断・表現）。記述問題は文の形で答えること。
+</div>
+
+<!-- ================= 大問1 ================= -->
+<div class="daimon">
+  <div class="daimon-head">
+    <span class="dn">1</span><span class="dt">住まいの働きと空間の考え方</span>
+    <span class="pts"><span class="chip chigi">知技</span> 各2点×7問＝14点</span>
+  </div>
+
+  <div class="subq">
+    <p><span class="sq">問1</span>　住まいの働きについて、次の文の（①）〜（③）にあてはまる言葉を、あとの語群からそれぞれ選び、記号で答えなさい。<span class="haiten">（知技 2×3＝6点）</span></p>
+    <p>「住まいは、暑さや寒さ、日射、風雪雨などの家の外の厳しい環境や（①）から私たちを守る。また、保育・教育・（②）・介護などを行い、安心してくつろぎ、団らんを行い、趣味や余暇を楽しむなど、（③）を生み出す場になっている。」</p>
+    <div class="gokun"><b>語群</b>ア：看護　　イ：外敵　　ウ：明日への活力　　エ：騒音　　オ：労働</div>
+    <table class="ansgrid" style="width:60%">
+      <tr><th>①</th><th>②</th><th>③</th></tr>
+      <tr><td></td><td></td><td></td></tr>
+    </table>
+  </div>
+
+  <div class="subq">
+    <p><span class="sq">問2</span>　日本の住まいに取り入れられている空間の考え方について、次の①〜③の説明にあてはまる言葉を、あとの語群からそれぞれ選び、記号で答えなさい。<span class="haiten">（知技 2×3＝6点）</span></p>
+    <ol class="abc">
+      <li>① 衛生面や精神面から、食事と就寝の空間を分けること。</li>
+      <li>② 家族の性別や年齢に応じて、就寝の空間を分けること。</li>
+      <li>③ 家族のコミュニケーションを大切にしながら、家族それぞれのプライバシーを尊重すること。</li>
+    </ol>
+    <div class="gokun"><b>語群</b>ア：家族相互のプライバシーの尊重　　イ：食寝分離　　ウ：就寝分離</div>
+    <table class="ansgrid" style="width:60%">
+      <tr><th>①</th><th>②</th><th>③</th></tr>
+      <tr><td></td><td></td><td></td></tr>
+    </table>
+  </div>
+
+  <div class="subq">
+    <p><span class="sq">問3</span>　住まいの中で、人が移動するときに通る経路のことを何というか。漢字2字で答えなさい。<span class="haiten">（知技 2点）</span></p>
+    <p>答え：<span class="ansline"></span></p>
+  </div>
+</div>
+
+<!-- ================= 大問2 ================= -->
+<div class="daimon">
+  <div class="daimon-head">
+    <span class="dn">2</span><span class="dt">生活に必要な住空間</span>
+    <span class="pts"><span class="chip chigi">知技</span> 2×5＋<span class="chip shihan">思判表</span> 3×2＝16点</span>
+  </div>
+
+  <div class="subq">
+    <p><span class="sq">問1</span>　次の①〜④の行為が行われる空間の名前を、あとの語群からそれぞれ選び、記号で答えなさい。<span class="haiten">（知技 2×4＝8点）</span></p>
+    <ol class="abc">
+      <li>① 睡眠、学習、趣味、仕事など</li>
+      <li>② 調理、洗濯、アイロンかけ、ごみ処理など</li>
+      <li>③ 入浴、洗面、排せつなど</li>
+      <li>④ 食事、団らん、遊び、接客など</li>
+    </ol>
+    <div class="gokun"><b>語群</b>ア：家事作業の空間　　イ：家族生活の空間　　ウ：生理・衛生の空間　　エ：個人生活の空間</div>
+    <table class="ansgrid" style="width:70%">
+      <tr><th>①</th><th>②</th><th>③</th><th>④</th></tr>
+      <tr><td></td><td></td><td></td><td></td></tr>
+    </table>
+  </div>
+
+  <div class="subq">
+    <p><span class="sq">問2</span>　共同生活の空間である居間・食堂・台所はアルファベットで表される。このうち「D」は何を表すか。漢字で答えなさい。<span class="haiten">（知技 2点）</span></p>
+    <p>答え：<span class="ansline"></span></p>
+  </div>
+
+  <div class="subq">
+    <p><span class="sq">問3</span>　下の図は、Aさん家族（父・母・Aさん・妹・祖母）の住まいの間取り図である。「日中は家でのんびりしたいから、日当たりのいい部屋がいいわね。」という祖母の希望に最も合う部屋の名前を答え、その理由も説明しなさい。<span class="haiten">（思判表 3点）</span></p>
+    <div class="fig">
+      <svg viewBox="0 0 640 400" width="640" height="400" role="img" aria-label="Aさん家族の間取り図">
+        <rect x="60" y="40" width="520" height="280" fill="#FFFDF7" stroke="#334155" stroke-width="3"/>
+        <rect x="60" y="40" width="90" height="70" fill="#E0F2FE" stroke="#64748B" stroke-width="1.5"/>
+        <text x="105" y="80" text-anchor="middle" font-size="12" fill="#334155">浴室</text>
+        <rect x="150" y="40" width="90" height="70" fill="#E0F2FE" stroke="#64748B" stroke-width="1.5"/>
+        <text x="195" y="80" text-anchor="middle" font-size="12" fill="#334155">洗面室</text>
+        <rect x="150" y="110" width="90" height="50" fill="#E0F2FE" stroke="#64748B" stroke-width="1.5"/>
+        <text x="195" y="140" text-anchor="middle" font-size="12" fill="#334155">トイレ</text>
+        <rect x="60" y="110" width="90" height="80" fill="#F1F5F9" stroke="#64748B" stroke-width="1.5"/>
+        <text x="105" y="153" text-anchor="middle" font-size="12" fill="#334155">玄関</text>
+        <rect x="60" y="190" width="180" height="40" fill="#F8FAFC" stroke="#64748B" stroke-width="1.5"/>
+        <text x="150" y="215" text-anchor="middle" font-size="12" fill="#334155">廊下</text>
+        <rect x="240" y="40" width="170" height="70" fill="#FEF9C3" stroke="#64748B" stroke-width="1.5"/>
+        <text x="325" y="80" text-anchor="middle" font-size="12" fill="#334155">台所</text>
+        <rect x="240" y="110" width="170" height="120" fill="#FFFBEB" stroke="#64748B" stroke-width="1.5"/>
+        <text x="325" y="175" text-anchor="middle" font-size="12" fill="#334155">食事室</text>
+        <rect x="410" y="40" width="170" height="100" fill="#FFF" stroke="#64748B" stroke-width="1.5"/>
+        <text x="495" y="95" text-anchor="middle" font-size="12" fill="#334155">洋室（6.5畳）</text>
+        <rect x="410" y="140" width="100" height="50" fill="#F1F5F9" stroke="#64748B" stroke-width="1.5"/>
+        <text x="460" y="170" text-anchor="middle" font-size="11" fill="#334155">押入れ</text>
+        <rect x="510" y="140" width="70" height="50" fill="#F1F5F9" stroke="#64748B" stroke-width="1.5"/>
+        <text x="545" y="170" text-anchor="middle" font-size="11" fill="#334155">床の間</text>
+        <rect x="60" y="230" width="180" height="90" fill="#FFF" stroke="#64748B" stroke-width="1.5"/>
+        <text x="150" y="280" text-anchor="middle" font-size="12" fill="#334155">洋室（6畳）</text>
+        <rect x="240" y="230" width="170" height="90" fill="#FFF" stroke="#64748B" stroke-width="1.5"/>
+        <text x="325" y="280" text-anchor="middle" font-size="12" fill="#334155">居間</text>
+        <rect x="410" y="190" width="170" height="130" fill="#F7FEE7" stroke="#64748B" stroke-width="1.5"/>
+        <text x="495" y="260" text-anchor="middle" font-size="12" fill="#334155">和室（6畳）</text>
+        <rect x="240" y="320" width="340" height="36" fill="#F1F5F9" stroke="#94A3B8" stroke-width="1.5" stroke-dasharray="6 3"/>
+        <text x="410" y="343" text-anchor="middle" font-size="12" fill="#475569">ベランダ（南向き）</text>
+        <g transform="translate(612,60)">
+          <circle cx="0" cy="0" r="17" fill="#fff" stroke="#334155" stroke-width="1.5"/>
+          <line x1="0" y1="12" x2="0" y2="-8" stroke="#334155" stroke-width="2"/>
+          <polygon points="0,-14 -5,-4 5,-4" fill="#334155"/>
+          <text x="0" y="34" text-anchor="middle" font-size="12" fill="#334155">北</text>
+        </g>
+      </svg>
+      <p class="cap">Aさん家族の住まいの間取り図</p>
+    </div>
+    <div class="kijutsu"></div>
+  </div>
+
+  <div class="subq">
+    <p><span class="sq">問4</span>　座卓（ざたく）を使うと、部屋をより広く感じることができる。その理由を「視点」という言葉を使って説明しなさい。<span class="haiten">（思判表 3点）</span></p>
+    <div class="kijutsu"></div>
+  </div>
+</div>
+<!-- ================= 大問3 ================= -->
+<div class="daimon">
+  <div class="daimon-head">
+    <span class="dn">3</span><span class="dt">気候風土と伝統的な住まい</span>
+    <span class="pts"><span class="chip chigi">知技</span> 2×8＋<span class="chip shihan">思判表</span> 3×2＝22点</span>
+  </div>
+
+  <div class="subq">
+    <p><span class="sq">問1</span>　次の①〜③の地域の住まいの特徴を、あとの語群からそれぞれ選び、記号で答えなさい。<span class="haiten">（知技 2×3＝6点）</span></p>
+    <ol class="abc">
+      <li>① 北海道札幌市</li>
+      <li>② 岐阜県白川村</li>
+      <li>③ 沖縄県竹富町</li>
+    </ol>
+    <div class="gokun"><b>語群</b><br>
+      ア：断熱効果がある茅（かや）を材料にして、雪が落ちやすい屋根の形をしている。<br>
+      イ：深い軒が日射を遮り、広い開口部は通風によい。石垣が暴風を防ぐ。<br>
+      ウ：融雪装置のついた屋根や、寒気の侵入を防ぐ二重の玄関や窓がある。<br>
+      エ：雪でも歩行できるよう、庇（ひさし）を伸ばした雁木（がんぎ）がある。
+    </div>
+    <table class="ansgrid" style="width:60%">
+      <tr><th>①</th><th>②</th><th>③</th></tr>
+      <tr><td></td><td></td><td></td></tr>
+    </table>
+  </div>
+
+  <div class="subq">
+    <p><span class="sq">問2</span>　下の図は和の住まい（和室）を表したものである。①〜⑤の名称を、あとの語群からそれぞれ選び、記号で答えなさい。<span class="haiten">（知技 2×5＝10点）</span></p>
+    <div class="fig">
+      <svg viewBox="0 0 620 330" width="620" height="330" role="img" aria-label="和室の名称">
+        <rect x="30" y="30" width="560" height="230" fill="#FDF6E3" stroke="#8B6534" stroke-width="2"/>
+        <rect x="60" y="60" width="170" height="200" fill="#FAF0D7" stroke="#8B6534" stroke-width="2"/>
+        <rect x="60" y="240" width="170" height="20" fill="#D2A96C" stroke="#8B6534" stroke-width="1.5"/>
+        <rect x="115" y="75" width="56" height="130" fill="#FFF" stroke="#8B6534" stroke-width="1.5"/>
+        <rect x="112" y="70" width="62" height="8" fill="#7C5A2E"/>
+        <rect x="112" y="203" width="62" height="8" fill="#7C5A2E"/>
+        <path d="M143,150 q-12,-22 4,-34 q14,12 -4,34" fill="none" stroke="#DC2626" stroke-width="2"/>
+        <line x1="143" y1="150" x2="143" y2="185" stroke="#16A34A" stroke-width="2"/>
+        <rect x="360" y="60" width="105" height="200" fill="#F5F0E4" stroke="#8B6534" stroke-width="2"/>
+        <rect x="465" y="60" width="105" height="200" fill="#EFE8D8" stroke="#8B6534" stroke-width="2"/>
+        <circle cx="452" cy="165" r="5" fill="none" stroke="#7C5A2E" stroke-width="2"/>
+        <circle cx="478" cy="165" r="5" fill="none" stroke="#7C5A2E" stroke-width="2"/>
+        <path d="M385,95 q18,14 0,30 M415,180 q14,10 0,26" fill="none" stroke="#B9A47C" stroke-width="1.5"/>
+        <rect x="30" y="260" width="560" height="50" fill="#E9F2CE" stroke="#8B6534" stroke-width="2"/>
+        <line x1="220" y1="260" x2="200" y2="310" stroke="#A3B27A" stroke-width="1.5"/>
+        <line x1="420" y1="260" x2="440" y2="310" stroke="#A3B27A" stroke-width="1.5"/>
+        <rect x="255" y="255" width="120" height="14" rx="3" fill="#8B6534" stroke="#5C3D1E" stroke-width="1.5"/>
+        <line x1="268" y1="269" x2="268" y2="292" stroke="#5C3D1E" stroke-width="4"/>
+        <line x1="362" y1="269" x2="362" y2="292" stroke="#5C3D1E" stroke-width="4"/>
+        <line x1="143" y1="82" x2="90" y2="48" stroke="#334155" stroke-width="1.2"/>
+        <circle cx="82" cy="44" r="12" fill="#1E3A8A"/><text x="82" y="49" text-anchor="middle" font-size="12" fill="#fff" font-weight="bold">①</text>
+        <line x1="200" y1="248" x2="248" y2="220" stroke="#334155" stroke-width="1.2"/>
+        <circle cx="258" cy="215" r="12" fill="#1E3A8A"/><text x="258" y="220" text-anchor="middle" font-size="12" fill="#fff" font-weight="bold">②</text>
+        <line x1="512" y1="120" x2="540" y2="90" stroke="#334155" stroke-width="1.2"/>
+        <circle cx="548" cy="84" r="12" fill="#1E3A8A"/><text x="548" y="89" text-anchor="middle" font-size="12" fill="#fff" font-weight="bold">③</text>
+        <line x1="120" y1="285" x2="90" y2="300" stroke="#334155" stroke-width="1.2"/>
+        <circle cx="78" cy="303" r="12" fill="#1E3A8A"/><text x="78" y="308" text-anchor="middle" font-size="12" fill="#fff" font-weight="bold">④</text>
+        <line x1="315" y1="262" x2="315" y2="235" stroke="#334155" stroke-width="1.2"/>
+        <circle cx="315" cy="228" r="12" fill="#1E3A8A"/><text x="315" y="233" text-anchor="middle" font-size="12" fill="#fff" font-weight="bold">⑤</text>
+      </svg>
+    </div>
+    <div class="gokun"><b>語群</b>ア：ふすま　　イ：座卓　　ウ：床の間　　エ：畳　　オ：掛け軸</div>
+    <table class="ansgrid">
+      <tr><th>①</th><th>②</th><th>③</th><th>④</th><th>⑤</th></tr>
+      <tr><td></td><td></td><td></td><td></td><td></td></tr>
+    </table>
+  </div>
+
+  <div class="subq">
+    <p><span class="sq">問3</span>　軒（のき）は、夏と冬の日差しに対してそれぞれどのような働きをするか。「太陽高度」という言葉を使って説明しなさい。<span class="haiten">（思判表 3点）</span></p>
+    <div class="kijutsu tall"></div>
+  </div>
+
+  <div class="subq">
+    <p><span class="sq">問4</span>　畳が床材として優れている点を<b>2つ</b>答えなさい。<span class="haiten">（思判表 3点）</span></p>
+    <div class="kijutsu"></div>
+  </div>
+</div>
+
+<!-- ================= 大問4 ================= -->
+<div class="daimon">
+  <div class="daimon-head">
+    <span class="dn">4</span><span class="dt">家庭内事故への備え</span>
+    <span class="pts"><span class="chip chigi">知技</span> 2×8＋<span class="chip shihan">思判表</span> 3×3＝25点</span>
+  </div>
+
+  <div class="subq">
+    <p><span class="sq">問1</span>　下のグラフは、年齢別にみた家庭内事故死の原因（2022年）を表したものである。A〜Cにあてはまる原因を、あとの語群からそれぞれ選び、記号で答えなさい。<span class="haiten">（知技 2×3＝6点）</span></p>
+    <div class="fig">
+      <svg viewBox="0 0 660 230" width="660" height="230" role="img" aria-label="年齢別にみた家庭内事故死の原因">
+        <g font-size="12" fill="#334155">
+          <rect x="120" y="14" width="14" height="14" fill="#93C5FD" stroke="#64748B" stroke-width="1"/><text x="140" y="26">A</text>
+          <rect x="180" y="14" width="14" height="14" fill="#FCA5A5" stroke="#64748B" stroke-width="1"/><text x="200" y="26">B</text>
+          <rect x="240" y="14" width="14" height="14" fill="#FDE68A" stroke="#64748B" stroke-width="1"/><text x="260" y="26">C</text>
+          <rect x="300" y="14" width="14" height="14" fill="#E2E8F0" stroke="#64748B" stroke-width="1"/><text x="320" y="26">その他</text>
+        </g>
+        <text x="110" y="80" text-anchor="end" font-size="12.5" fill="#334155">1〜4歳</text>
+        <g stroke="#64748B" stroke-width="1">
+          <rect x="120" y="55" width="125" height="40" fill="#93C5FD"/>
+          <rect x="245" y="55" width="83.5" height="40" fill="#FCA5A5"/>
+          <rect x="328.5" y="55" width="291.5" height="40" fill="#FDE68A"/>
+        </g>
+        <g font-size="12" fill="#334155" text-anchor="middle">
+          <text x="182" y="80">25.0</text>
+          <text x="287" y="80">16.7</text>
+          <text x="474" y="80" font-weight="bold">58.3</text>
+        </g>
+        <text x="110" y="160" text-anchor="end" font-size="12.5" fill="#334155">65歳以上</text>
+        <g stroke="#64748B" stroke-width="1">
+          <rect x="120" y="135" width="97.5" height="40" fill="#93C5FD"/>
+          <rect x="217.5" y="135" width="250" height="40" fill="#FCA5A5"/>
+          <rect x="467.5" y="135" width="123.5" height="40" fill="#FDE68A"/>
+          <rect x="591" y="135" width="29" height="40" fill="#E2E8F0"/>
+        </g>
+        <g font-size="12" fill="#334155" text-anchor="middle">
+          <text x="169" y="160">19.5</text>
+          <text x="342" y="160" font-weight="bold">50.0</text>
+          <text x="529" y="160">24.7</text>
+          <text x="605" y="160" font-size="10">5.8</text>
+        </g>
+        <line x1="120" y1="185" x2="620" y2="185" stroke="#94A3B8" stroke-width="1"/>
+        <g font-size="11" fill="#64748B" text-anchor="middle">
+          <text x="120" y="202">0</text><text x="245" y="202">25</text><text x="370" y="202">50</text><text x="495" y="202">75</text><text x="616" y="202">100（%）</text>
+        </g>
+      </svg>
+      <p class="cap">年齢別にみた家庭内事故死の原因（2022年）</p>
+    </div>
+    <div class="gokun"><b>語群</b>ア：窒息　　イ：転倒・転落・墜落　　ウ：溺死及び溺水</div>
+    <table class="ansgrid" style="width:60%">
+      <tr><th>A</th><th>B</th><th>C</th></tr>
+      <tr><td></td><td></td><td></td></tr>
+    </table>
+  </div>
+
+  <div class="subq">
+    <p><span class="sq">問2</span>　冬、暖かい部屋と寒い浴室などとの温度差により、血圧の大きな変動が起こって心筋梗塞や脳卒中などを発症する現象を何というか。カタカナで答えなさい。<span class="haiten">（知技 2点）</span></p>
+    <p>答え：<span class="ansline wide"></span></p>
+  </div>
+
+  <div class="subq">
+    <p><span class="sq">問3</span>　問2の対策について、次の文が正しければ○、間違っていれば×を書きなさい。<span class="haiten">（知技 2×4＝8点）</span></p>
+    <ol class="abc">
+      <li>① 浴室はシャワーでお湯を張ったり、浴そうのふたを取ったりして暖める。</li>
+      <li>② 入浴は、気温が下がっていない日没前にする。</li>
+      <li>③ 浴そうのお湯の温度は45度以上にする。</li>
+      <li>④ 脱衣所を暖房器具で暖める。</li>
+    </ol>
+    <table class="ansgrid" style="width:70%">
+      <tr><th>①</th><th>②</th><th>③</th><th>④</th></tr>
+      <tr><td></td><td></td><td></td><td></td></tr>
+    </table>
+  </div>
+
+  <div class="subq">
+    <p><span class="sq">問4</span>　幼児の家庭内事故が起こりやすい理由を、幼児の体や行動の特徴から1つ答えなさい。<span class="haiten">（思判表 3点）</span></p>
+    <div class="kijutsu"></div>
+  </div>
+
+  <div class="subq">
+    <p><span class="sq">問5</span>　高齢者が安全に生活できるように、玄関やトイレにはどのような改善をすればよいか。1つ答えなさい。<span class="haiten">（思判表 3点）</span></p>
+    <div class="kijutsu"></div>
+  </div>
+
+  <div class="subq">
+    <p><span class="sq">問6</span>　高齢者は、夏に熱中症になりやすい。その理由を高齢者の体の特徴から説明しなさい。<span class="haiten">（思判表 3点）</span></p>
+    <div class="kijutsu"></div>
+  </div>
+</div>
+
+<!-- ================= 大問5 ================= -->
+<div class="daimon">
+  <div class="daimon-head">
+    <span class="dn">5</span><span class="dt">室内環境と換気</span>
+    <span class="pts"><span class="chip chigi">知技</span> 2×7＋<span class="chip shihan">思判表</span> 3×3＝23点</span>
+  </div>
+
+  <div class="subq">
+    <p><span class="sq">問1</span>　結露とカビ・ダニについて、次の文が正しければ○、間違っていれば×を書きなさい。<span class="haiten">（知技 2×4＝8点）</span></p>
+    <ol class="abc">
+      <li>① 結露は、屋内が暖かく水蒸気が多く、屋外の温度が低いときに、温度が低くなった窓や壁に発生する。</li>
+      <li>② カビの胞子は、アレルギーやぜん息の発症や悪化の原因になる。</li>
+      <li>③ 押入れの中にすのこを敷くと、空気が循環しにくくなるのでよくない。</li>
+      <li>④ 家具と後ろの壁の間には、すき間をあけるとよい。</li>
+    </ol>
+    <table class="ansgrid" style="width:70%">
+      <tr><th>①</th><th>②</th><th>③</th><th>④</th></tr>
+      <tr><td></td><td></td><td></td><td></td></tr>
+    </table>
+  </div>
+
+  <div class="subq">
+    <p><span class="sq">問2</span>　建材や内装材などから出る化学物質を吸うことで、頭痛や目の痛みなどの症状が出る病気を何というか。<span class="haiten">（知技 2点）</span></p>
+    <p>答え：<span class="ansline wide"></span></p>
+  </div>
+
+  <div class="subq">
+    <p><span class="sq">問3</span>　一酸化炭素（CO）について、次の文が正しければ○、間違っていれば×を書きなさい。<span class="haiten">（知技 2×2＝4点）</span></p>
+    <ol class="abc">
+      <li>① 一酸化炭素は、燃焼器具を使うときに換気をしないと、不完全燃焼によって発生しやすくなる。</li>
+      <li>② 一酸化炭素には強いにおいがあるので、発生したらすぐに気がつく。</li>
+    </ol>
+    <table class="ansgrid" style="width:40%">
+      <tr><th>①</th><th>②</th></tr>
+      <tr><td></td><td></td></tr>
+    </table>
+  </div>
+
+  <div class="subq">
+    <p><span class="sq">問4</span>　換気をするとき、窓を1つだけ開ける場合と、対面する2つの窓を開ける場合とでは、どちらが短時間で室内の空気が入れ替わるか。また、その理由を説明しなさい。<span class="haiten">（思判表 3＋3＝6点）</span></p>
+    <p>答え：<span class="ansline wide"></span>を開ける場合</p>
+    <p>理由：</p>
+    <div class="kijutsu"></div>
+  </div>
+
+  <div class="subq">
+    <p><span class="sq">問5</span>　窓を開けて換気をするとき、カーテンは開けておくほうがよい。その理由を説明しなさい。<span class="haiten">（思判表 3点）</span></p>
+    <div class="kijutsu"></div>
+  </div>
+</div>
+
+<p style="text-align:center;color:var(--sub);font-size:13px;margin:24px 0">— 問題はここまでです。見直しをしましょう —</p>
+<!-- ================= 解答・解説 ================= -->
+<div class="mock-answers" id="mockAnswers">
+<div class="answers-title">
+  <h2>模擬テスト 解答・解説</h2>
+  <p>配点どおりに自己採点しよう。記述は「キーワード」が入っていれば正解。</p>
+</div>
+
+<div class="goukaku">
+  <b>得点の目安</b>：85〜100点＝目標達成◎ そのまま本番へ ／ 70〜84点＝間違えた単元だけ問題集をもう1周 ／ 69点以下＝問題集の★★★を総復習してから再挑戦
+</div>
+
+<div class="ans-item">
+  <div class="head">大問1　住まいの働きと空間の考え方（14点）</div>
+  <p><span class="a">問1　①イ（外敵）　②ア（看護）　③ウ（明日への活力）</span>（各2点）　住まいで行われるお世話は「保育・教育・看護・介護」。</p>
+  <p><span class="a">問2　①イ（食寝分離）　②ウ（就寝分離）　③ア（家族相互のプライバシーの尊重）</span>（各2点）</p>
+  <p class="exp">食寝分離＝「ご飯と布団を分ける」、就寝分離＝「性別・年齢で寝る部屋を分ける」。混同に注意。</p>
+  <p><span class="a">問3　動線</span>（2点）　「導線」と書かないこと。</p>
+</div>
+
+<div class="ans-item">
+  <div class="head">大問2　生活に必要な住空間（16点）</div>
+  <p><span class="a">問1　①エ（個人生活の空間）　②ア（家事作業の空間）　③ウ（生理・衛生の空間）　④イ（家族生活の空間）</span>（各2点）</p>
+  <p class="exp">入浴・洗面・排せつ＝生理・衛生の空間。②〜④は共同生活の空間に含まれる。</p>
+  <p><span class="a">問2　食堂</span>（2点）　L＝居間（リビング）、D＝食堂（ダイニング）、K＝台所（キッチン）。</p>
+  <p><span class="a">問3　（例）和室（6畳）。南向きのベランダに面していて日当たりがよく、日中をのんびり過ごすのに適しているから。</span>（3点：部屋名1点＋理由2点。「南向き（ベランダ側）で日当たりがよい」が書ければ理由は正解）</p>
+  <p><span class="a">問4　（例）座卓に座るといすに座るよりも視点が低くなるため、天井が高く感じられ、部屋をより広く感じることができるから。</span>（3点：「視点が低くなる」＋「広く感じる」で満点）</p>
+</div>
+
+<div class="ans-item">
+  <div class="head">大問3　気候風土と伝統的な住まい（22点）</div>
+  <p><span class="a">問1　①ウ（融雪装置・二重の玄関）　②ア（茅の屋根）　③イ（深い軒・石垣）</span>（各2点）</p>
+  <p class="exp">雪国の区別：札幌＝雪を融かす（融雪装置）／上越＝雪でも歩ける（雁木）／白川村＝雪が落ちる屋根（茅ぶき）。竹富町は台風対策の石垣。</p>
+  <p><span class="a">問2　①オ（掛け軸）　②ウ（床の間）　③ア（ふすま）　④エ（畳）　⑤イ（座卓）</span>（各2点）</p>
+  <p class="exp">一段高い飾りの空間＝床の間、その中に掛かる＝掛け軸。ふすまは引き戸。</p>
+  <p><span class="a">問3　（例）夏は太陽高度が高いので、軒が日射をさえぎって室内の奥へ入るのを防ぐ。冬は太陽高度が低いので、日射を室内に取り込むことができる。</span>（3点：「夏＝高い→さえぎる」「冬＝低い→取り込む」の両方で満点、片方なら2点）</p>
+  <p><span class="a">問4　（例）弾力性がある／遮音性に優れる／保温性に優れる／調湿に優れる　から2つ</span>（3点：2つで満点、1つなら1点）</p>
+  <div class="memo"><b>覚え方</b>：畳の長所は「だん・しゃ・ほ・ちょう」（弾力・遮音・保温・調湿）。</div>
+</div>
+
+<div class="ans-item">
+  <div class="head">大問4　家庭内事故への備え（25点）</div>
+  <p><span class="a">問1　A＝イ（転倒・転落・墜落）　B＝ウ（溺死及び溺水）　C＝ア（窒息）</span>（各2点）</p>
+  <p class="exp">決め手は「1〜4歳で最多（58.3%）＝窒息」「65歳以上で最多（50.0%）＝溺死及び溺水」。</p>
+  <p><span class="a">問2　ヒートショック</span>（2点）</p>
+  <p><span class="a">問3　①○　②○　③×　④○</span>（各2点）　③お湯の温度は41度以下にする。</p>
+  <p><span class="a">問4　（例）何にでも興味があり、物を触ったり口の中に入れたりするから。／体が小さくて頭が重いので転倒や転落をしやすいから。／身長が低く視野が狭いので、上に置いてある物が見えないから。　から1つ</span>（3点）</p>
+  <p><span class="a">問5　（例）手すりをつける。</span>（3点：段差の解消なども可）</p>
+  <p><span class="a">問6　（例）高齢者は暑さやのどの渇きを感じにくく、汗をかきにくいため、対策が遅れる傾向があるから。</span>（3点：「暑さ・渇きを感じにくい」または「汗をかきにくい」が書ければ満点）</p>
+</div>
+
+<div class="ans-item">
+  <div class="head">大問5　室内環境と換気（23点）</div>
+  <p><span class="a">問1　①○　②○　③×　④○</span>（各2点）　③すのこを敷くと空気が循環しやすくなるので、カビ防止によい。</p>
+  <p><span class="a">問2　シックハウス症候群</span>（2点）　家の中だけでなくどこでも発症するのは「化学物質過敏症」。</p>
+  <p><span class="a">問3　①○　②×</span>（各2点）　②一酸化炭素は無色・無臭なので気づきにくく、微量でも意識不明となり死に至ることもある。</p>
+  <p><span class="a">問4　答え：対面する2つの窓（を開ける場合）　理由（例）：外気が入りやすく、室内空気が出やすくなる（空気の入口と出口ができ、空気が流れやすくなる）から。</span>（3＋3点）</p>
+  <p><span class="a">問5　（例）カーテンを閉めていると流入する空気が妨げられ、空気が入れ替わる時間が長くなるから。</span>（3点：「流入する空気を妨げない」の趣旨で満点）</p>
+  <div class="memo"><b>覚え方</b>：換気のコツは「入口と出口をつくる」。窓2つ＋カーテン開放＋換気扇。</div>
+</div>
+</div><!-- /.mock-answers -->
+
+</div><!-- /.page -->
+<script>
+function toggleAnswers(){
+  var a = document.getElementById('mockAnswers');
+  var b = document.getElementById('ansbtn');
+  a.classList.toggle('open');
+  b.textContent = a.classList.contains('open') ? '解答・解説を隠す' : '解答・解説を表示';
+  if(a.classList.contains('open')){ a.scrollIntoView({behavior:'smooth'}); }
+}
+</script>
+</body>
+</html>
