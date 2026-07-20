@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>技術 夏テスト予想 模擬テスト 2026（材料と加工の技術）</title>
+<style>
+:root{
+  --blue:#2563EB; --blue-d:#1D4ED8; --blue-bg:#DBEAFE;
+  --orange:#F97316; --red:#DC2626; --green:#16A34A; --green-bg:#F0FDF4;
+  --purple:#6D28D9; --purple-bg:#EDE9FE;
+  --ink:#1E293B; --sub:#475569; --line:#CBD5E1; --line-soft:#E2E8F0;
+  --bg:#F1F5F9; --card:#FFFFFF;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{
+  font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Yu Gothic Medium","Yu Gothic",Meiryo,sans-serif;
+  color:var(--ink); background:var(--bg); line-height:1.8; font-size:15px;
+  -webkit-text-size-adjust:100%;
+}
+.page{max-width:840px;margin:0 auto;padding:20px 16px 60px}
+
+/* ===== テストヘッダー ===== */
+.test-head{
+  background:var(--card);border:2.5px solid var(--ink);border-radius:6px;
+  padding:18px 22px;margin-bottom:8px;
+}
+.test-head .row1{display:flex;flex-wrap:wrap;align-items:baseline;gap:10px;border-bottom:2px solid var(--ink);padding-bottom:10px}
+.test-head h1{margin:0;font-size:21px;letter-spacing:.04em}
+.test-head .row1 .grade{font-size:13px;color:var(--sub)}
+.test-head .row2{display:flex;flex-wrap:wrap;gap:14px;align-items:center;margin-top:12px;font-size:13.5px}
+.namebox{display:flex;align-items:center;gap:6px;margin-left:auto}
+.namebox .nb{border:1.5px solid var(--ink);width:170px;height:34px;border-radius:4px;background:#fff}
+.scorebox{display:flex;align-items:center;gap:6px}
+.scorebox .sb{border:1.5px solid var(--ink);width:82px;height:34px;border-radius:4px;background:#fff;position:relative}
+.scorebox .sb::after{content:"／100";position:absolute;right:6px;bottom:2px;font-size:11px;color:var(--sub)}
+.notice{
+  background:var(--card);border:1px solid var(--line-soft);border-radius:8px;
+  padding:10px 16px;margin:10px 0 20px;font-size:13px;color:var(--sub);
+}
+.notice b{color:var(--ink)}
+
+/* ===== 大問 ===== */
+.daimon{
+  background:var(--card);border:1px solid var(--line-soft);border-radius:12px;
+  padding:16px 20px;margin:16px 0;box-shadow:0 1px 2px rgba(15,23,42,.05);
+}
+.daimon-head{
+  display:flex;align-items:center;gap:10px;flex-wrap:wrap;
+  border-bottom:2px solid var(--ink);padding-bottom:8px;margin-bottom:12px;
+}
+.daimon-head .dn{
+  background:var(--ink);color:#fff;border-radius:6px;padding:2px 12px;
+  font-size:15px;font-weight:800;flex-shrink:0;
+}
+.daimon-head .dt{font-weight:700;font-size:16px}
+.daimon-head .pts{margin-left:auto;font-size:12px;color:var(--sub);white-space:nowrap}
+.chip{font-size:11px;border-radius:999px;padding:1px 9px;font-weight:600;white-space:nowrap}
+.chip.chigi{background:var(--blue-bg);color:var(--blue-d)}
+.chip.shihan{background:var(--purple-bg);color:var(--purple)}
+.subq{margin:12px 0}
+.subq .sq{font-weight:700}
+.subq .haiten{font-size:12px;color:var(--sub)}
+ol.abc{margin:6px 0;padding-left:10px;list-style:none}
+ol.abc li{margin:4px 0}
+.gokun{
+  border:1.5px dashed var(--line);border-radius:10px;background:#F8FAFC;
+  padding:8px 14px;margin:10px 0;font-size:14px;
+}
+.gokun b{color:var(--blue-d);font-size:12px;display:block;margin-bottom:2px}
+.choices{margin:8px 0 4px;padding:0;list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:4px 16px}
+.choices li{padding:2px 0}
+.choices.one-col{grid-template-columns:1fr}
+
+/* ===== 解答記入欄 ===== */
+.ansline{display:inline-block;min-width:110px;border-bottom:1.5px solid var(--ink);height:1.5em;vertical-align:bottom;margin:0 4px}
+.ansline.wide{min-width:220px}
+table.ansgrid{border-collapse:collapse;margin:10px 0;width:100%}
+table.ansgrid th{background:#F1F5F9;font-size:12px;font-weight:600;color:var(--sub)}
+table.ansgrid th,table.ansgrid td{border:1.5px solid var(--ink);padding:6px 8px;text-align:center;min-width:52px;height:34px}
+.kijutsu{border:1.5px solid var(--ink);border-radius:4px;min-height:64px;margin:8px 0;background:#fff}
+.kijutsu.tall{min-height:84px}
+
+/* ===== 図版 ===== */
+.fig{margin:12px auto;text-align:center;max-width:100%;overflow-x:auto}
+.fig svg{max-width:100%;height:auto}
+.fig .cap{font-size:12px;color:var(--sub);margin-top:2px}
+
+/* ===== 巻末解答 ===== */
+.mock-answers{display:none}
+.mock-answers.open{display:block}
+.answers-title{
+  page-break-before:always;break-before:page;
+  background:linear-gradient(135deg,#14532D,#16A34A);color:#fff;border-radius:14px;
+  padding:20px 24px;margin:40px 0 18px;
+}
+.answers-title h2{margin:0;font-size:22px}
+.answers-title p{margin:4px 0 0;font-size:13px;opacity:.92}
+.ans-item{
+  background:var(--card);border:1px solid var(--line-soft);border-radius:12px;
+  padding:12px 16px;margin:10px 0;font-size:14px;break-inside:avoid;page-break-inside:avoid;
+}
+.ans-item .head{font-weight:800;color:#15803D;margin-bottom:4px;font-size:15px}
+.ans-item p{margin:4px 0}
+.ans-item .a{font-weight:700;color:#15803D}
+.memo{
+  background:#FFF7ED;border-left:4px solid var(--orange);border-radius:0 10px 10px 0;
+  padding:8px 12px;margin-top:8px;font-size:13.5px;
+}
+.memo b{color:#C2410C}
+.goukaku{
+  background:var(--card);border:1.5px solid var(--line-soft);border-radius:12px;
+  padding:12px 18px;margin:14px 0;font-size:14px;
+}
+.goukaku b{color:var(--blue-d)}
+
+/* ===== 操作バー（画面のみ）===== */
+.ctrl{position:sticky;top:8px;z-index:50;display:flex;gap:8px;justify-content:flex-end;margin:0 0 8px}
+.ctrl button{
+  cursor:pointer;border:1.5px solid var(--line);background:#fff;color:var(--sub);
+  border-radius:999px;padding:6px 14px;font-size:12.5px;font-weight:700;
+  box-shadow:0 1px 4px rgba(15,23,42,.12);transition:all .2s;
+}
+.ctrl button:hover{border-color:var(--blue);color:var(--blue-d)}
+
+/* ===== 印刷 ===== */
+@page{size:A4 portrait;margin:13mm 11mm}
+@media print{
+  body{background:#fff;font-size:10.5pt;line-height:1.7}
+  .page{max-width:none;padding:0}
+  .ctrl{display:none!important}
+  .daimon{box-shadow:none;margin:10px 0}
+  .mock-answers{display:block!important}
+  .answers-title,.chip,.memo,.gokun{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .daimon-head .dn{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .subq{page-break-inside:avoid}
+  .daimon{page-break-before:always}
+  .notice + .daimon{page-break-before:auto}
+}
+@media (max-width:480px){
+  body{font-size:14.5px}
+  .choices{grid-template-columns:1fr}
+  .namebox .nb{width:120px}
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+<div class="ctrl">
+  <button onclick="toggleAnswers()" id="ansbtn">解答・解説を表示</button>
+  <button onclick="window.print()">印刷 / PDF</button>
+</div>
+
+<div class="test-head">
+  <div class="row1">
+    <h1>技術・家庭科〔技術分野〕　夏テスト予想　模擬テスト</h1>
+    <span class="grade">第1学年</span>
+  </div>
+  <div class="row2">
+    <span>制限時間：<b>40分</b></span>
+    <span>満点：<b>100点</b></span>
+    <div class="namebox"><span>氏名</span><span class="nb"></span></div>
+    <div class="scorebox"><span>得点</span><span class="sb"></span></div>
+  </div>
+</div>
+
+<div class="notice">
+  <b>注意</b>：出題範囲は教科書「材料と加工の技術」p.26〜37・p.52〜53。（　）内は観点別の配点です（<span class="chip chigi">知技</span>＝知識・技能、<span class="chip shihan">思判表</span>＝思考・判断・表現）。記述問題は文の形で答えること。
+</div>
+
+<!-- ================= 大問1 ================= -->
+<div class="daimon">
+  <div class="daimon-head">
+    <span class="dn">1</span><span class="dt">材料と加工の基礎</span>
+    <span class="pts"><span class="chip chigi">知技</span> 各2点×10問＝20点</span>
+  </div>
+
+  <div class="subq">
+    <p><span class="sq">問1</span>　次の①〜⑤の製品や場所に主に使われている材料を、あとの語群からそれぞれ1つずつ選び、記号で答えなさい。<span class="haiten">（知技 2×5＝10点）</span></p>
+    <ol class="abc">
+      <li>① 箸（食器）、家具、住宅</li>
+      <li>② 刃物、自動車、缶</li>
+      <li>③ ペットボトル、保冷箱</li>
+      <li>④ ダム、橋脚</li>
+      <li>⑤ タイヤ、靴の底</li>
+    </ol>
+    <div class="gokun"><b>語群</b>ア：金属　　イ：ゴム　　ウ：木材　　エ：コンクリート　　オ：ガラス　　カ：プラスチック　　キ：セラミックス</div>
+    <table class="ansgrid">
+      <tr><th>①</th><th>②</th><th>③</th><th>④</th><th>⑤</th></tr>
+      <tr><td></td><td></td><td></td><td></td><td></td></tr>
+    </table>
+  </div>
+
+  <div class="subq">
+    <p><span class="sq">問2</span>　製品を作るために、材料を目的の大きさや形に変えたり、組み立てたりすることを何というか。漢字2字で答えなさい。<span class="haiten">（知技 2点）</span></p>
+    <p>答え：<span class="ansline"></span></p>
+  </div>
+
+  <div class="subq">
+    <p><span class="sq">問3</span>　学校の机が作られるときの次の①〜③の作業は、それぞれ加工のうちどれにあたるか。あとの語群から選び、記号で答えなさい。<span class="haiten">（知技 2×3＝6点）</span></p>
+    <ol class="abc">
+      <li>① 天板の形・大きさに合わせて木材を切り、削って整える。</li>
+      <li>② 金属の棒を机の脚の形に曲げる。</li>
+      <li>③ 天板と脚などをくっつけて固定する。</li>
+    </ol>
+    <div class="gokun"><b>語群</b>ア：変形　　イ：接合　　ウ：切断・切削</div>
+    <table class="ansgrid" style="width:60%">
+      <tr><th>①</th><th>②</th><th>③</th></tr>
+      <tr><td></td><td></td><td></td></tr>
+    </table>
+  </div>
+
+  <div class="subq">
+    <p><span class="sq">問4</span>　木材（スギ）・金属（鉄）・プラスチック（アクリル）のうち、密度（1cm³あたりの質量）が最も大きいものはどれか。材料名で答えなさい。<span class="haiten">（知技 2点）</span></p>
+    <p>答え：<span class="ansline"></span></p>
+  </div>
+</div>
+
+<!-- ================= 大問2 ================= -->
+<div class="daimon">
+  <div class="daimon-head">
+    <span class="dn">2</span><span class="dt">木材の特性</span>
+    <span class="pts"><span class="chip chigi">知技</span> 2×8＋<span class="chip shihan">思判表</span> 3×3＝25点</span>
+  </div>
+
+  <div class="subq">
+    <p><span class="sq">問1</span>　下の図は、丸太から製材した木材の各部を表したものである。①〜⑥の名称を、あとの語群からそれぞれ選び、記号で答えなさい。<span class="haiten">（知技 2×6＝12点）</span></p>
+    <div class="fig">
+      <svg viewBox="0 0 640 300" width="640" height="300" role="img" aria-label="木材の各部の名称">
+        <defs>
+          <radialGradient id="rings2" cx="0.5" cy="0.5" r="0.5">
+            <stop offset="0" stop-color="#B98A4E"/><stop offset="0.45" stop-color="#C79A62"/>
+            <stop offset="0.46" stop-color="#E4C69A"/><stop offset="1" stop-color="#EBD3AC"/>
+          </radialGradient>
+        </defs>
+        <g transform="translate(20,60)">
+          <circle cx="90" cy="95" r="88" fill="url(#rings2)" stroke="#7C5A2E" stroke-width="2"/>
+          <g fill="none" stroke="#9A7440" stroke-width="1.3">
+            <circle cx="90" cy="95" r="72"/><circle cx="90" cy="95" r="56"/>
+            <circle cx="90" cy="95" r="40"/><circle cx="90" cy="95" r="25"/><circle cx="90" cy="95" r="12"/>
+          </g>
+          <circle cx="90" cy="95" r="40" fill="#B9834A" opacity="0.55"/>
+          <text x="90" y="212" text-anchor="middle" font-size="13" fill="#475569">丸太の断面（年輪）</text>
+          <line x1="90" y1="95" x2="180" y2="20" stroke="#334155" stroke-width="1.3"/>
+          <circle cx="90" cy="95" r="3" fill="#334155"/>
+          <circle cx="192" cy="14" r="11" fill="#1E3A8A"/><text x="192" y="19" text-anchor="middle" font-size="12" fill="#fff" font-weight="bold">①</text>
+          <line x1="160" y1="140" x2="205" y2="165" stroke="#334155" stroke-width="1.3"/>
+          <circle cx="160" cy="140" r="3" fill="#334155"/>
+          <circle cx="217" cy="170" r="11" fill="#1E3A8A"/><text x="217" y="175" text-anchor="middle" font-size="12" fill="#fff" font-weight="bold">②</text>
+        </g>
+        <g transform="translate(300,40)">
+          <text x="150" y="8" text-anchor="middle" font-size="13" fill="#475569">製材した板</text>
+          <polygon points="0,60 40,25 300,25 260,60" fill="#F0DCB8" stroke="#8B6534" stroke-width="1.5"/>
+          <polygon points="0,60 260,60 260,95 0,95" fill="#E3C795" stroke="#8B6534" stroke-width="1.5"/>
+          <polygon points="260,60 300,25 300,60 260,95" fill="#D2A96C" stroke="#8B6534" stroke-width="1.5"/>
+          <g fill="none" stroke="#8B6534" stroke-width="1">
+            <path d="M262,88 q22,-24 36,-56"/>
+            <path d="M268,90 q20,-20 30,-46"/>
+          </g>
+          <line x1="282" y1="60" x2="320" y2="45" stroke="#334155" stroke-width="1.3"/>
+          <circle cx="330" cy="42" r="11" fill="#1E3A8A"/><text x="330" y="47" text-anchor="middle" font-size="12" fill="#fff" font-weight="bold">③</text>
+          <line x1="130" y1="80" x2="130" y2="120" stroke="#334155" stroke-width="1.3"/>
+          <circle cx="130" cy="131" r="11" fill="#1E3A8A"/><text x="130" y="136" text-anchor="middle" font-size="12" fill="#fff" font-weight="bold">④</text>
+        </g>
+        <g transform="translate(330,190)">
+          <rect x="0" y="10" width="120" height="72" fill="#F0DCB8" stroke="#8B6534" stroke-width="1.5"/>
+          <g fill="none" stroke="#A97C42" stroke-width="1.6">
+            <path d="M10,82 q50,-88 100,-72 M22,82 q40,-64 80,-56 M36,82 q28,-44 58,-40 M52,82 q16,-26 34,-24"/>
+          </g>
+          <line x1="60" y1="10" x2="60" y2="-8" stroke="#334155" stroke-width="1.3"/>
+          <circle cx="60" cy="-16" r="11" fill="#1E3A8A"/><text x="60" y="-11" text-anchor="middle" font-size="12" fill="#fff" font-weight="bold">⑤</text>
+        </g>
+        <g transform="translate(495,190)">
+          <rect x="0" y="10" width="120" height="72" fill="#F0DCB8" stroke="#8B6534" stroke-width="1.5"/>
+          <g stroke="#A97C42" stroke-width="1.6">
+            <line x1="18" y1="10" x2="18" y2="82"/><line x1="38" y1="10" x2="38" y2="82"/>
+            <line x1="58" y1="10" x2="58" y2="82"/><line x1="78" y1="10" x2="78" y2="82"/>
+            <line x1="98" y1="10" x2="98" y2="82"/>
+          </g>
+          <line x1="60" y1="10" x2="60" y2="-8" stroke="#334155" stroke-width="1.3"/>
+          <circle cx="60" cy="-16" r="11" fill="#1E3A8A"/><text x="60" y="-11" text-anchor="middle" font-size="12" fill="#fff" font-weight="bold">⑥</text>
+        </g>
+      </svg>
+    </div>
+    <div class="gokun"><b>語群</b>ア：板目材　　イ：こぐち　　ウ：辺材　　エ：まさ目材　　オ：こば　　カ：心材</div>
+    <table class="ansgrid">
+      <tr><th>①</th><th>②</th><th>③</th><th>④</th><th>⑤</th><th>⑥</th></tr>
+      <tr><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+    </table>
+  </div>
+
+  <div class="subq">
+    <p><span class="sq">問2</span>　同じ大きさの木の板A・Bがある。Aは繊維方向が板の長さ方向に通っており、Bは繊維方向が力の方向と平行になっている。上から力を加えたとき、①強いのはどちらか。記号で答えなさい。また、②その板はもう一方の約何倍の強さか。数字で答えなさい。<span class="haiten">（知技 2×2＝4点）</span></p>
+    <p>① 記号：<span class="ansline" style="min-width:60px"></span>　　② 約<span class="ansline" style="min-width:60px"></span>倍</p>
+  </div>
+
+  <div class="subq">
+    <p><span class="sq">問3</span>　板目材は、乾燥すると木表側・木裏側のどちらに反るか。<span class="haiten">（思判表 3点）</span></p>
+    <p>答え：<span class="ansline"></span>側</p>
+  </div>
+
+  <div class="subq">
+    <p><span class="sq">問4</span>　乾燥による変形（反り）をできるだけ避けたい棚板を作るとき、板目材とまさ目材のどちらを選ぶとよいか。理由とともに答えなさい。<span class="haiten">（思判表 3点）</span></p>
+    <div class="kijutsu"></div>
+  </div>
+
+  <div class="subq">
+    <p><span class="sq">問5</span>　木材で作られた建物の中は、温度が変化しにくく、冬でも暖かいといわれる。その理由を、木材の内部の構造にふれて説明しなさい。<span class="haiten">（思判表 3点）</span></p>
+    <div class="kijutsu"></div>
+  </div>
+</div>
+
+<!-- ================= 大問3 ================= -->
+<div class="daimon">
+  <div class="daimon-head">
+    <span class="dn">3</span><span class="dt">金属の特性</span>
+    <span class="pts"><span class="chip chigi">知技</span> 2×8＋<span class="chip shihan">思判表</span> 3×3＝25点</span>
+  </div>
+
+  <div class="subq">
+    <p><span class="sq">問1</span>　金属の性質について、次の①〜④の説明にあてはまる用語を、あとの語群からそれぞれ選び、記号で答えなさい。<span class="haiten">（知技 2×4＝8点）</span></p>
+    <ol class="abc">
+      <li>① 加えた力を除くと、元に戻る性質。</li>
+      <li>② 力を除いても変形したまま、元に戻らない性質。</li>
+      <li>③ たたくと広がり、薄くなる性質。</li>
+      <li>④ 引っ張ると、延びて細く長くなる性質。</li>
+    </ol>
+    <div class="gokun"><b>語群</b>ア：延性　　イ：弾性　　ウ：展性　　エ：塑性</div>
+    <table class="ansgrid" style="width:70%">
+      <tr><th>①</th><th>②</th><th>③</th><th>④</th></tr>
+      <tr><td></td><td></td><td></td><td></td></tr>
+    </table>
+  </div>
+
+  <div class="subq">
+    <p><span class="sq">問2</span>　鋼の熱処理について、次の①〜③にあてはまる熱処理の名前を答えなさい。<span class="haiten">（知技 2×3＝6点）</span></p>
+    <ol class="abc">
+      <li>① 鋼を高温に加熱して、水や油の中で急に常温まで冷やす。→ 硬く、もろくなる。</li>
+      <li>② ①をした鋼を、①より低い温度で再加熱し、油や空気中で冷やす。→ 粘り強くなる。</li>
+      <li>③ 鋼を適切な温度に加熱し、炉の中でゆっくり冷やす。→ 軟らかくなる。</li>
+    </ol>
+    <p>①<span class="ansline"></span>　②<span class="ansline"></span>　③<span class="ansline"></span></p>
+  </div>
+
+  <div class="subq">
+    <p><span class="sq">問3</span>　私たちがふだん「鉄」とよぶ金属の多くは、鋼とよばれる合金である。鋼は、鉄に何を加えた合金か。<span class="haiten">（知技 2点）</span></p>
+    <p>答え：<span class="ansline"></span></p>
+  </div>
+
+  <div class="subq">
+    <p><span class="sq">問4</span>　次の①〜③に答えなさい。<span class="haiten">（思判表 3×3＝9点）</span></p>
+    <p>① 台所の流し台には、鉄にクロムやニッケルを添加した合金が使われている。この合金の名前と、この合金が流し台に向いている理由を簡単に答えなさい。</p>
+    <div class="kijutsu"></div>
+    <p>② スパナなどの工具は、焼き入れの後に焼き戻しを行って作られる。焼き戻しを行う理由を、焼き入れだけの場合の欠点にふれて説明しなさい。</p>
+    <div class="kijutsu"></div>
+    <p>③ 金切りばさみで金属の薄板を切るとき、切り進んだら切り離した部分を上に引き上げるとよい。その理由を、金属の性質の名前を使って説明しなさい。</p>
+    <div class="kijutsu"></div>
+  </div>
+</div>
+
+<!-- ================= 大問4 ================= -->
+<div class="daimon">
+  <div class="daimon-head">
+    <span class="dn">4</span><span class="dt">プラスチックの特性</span>
+    <span class="pts"><span class="chip chigi">知技</span> 2×6＋<span class="chip shihan">思判表</span> 3×1＝15点</span>
+  </div>
+
+  <div class="subq">
+    <p><span class="sq">問1</span>　プラスチックについて、次の文が正しければ○、間違っていれば×を書きなさい。<span class="haiten">（知技 2×4＝8点）</span></p>
+    <ol class="abc">
+      <li>① プラスチックは一般に、熱や電気を通しにくい。</li>
+      <li>② 熱可塑性プラスチックは、一度固まると加熱しても軟化しない。</li>
+      <li>③ プラスチックは着色が容易で、型を使った大量生産が可能である。</li>
+      <li>④ プラスチックの強さや硬さ、耐熱性は、金属ほど大きくない。</li>
+    </ol>
+    <table class="ansgrid" style="width:70%">
+      <tr><th>①</th><th>②</th><th>③</th><th>④</th></tr>
+      <tr><td></td><td></td><td></td><td></td></tr>
+    </table>
+  </div>
+
+  <div class="subq">
+    <p><span class="sq">問2</span>　次の①・②の製品に使われているプラスチックは、熱可塑性プラスチック・熱硬化性プラスチックのどちらか。それぞれ答えなさい。<span class="haiten">（知技 2×2＝4点）</span></p>
+    <ol class="abc">
+      <li>① ペットボトルの容器（PET樹脂）</li>
+      <li>② フライパンや鍋の取っ手（フェノール樹脂）</li>
+    </ol>
+    <p>①<span class="ansline wide"></span>　②<span class="ansline wide"></span></p>
+  </div>
+
+  <div class="subq">
+    <p><span class="sq">問3</span>　生分解性プラスチックとはどのようなプラスチックか、簡単に説明しなさい。<span class="haiten">（思判表 3点）</span></p>
+    <div class="kijutsu"></div>
+  </div>
+</div>
+
+<!-- ================= 大問5 ================= -->
+<div class="daimon">
+  <div class="daimon-head">
+    <span class="dn">5</span><span class="dt">丈夫な製品を作る工夫</span>
+    <span class="pts"><span class="chip chigi">知技</span> 2×3＋<span class="chip shihan">思判表</span> 3×3＝15点</span>
+  </div>
+
+  <div class="subq">
+    <p><span class="sq">問1</span>　下の図①〜③は、構造を強くする方法を表したものである。それぞれの名称を、あとの語群から選び、記号で答えなさい。<span class="haiten">（知技 2×3＝6点）</span></p>
+    <div class="fig">
+      <svg viewBox="0 0 620 190" width="620" height="190" role="img" aria-label="構造を強くする方法">
+        <g transform="translate(20,25)">
+          <rect x="10" y="10" width="130" height="110" fill="none" stroke="#8B6534" stroke-width="10"/>
+          <line x1="16" y1="114" x2="134" y2="16" stroke="#D97706" stroke-width="9"/>
+          <circle cx="75" cy="-2" r="13" fill="#1E3A8A"/><text x="75" y="3" text-anchor="middle" font-size="13" fill="#fff" font-weight="bold">①</text>
+          <text x="75" y="150" text-anchor="middle" font-size="12.5" fill="#475569">枠に斜め材を入れる</text>
+        </g>
+        <g transform="translate(230,25)">
+          <rect x="10" y="10" width="130" height="110" fill="#F0DCB8" stroke="#8B6534" stroke-width="4"/>
+          <g fill="#475569">
+            <circle cx="22" cy="22" r="2.5"/><circle cx="75" cy="22" r="2.5"/><circle cx="128" cy="22" r="2.5"/>
+            <circle cx="22" cy="65" r="2.5"/><circle cx="128" cy="65" r="2.5"/>
+            <circle cx="22" cy="108" r="2.5"/><circle cx="75" cy="108" r="2.5"/><circle cx="128" cy="108" r="2.5"/>
+          </g>
+          <circle cx="75" cy="-2" r="13" fill="#1E3A8A"/><text x="75" y="3" text-anchor="middle" font-size="13" fill="#fff" font-weight="bold">②</text>
+          <text x="75" y="150" text-anchor="middle" font-size="12.5" fill="#475569">面を板で固定する</text>
+        </g>
+        <g transform="translate(440,25)">
+          <rect x="10" y="10" width="130" height="110" fill="none" stroke="#8B6534" stroke-width="10"/>
+          <g fill="#94A3B8" stroke="#475569" stroke-width="1.5">
+            <path d="M16,16 h30 v12 h-18 v18 h-12 z"/>
+            <path d="M134,16 h-30 v12 h18 v18 h12 z"/>
+            <path d="M16,114 h30 v-12 h-18 v-18 h-12 z"/>
+            <path d="M134,114 h-30 v-12 h18 v-18 h12 z"/>
+          </g>
+          <circle cx="75" cy="-2" r="13" fill="#1E3A8A"/><text x="75" y="3" text-anchor="middle" font-size="13" fill="#fff" font-weight="bold">③</text>
+          <text x="75" y="150" text-anchor="middle" font-size="12.5" fill="#475569">角を金具などで固定する</text>
+        </g>
+      </svg>
+    </div>
+    <div class="gokun"><b>語群</b>ア：面構造　　イ：接合部の固定　　ウ：三角形の構造</div>
+    <table class="ansgrid" style="width:60%">
+      <tr><th>①</th><th>②</th><th>③</th></tr>
+      <tr><td></td><td></td><td></td></tr>
+    </table>
+  </div>
+
+  <div class="subq">
+    <p><span class="sq">問2</span>　断面が幅1×高さ1の木材Ⓐが耐えられる力を1とする。次の①・②はそれぞれⒶの何倍の力に耐えられるか。数字で答えなさい。<span class="haiten">（思判表 3×2＝6点）</span></p>
+    <ol class="abc">
+      <li>① Ⓐと同じ高さで、幅だけを2倍にした木材Ⓑ</li>
+      <li>② Ⓐと同じ幅で、高さだけを2倍にした木材Ⓒ</li>
+    </ol>
+    <p>①<span class="ansline" style="min-width:60px"></span>倍　　②<span class="ansline" style="min-width:60px"></span>倍</p>
+  </div>
+
+  <div class="subq">
+    <p><span class="sq">問3</span>　本棚の裏側に張られているうすい板（背板）が、本棚を丈夫にする理由を、「構造」という言葉を使って説明しなさい。<span class="haiten">（思判表 3点）</span></p>
+    <div class="kijutsu"></div>
+  </div>
+</div>
+
+<p style="text-align:center;color:var(--sub);font-size:13px;margin:24px 0">— 問題はここまでです。見直しをしましょう —</p>
+
+<!-- ================= 解答・解説 ================= -->
+<div class="mock-answers" id="mockAnswers">
+<div class="answers-title">
+  <h2>模擬テスト 解答・解説</h2>
+  <p>配点どおりに自己採点しよう。記述は「キーワード」が入っていれば正解。</p>
+</div>
+
+<div class="goukaku">
+  <b>得点の目安</b>：95〜100点＝仕上がり◎ そのまま本番へ ／ 85〜94点＝間違えた単元だけ問題集をもう1周 ／ 84点以下＝問題集の★★★を総復習してから再挑戦
+</div>
+
+<div class="ans-item">
+  <div class="head">大問1　材料と加工の基礎（20点）</div>
+  <p><span class="a">問1　①ウ（木材）　②ア（金属）　③カ（プラスチック）　④エ（コンクリート）　⑤イ（ゴム）</span>（各2点）</p>
+  <p><span class="a">問2　加工</span>（2点）</p>
+  <p><span class="a">問3　①ウ（切断・切削）　②ア（変形）　③イ（接合）</span>（各2点）　「切る・削る＝切断・切削」「曲げる＝変形」「くっつける＝接合」。</p>
+  <p><span class="a">問4　金属（鉄）</span>（2点）　密度はスギ0.38＜アクリル1.18＜鉄7.87 g/cm³。</p>
+</div>
+
+<div class="ans-item">
+  <div class="head">大問2　木材の特性（25点）</div>
+  <p><span class="a">問1　①カ（心材）　②ウ（辺材）　③イ（こぐち）　④オ（こば）　⑤ア（板目材）　⑥エ（まさ目材）</span>（各2点）</p>
+  <p class="exp">①中心側の色が濃い部分＝心材、②樹皮側＝辺材。③切り口の面＝こぐち、④細長い側面＝こば。⑤山形（タケノコ形）の木目＝板目材、⑥まっすぐ平行な木目＝まさ目材。</p>
+  <p><span class="a">問2　①A　②約10倍</span>（各2点）　繊維方向が板の長さ方向に通っている板が強い。</p>
+  <p><span class="a">問3　木表側</span>（3点）　板目材は木表側（樹皮に近い側）に反る。</p>
+  <p><span class="a">問4　（例）まさ目材。板目材よりも乾燥による変形（反り）が小さいから。</span>（3点：「まさ目材」1点＋理由2点）</p>
+  <p><span class="a">問5　（例）木材は多数の管状の細胞が並んだ構造をしていて、細胞の空間に含まれる空気によって熱が伝わりにくいから。</span>（3点：キーワード「管状の細胞」「空気」「熱が伝わりにくい」のうち2つ以上で満点）</p>
+  <div class="memo"><b>覚え方</b>：収縮率は「接線10：半径5：繊維0.5〜1」。反りは「表向きにおじぎ」＝木表側。</div>
+</div>
+
+<div class="ans-item">
+  <div class="head">大問3　金属の特性（25点）</div>
+  <p><span class="a">問1　①イ（弾性）　②エ（塑性）　③ウ（展性）　④ア（延性）</span>（各2点）</p>
+  <p class="exp">弾＝バネで戻る／塑＝粘土で残る／展＝展開して広がる／延＝延長して延びる。展性・延性は塑性の一種。</p>
+  <p><span class="a">問2　①焼き入れ　②焼き戻し　③焼きなまし</span>（各2点）　「入れて硬く、戻して粘る、なまして軟らか」。</p>
+  <p><span class="a">問3　炭素</span>（2点）　鋼＝鉄＋炭素の合金。</p>
+  <p><span class="a">問4①　（例）ステンレス。さびにくいから。</span>（3点：名前1点＋理由2点）</p>
+  <p><span class="a">問4②　（例）焼き入れだけでは硬いがもろい（欠けやすい）ので、焼き戻しをして粘り強くするため。</span>（3点：「もろい」＋「粘り強く」で満点）</p>
+  <p><span class="a">問4③　（例）切り離した部分を引き上げると、元に戻ろうとする弾性が働き、切りやすくなるから。</span>（3点：「弾性」の語があれば満点）</p>
+</div>
+
+<div class="ans-item">
+  <div class="head">大問4　プラスチックの特性（15点）</div>
+  <p><span class="a">問1　①○　②×　③○　④○</span>（各2点）</p>
+  <p class="exp">②加熱しても軟化しないのは<b>熱硬化性</b>。熱可塑性は加熱すると軟化して溶ける（鎖状の分子がほどけるため）。</p>
+  <p><span class="a">問2　①熱可塑性プラスチック　②熱硬化性プラスチック</span>（各2点）　熱いものに触れる取っ手＝溶けたら困る＝熱硬化性。</p>
+  <p><span class="a">問3　（例）土や水の中にいるバクテリアによって分解されるプラスチック。</span>（3点：「バクテリア」「分解」で満点。利用例：育苗ポットなど）</p>
+</div>
+
+<div class="ans-item">
+  <div class="head">大問5　丈夫な製品を作る工夫（15点）</div>
+  <p><span class="a">問1　①ウ（三角形の構造）　②ア（面構造）　③イ（接合部の固定）</span>（各2点）</p>
+  <p><span class="a">問2　①2倍　②4倍</span>（各3点）　曲げ強さは幅に比例、高さは2乗で効く（1：2：4）。</p>
+  <p><span class="a">問3　（例）面を板で固定する面構造になり、補強の効果が大きく、横からの力による変形を防げるから。</span>（3点：「面構造」の語があれば満点）</p>
+  <div class="memo"><b>覚え方</b>：「三角は最強の形」「幅はそのまま、高さは2乗」。定規は縦にすると曲がらない！</div>
+</div>
+</div><!-- /.mock-answers -->
+
+</div><!-- /.page -->
+
+<script>
+function toggleAnswers(){
+  var a = document.getElementById('mockAnswers');
+  var b = document.getElementById('ansbtn');
+  a.classList.toggle('open');
+  b.textContent = a.classList.contains('open') ? '解答・解説を隠す' : '解答・解説を表示';
+  if(a.classList.contains('open')){ a.scrollIntoView({behavior:'smooth'}); }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,1788 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>技術 夏テスト予想問題集 2026（材料と加工の技術）</title>
+<style>
+:root{
+  --blue:#2563EB; --blue-d:#1D4ED8; --blue-bg:#DBEAFE;
+  --orange:#F97316; --orange-bg:#FFF7ED;
+  --red:#DC2626; --green:#16A34A; --green-bg:#F0FDF4;
+  --purple:#6D28D9; --purple-bg:#EDE9FE;
+  --ink:#1E293B; --sub:#475569; --line:#CBD5E1; --line-soft:#E2E8F0;
+  --bg:#F1F5F9; --card:#FFFFFF;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{
+  font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Yu Gothic Medium","Yu Gothic",Meiryo,sans-serif;
+  color:var(--ink); background:var(--bg); line-height:1.75; font-size:15px;
+  -webkit-text-size-adjust:100%;
+}
+.page{max-width:840px;margin:0 auto;padding:20px 16px 60px}
+
+/* ===== 表紙 ===== */
+.cover{
+  background:linear-gradient(135deg,#1E3A8A 0%,#2563EB 55%,#3B82F6 100%);
+  color:#fff;border-radius:16px;padding:34px 30px;margin-bottom:22px;
+}
+.cover .tag{display:inline-block;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.4);
+  border-radius:999px;padding:3px 14px;font-size:12.5px;letter-spacing:.08em;margin-bottom:14px}
+.cover h1{margin:0 0 6px;font-size:27px;line-height:1.4}
+.cover .sub{font-size:14px;opacity:.92;margin:0}
+.cover .meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.cover .meta span{background:rgba(255,255,255,.14);border-radius:8px;padding:4px 12px;font-size:12.5px}
+
+/* ===== 共通見出し ===== */
+h2.unit{
+  display:flex;align-items:center;gap:10px;font-size:19px;margin:34px 0 6px;
+  padding:10px 14px;background:var(--card);border-left:6px solid var(--blue);
+  border-radius:8px;box-shadow:0 1px 3px rgba(15,23,42,.08);
+}
+h2.unit .no{
+  background:var(--blue);color:#fff;border-radius:8px;min-width:52px;text-align:center;
+  font-size:12.5px;padding:3px 8px;flex-shrink:0;
+}
+h2.unit .pg{font-size:12px;color:var(--sub);font-weight:normal;margin-left:auto;flex-shrink:0}
+.unit-lead{font-size:13px;color:var(--sub);margin:0 4px 14px}
+
+/* ===== 問題カード ===== */
+.q{
+  background:var(--card);border:1px solid var(--line-soft);border-radius:12px;
+  padding:16px 18px 14px;margin:14px 0;box-shadow:0 1px 2px rgba(15,23,42,.05);
+  break-inside:avoid;page-break-inside:avoid;
+}
+.q-head{display:flex;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:8px}
+.qnum{font-weight:800;color:var(--blue-d);font-size:16px}
+.stars{font-size:13px;font-weight:700;letter-spacing:.1em}
+.stars.s3{color:var(--red)}
+.stars.s2{color:var(--orange)}
+.stars.s1{color:#64748B}
+.chip{font-size:11px;border-radius:999px;padding:2px 10px;font-weight:600;white-space:nowrap}
+.chip.chigi{background:var(--blue-bg);color:var(--blue-d)}
+.chip.shihan{background:var(--purple-bg);color:var(--purple)}
+.chip.kata{background:#F1F5F9;color:var(--sub);border:1px solid var(--line-soft)}
+.chip.pgc{background:#FFFBEB;color:#92400E;border:1px solid #FDE68A;margin-left:auto}
+.ans-item .pgx{color:#92400E;font-size:10.5px;font-weight:600;margin-left:6px}
+.q-body p{margin:6px 0}
+.q-body ol.abc{margin:6px 0;padding-left:10px;list-style:none}
+.q-body ol.abc li{margin:3px 0}
+.choices{margin:8px 0 4px;padding:0;list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:4px 16px}
+.choices li{padding:2px 0}
+.choices.one-col{grid-template-columns:1fr}
+.gokun{
+  border:1.5px dashed var(--line);border-radius:10px;background:#F8FAFC;
+  padding:8px 14px;margin:10px 0;font-size:14px;
+}
+.gokun b{color:var(--blue-d);font-size:12px;display:block;margin-bottom:2px}
+.note{font-size:12.5px;color:var(--sub)}
+
+/* ===== 図版 ===== */
+.fig{margin:12px auto;text-align:center;max-width:100%;overflow-x:auto}
+.fig svg{max-width:100%;height:auto}
+.fig .cap{font-size:12px;color:var(--sub);margin-top:2px}
+
+/* ===== 解答トグル（画面のみ）===== */
+.toggle-btn{
+  display:inline-flex;align-items:center;gap:6px;cursor:pointer;
+  background:var(--green-bg);color:#15803D;border:1.5px solid #86EFAC;
+  border-radius:999px;padding:5px 16px;font-size:13px;font-weight:700;margin-top:10px;
+  transition:background .2s;
+}
+.toggle-btn:hover{background:#DCFCE7}
+.ans-panel{display:none;margin-top:10px;background:var(--green-bg);border-left:4px solid var(--green);
+  border-radius:0 10px 10px 0;padding:10px 14px;font-size:14px}
+.ans-panel.open{display:block}
+.ans-panel .a{font-weight:800;color:#15803D}
+.ans-panel .exp{margin-top:4px}
+.memo{
+  background:var(--orange-bg);border-left:4px solid var(--orange);border-radius:0 10px 10px 0;
+  padding:8px 12px;margin-top:8px;font-size:13.5px;
+}
+.memo b{color:#C2410C}
+
+/* ===== 書き込み欄（印刷時のみ表示）===== */
+.write{display:none}
+.write .wline{border-bottom:1px solid #94A3B8;height:9mm}
+.write.small .wline{height:8mm}
+
+/* ===== 単元マップ ===== */
+table.map{width:100%;border-collapse:collapse;background:var(--card);border-radius:12px;overflow:hidden;
+  box-shadow:0 1px 3px rgba(15,23,42,.08);font-size:13.5px;margin:12px 0}
+table.map th{background:#1E3A8A;color:#fff;padding:8px 10px;font-size:12.5px;text-align:left;white-space:nowrap}
+table.map td{padding:8px 10px;border-top:1px solid var(--line-soft);vertical-align:top}
+table.map td.imp{white-space:nowrap;font-weight:700}
+table.map tr.hot td{background:#FFF8F3}
+
+.howto{
+  background:var(--card);border:1.5px solid var(--blue-bg);border-radius:12px;
+  padding:14px 18px;margin:16px 0;font-size:14px;
+}
+.howto h3{margin:0 0 8px;font-size:15px;color:var(--blue-d)}
+.howto ol{margin:0;padding-left:22px}
+.howto li{margin:4px 0}
+
+/* ===== 巻末解答 ===== */
+.answers-title{
+  page-break-before:always;break-before:page;
+  background:linear-gradient(135deg,#14532D,#16A34A);color:#fff;border-radius:14px;
+  padding:20px 24px;margin:40px 0 18px;
+}
+.answers-title h2{margin:0;font-size:22px}
+.answers-title p{margin:4px 0 0;font-size:13px;opacity:.92}
+.ans-item{
+  background:var(--card);border:1px solid var(--line-soft);border-radius:12px;
+  padding:12px 16px;margin:10px 0;font-size:14px;break-inside:avoid;page-break-inside:avoid;
+}
+.ans-item .head{font-weight:800;color:#15803D;margin-bottom:2px}
+.ans-item .head .qq{color:var(--blue-d);margin-right:8px}
+.ans-item .exp{margin:2px 0}
+
+/* ===== 全体操作バー（画面のみ）===== */
+.ctrl{
+  position:sticky;top:8px;z-index:50;display:flex;gap:8px;justify-content:flex-end;
+  margin:0 0 8px;
+}
+.ctrl button{
+  cursor:pointer;border:1.5px solid var(--line);background:#fff;color:var(--sub);
+  border-radius:999px;padding:6px 14px;font-size:12.5px;font-weight:700;
+  box-shadow:0 1px 4px rgba(15,23,42,.12);transition:all .2s;
+}
+.ctrl button:hover{border-color:var(--blue);color:var(--blue-d)}
+
+/* ===== 印刷 ===== */
+@page{size:A4 portrait;margin:13mm 11mm}
+@media print{
+  body{background:#fff;font-size:10.5pt;line-height:1.65}
+  .page{max-width:none;padding:0}
+  .cover{border-radius:8px;padding:22px 24px;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .ctrl,.toggle-btn,.ans-panel{display:none!important}
+  .write{display:block;margin-top:8px}
+  .q{box-shadow:none;margin:9px 0;padding:12px 14px 10px}
+  h2.unit{box-shadow:none;page-break-after:avoid;margin-top:20px}
+  table.map th{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .answers-title,.chip,.stars,.memo,.gokun,.ans-item{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .fig svg{max-height:none}
+  a{color:inherit;text-decoration:none}
+}
+@media (max-width:480px){
+  body{font-size:14.5px}
+  .cover h1{font-size:22px}
+  .choices{grid-template-columns:1fr}
+}
+/* ===== 印刷圧縮（ページ数削減・見やすさ維持）===== */
+@media print{
+  body{font-size:9.8pt;line-height:1.55}
+  .cover{padding:16px 20px;margin-bottom:12px}
+  .cover h1{font-size:20px}
+  .cover .sub{font-size:11px}
+  .howto{padding:8px 14px;margin:8px 0;font-size:9.5pt}
+  .howto li{margin:2px 0}
+  table.map{font-size:9pt;margin:8px 0}
+  table.map th,table.map td{padding:4px 8px}
+  h2.unit{margin:12px 0 3px;padding:5px 10px;font-size:14.5px}
+  .unit-lead{margin:0 4px 7px;font-size:9pt}
+  .q{margin:5px 0;padding:8px 12px 7px;border-radius:8px}
+  .q-head{margin-bottom:4px;gap:6px}
+  .q-body p{margin:3px 0}
+  .q-body ol.abc{margin:3px 0}
+  .q-body ol.abc li{margin:1px 0}
+  .choices{gap:2px 12px;margin:4px 0 2px}
+  .gokun{padding:4px 10px;margin:5px 0}
+  .fig{margin:5px auto}
+  .fig svg{max-width:82%}
+  .write{margin-top:3px}
+  .write .wline{height:7mm}
+  .answers-title{padding:12px 18px;margin:16px 0 10px;border-radius:10px}
+  .answers-title h2{font-size:17px}
+  .answers-title p{font-size:10.5px}
+  #answers-container{column-count:2;column-gap:7mm}
+  .ans-item{margin:0 0 3mm;padding:7px 10px;font-size:9pt;border-radius:8px}
+  .ans-item .exp{margin:1px 0}
+  .ans-item .head{font-size:10pt}
+  .memo{padding:4px 8px;margin-top:4px;font-size:8.5pt}
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+<div class="ctrl">
+  <button onclick="toggleAll(true)">すべての解答を表示</button>
+  <button onclick="toggleAll(false)">すべて隠す</button>
+  <button onclick="window.print()">印刷 / PDF</button>
+</div>
+
+<div class="cover">
+  <span class="tag">2026年 夏テスト対策</span>
+  <h1>技術 予想問題集<br>「材料と加工の技術」</h1>
+  <p class="sub">テスト範囲：教科書 p.26〜37・p.52〜53　｜　全64問（単元別・重要度つき）＋巻末解答解説</p>
+  <div class="meta">
+    <span>目標：95〜100点</span>
+    <span>1周目 約2時間</span>
+    <span>2周目は間違えた問題＋★★★だけでOK</span>
+  </div>
+</div>
+
+<div class="howto">
+  <h3>この問題集の使い方</h3>
+  <ol>
+    <li><b>★★★（必出）</b>＝テストに出る可能性がとても高い基本事項。まずここを完璧に。</li>
+    <li><b>★★（よく出る）</b>＝差がつく標準問題。95点以上にはここまで必要。</li>
+    <li><b>★（応用・ひっかけ）</b>＝満点を阻む問題。仕上げに挑戦。</li>
+    <li>画面では「解答を見る」をタップ。印刷すると解答欄つきのテスト形式になり、答えは巻末にまとまります。</li>
+    <li>問題番号の横のタグは学校テストの観点：<span class="chip chigi">知技</span>=知識・技能、<span class="chip shihan">思判表</span>=思考・判断・表現。</li>
+  </ol>
+</div>
+
+<h2 class="unit" style="border-left-color:#1E3A8A"><span class="no" style="background:#1E3A8A">MAP</span>単元別 重要度マップ</h2>
+<p class="unit-lead">テスト範囲全体の「どこが狙われやすいか」一覧。★★★の単元から仕上げよう。</p>
+<table class="map">
+<thead><tr><th>単元（教科書ページ）</th><th>重要度</th><th>問題</th><th>最重要ポイント</th></tr></thead>
+<tbody>
+<tr><td>1. 材料と加工の基礎（p.26〜29）</td><td class="imp" style="color:#DC2626">★★★</td><td>問1〜8</td><td>材料と用途の組み合わせ／加工の3種類（切断・切削、変形、接合）</td></tr>
+<tr><td>2. 材料の特性と加工方法（p.30〜31）</td><td class="imp" style="color:#F97316">★★</td><td>問9〜16</td><td>密度の比較（スギ・鉄・アクリル）／材料ごとの加工特性</td></tr>
+<tr class="hot"><td>3. 木材の特性（p.32）</td><td class="imp" style="color:#DC2626">★★★</td><td>問17〜28</td><td><b>図問題の本命。</b>各部の名称（こぐち・こば・木表・木裏・板目・まさ目）／繊維方向と強度（約10倍）／収縮率10:5:0.5〜1／板目材は木表側に反る</td></tr>
+<tr><td>4. 木質材料（p.33）</td><td class="imp" style="color:#F97316">★★</td><td>問29〜36</td><td>合板（奇数枚・繊維方向直交）／集成材・パーティクルボード・ファイバーボードの区別</td></tr>
+<tr class="hot"><td>5. 金属の特性（p.34〜35）</td><td class="imp" style="color:#DC2626">★★★</td><td>問37〜48</td><td>弾性・塑性・展性・延性の区別／熱処理（焼き入れ・焼き戻し・焼きなまし）／合金（鋼・ステンレス）</td></tr>
+<tr><td>6. プラスチックの特性（p.36〜37）</td><td class="imp" style="color:#DC2626">★★★</td><td>問49〜56</td><td>熱可塑性（鎖状分子）と熱硬化性（網目状分子）の区別と具体例</td></tr>
+<tr class="hot"><td>7. 丈夫な製品を作る工夫（p.52〜53）</td><td class="imp" style="color:#DC2626">★★★</td><td>問57〜64</td><td>三角形の構造・面構造・接合部の固定／断面形状と曲げ強さ（1:2:4）</td></tr>
+</tbody>
+</table>
+
+<!-- ================= 単元1 ================= -->
+<h2 class="unit"><span class="no">単元1</span>材料と加工の基礎<span class="pg">教科書 p.26〜29</span></h2>
+<p class="unit-lead">「どの材料が何に使われるか」「加工には何があるか」。テストの導入問題として最も出やすいところ。</p>
+
+<div class="q">
+  <div class="q-head"><span class="qnum">問1</span><span class="stars s3">★★★</span><span class="chip chigi">知技</span><span class="chip kata">記号</span><span class="chip pgc">教科書p.28</span></div>
+  <div class="q-body">
+    <p>材料と用途例の組み合わせとして<b>誤っているもの</b>を、次のア〜キから<b>2つ</b>選び、記号で答えなさい。</p>
+    <ul class="choices">
+      <li>ア　木材 ― 家具、住宅、箸（食器）</li>
+      <li>イ　金属 ― 刃物、自動車、缶</li>
+      <li>ウ　プラスチック ― ペットボトル、保冷箱</li>
+      <li>エ　ガラス ― タイヤ、靴の底</li>
+      <li>オ　コンクリート ― ダム、橋脚</li>
+      <li>カ　セラミックス ― 食器類</li>
+      <li>キ　ゴム ― 窓、コップ</li>
+    </ul>
+  </div>
+  <div class="write"><div class="wline"></div></div>
+  <button class="toggle-btn" onclick="tg(this)">解答を見る</button>
+  <div class="ans-panel"><span class="a">答え：エ・キ</span>
+    <p class="exp">タイヤ・靴の底は<b>ゴム</b>、窓・コップは<b>ガラス</b>。エとキの用途が入れかわっている。</p>
+    <div class="memo"><b>覚え方</b>：材料7種は「<b>木・金・プ・ガ・コ・セ・ゴ</b>」でセット暗記。まぎらわしいのは「コンクリート=ダム・橋脚（巨大な土木）」「セラミックス=食器類」。</div>
+  </div>
+</div>
+
+<div class="q">
+  <div class="q-head"><span class="qnum">問2</span><span class="stars s3">★★★</span><span class="chip chigi">知技</span><span class="chip kata">語句</span><span class="chip pgc">教科書p.29</span></div>
+  <div class="q-body">
+    <p>製品を作るために、材料を目的の大きさや形に変えたり、組み立てたりすることを何というか。漢字2字で答えなさい。</p>
+  </div>
+  <div class="write"><div class="wline"></div></div>
+  <button class="toggle-btn" onclick="tg(this)">解答を見る</button>
+  <div class="ans-panel"><span class="a">答え：加工</span>
+    <p class="exp">教科書の太字用語。「材料と<b>加工</b>の技術」という編の名前にも入っている最重要語。</p>
+  </div>
+</div>
+
+<div class="q">
+  <div class="q-head"><span class="qnum">問3</span><span class="stars s3">★★★</span><span class="chip chigi">知技</span><span class="chip kata">語群</span><span class="chip pgc">教科書p.29</span></div>
+  <div class="q-body">
+    <p>学校の机が作られるときの次の①〜③の作業は、加工のうちどれにあたるか。あとの語群からそれぞれ選び、記号で答えなさい。</p>
+    <ol class="abc">
+      <li>① 天板の形・大きさに合わせて、木材を切り、削って整える。</li>
+      <li>② 機械で、金属の棒を机の脚の形に曲げる。</li>
+      <li>③ 天板と物入れ、脚の部分などをくっつけて固定する。</li>
+    </ol>
+    <div class="gokun"><b>語群</b>ア：接合　　イ：切断・切削　　ウ：変形</div>
+  </div>
+  <div class="write"><div class="wline"></div></div>
+  <button class="toggle-btn" onclick="tg(this)">解答を見る</button>
+  <div class="ans-panel"><span class="a">答え：①イ　②ウ　③ア</span>
+    <p class="exp">加工は大きく<b>「切断・切削」「変形」「接合」</b>の3つ。切る・削る＝切断・切削、曲げる＝変形、つなぐ＝接合。</p>
+    <div class="memo"><b>覚え方</b>：「<b>切って・曲げて・つなぐ</b>」の3ステップで机ができる、とイメージ。</div>
+  </div>
+</div>
+
+<div class="q">
+  <div class="q-head"><span class="qnum">問4</span><span class="stars s2">★★</span><span class="chip chigi">知技</span><span class="chip kata">語句</span><span class="chip pgc">教科書p.28</span></div>
+  <div class="q-body">
+    <p>学校の机では、使われる場所によって材料が使い分けられている。次の①〜③の部分に使われている材料をそれぞれ答えなさい。</p>
+    <ol class="abc">
+      <li>① 天板</li>
+      <li>② 脚・フック</li>
+      <li>③ 物入れ・脚の先</li>
+    </ol>
+  </div>
+  <div class="write"><div class="wline"></div></div>
+  <button class="toggle-btn" onclick="tg(this)">解答を見る</button>
+  <div class="ans-panel"><span class="a">答え：①木材　②金属　③プラスチック</span>
+    <p class="exp">使われる場所や使われ方によって、求められる特性が違うので材料も変わる。</p>
+    <div class="memo"><b>覚え方</b>：書く面はあたたかい<b>木</b>、体を支える骨組みは強い<b>金属</b>、軽くて成形しやすい小物は<b>プラスチック</b>。</div>
+  </div>
+</div>
+
+<div class="q">
+  <div class="q-head"><span class="qnum">問5</span><span class="stars s2">★★</span><span class="chip shihan">思判表</span><span class="chip kata">記述</span><span class="chip pgc">教科書p.28</span></div>
+  <div class="q-body">
+    <p>身の回りの製品の材料は、今ある材料の中から選ばれたり、新たな材料が開発されたりしている。このとき考える必要がある要素を<b>2つ</b>答えなさい。</p>
+  </div>
+  <div class="write"><div class="wline"></div><div class="wline"></div></div>
+  <button class="toggle-btn" onclick="tg(this)">解答を見る</button>
+  <div class="ans-panel"><span class="a">答え（例）：製品に求められる機能／強度や耐久性／安全性／費用／入手のしやすさ／製品の作りやすさ／環境への負荷　から2つ</span>
+    <p class="exp">教科書p.28の本文。どれか2つ書ければ正解。「値段が安いから」だけでなく<b>複数の条件のバランス</b>で選ばれる、が本質。</p>
+    <div class="memo"><b>覚え方</b>：「<b>き・きょう・あん・ひ・にゅう・つく・かん</b>」＝機能・強度(耐久性)・安全・費用・入手・作りやすさ・環境。</div>
+  </div>
+</div>
+
+<div class="q">
+  <div class="q-head"><span class="qnum">問6</span><span class="stars s2">★★</span><span class="chip chigi">知技</span><span class="chip kata">記号</span><span class="chip pgc">教科書p.26</span></div>
+  <div class="q-body">
+    <p>技術の「見方・考え方」には、社会・安全・環境・経済の4つの視点がある。次の①〜④の問いかけはどの視点にあたるか。あとの語群から選び、記号で答えなさい。</p>
+    <ol class="abc">
+      <li>① 環境への負荷は少ないかな？</li>
+      <li>② 製造するときの費用は？</li>
+      <li>③ 使用するときの安全性は？</li>
+      <li>④ 災害時などまさかのときは？</li>
+    </ol>
+    <div class="gokun"><b>語群</b>ア：社会　　イ：安全　　ウ：環境　　エ：経済</div>
+  </div>
+  <div class="write"><div class="wline"></div></div>
+  <button class="toggle-btn" onclick="tg(this)">解答を見る</button>
+  <div class="ans-panel"><span class="a">答え：①ウ　②エ　③イ　④ア</span>
+    <p class="exp">「費用」はお金の話なので<b>経済</b>。「災害時に地域の人の役に立つか」は<b>社会</b>の視点。</p>
+  </div>
+</div>
+
+<div class="q">
+  <div class="q-head"><span class="qnum">問7</span><span class="stars s1">★</span><span class="chip shihan">思判表</span><span class="chip kata">記述</span><span class="chip pgc">教科書p.26・28</span></div>
+  <div class="q-body">
+    <p>公園などに設置されている「かまどベンチ」は、どのような工夫がされた製品か。「ふだん」と「災害時」という言葉を使って説明しなさい。</p>
+  </div>
+  <div class="write"><div class="wline"></div><div class="wline"></div></div>
+  <button class="toggle-btn" onclick="tg(this)">解答を見る</button>
+  <div class="ans-panel"><span class="a">答え（例）：ふだんは公園などのベンチとして使い、災害時にはかまどとして利用できるように工夫されている。</span>
+    <p class="exp">1つの製品に2つの機能をもたせた例。教科書p.26・28に登場。「災害時に役立つ機能をもった公共物」の代表例として出やすい。</p>
+  </div>
+</div>
+
+<div class="q">
+  <div class="q-head"><span class="qnum">問8</span><span class="stars s1">★</span><span class="chip chigi">知技</span><span class="chip kata">○×</span><span class="chip pgc">教科書p.26・28</span></div>
+  <div class="q-body">
+    <p>次の文が正しければ○、間違っていれば×を書きなさい。</p>
+    <ol class="abc">
+      <li>① 人間は自然界から原材料を採取し、技術を適切に選択しながら生活を豊かにする「もの」を作りだしてきた。</li>
+      <li>② 1つの製品には、必ず1種類の材料だけが使われている。</li>
+      <li>③ 材料と加工の技術は、社会を支える基盤となるものである。</li>
+    </ol>
+  </div>
+  <div class="write"><div class="wline"></div></div>
+  <button class="toggle-btn" onclick="tg(this)">解答を見る</button>
+  <div class="ans-panel"><span class="a">答え：①○　②×　③○</span>
+    <p class="exp">②机の例のように、1つの製品でも場所によって<b>複数の材料</b>が使い分けられている。</p>
+  </div>
+</div>
+
+<!-- ================= 単元2 ================= -->
+<h2 class="unit"><span class="no">単元2</span>材料の特性と加工方法<span class="pg">教科書 p.30〜31</span></h2>
+<p class="unit-lead">密度の数値と「どの材料がどう加工できるか」。数値問題はここから出る。</p>
+
+<div class="q">
+  <div class="q-head"><span class="qnum">問9</span><span class="stars s3">★★★</span><span class="chip chigi">知技</span><span class="chip kata">記号</span><span class="chip pgc">教科書p.31</span></div>
+  <div class="q-body">
+    <p>下の図は、木材（スギ）・金属（鉄）・プラスチック（アクリル）の密度（1cm³あたりの質量）を比べたものである。A〜Cにあてはまる材料の組み合わせとして正しいものを、ア〜エから1つ選びなさい。</p>
+    <div class="fig">
+      <svg viewBox="0 0 560 150" width="560" height="150" role="img" aria-label="密度の比較">
+        <defs>
+          <linearGradient id="cubeA" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#E7C9A0"/><stop offset="1" stop-color="#C9A272"/></linearGradient>
+          <linearGradient id="cubeB" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#E2E8F0"/><stop offset="1" stop-color="#94A3B8"/></linearGradient>
+          <linearGradient id="cubeC" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#BFDBFE"/><stop offset="1" stop-color="#60A5FA"/></linearGradient>
+        </defs>
+        <!-- cube template x3 -->
+        <g transform="translate(40,30)">
+          <polygon points="0,20 60,20 60,80 0,80" fill="url(#cubeA)" stroke="#7C5A2E" stroke-width="1.5"/>
+          <polygon points="0,20 20,0 80,0 60,20" fill="#F3DDBE" stroke="#7C5A2E" stroke-width="1.5"/>
+          <polygon points="60,20 80,0 80,60 60,80" fill="#B08A57" stroke="#7C5A2E" stroke-width="1.5"/>
+          <text x="40" y="115" text-anchor="middle" font-size="15" font-weight="bold" fill="#1E293B">A</text>
+          <text x="40" y="134" text-anchor="middle" font-size="13" fill="#475569">0.38 g/cm³</text>
+        </g>
+        <g transform="translate(240,30)">
+          <polygon points="0,20 60,20 60,80 0,80" fill="url(#cubeB)" stroke="#475569" stroke-width="1.5"/>
+          <polygon points="0,20 20,0 80,0 60,20" fill="#F1F5F9" stroke="#475569" stroke-width="1.5"/>
+          <polygon points="60,20 80,0 80,60 60,80" fill="#64748B" stroke="#475569" stroke-width="1.5"/>
+          <text x="40" y="115" text-anchor="middle" font-size="15" font-weight="bold" fill="#1E293B">B</text>
+          <text x="40" y="134" text-anchor="middle" font-size="13" fill="#475569">7.87 g/cm³</text>
+        </g>
+        <g transform="translate(440,30)">
+          <polygon points="0,20 60,20 60,80 0,80" fill="url(#cubeC)" stroke="#1D4ED8" stroke-width="1.5"/>
+          <polygon points="0,20 20,0 80,0 60,20" fill="#DBEAFE" stroke="#1D4ED8" stroke-width="1.5"/>
+          <polygon points="60,20 80,0 80,60 60,80" fill="#3B82F6" stroke="#1D4ED8" stroke-width="1.5"/>
+          <text x="40" y="115" text-anchor="middle" font-size="15" font-weight="bold" fill="#1E293B">C</text>
+          <text x="40" y="134" text-anchor="middle" font-size="13" fill="#475569">1.18 g/cm³</text>
+        </g>
+      </svg>
+      <div class="cap">単位体積（1cm³）あたりの質量の比較</div>
+    </div>
+    <ul class="choices">
+      <li>ア　A：鉄　B：スギ　C：アクリル</li>
+      <li>イ　A：スギ　B：鉄　C：アクリル</li>
+      <li>ウ　A：アクリル　B：鉄　C：スギ</li>
+      <li>エ　A：スギ　B：アクリル　C：鉄</li>
+    </ul>
+  </div>
+  <div class="write"><div class="wline"></div></div>
+  <button class="toggle-btn" onclick="tg(this)">解答を見る</button>
+  <div class="ans-panel"><span class="a">答え：イ</span>
+    <p class="exp">密度は<b>木材（スギ）0.38</b> ＜ <b>プラスチック（アクリル）1.18</b> ＜ <b>金属（鉄）7.87</b> g/cm³。</p>
+    <div class="memo"><b>覚え方</b>：スギは「<b>0.38＝サンパチ、水に浮く</b>」、鉄は「<b>787（なはな）ジャンボ機は鉄のかたまり</b>」、アクリルは水よりちょっと重い<b>1.18</b>。</div>
+  </div>
+</div>
+
+<div class="q">
+  <div class="q-head"><span class="qnum">問10</span><span class="stars s2">★★</span><span class="chip shihan">思判表</span><span class="chip kata">計算</span><span class="chip pgc">教科書p.31</span></div>
+  <div class="q-body">
+    <p>1辺が10cmの立方体（体積1000cm³）を鉄で作ると、質量は約何kgになるか。鉄の密度を7.87g/cm³として答えなさい。</p>
+  </div>
+  <div class="write"><div class="wline"></div></div>
+  <button class="toggle-btn" onclick="tg(this)">解答を見る</button>
+  <div class="ans-panel"><span class="a">答え：約7.87kg（7870g）</span>
+    <p class="exp">7.87g/cm³ × 1000cm³ ＝ 7870g ＝ 7.87kg。教科書の図でも10cm角の鉄は7,870gと示されている。同じ大きさでもスギなら380g（0.38kg）。<b>同じ体積で質量が全然違う＝密度の違い</b>。</p>
+  </div>
+</div>
+
+<div class="q">
+  <div class="q-head"><span class="qnum">問11</span><span class="stars s3">★★★</span><span class="chip chigi">知技</span><span class="chip kata">記号</span><span class="chip pgc">教科書p.31</span></div>
+  <div class="q-body">
+    <p>次の①〜③は、木材・金属・プラスチックのどの材料の加工特性を説明したものか。それぞれ答えなさい。</p>
+    <ol class="abc">
+      <li>① 削りやすく切断しやすい。溶けないので、型に流し込んで固めることはできない。</li>
+      <li>② 力を加えて目的の形に曲げたり、たたいて薄く広げたりできる。熱で溶かして型に流し込み、固めることもできる。</li>
+      <li>③ 加熱すると曲げたり延ばしたりでき、熱で溶かして型に流し込んで固めることができる。色素を混ぜてさまざまな色の材料を作れる。</li>
+    </ol>
+  </div>
+  <div class="write"><div class="wline"></div></div>
+  <button class="toggle-btn" onclick="tg(this)">解答を見る</button>
+  <div class="ans-panel"><span class="a">答え：①木材　②金属　③プラスチック</span>
+    <p class="exp">ポイントは<b>「木材は溶けない」</b>こと。金属とプラスチックは熱で溶かして固められるが、木材だけはできない。</p>
+    <div class="memo"><b>覚え方</b>：「木は燃えるが溶けない」。溶かせるのは金属とプラスチックだけ。</div>
+  </div>
+</div>
+
+<div class="q">
+  <div class="q-head"><span class="qnum">問12</span><span class="stars s2">★★</span><span class="chip chigi">知技</span><span class="chip kata">○×</span><span class="chip pgc">教科書p.31</span></div>
+  <div class="q-body">
+    <p>次の文が正しければ○、間違っていれば×を書きなさい。</p>
+    <ol class="abc">
+      <li>① 木材は、熱で溶かして型に流し込んで固めることができる。</li>
+      <li>② 金属は、異なる金属どうしを溶かして混ぜ合わせ、性質の異なる合金を作ることができる。</li>
+      <li>③ プラスチックは、加熱し、発泡させることで、組織の中に細かい空気の隙間を作ることができる。</li>
+      <li>④ 効率よく安全に加工するためには、材料の特性や加工の目的などに合わせて、適切な加工方法、工具や機器を選択して使用する必要がある。</li>
+    </ol>
+  </div>
+  <div class="write"><div class="wline"></div></div>
+  <button class="toggle-btn" onclick="tg(this)">解答を見る</button>
+  <div class="ans-panel"><span class="a">答え：①×　②○　③○　④○</span>
+    <p class="exp">①木材は溶けない（比較的軟らかいため小さな力で切断・切削できるのが特徴）。③は発泡プラスチック（発泡スチロールなど）の作り方。</p>
+  </div>
+</div>
+
+<div class="q">
+  <div class="q-head"><span class="qnum">問13</span><span class="stars s2">★★</span><span class="chip chigi">知技</span><span class="chip kata">語句</span><span class="chip pgc">教科書p.30</span></div>
+  <div class="q-body">
+    <p>材料によって異なる、強さ、かたさ、重さ、耐久性、熱や電気に対する性質、見た目や触り心地などのことを、材料の何というか。漢字2字で答えなさい。</p>
+  </div>
+  <div class="write"><div class="wline"></div></div>
+  <button class="toggle-btn" onclick="tg(this)">解答を見る</button>
+  <div class="ans-panel"><span class="a">答え：特性</span>
+    <p class="exp">材料の<b>特性</b>を生かして利用することで、<b>使用目的や使用条件</b>に合った製品を作ることができる（p.30の太字）。</p>
+  </div>
+</div>
+
+<div class="q">
+  <div class="q-head"><span class="qnum">問14</span><span class="stars s2">★★</span><span class="chip shihan">思判表</span><span class="chip kata">記述</span><span class="chip pgc">教科書p.30</span></div>
+  <div class="q-body">
+    <p>公園のベンチには木材、駅のベンチにはプラスチックというように、同じベンチでも場所によって使われる材料が違うことがある。その理由を「特性」という言葉を使って簡単に説明しなさい。</p>
+  </div>
+  <div class="write"><div class="wline"></div><div class="wline"></div></div>
+  <button class="toggle-btn" onclick="tg(this)">解答を見る</button>
+  <div class="ans-panel"><span class="a">答え（例）：使う人や場所、目的によって求められる性質が違うので、使用目的や使用条件に合わせて、材料の特性を生かして選ばれているから。</span>
+    <p class="exp">「同じベンチでも、使う人や場所、目的によって、求められる性質が違う」（p.30）。<b>使用目的・使用条件</b>というキーワードが書ければ満点。</p>
+  </div>
+</div>
+
+<div class="q">
+  <div class="q-head"><span class="qnum">問15</span><span class="stars s1">★</span><span class="chip chigi">知技</span><span class="chip kata">記号</span><span class="chip pgc">教科書p.30</span></div>
+  <div class="q-body">
+    <p>材料を選ぶときの重要な要素として、材料の特性のほかに教科書で挙げられているものを、次のア〜エから<b>すべて</b>選びなさい。</p>
+    <ul class="choices">
+      <li>ア　入手のしやすさ</li>
+      <li>イ　価格</li>
+      <li>ウ　環境への負荷</li>
+      <li>エ　作った人の名前</li>
+    </ul>
+  </div>
+  <div class="write"><div class="wline"></div></div>
+  <button class="toggle-btn" onclick="tg(this)">解答を見る</button>
+  <div class="ans-panel"><span class="a">答え：ア・イ・ウ</span>
+    <p class="exp">「入手のしやすさ、価格、環境への負荷なども、材料を選ぶ重要な要素」（p.30）。</p>
+  </div>
+</div>
+
+<div class="q">
+  <div class="q-head"><span class="qnum">問16</span><span class="stars s1">★</span><span class="chip chigi">知技</span><span class="chip kata">記号</span><span class="chip pgc">教科書p.31</span></div>
+  <div class="q-body">
+    <p>金属とプラスチックに共通する加工方法として正しいものを、次のア〜ウから1つ選びなさい。</p>
+    <ul class="choices one-col">
+      <li>ア　熱で溶かして型に流し込んで固め、目的の形を作ることができる。</li>
+      <li>イ　どちらも常温のまま、力を加えなくても自然に形が変わる。</li>
+      <li>ウ　どちらも一度固めると、二度と形を変えることができない。</li>
+    </ul>
+  </div>
+  <div class="write"><div class="wline"></div></div>
+  <button class="toggle-btn" onclick="tg(this)">解答を見る</button>
+  <div class="ans-panel"><span class="a">答え：ア</span>
+    <p class="exp">金属もプラスチックも「熱で溶かして固めることができる」（p.31 図2）。これが木材との大きな違い。</p>
+  </div>
+</div>
+
+<!-- ================= 単元3 ================= -->
+<h2 class="unit"><span class="no">単元3</span>木材の特性<span class="pg">教科書 p.32</span></h2>
+<p class="unit-lead">図問題の本命。名称・方向・数値（10倍、10:5:0.5〜1）は確実に出ると考えて仕上げよう。</p>
+
+<div class="q">
+  <div class="q-head"><span class="qnum">問17</span><span class="stars s3">★★★</span><span class="chip chigi">知技</span><span class="chip kata">記号</span><span class="chip pgc">教科書p.32</span></div>
+  <div class="q-body">
+    <p>木材の種類について、次の表の（　①　）〜（　④　）にあてはまる言葉の組み合わせとして正しいものを、ア〜エから1つ選びなさい。</p>
+    <div class="gokun" style="text-align:center">
+      スギ …（ ① ）樹材：木目が通り、比較的（ ② ）、軟らかい<br>
+      シラカシ …（ ③ ）樹材：（ ④ ）、硬く、加工しにくい
+    </div>
+    <ul class="choices">
+      <li>ア　①針葉　②軽く　③広葉　④重く</li>
+      <li>イ　①広葉　②軽く　③針葉　④重く</li>
+      <li>ウ　①針葉　②重く　③広葉　④軽く</li>
+      <li>エ　①広葉　②重く　③針葉　④軽く</li>
+    </ul>
+  </div>
+  <div class="write"><div class="wline"></div></div>
+  <button class="toggle-btn" onclick="tg(this)">解答を見る</button>
+  <div class="ans-panel"><span class="a">答え：ア</span>
+    <p class="exp"><b>スギ＝針葉樹材</b>（主に建築用。軽く軟らかい）、<b>シラカシ＝広葉樹材</b>（重く硬く、加工しにくい）。木材は密度が大きい（重い）ほど硬くて加工しにくい傾向がある。</p>
+    <div class="memo"><b>覚え方</b>：「<b>針はスギッと軽い、広はカシッと硬い</b>」。針葉樹＝スギ＝軽・軟、広葉樹＝シラカシ＝重・硬。</div>
+  </div>
+</div>
+
+<div class="q">
+  <div class="q-head"><span class="qnum">問18</span><span class="stars s3">★★★</span><span class="chip chigi">知技</span><span class="chip kata">語句</span><span class="chip pgc">教科書p.32</span></div>
+  <div class="q-body">
+    <p>木材の内部には多数の管状の細胞が並んでいる。この管状の細胞が並んでいる方向を何というか。</p>
+  </div>
+  <div class="write"><div class="wline"></div></div>
+  <button class="toggle-btn" onclick="tg(this)">解答を見る</button>
+  <div class="ans-panel"><span class="a">答え：繊維方向</span>
+    <p class="exp">木材の性質を理解するカギになる最重要語。強度も収縮も、すべて<b>繊維方向</b>を基準に考える。</p>
+  </div>
+</div>
+
+<div class="q">
+  <div class="q-head"><span class="qnum">問19</span><span class="stars s3">★★★</span><span class="chip chigi">知技</span><span class="chip kata">図・記号</span><span class="chip pgc">教科書p.32</span></div>
+  <div class="q-body">
+    <p>下の図のように、同じ大きさの木の板A・Bに力を加えた。あとの問いに答えなさい。</p>
+    <div class="fig">
+      <svg viewBox="0 0 665 190" width="665" height="190" role="img" aria-label="繊維方向と強度">
+        <!-- Board A -->
+        <g transform="translate(30,30)">
+          <text x="115" y="0" text-anchor="middle" font-size="16" font-weight="bold" fill="#1E293B">A</text>
+          <!-- force arrow -->
+          <line x1="115" y1="12" x2="115" y2="44" stroke="#DC2626" stroke-width="4"/>
+          <polygon points="115,54 107,40 123,40" fill="#DC2626"/>
+          <text x="132" y="34" font-size="13" fill="#DC2626" font-weight="bold">力</text>
+          <!-- board -->
+          <rect x="15" y="58" width="200" height="34" fill="#EAD1A8" stroke="#8B6534" stroke-width="1.5"/>
+          <!-- grain: horizontal -->
+          <line x1="20" y1="66" x2="210" y2="66" stroke="#B08A57" stroke-width="1.4"/>
+          <line x1="20" y1="75" x2="210" y2="75" stroke="#B08A57" stroke-width="1.4"/>
+          <line x1="20" y1="84" x2="210" y2="84" stroke="#B08A57" stroke-width="1.4"/>
+          <!-- fiber direction arrow -->
+          <line x1="55" y1="112" x2="175" y2="112" stroke="#2563EB" stroke-width="3"/>
+          <polygon points="185,112 171,105 171,119" fill="#2563EB"/>
+          <polygon points="45,112 59,105 59,119" fill="#2563EB"/>
+          <text x="115" y="135" text-anchor="middle" font-size="12.5" fill="#2563EB" font-weight="bold">繊維方向</text>
+          <!-- supports -->
+          <rect x="15" y="92" width="14" height="22" fill="#CBD5E1" stroke="#64748B"/>
+          <rect x="201" y="92" width="14" height="22" fill="#CBD5E1" stroke="#64748B"/>
+        </g>
+        <!-- Board B -->
+        <g transform="translate(360,30)">
+          <text x="115" y="0" text-anchor="middle" font-size="16" font-weight="bold" fill="#1E293B">B</text>
+          <line x1="115" y1="12" x2="115" y2="44" stroke="#DC2626" stroke-width="4"/>
+          <polygon points="115,54 107,40 123,40" fill="#DC2626"/>
+          <text x="132" y="34" font-size="13" fill="#DC2626" font-weight="bold">力</text>
+          <rect x="15" y="58" width="200" height="34" fill="#EAD1A8" stroke="#8B6534" stroke-width="1.5"/>
+          <!-- grain: vertical -->
+          <g stroke="#B08A57" stroke-width="1.4">
+            <line x1="35" y1="61" x2="35" y2="89"/><line x1="55" y1="61" x2="55" y2="89"/>
+            <line x1="75" y1="61" x2="75" y2="89"/><line x1="95" y1="61" x2="95" y2="89"/>
+            <line x1="115" y1="61" x2="115" y2="89"/><line x1="135" y1="61" x2="135" y2="89"/>
+            <line x1="155" y1="61" x2="155" y2="89"/><line x1="175" y1="61" x2="175" y2="89"/>
+            <line x1="195" y1="61" x2="195" y2="89"/>
+          </g>
+          <!-- fiber direction arrow: vertical -->
+          <line x1="245" y1="62" x2="245" y2="88" stroke="#2563EB" stroke-width="3"/>
+          <polygon points="245,54 238,66 252,66" fill="#2563EB"/>
+          <polygon points="245,96 238,84 252,84" fill="#2563EB"/>
+          <text x="245" y="120" text-anchor="middle" font-size="12.5" fill="#2563EB" font-weight="bold">繊維方向</text>
+          <rect x="15" y="92" width="14" height="22" fill="#CBD5E1" stroke="#64748B"/>
+          <rect x="201" y="92" width="14" height="22" fill="#CBD5E1" stroke="#64748B"/>
+        </g>
+      </svg>
+      <div class="cap">A：繊維方向が板の長さ方向　　B：繊維方向が力と平行（板の厚さ方向にそろう）</div>
+    </div>
+    <ol class="abc">
+      <li>① A・Bのうち、強いのはどちらか。記号で答えなさい。</li>
+      <li>② ①の板は、もう一方の板の約何倍の強さか。次のア〜エから選びなさい。<br>
+      ア　約2倍　　イ　約5倍　　ウ　約10倍　　エ　約100倍</li>
+    </ol>
+  </div>
+  <div class="write"><div class="wline"></div></div>
+  <button class="toggle-btn" onclick="tg(this)">解答を見る</button>
+  <div class="ans-panel"><span class="a">答え：①A　②ウ（約10倍）</span>
+    <p class="exp">木材は繊維方向によって強さが大きく異なり、<b>AのほうがBより約10倍強い</b>（教科書p.32 図2）。繊維（管状の細胞の束）が板の長さ方向に通っていると、曲げの力に強い。</p>
+    <div class="memo"><b>覚え方</b>：ストローの束をイメージ。束に沿った向きは折れにくい＝<b>繊維方向は強い、約10倍</b>。</div>
+  </div>
+</div>
+
+<div class="q">
+  <div class="q-head"><span class="qnum">問20</span><span class="stars s3">★★★</span><span class="chip chigi">知技</span><span class="chip kata">図・語群</span><span class="chip pgc">教科書p.32</span></div>
+  <div class="q-body">
+    <p>下の図は、丸太から製材した木材の各部を表したものである。①〜⑥の名称を、あとの語群からそれぞれ選び、記号で答えなさい。</p>
+    <div class="fig">
+      <svg viewBox="0 0 640 300" width="640" height="300" role="img" aria-label="木材の各部の名称">
+        <defs>
+          <radialGradient id="rings" cx="0.5" cy="0.5" r="0.5">
+            <stop offset="0" stop-color="#B98A4E"/><stop offset="0.45" stop-color="#C79A62"/>
+            <stop offset="0.46" stop-color="#E4C69A"/><stop offset="1" stop-color="#EBD3AC"/>
+          </radialGradient>
+        </defs>
+        <!-- ログ（丸太の断面） -->
+        <g transform="translate(20,60)">
+          <circle cx="90" cy="95" r="88" fill="url(#rings)" stroke="#7C5A2E" stroke-width="2"/>
+          <g fill="none" stroke="#9A7440" stroke-width="1.3">
+            <circle cx="90" cy="95" r="72"/><circle cx="90" cy="95" r="56"/>
+            <circle cx="90" cy="95" r="40"/><circle cx="90" cy="95" r="25"/><circle cx="90" cy="95" r="12"/>
+          </g>
+          <!-- 心材(濃い部分) -->
+          <circle cx="90" cy="95" r="40" fill="#B9834A" opacity="0.55"/>
+          <text x="90" y="212" text-anchor="middle" font-size="13" fill="#475569">丸太の断面（年輪）</text>
+          <!-- ⑤ 心材 -->
+          <line x1="90" y1="95" x2="180" y2="20" stroke="#334155" stroke-width="1.3"/>
+          <circle cx="90" cy="95" r="3" fill="#334155"/>
+          <circle cx="192" cy="14" r="11" fill="#1E3A8A"/><text x="192" y="19" text-anchor="middle" font-size="12" fill="#fff" font-weight="bold">⑤</text>
+          <!-- ⑥ 辺材 -->
+          <line x1="160" y1="140" x2="205" y2="165" stroke="#334155" stroke-width="1.3"/>
+          <circle cx="160" cy="140" r="3" fill="#334155"/>
+          <circle cx="217" cy="170" r="11" fill="#1E3A8A"/><text x="217" y="175" text-anchor="middle" font-size="12" fill="#fff" font-weight="bold">⑥</text>
+        </g>
+        <!-- 板（3D）: こぐち・こば -->
+        <g transform="translate(300,40)">
+          <text x="150" y="8" text-anchor="middle" font-size="13" fill="#475569">製材した板</text>
+          <!-- top face -->
+          <polygon points="0,60 40,25 300,25 260,60" fill="#F0DCB8" stroke="#8B6534" stroke-width="1.5"/>
+          <!-- front long face (こば) -->
+          <polygon points="0,60 260,60 260,95 0,95" fill="#E3C795" stroke="#8B6534" stroke-width="1.5"/>
+          <!-- end face (こぐち) -->
+          <polygon points="260,60 300,25 300,60 260,95" fill="#D2A96C" stroke="#8B6534" stroke-width="1.5"/>
+          <!-- 年輪 on end face -->
+          <g fill="none" stroke="#8B6534" stroke-width="1">
+            <path d="M262,88 q22,-24 36,-56"/>
+            <path d="M268,90 q20,-20 30,-46"/>
+          </g>
+          <!-- ① こぐち -->
+          <line x1="282" y1="60" x2="320" y2="45" stroke="#334155" stroke-width="1.3"/>
+          <circle cx="330" cy="42" r="11" fill="#1E3A8A"/><text x="330" y="47" text-anchor="middle" font-size="12" fill="#fff" font-weight="bold">①</text>
+          <!-- ② こば -->
+          <line x1="130" y1="80" x2="130" y2="120" stroke="#334155" stroke-width="1.3"/>
+          <circle cx="130" cy="131" r="11" fill="#1E3A8A"/><text x="130" y="136" text-anchor="middle" font-size="12" fill="#fff" font-weight="bold">②</text>
+        </g>
+        <!-- 板目・まさ目 -->
+        <g transform="translate(330,190)">
+          <!-- ③ 板目 -->
+          <rect x="0" y="10" width="120" height="72" fill="#F0DCB8" stroke="#8B6534" stroke-width="1.5"/>
+          <g fill="none" stroke="#A97C42" stroke-width="1.6">
+            <path d="M10,82 q50,-88 100,-72 M22,82 q40,-64 80,-56 M36,82 q28,-44 58,-40 M52,82 q16,-26 34,-24"/>
+          </g>
+          <line x1="60" y1="10" x2="60" y2="-8" stroke="#334155" stroke-width="1.3"/>
+          <circle cx="60" cy="-16" r="11" fill="#1E3A8A"/><text x="60" y="-11" text-anchor="middle" font-size="12" fill="#fff" font-weight="bold">③</text>
+          <text x="60" y="100" text-anchor="middle" font-size="12" fill="#475569">山形（タケノコ形）の木目</text>
+        </g>
+        <g transform="translate(495,190)">
+          <!-- ④ まさ目 -->
+          <rect x="0" y="10" width="120" height="72" fill="#F0DCB8" stroke="#8B6534" stroke-width="1.5"/>
+          <g stroke="#A97C42" stroke-width="1.6">
+            <line x1="18" y1="10" x2="18" y2="82"/><line x1="38" y1="10" x2="38" y2="82"/>
+            <line x1="58" y1="10" x2="58" y2="82"/><line x1="78" y1="10" x2="78" y2="82"/>
+            <line x1="98" y1="10" x2="98" y2="82"/>
+          </g>
+          <line x1="60" y1="10" x2="60" y2="-8" stroke="#334155" stroke-width="1.3"/>
+          <circle cx="60" cy="-16" r="11" fill="#1E3A8A"/><text x="60" y="-11" text-anchor="middle" font-size="12" fill="#fff" font-weight="bold">④</text>
+          <text x="60" y="100" text-anchor="middle" font-size="12" fill="#475569">まっすぐ平行な木目</text>
+        </g>
+      </svg>
+    </div>
+    <div class="gokun"><b>語群</b>ア：こば　　イ：こぐち　　ウ：まさ目材　　エ：板目材　　オ：心材　　カ：辺材</div>
+  </div>
+  <div class="write"><div class="wline"></div><div class="wline"></div></div>
+  <button class="toggle-btn" onclick="tg(this)">解答を見る</button>
+  <div class="ans-panel"><span class="a">答え：①イ（こぐち）　②ア（こば）　③エ（板目材）　④ウ（まさ目材）　⑤オ（心材）　⑥カ（辺材）</span>
+    <p class="exp">①<b>こぐち</b>＝繊維方向に直角な切り口の面。②<b>こば</b>＝板の細長い側面。③<b>板目材</b>＝年輪に接する方向に製材した板（山形の木目）。④<b>まさ目材</b>＝年輪に対して直角（半径方向）に製材した板（平行な木目）。⑤<b>心材</b>＝中心側の色が濃い部分。⑥<b>辺材</b>＝樹皮側の部分。</p>
+    <div class="memo"><b>覚え方</b>：「こぐち＝小口＝切り<b>口</b>」「板目は<b>タケノコ</b>模様・まさ目は<b>まっすぐ</b>」「心材＝<b>中心</b>の材」。</div>
+  </div>
+</div>
+
+<div class="q">
+  <div class="q-head"><span class="qnum">問21</span><span class="stars s3">★★★</span><span class="chip chigi">知技</span><span class="chip kata">図・記号</span><span class="chip pgc">教科書p.32</span></div>
+  <div class="q-body">
+    <p>板目材の乾燥による変形について、次の問いに答えなさい。</p>
+    <div class="fig">
+      <svg viewBox="0 0 460 150" width="460" height="150" role="img" aria-label="板目材の反り">
+        <g transform="translate(40,20)">
+          <!-- 断面: 年輪の弧 + 木表/木裏 -->
+          <rect x="0" y="30" width="180" height="46" fill="#F0DCB8" stroke="#8B6534" stroke-width="1.5"/>
+          <g fill="none" stroke="#A97C42" stroke-width="1.5">
+            <path d="M-10,120 q100,-120 200,0" transform="translate(0,-30)"/>
+            <path d="M8,76 q82,-74 164,0"/>
+            <path d="M30,76 q60,-48 120,0"/>
+          </g>
+          <text x="90" y="18" text-anchor="middle" font-size="13" fill="#1E293B" font-weight="bold">A面（樹皮に近い側）</text>
+          <text x="90" y="98" text-anchor="middle" font-size="13" fill="#1E293B" font-weight="bold">B面（中心に近い側）</text>
+        </g>
+        <g transform="translate(300,20)">
+          <text x="70" y="18" text-anchor="middle" font-size="13" fill="#475569">乾燥すると…？</text>
+          <path d="M10,60 q60,28 120,0" fill="none" stroke="#8B6534" stroke-width="3"/>
+          <path d="M10,74 q60,28 120,14" fill="none" stroke="#D2A96C" stroke-width="3" opacity="0"/>
+          <text x="70" y="112" text-anchor="middle" font-size="24" fill="#DC2626" font-weight="bold">？</text>
+        </g>
+      </svg>
+    </div>
+    <ol class="abc">
+      <li>① 樹皮に近い側の面（A面）と中心に近い側の面（B面）をそれぞれ何というか。</li>
+      <li>② 板目材は乾燥すると、A面・B面のどちらの側に反るか。記号で答えなさい。</li>
+      <li>③ 板目材とまさ目材では、どちらのほうが乾燥による変形が大きいか。</li>
+    </ol>
+  </div>
+  <div class="write"><div class="wline"></div><div class="wline"></div></div>
+  <button class="toggle-btn" onclick="tg(this)">解答を見る</button>
+  <div class="ans-panel"><span class="a">答え：①A面＝木表、B面＝木裏　②A（木表側に反る）　③板目材</span>
+    <p class="exp">樹皮側の面が<b>木表</b>、中心側の面が<b>木裏</b>。板目材は<b>木表側に反り</b>、まさ目材より<b>大きく変形する</b>（教科書p.32 図3）。まさ目材のほうが変形が小さい。</p>
+    <div class="memo"><b>覚え方</b>：「<b>表向きにおじぎする</b>」＝木表側に反る。皮に近い側（木表）のほうが収縮が大きいから。</div>
+  </div>
+</div>
+
+<div class="q">
+  <div class="q-head"><span class="qnum">問22</span><span class="stars s3">★★★</span><span class="chip chigi">知技</span><span class="chip kata">図・記号</span><span class="chip pgc">教科書p.32</span></div>
+  <div class="q-body">
+    <p>下の図は、木材の乾燥による収縮のしやすさを方向別に表したものである。収縮率の比（A：B：C）として正しいものを、ア〜エから1つ選びなさい。</p>
+    <div class="fig">
+      <svg viewBox="0 0 480 190" width="480" height="190" role="img" aria-label="収縮の方向">
+        <g transform="translate(60,20)">
+          <!-- 丸太(斜め円柱) -->
+          <ellipse cx="90" cy="75" rx="70" ry="70" fill="url(#rings)" stroke="#7C5A2E" stroke-width="2"/>
+          <g fill="none" stroke="#9A7440" stroke-width="1.2">
+            <circle cx="90" cy="75" r="52"/><circle cx="90" cy="75" r="34"/><circle cx="90" cy="75" r="17"/>
+          </g>
+          <!-- A: 接線方向 (円周に沿う矢印) -->
+          <path d="M35,25 q55,-25 110,0" fill="none" stroke="#DC2626" stroke-width="3"/>
+          <polygon points="152,29 138,20 141,34" fill="#DC2626"/>
+          <polygon points="28,29 42,20 39,34" fill="#DC2626"/>
+          <text x="90" y="6" text-anchor="middle" font-size="14" font-weight="bold" fill="#DC2626">A</text>
+          <!-- B: 半径方向 -->
+          <line x1="90" y1="75" x2="150" y2="120" stroke="#2563EB" stroke-width="3"/>
+          <polygon points="158,126 143,123 150,111" fill="#2563EB"/>
+          <text x="166" y="140" font-size="14" font-weight="bold" fill="#2563EB">B</text>
+          <!-- C: 繊維方向 (軸方向) -->
+          <line x1="196" y1="75" x2="256" y2="75" stroke="#16A34A" stroke-width="3"/>
+          <polygon points="266,75 252,68 252,82" fill="#16A34A"/>
+          <text x="276" y="80" font-size="14" font-weight="bold" fill="#16A34A">C</text>
+          <text x="231" y="60" font-size="11.5" fill="#16A34A">丸太の軸方向</text>
+        </g>
+        <text x="120" y="185" font-size="12.5" fill="#475569">A：年輪に沿う方向（接線方向）　B：半径方向　C：繊維方向</text>
+      </svg>
+    </div>
+    <ul class="choices">
+      <li>ア　10 : 5 : 0.5〜1</li>
+      <li>イ　0.5〜1 : 5 : 10</li>
+      <li>ウ　5 : 10 : 0.5〜1</li>
+      <li>エ　10 : 10 : 10（どの方向も同じ）</li>
+    </ul>
+  </div>
+  <div class="write"><div class="wline"></div></div>
+  <button class="toggle-btn" onclick="tg(this)">解答を見る</button>
+  <div class="ans-panel"><span class="a">答え：ア</span>
+    <p class="exp">収縮率は方向によって異なり、<b>接線方向：半径方向：繊維方向＝10：5：0.5〜1</b>。繊維方向はほとんど収縮しない。この収縮率の違いが「反り」の原因になる。</p>
+    <div class="memo"><b>覚え方</b>：「<b>せっ・はん・せん＝10・5・0.5〜1</b>」。数字は半分ずつ小さくなっていくイメージ（10→5→約0.5〜1）。</div>
+  </div>
+</div>
+
+<div class="q">
+  <div class="q-head"><span class="qnum">問23</span><span class="stars s2">★★</span><span class="chip chigi">知技</span><span class="chip kata">語句</span><span class="chip pgc">教科書p.32</span></div>
+  <div class="q-body">
+    <p>次の①〜③を何というか。それぞれ答えなさい。</p>
+    <ol class="abc">
+      <li>① 木が1年間に成長した部分。木材の断面に見えるしま模様のもとになる。</li>
+      <li>② ①のうち、春から夏にかけて成長した部分。</li>
+      <li>③ ①のうち、夏の終わりから秋にかけて成長した部分。</li>
+    </ol>
+  </div>
+  <div class="write"><div class="wline"></div></div>
+  <button class="toggle-btn" onclick="tg(this)">解答を見る</button>
+  <div class="ans-panel"><span class="a">答え：①年輪　②早材　③晩材</span>
+    <p class="exp">木材の表面の模様（木目）は、1年間に成長した<b>年輪</b>が並んでできる。<b>早</b>材＝<b>早</b>い時期（春〜夏）、<b>晩</b>材＝遅い時期（夏の終わり〜秋）。</p>
+    <div class="memo"><b>覚え方</b>：「早起きは春、晩ごはんは秋」＝早材が春〜夏、晩材が夏の終わり〜秋。</div>
+  </div>
+</div>
+
+<div class="q">
+  <div class="q-head"><span class="qnum">問24</span><span class="stars s2">★★</span><span class="chip chigi">知技</span><span class="chip kata">語句</span><span class="chip pgc">教科書p.32</span></div>
+  <div class="q-body">
+    <p>木材について、次の①〜④にあてはまる言葉を答えなさい。</p>
+    <ol class="abc">
+      <li>① 幹のうち、根元に近い方。</li>
+      <li>② 幹のうち、木が伸びていく方。</li>
+      <li>③ 木材の表面にある、枝の跡。</li>
+      <li>④ 木材の表面に年輪が並んでできる模様。</li>
+    </ol>
+  </div>
+  <div class="write"><div class="wline"></div><div class="wline"></div></div>
+  <button class="toggle-btn" onclick="tg(this)">解答を見る</button>
+  <div class="ans-panel"><span class="a">答え：①もと　②すえ　③節　④木目</span>
+    <p class="exp">「<b>もと</b>＝根元に近い方」「<b>すえ</b>＝木が伸びていく方」。<b>節</b>は枝の跡で、集成材ではこれを取り除いて作る（単元4につながる知識）。</p>
+  </div>
+</div>
+
+<div class="q">
+  <div class="q-head"><span class="qnum">問25</span><span class="stars s2">★★</span><span class="chip chigi">知技</span><span class="chip kata">○×</span><span class="chip pgc">教科書p.32</span></div>
+  <div class="q-body">
+    <p>木材の性質について、次の文が正しければ○、間違っていれば×を書きなさい。</p>
+    <ol class="abc">
+      <li>① 木材は、乾燥によって含んでいる水分を放出して収縮する。</li>
+      <li>② 木材は、水分を吸収して膨張することがある。</li>
+      <li>③ 木材の密度の違いは、管状の細胞の空洞の大きさや数の違いによって生じる。</li>
+      <li>④ 木材は、どの方向にも同じ強さをもっている。</li>
+    </ol>
+  </div>
+  <div class="write"><div class="wline"></div></div>
+  <button class="toggle-btn" onclick="tg(this)">解答を見る</button>
+  <div class="ans-panel"><span class="a">答え：①○　②○　③○　④×</span>
+    <p class="exp">④木材は<b>繊維方向によって強さが大きく異なる</b>（約10倍差）。水分の出入りで収縮・膨張＝変形するのが木材の特徴。</p>
+  </div>
+</div>
+
+<div class="q">
+  <div class="q-head"><span class="qnum">問26</span><span class="stars s3">★★★</span><span class="chip shihan">思判表</span><span class="chip kata">記述</span><span class="chip pgc">教科書p.32</span></div>
+  <div class="q-body">
+    <p>木材で作られた建物の中は、温度が変化しにくく、冬でも暖かいといわれる。その理由を、木材の内部の構造にふれて説明しなさい。</p>
+  </div>
+  <div class="write"><div class="wline"></div><div class="wline"></div></div>
+  <button class="toggle-btn" onclick="tg(this)">解答を見る</button>
+  <div class="ans-panel"><span class="a">答え（例）：木材は多数の管状の細胞が並んだ構造をしていて、細胞の空間に含まれる空気によって熱が伝わりにくいから。</span>
+    <p class="exp">キーワードは<b>「管状の細胞」「空気」「熱が伝わりにくい」</b>の3つ。教科書p.32「技術の工夫」から。記述問題の定番ネタ。</p>
+    <div class="memo"><b>覚え方</b>：ダウンジャケットと同じ理屈。<b>空気の層は熱を伝えにくい</b>。</div>
+  </div>
+</div>
+
+<div class="q">
+  <div class="q-head"><span class="qnum">問27</span><span class="stars s1">★</span><span class="chip chigi">知技</span><span class="chip kata">記号</span><span class="chip pgc">教科書p.32</span></div>
+  <div class="q-body">
+    <p>次のうち、木材の説明として<b>間違っているもの</b>を1つ選びなさい。</p>
+    <ul class="choices one-col">
+      <li>ア　針葉樹材は主に建築などに、広葉樹材は主に家具などに用いられる。</li>
+      <li>イ　木材は密度が大きい（重い）ほど、硬くて加工しにくい傾向がある。</li>
+      <li>ウ　まさ目材は、板目材よりも乾燥による変形が大きい。</li>
+      <li>エ　木材の表面に見える模様（木目）は、年輪によってできる。</li>
+    </ul>
+  </div>
+  <div class="write"><div class="wline"></div></div>
+  <button class="toggle-btn" onclick="tg(this)">解答を見る</button>
+  <div class="ans-panel"><span class="a">答え：ウ</span>
+    <p class="exp">変形が大きいのは<b>板目材</b>のほう（ひっかけ注意！）。まさ目材は変形が小さいので、変形させたくない用途に向く。</p>
+  </div>
+</div>
+
+<div class="q">
+  <div class="q-head"><span class="qnum">問28</span><span class="stars s1">★</span><span class="chip shihan">思判表</span><span class="chip kata">記述</span><span class="chip pgc">教科書p.32</span></div>
+  <div class="q-body">
+    <p>乾燥による反りや変形をできるだけ避けたい棚板を作るとき、板目材とまさ目材のどちらを選ぶとよいか。理由とともに答えなさい。</p>
+  </div>
+  <div class="write"><div class="wline"></div><div class="wline"></div></div>
+  <button class="toggle-btn" onclick="tg(this)">解答を見る</button>
+  <div class="ans-panel"><span class="a">答え（例）：まさ目材。板目材よりも乾燥による収縮のかたよりが小さく、変形（反り）が小さいから。</span>
+    <p class="exp">知識（板目材のほうが大きく変形する）を「選択の理由」として書かせる応用型。<b>結論＋理由</b>の2点セットで書くこと。</p>
+  </div>
+</div>
+
+<!-- ================= 単元4 ================= -->
+<h2 class="unit"><span class="no">単元4</span>木質材料<span class="pg">教科書 p.33</span></h2>
+<p class="unit-lead">合板・集成材・パーティクルボード・ファイバーボードの「作り方の違い」を図で区別できるように。</p>
+
+<div class="q">
+  <div class="q-head"><span class="qnum">問29</span><span class="stars s3">★★★</span><span class="chip chigi">知技</span><span class="chip kata">語句</span><span class="chip pgc">教科書p.33</span></div>
+  <div class="q-body">
+    <p>木材や木材の小片などを原料として作られた材料を何というか。漢字4字で答えなさい。</p>
+  </div>
+  <div class="write"><div class="wline"></div></div>
+  <button class="toggle-btn" onclick="tg(this)">解答を見る</button>
+  <div class="ans-panel"><span class="a">答え：木質材料</span>
+    <p class="exp">「大きな材料を作る」「強度を高める」「変形を少なくする」などの目的で開発された。資源の有効利用にもつながる。</p>
+  </div>
+</div>
+
+<div class="q">
+  <div class="q-head"><span class="qnum">問30</span><span class="stars s3">★★★</span><span class="chip chigi">知技</span><span class="chip kata">図・記号</span><span class="chip pgc">教科書p.33</span></div>
+  <div class="q-body">
+    <p>下の図は合板の作り方を表したものである。（　①　）・（　②　）にあてはまる言葉の組み合わせとして正しいものを、ア〜エから1つ選びなさい。</p>
+    <div class="fig">
+      <svg viewBox="0 0 600 170" width="600" height="170" role="img" aria-label="合板の構造">
+        <!-- かつらむき -->
+        <g transform="translate(10,30)">
+          <ellipse cx="45" cy="55" rx="34" ry="34" fill="url(#rings)" stroke="#7C5A2E" stroke-width="2"/>
+          <path d="M79,55 q30,-4 60,-2" fill="none" stroke="#E3C795" stroke-width="14"/>
+          <path d="M79,55 q30,-4 60,-2" fill="none" stroke="#8B6534" stroke-width="1" opacity="0.5"/>
+          <text x="60" y="115" text-anchor="middle" font-size="12" fill="#475569">丸太を回転させ</text>
+          <text x="60" y="131" text-anchor="middle" font-size="12" fill="#475569">「かつらむき」にして</text>
+          <text x="60" y="147" text-anchor="middle" font-size="12" fill="#475569">単板（ベニヤ）を作る</text>
+        </g>
+        <text x="182" y="88" font-size="22" fill="#94A3B8">→</text>
+        <!-- 3層の単板 -->
+        <g transform="translate(215,20)">
+          <!-- layer1: 繊維→横 -->
+          <polygon points="0,40 45,15 165,15 120,40" fill="#F0DCB8" stroke="#8B6534"/>
+          <g stroke="#B08A57" stroke-width="1.2"><line x1="18" y1="34" x2="132" y2="34"/><line x1="28" y1="27" x2="142" y2="27"/><line x1="38" y1="20" x2="152" y2="20"/></g>
+          <!-- layer2: 繊維→奥 -->
+          <polygon points="0,70 45,45 165,45 120,70" fill="#EAD1A8" stroke="#8B6534" transform="translate(0,-18)"/>
+          <g stroke="#B08A57" stroke-width="1.2" transform="translate(0,-18)"><line x1="30" y1="66" x2="60" y2="49"/><line x1="60" y1="66" x2="90" y2="49"/><line x1="90" y1="66" x2="120" y2="49"/></g>
+          <!-- layer3 -->
+          <polygon points="0,82 45,57 165,57 120,82" fill="#F0DCB8" stroke="#8B6534" transform="translate(0,-24)"/>
+          <g stroke="#B08A57" stroke-width="1.2" transform="translate(0,-24)"><line x1="16" y1="76" x2="130" y2="76"/><line x1="26" y1="69" x2="140" y2="69"/><line x1="36" y1="62" x2="150" y2="62"/></g>
+          <text x="82" y="112" text-anchor="middle" font-size="12" fill="#475569">乾燥した単板を（ ① ）枚、</text>
+          <text x="82" y="128" text-anchor="middle" font-size="12" fill="#475569">繊維方向が（ ② ）ように</text>
+          <text x="82" y="144" text-anchor="middle" font-size="12" fill="#475569">接着剤で貼り合わせる</text>
+        </g>
+        <text x="415" y="88" font-size="22" fill="#94A3B8">→</text>
+        <!-- 完成合板 -->
+        <g transform="translate(450,35)">
+          <polygon points="0,50 40,25 140,25 100,50" fill="#F0DCB8" stroke="#8B6534" stroke-width="1.5"/>
+          <polygon points="0,50 100,50 100,68 0,68" fill="#E3C795" stroke="#8B6534" stroke-width="1.5"/>
+          <polygon points="100,50 140,25 140,43 100,68" fill="#D2A96C" stroke="#8B6534" stroke-width="1.5"/>
+          <g stroke="#8B6534" stroke-width="1"><line x1="100" y1="56" x2="140" y2="31"/><line x1="100" y1="62" x2="140" y2="37"/></g>
+          <text x="70" y="92" text-anchor="middle" font-size="13" fill="#1E293B" font-weight="bold">合板</text>
+        </g>
+      </svg>
+    </div>
+    <ul class="choices">
+      <li>ア　①偶数　②平行になる</li>
+      <li>イ　①奇数　②平行になる</li>
+      <li>ウ　①偶数　②直交する</li>
+      <li>エ　①奇数　②直交する</li>
+    </ul>
+  </div>
+  <div class="write"><div class="wline"></div></div>
+  <button class="toggle-btn" onclick="tg(this)">解答を見る</button>
+  <div class="ans-panel"><span class="a">答え：エ</span>
+    <p class="exp">合板は、単板（ベニヤ）を<b>奇数枚</b>、<b>繊維方向が直交する</b>ように接着剤で貼り合わせて作る。だから繊維方向による性質の違い（強さ・収縮のかたより）が少なくなる。</p>
+    <div class="memo"><b>覚え方</b>：「<b>奇数でクロス</b>」。3枚・5枚…と重ねて向きを90°ずつ変える。</div>
+  </div>
+</div>
+
+<div class="q">
+  <div class="q-head"><span class="qnum">問31</span><span class="stars s3">★★★</span><span class="chip chigi">知技</span><span class="chip kata">記号</span><span class="chip pgc">教科書p.33</span></div>
+  <div class="q-body">
+    <p>次の①〜④の説明にあてはまる木質材料を、あとの語群からそれぞれ選び、記号で答えなさい。</p>
+    <ol class="abc">
+      <li>① 丸太をかつらむきにした単板を、繊維方向が直交するように奇数枚貼り合わせたもの。</li>
+      <li>② 大きな節や割れを取り除いた板材を、繊維方向を合わせてつなぎ合わせたり、積み重ねたりして接着したもの。</li>
+      <li>③ 小径材や廃材などを小片化し、接着剤を加えて積み重ねた後、熱圧したもの。</li>
+      <li>④ 小径材や廃材などを繊維化し、接着剤を加えて積み重ねた後、熱圧したもの。</li>
+    </ol>
+    <div class="gokun"><b>語群</b>ア：集成材　　イ：合板　　ウ：ファイバーボード　　エ：パーティクルボード</div>
+  </div>
+  <div class="write"><div class="wline"></div></div>
+  <button class="toggle-btn" onclick="tg(this)">解答を見る</button>
+  <div class="ans-panel"><span class="a">答え：①イ　②ア　③エ　④ウ</span>
+    <p class="exp">③と④の違いは<b>「小片化」か「繊維化」か</b>だけ。パーティクル（particle）＝小片、ファイバー（fiber）＝繊維、と英語の意味で覚えると間違えない。</p>
+    <div class="memo"><b>覚え方</b>：<b>パーティクル＝粒（小片）</b>、<b>ファイバー＝繊維</b>。英単語そのまま！</div>
+  </div>
+</div>
+
+<div class="q">
+  <div class="q-head"><span class="qnum">問32</span><span class="stars s2">★★</span><span class="chip chigi">知技</span><span class="chip kata">記号</span><span class="chip pgc">教科書p.33</span></div>
+  <div class="q-body">
+    <p>合板と集成材の特徴について、長所（○）と短所（△）の組み合わせとして正しいものを、ア〜エから1つ選びなさい。</p>
+    <ul class="choices one-col">
+      <li>ア　合板○：繊維方向による性質の違いが少ない　△：厚くする分だけ単板が必要</li>
+      <li>イ　合板○：材料を作る手間がかからない　△：変形が大きい</li>
+      <li>ウ　集成材○：単板を貼るだけで作れる　△：強度が低い</li>
+      <li>エ　集成材○：繊維方向の性質の違いがない　△：熱圧が必要</li>
+    </ul>
+  </div>
+  <div class="write"><div class="wline"></div></div>
+  <button class="toggle-btn" onclick="tg(this)">解答を見る</button>
+  <div class="ans-panel"><span class="a">答え：ア</span>
+    <p class="exp">教科書p.33 図5より。合板○＝繊維方向による性質の違いが少ない、△＝厚くする分だけ単板が必要。集成材○＝変形が少なく強度がある、△＝材料を作る手間がかかる。</p>
+  </div>
+</div>
+
+<div class="q">
+  <div class="q-head"><span class="qnum">問33</span><span class="stars s2">★★</span><span class="chip chigi">知技</span><span class="chip kata">記号</span><span class="chip pgc">教科書p.33</span></div>
+  <div class="q-body">
+    <p>木質材料の利用例として、正しい組み合わせを1つ選びなさい。</p>
+    <ul class="choices">
+      <li>ア　合板―建物の壁　／　集成材―大規模木造建築物</li>
+      <li>イ　合板―タイヤ　／　集成材―ペットボトル</li>
+      <li>ウ　合板―大規模木造建築物　／　集成材―食器</li>
+      <li>エ　合板―刃物　／　集成材―建物の壁</li>
+    </ul>
+  </div>
+  <div class="write"><div class="wline"></div></div>
+  <button class="toggle-btn" onclick="tg(this)">解答を見る</button>
+  <div class="ans-panel"><span class="a">答え：ア</span>
+    <p class="exp">合板は<b>建物の壁</b>など面の材料に、集成材は<b>大規模木造建築物</b>（変形が少なく強度があるため大きな構造に使える）。</p>
+  </div>
+</div>
+
+<div class="q">
+  <div class="q-head"><span class="qnum">問34</span><span class="stars s2">★★</span><span class="chip shihan">思判表</span><span class="chip kata">記述</span><span class="chip pgc">教科書p.33</span></div>
+  <div class="q-body">
+    <p>パーティクルボードやファイバーボードなどの木質材料は、「資源の有効利用につながる」といわれる。その理由を説明しなさい。</p>
+  </div>
+  <div class="write"><div class="wline"></div><div class="wline"></div></div>
+  <button class="toggle-btn" onclick="tg(this)">解答を見る</button>
+  <div class="ans-panel"><span class="a">答え（例）：加工で余った小さな部分や建築解体材（廃材）などを再利用して作ることができるから。（合板は切断する際に出る木くずが少ないことも資源の有効利用につながる）</span>
+    <p class="exp">キーワードは<b>「再利用」</b>。小径材・廃材が原料になる点が書ければOK。環境の視点とからめて出題されやすい。</p>
+  </div>
+</div>
+
+<div class="q">
+  <div class="q-head"><span class="qnum">問35</span><span class="stars s1">★</span><span class="chip chigi">知技</span><span class="chip kata">語句</span><span class="chip pgc">教科書p.33</span></div>
+  <div class="q-body">
+    <p>木の板を木目が直角に交わるように貼り合わせた板材で、断熱性や強度に優れ、2016年に施行された国の新基準により、国内でも建物の構造材などに使えるようになったものを何というか。アルファベット3字で答えなさい。</p>
+  </div>
+  <div class="write"><div class="wline"></div></div>
+  <button class="toggle-btn" onclick="tg(this)">解答を見る</button>
+  <div class="ans-panel"><span class="a">答え：CLT（直交集成板）</span>
+    <p class="exp">教科書p.33「技術の工夫」から。<b>C</b>ross <b>L</b>aminated <b>T</b>imber＝直交集成板。細かい知識だが、欄外の「技術の工夫」はテストで狙われやすい。</p>
+  </div>
+</div>
+
+<div class="q">
+  <div class="q-head"><span class="qnum">問36</span><span class="stars s2">★★</span><span class="chip chigi">知技</span><span class="chip kata">○×</span><span class="chip pgc">教科書p.33</span></div>
+  <div class="q-body">
+    <p>木材ののこぎりびき・切削について、次の文が正しければ○、間違っていれば×を書きなさい。</p>
+    <ol class="abc">
+      <li>① のこぎりを引いたときに材料が動かないように、しっかり固定する。</li>
+      <li>② のこぎりは、押すときに強く力を入れて切断する。</li>
+      <li>③ 削るときは、繊維方向に気をつけて、表面が滑らかになるように削る。</li>
+    </ol>
+  </div>
+  <div class="write"><div class="wline"></div></div>
+  <button class="toggle-btn" onclick="tg(this)">解答を見る</button>
+  <div class="ans-panel"><span class="a">答え：①○　②×　③○</span>
+    <p class="exp">②日本ののこぎりは<b>引くときに軽く力を入れて</b>、リズムよく切断する（教科書p.33「やってみよう」）。「押すとき」はひっかけ。</p>
+    <div class="memo"><b>覚え方</b>：日本ののこぎりは「<b>引く文化</b>」。引いて切る、押すときは力を抜く。</div>
+  </div>
+</div>
+
+<!-- ================= 単元5 ================= -->
+<h2 class="unit"><span class="no">単元5</span>金属の特性<span class="pg">教科書 p.34〜35</span></h2>
+<p class="unit-lead">弾性・塑性・展性・延性の4用語と熱処理3種は、この範囲で最も差がつくところ。ひっかけに注意。</p>
+
+<div class="q">
+  <div class="q-head"><span class="qnum">問37</span><span class="stars s3">★★★</span><span class="chip chigi">知技</span><span class="chip kata">図・記号</span><span class="chip pgc">教科書p.34</span></div>
+  <div class="q-body">
+    <p>下の図A・Bは、金属の板に力を加えたときのようすである。それぞれの性質を何というか。あとの語群から選び、記号で答えなさい。</p>
+    <div class="fig">
+      <svg viewBox="0 0 620 170" width="620" height="170" role="img" aria-label="弾性と塑性">
+        <g transform="translate(20,25)">
+          <text x="130" y="0" text-anchor="middle" font-size="15" font-weight="bold" fill="#1E293B">A：小さな力</text>
+          <rect x="0" y="30" width="18" height="90" fill="#94A3B8" stroke="#475569"/>
+          <!-- 曲がった板(点線)と戻った板(実線) -->
+          <path d="M18,45 q110,4 200,55" fill="none" stroke="#94A3B8" stroke-width="3" stroke-dasharray="6 5"/>
+          <line x1="18" y1="45" x2="235" y2="45" stroke="#475569" stroke-width="4"/>
+          <line x1="228" y1="92" x2="228" y2="60" stroke="#DC2626" stroke-width="3"/>
+          <polygon points="228,52 221,64 235,64" fill="#DC2626"/>
+          <text x="128" y="140" text-anchor="middle" font-size="13" fill="#1E293B">力を除くと、完全に元に戻る</text>
+        </g>
+        <g transform="translate(340,25)">
+          <text x="130" y="0" text-anchor="middle" font-size="15" font-weight="bold" fill="#1E293B">B：大きな力</text>
+          <rect x="0" y="30" width="18" height="90" fill="#94A3B8" stroke="#475569"/>
+          <path d="M18,45 q120,8 210,75" fill="none" stroke="#94A3B8" stroke-width="3" stroke-dasharray="6 5"/>
+          <path d="M18,45 q120,5 212,58" fill="none" stroke="#475569" stroke-width="4"/>
+          <line x1="222" y1="112" x2="222" y2="82" stroke="#DC2626" stroke-width="3"/>
+          <polygon points="222,74 215,86 229,86" fill="#DC2626"/>
+          <text x="128" y="140" text-anchor="middle" font-size="13" fill="#1E293B">力を除いても、変形が残る</text>
+        </g>
+      </svg>
+    </div>
+    <div class="gokun"><b>語群</b>ア：塑性　　イ：弾性　　ウ：展性　　エ：延性</div>
+  </div>
+  <div class="write"><div class="wline"></div></div>
+  <button class="toggle-btn" onclick="tg(this)">解答を見る</button>
+  <div class="ans-panel"><span class="a">答え：A＝イ（弾性）　B＝ア（塑性）</span>
+    <p class="exp"><b>弾性</b>＝加えた力を除くと元に戻る性質。<b>塑性</b>＝力を除いても変形したまま元に戻らない性質。</p>
+    <div class="memo"><b>覚え方</b>：「弾」はバネ（弾む）＝<b>戻る</b>。「塑」は粘土細工（塑像）＝<b>形が残る</b>。</div>
+  </div>
+</div>
+
+<div class="q">
+  <div class="q-head"><span class="qnum">問38</span><span class="stars s3">★★★</span><span class="chip chigi">知技</span><span class="chip kata">図・記号</span><span class="chip pgc">教科書p.34</span></div>
+  <div class="q-body">
+    <p>下の図C・Dは、金属の性質を表したものである。それぞれの性質の名前と説明の組み合わせとして正しいものを、ア〜エから1つ選びなさい。</p>
+    <div class="fig">
+      <svg viewBox="0 0 620 150" width="620" height="150" role="img" aria-label="展性と延性">
+        <g transform="translate(30,20)">
+          <text x="110" y="0" text-anchor="middle" font-size="15" font-weight="bold" fill="#1E293B">C：たたく（圧力）</text>
+          <line x1="60" y1="14" x2="60" y2="36" stroke="#DC2626" stroke-width="3"/><polygon points="60,44 53,32 67,32" fill="#DC2626"/>
+          <ellipse cx="60" cy="60" rx="34" ry="13" fill="#CBD5E1" stroke="#475569" stroke-width="1.5"/>
+          <text x="110" y="64" font-size="18" fill="#94A3B8">→</text>
+          <ellipse cx="185" cy="62" rx="52" ry="8" fill="#CBD5E1" stroke="#475569" stroke-width="1.5"/>
+          <text x="110" y="105" text-anchor="middle" font-size="13" fill="#1E293B">広がって薄くなる</text>
+        </g>
+        <g transform="translate(340,20)">
+          <text x="120" y="0" text-anchor="middle" font-size="15" font-weight="bold" fill="#1E293B">D：引っ張る</text>
+          <rect x="40" y="48" width="70" height="22" rx="8" fill="#CBD5E1" stroke="#475569" stroke-width="1.5"/>
+          <line x1="30" y1="59" x2="8" y2="59" stroke="#DC2626" stroke-width="3"/><polygon points="0,59 12,52 12,66" fill="#DC2626"/>
+          <line x1="120" y1="59" x2="142" y2="59" stroke="#DC2626" stroke-width="3"/><polygon points="150,59 138,52 138,66" fill="#DC2626"/>
+          <text x="168" y="64" font-size="18" fill="#94A3B8">→</text>
+          <rect x="195" y="53" width="95" height="11" rx="5" fill="#CBD5E1" stroke="#475569" stroke-width="1.5"/>
+          <text x="150" y="105" text-anchor="middle" font-size="13" fill="#1E293B">延びて細く長くなる</text>
+        </g>
+      </svg>
+    </div>
+    <ul class="choices one-col">
+      <li>ア　C：展性―たたくと広がり、薄くなる　／　D：延性―引っ張ると、延びて細く長くなる</li>
+      <li>イ　C：延性―たたくと広がり、薄くなる　／　D：展性―引っ張ると、延びて細く長くなる</li>
+      <li>ウ　C：弾性―たたくと元に戻る　／　D：塑性―引っ張ると元に戻る</li>
+      <li>エ　C：展性―引っ張ると薄くなる　／　D：延性―たたくと長くなる</li>
+    </ul>
+  </div>
+  <div class="write"><div class="wline"></div></div>
+  <button class="toggle-btn" onclick="tg(this)">解答を見る</button>
+  <div class="ans-panel"><span class="a">答え：ア</span>
+    <p class="exp"><b>展性</b>＝たたくと広がり薄くなる。<b>延性</b>＝引っ張ると延びて細く長くなる。どちらも<b>塑性の一種</b>である点も問われやすい。</p>
+    <div class="memo"><b>覚え方</b>：「<b>展</b>＝展開図のように広がる」「<b>延</b>＝延長のように長く延びる」。金ぱく＝展性、針金＝延性。</div>
+  </div>
+</div>
+
+<div class="q">
+  <div class="q-head"><span class="qnum">問39</span><span class="stars s3">★★★</span><span class="chip chigi">知技</span><span class="chip kata">語句</span><span class="chip pgc">教科書p.34</span></div>
+  <div class="q-body">
+    <p>金属が塑性変形した部分は、組織が変わって硬くなる。これを何というか。漢字4字で答えなさい。</p>
+  </div>
+  <div class="write"><div class="wline"></div></div>
+  <button class="toggle-btn" onclick="tg(this)">解答を見る</button>
+  <div class="ans-panel"><span class="a">答え：加工硬化</span>
+    <p class="exp">曲げた部分の組織が引っ張られて変わり、硬くなる現象。<b>加工の際は注意が必要</b>になる理由として問われる。針金を同じ場所で何度も曲げると硬くなって折れるのはこれ。</p>
+    <div class="memo"><b>覚え方</b>：そのまま「<b>加工</b>すると<b>硬化</b>する」＝加工硬化。</div>
+  </div>
+</div>
+
+<div class="q">
+  <div class="q-head"><span class="qnum">問40</span><span class="stars s3">★★★</span><span class="chip chigi">知技</span><span class="chip kata">語群</span><span class="chip pgc">教科書p.34</span></div>
+  <div class="q-body">
+    <p>合金について、次の表の（　①　）〜（　③　）にあてはまるものを、あとの語群からそれぞれ選び、記号で答えなさい。</p>
+    <div class="gokun" style="text-align:center">
+      鉄 ＋ 炭素を添加 →（ ① ）…硬く、強い<br>
+      鉄 ＋（ ② ）を添加 → ステンレス…さびにくい<br>
+      アルミニウム ＋ 銅、マグネシウムなどを添加 →（ ③ ）…軽く、強い
+    </div>
+    <div class="gokun"><b>語群</b>ア：クロム、ニッケル　　イ：鋼　　ウ：アルミニウム合金　　エ：亜鉛</div>
+  </div>
+  <div class="write"><div class="wline"></div></div>
+  <button class="toggle-btn" onclick="tg(this)">解答を見る</button>
+  <div class="ans-panel"><span class="a">答え：①イ（鋼）　②ア（クロム、ニッケル）　③ウ（アルミニウム合金）</span>
+    <p class="exp">溶けた金属に別の金属などを混ぜると<b>合金</b>になり、性質が変化する。<b>鋼＝鉄＋炭素</b>（硬く強い）、<b>ステンレス＝クロム・ニッケルを添加</b>（さびにくい）。</p>
+    <div class="memo"><b>覚え方</b>：「ステンレス＝<b>ステイン（さび・汚れ）レス（ない）</b>」→さびにくくするのは<b>クロム・ニッケル</b>。</div>
+  </div>
+</div>
+
+<div class="q">
+  <div class="q-head"><span class="qnum">問41</span><span class="stars s3">★★★</span><span class="chip chigi">知技</span><span class="chip kata">表・語群</span><span class="chip pgc">教科書p.34</span></div>
+  <div class="q-body">
+    <p>鋼の熱処理について、次の表の（　①　）〜（　③　）にあてはまる熱処理の名前を、あとの語群からそれぞれ選び、記号で答えなさい。</p>
+    <div class="fig">
+      <svg viewBox="0 0 640 190" width="640" height="190" role="img" aria-label="熱処理の比較表">
+        <g font-size="13">
+          <rect x="0" y="0" width="640" height="38" fill="#1E3A8A"/>
+          <text x="70" y="24" fill="#fff" text-anchor="middle" font-weight="bold">熱処理</text>
+          <text x="330" y="24" fill="#fff" text-anchor="middle" font-weight="bold">方法</text>
+          <text x="575" y="24" fill="#fff" text-anchor="middle" font-weight="bold">処理後の性質</text>
+          <rect x="0" y="38" width="640" height="50" fill="#F8FAFC" stroke="#CBD5E1"/>
+          <text x="70" y="67" text-anchor="middle" font-weight="bold" fill="#DC2626">（　①　）</text>
+          <text x="150" y="60" fill="#1E293B">鋼を高温に加熱して、水や油の中で</text>
+          <text x="150" y="78" fill="#1E293B">急に常温まで冷やす。</text>
+          <text x="575" y="67" text-anchor="middle" fill="#1E293B">硬く、もろくなる</text>
+          <rect x="0" y="88" width="640" height="50" fill="#FFFFFF" stroke="#CBD5E1"/>
+          <text x="70" y="117" text-anchor="middle" font-weight="bold" fill="#DC2626">（　②　）</text>
+          <text x="150" y="110" fill="#1E293B">①をした鋼を、①より低い温度で再加熱し、</text>
+          <text x="150" y="128" fill="#1E293B">油や空気中で冷やす。</text>
+          <text x="575" y="117" text-anchor="middle" fill="#1E293B">粘り強くなる</text>
+          <rect x="0" y="138" width="640" height="50" fill="#F8FAFC" stroke="#CBD5E1"/>
+          <text x="70" y="167" text-anchor="middle" font-weight="bold" fill="#DC2626">（　③　）</text>
+          <text x="150" y="160" fill="#1E293B">鋼を適切な温度に加熱し、</text>
+          <text x="150" y="178" fill="#1E293B">炉の中でゆっくり冷やす。</text>
+          <text x="575" y="167" text-anchor="middle" fill="#1E293B">軟らかくなる</text>
+        </g>
+      </svg>
+    </div>
+    <div class="gokun"><b>語群</b>ア：焼きなまし　　イ：焼き入れ　　ウ：焼き戻し</div>
+  </div>
+  <div class="write"><div class="wline"></div></div>
+  <button class="toggle-btn" onclick="tg(this)">解答を見る</button>
+  <div class="ans-panel"><span class="a">答え：①イ（焼き入れ）　②ウ（焼き戻し）　③ア（焼きなまし）</span>
+    <p class="exp"><b>焼き入れ＝急冷→硬く・もろく</b>／<b>焼き戻し＝低温で再加熱→粘り強く</b>／<b>焼きなまし＝ゆっくり冷やす→軟らかく</b>。「方法」と「性質」の3点セットで確実に。</p>
+    <div class="memo"><b>覚え方</b>：「<b>入れて硬く、戻して粘る、なまして軟らか</b>」。急いで冷やすと硬い、ゆっくり冷やすと軟らかい、と温度変化のスピードで整理。</div>
+  </div>
+</div>
+
+<div class="q">
+  <div class="q-head"><span class="qnum">問42</span><span class="stars s2">★★</span><span class="chip chigi">知技</span><span class="chip kata">語句</span><span class="chip pgc">教科書p.34</span></div>
+  <div class="q-body">
+    <p>次の文の（　①　）・（　②　）にあてはまる言葉を答えなさい。</p>
+    <p>私たちがふだん「鉄」とよぶ金属の多くは、（　①　）とよばれる鉄と（　②　）の合金である。身近な鉄は、（　②　）の含有量が多く硬い鋳鉄と、含有量が少なく軟らかい（　①　）に大別できる。</p>
+  </div>
+  <div class="write"><div class="wline"></div></div>
+  <button class="toggle-btn" onclick="tg(this)">解答を見る</button>
+  <div class="ans-panel"><span class="a">答え：①鋼　②炭素</span>
+    <p class="exp">「ふだんの鉄＝実は<b>鋼</b>（鉄＋炭素の合金）」は記述でも選択でも出やすい。炭素が<b>多い→鋳鉄（硬い）</b>、<b>少ない→鋼（軟らかめ・粘り強い）</b>。</p>
+  </div>
+</div>
+
+<div class="q">
+  <div class="q-head"><span class="qnum">問43</span><span class="stars s3">★★★</span><span class="chip chigi">知技</span><span class="chip kata">図・語群</span><span class="chip pgc">教科書p.35</span></div>
+  <div class="q-body">
+    <p>下の図は、鋼の製造過程を表したものである。（　①　）〜（　③　）にあてはまる言葉を、あとの語群からそれぞれ選び、記号で答えなさい。</p>
+    <div class="fig">
+      <svg viewBox="0 0 640 110" width="640" height="110" role="img" aria-label="鋼の製造過程">
+        <g font-size="13.5" text-anchor="middle">
+          <rect x="0" y="30" width="90" height="44" rx="8" fill="#E7C9A0" stroke="#8B6534" stroke-width="1.5"/>
+          <text x="45" y="57" fill="#1E293B">鉄鉱石</text>
+          <text x="107" y="57" font-size="18" fill="#94A3B8">→</text>
+          <rect x="125" y="30" width="100" height="44" rx="8" fill="#FEE2E2" stroke="#DC2626" stroke-width="1.5"/>
+          <text x="175" y="57" fill="#DC2626" font-weight="bold">（　①　）</text>
+          <text x="175" y="92" font-size="11.5" fill="#475569">コークスなどと加熱</text>
+          <text x="242" y="57" font-size="18" fill="#94A3B8">→</text>
+          <rect x="260" y="30" width="100" height="44" rx="8" fill="#FEE2E2" stroke="#DC2626" stroke-width="1.5"/>
+          <text x="310" y="57" fill="#DC2626" font-weight="bold">（　②　）</text>
+          <text x="310" y="92" font-size="11.5" fill="#475569">炭素を多く含む鉄</text>
+          <text x="377" y="57" font-size="18" fill="#94A3B8">→</text>
+          <rect x="395" y="30" width="90" height="44" rx="8" fill="#E2E8F0" stroke="#475569" stroke-width="1.5"/>
+          <text x="440" y="50" fill="#1E293B">転炉・</text><text x="440" y="68" fill="#1E293B">電気炉</text>
+          <text x="502" y="57" font-size="18" fill="#94A3B8">→</text>
+          <rect x="520" y="30" width="100" height="44" rx="8" fill="#FEE2E2" stroke="#DC2626" stroke-width="1.5"/>
+          <text x="570" y="57" fill="#DC2626" font-weight="bold">（　③　）</text>
+          <text x="570" y="92" font-size="11.5" fill="#475569">連続鋳造して成形</text>
+        </g>
+      </svg>
+    </div>
+    <div class="gokun"><b>語群</b>ア：銑鉄（せんてつ）　　イ：高炉　　ウ：鋼</div>
+  </div>
+  <div class="write"><div class="wline"></div></div>
+  <button class="toggle-btn" onclick="tg(this)">解答を見る</button>
+  <div class="ans-panel"><span class="a">答え：①イ（高炉）　②ア（銑鉄）　③ウ（鋼）</span>
+    <p class="exp">鉄鉱石をコークスなどと一緒に<b>高炉</b>で加熱→<b>銑鉄</b>（炭素を多く含む鉄）→<b>転炉</b>（スクラップは電気炉）で炭素量を調整・不純物を除去→<b>鋼</b>。鋼は連続的に冷やして固め、ローラーで延ばして鋼板などに成形される。</p>
+    <div class="memo"><b>覚え方</b>：「<b>こう（高炉）→せん（銑鉄）→てん（転炉）→こう（鋼）</b>」＝「高・銑・転・鋼」とリズムで。</div>
+  </div>
+</div>
+
+<div class="q">
+  <div class="q-head"><span class="qnum">問44</span><span class="stars s2">★★</span><span class="chip chigi">知技</span><span class="chip kata">○×</span><span class="chip pgc">教科書p.34</span></div>
+  <div class="q-body">
+    <p>金属に共通する性質について、次の文が正しければ○、間違っていれば×を書きなさい。</p>
+    <ol class="abc">
+      <li>① 金属は、木材やプラスチックに比べて強く、重く、耐熱性に優れている。</li>
+      <li>② 金属の表面には特有の光沢がある。</li>
+      <li>③ 金属は、電気は通すが、熱はほとんど通さない。</li>
+      <li>④ 金属は、加熱して一定の温度を超えると溶ける。</li>
+    </ol>
+  </div>
+  <div class="write"><div class="wline"></div></div>
+  <button class="toggle-btn" onclick="tg(this)">解答を見る</button>
+  <div class="ans-panel"><span class="a">答え：①○　②○　③×　④○</span>
+    <p class="exp">③金属は<b>電気も熱もよく通す</b>。フライパンが金属なのは熱をよく伝えるから、と考えれば間違えない。</p>
+  </div>
+</div>
+
+<div class="q">
+  <div class="q-head"><span class="qnum">問45</span><span class="stars s2">★★</span><span class="chip chigi">知技</span><span class="chip kata">語句</span><span class="chip pgc">教科書p.35</span></div>
+  <div class="q-body">
+    <p>金属の成形について、次の①・②の加工法をそれぞれ何というか。漢字2字で答えなさい。</p>
+    <ol class="abc">
+      <li>① 溶かした金属を型に流し込んで固める加工法。複雑な形状を比較的容易に作ることができる。</li>
+      <li>② 金属をたたいて圧力を加えることで強度を高め、目的の形に成形する加工法。日本刀や包丁、強度が必要な自動車や飛行機の金属部品などの製造に使われる。</li>
+    </ol>
+  </div>
+  <div class="write"><div class="wline"></div></div>
+  <button class="toggle-btn" onclick="tg(this)">解答を見る</button>
+  <div class="ans-panel"><span class="a">答え：①鋳造（ちゅうぞう）　②鍛造（たんぞう）</span>
+    <p class="exp">教科書p.35「技術の工夫」から。<b>鋳造＝流し込む</b>、<b>鍛造＝たたいて鍛える</b>。</p>
+    <div class="memo"><b>覚え方</b>：「<b>鋳</b>」は鋳型（いがた）に流す、「<b>鍛</b>」は鍛える（きたえる）＝日本刀をたたくイメージ。</div>
+  </div>
+</div>
+
+<div class="q">
+  <div class="q-head"><span class="qnum">問46</span><span class="stars s2">★★</span><span class="chip chigi">知技</span><span class="chip kata">記号</span><span class="chip pgc">教科書p.35</span></div>
+  <div class="q-body">
+    <p>金属の利用例について、正しい組み合わせを1つ選びなさい。</p>
+    <ul class="choices one-col">
+      <li>ア　スチール缶＝鋼　／　アルミ缶＝アルミニウム合金　／　金管楽器＝黄銅（銅と亜鉛の合金）</li>
+      <li>イ　スチール缶＝アルミニウム合金　／　アルミ缶＝鋼　／　金管楽器＝ステンレス</li>
+      <li>ウ　スチール缶＝黄銅　／　アルミ缶＝鋼　／　金管楽器＝アルミニウム合金</li>
+      <li>エ　スチール缶＝鋼　／　アルミ缶＝黄銅　／　金管楽器＝鋳鉄</li>
+    </ul>
+  </div>
+  <div class="write"><div class="wline"></div></div>
+  <button class="toggle-btn" onclick="tg(this)">解答を見る</button>
+  <div class="ans-panel"><span class="a">答え：ア</span>
+    <p class="exp">スチール（steel）＝<b>鋼</b>。金管楽器の本体は<b>黄銅</b>（銅＋亜鉛の合金、ブラス）。橋梁の鉄骨は鋼（低炭素鋼）、ワイヤは高強度鋼線。</p>
+    <div class="memo"><b>覚え方</b>：ブラスバンド（brass band）の「ブラス」＝黄銅。<b>銅と亜鉛</b>で金色に。</div>
+  </div>
+</div>
+
+<div class="q">
+  <div class="q-head"><span class="qnum">問47</span><span class="stars s1">★</span><span class="chip shihan">思判表</span><span class="chip kata">記述</span><span class="chip pgc">教科書p.35</span></div>
+  <div class="q-body">
+    <p>金切りばさみで金属の薄板を切るとき、切り進んだら切り離した部分を上に引き上げるとよい。その理由を、金属の性質の名前を使って説明しなさい。</p>
+  </div>
+  <div class="write"><div class="wline"></div><div class="wline"></div></div>
+  <button class="toggle-btn" onclick="tg(this)">解答を見る</button>
+  <div class="ans-panel"><span class="a">答え（例）：切り離した部分を引き上げることで、元に戻ろうとする弾性が働き、切りやすくなるから。</span>
+    <p class="exp">教科書p.35「やってみよう」の説明そのまま。<b>「弾性」という用語を使う</b>のがポイント。用語と実際の作業を結びつける応用問題。</p>
+  </div>
+</div>
+
+<div class="q">
+  <div class="q-head"><span class="qnum">問48</span><span class="stars s1">★</span><span class="chip shihan">思判表</span><span class="chip kata">記述</span><span class="chip pgc">教科書p.34</span></div>
+  <div class="q-body">
+    <p>スパナなどの工具は、形を整えた後、800℃程度に加熱し、水の中で急冷して作られる。</p>
+    <ol class="abc">
+      <li>① この熱処理を何というか。</li>
+      <li>② この処理だけでは工具に欠点が残る。どんな欠点か、簡単に答えなさい。</li>
+    </ol>
+  </div>
+  <div class="write"><div class="wline"></div><div class="wline"></div></div>
+  <button class="toggle-btn" onclick="tg(this)">解答を見る</button>
+  <div class="ans-panel"><span class="a">答え：①焼き入れ　②硬くなるが、もろくなる（欠けやすい）。</span>
+    <p class="exp">焼き入れで<b>硬く</b>なるが同時に<b>もろく</b>なる。だから実際の刃物や工具は、この後<b>焼き戻し</b>をして粘り強さを加える。「焼き入れ→焼き戻し」の流れで理解しておくと記述に強い。</p>
+  </div>
+</div>
+
+<!-- ================= 単元6 ================= -->
+<h2 class="unit"><span class="no">単元6</span>プラスチックの特性<span class="pg">教科書 p.36〜37</span></h2>
+<p class="unit-lead">熱可塑性と熱硬化性の区別が全て。分子の形（鎖状／網目状）とセットで覚える。</p>
+
+<div class="q">
+  <div class="q-head"><span class="qnum">問49</span><span class="stars s3">★★★</span><span class="chip chigi">知技</span><span class="chip kata">図・記号</span><span class="chip pgc">教科書p.36</span></div>
+  <div class="q-body">
+    <p>下の図A・Bは、2種類のプラスチックの分子の構造を模式的に表したものである。あとの問いに答えなさい。</p>
+    <div class="fig">
+      <svg viewBox="0 0 520 170" width="520" height="170" role="img" aria-label="プラスチックの分子構造">
+        <g transform="translate(40,20)">
+          <text x="80" y="0" text-anchor="middle" font-size="15" font-weight="bold" fill="#1E293B">A：鎖状の分子</text>
+          <circle cx="80" cy="75" r="62" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.5"/>
+          <g fill="none" stroke="#2563EB" stroke-width="2.4" stroke-linecap="round">
+            <path d="M35,50 q20,18 40,2 t40,6"/>
+            <path d="M30,80 q25,-14 45,4 t45,-2"/>
+            <path d="M40,108 q18,-16 38,-2 t42,-8"/>
+            <path d="M55,32 q15,14 32,6"/>
+          </g>
+        </g>
+        <g transform="translate(300,20)">
+          <text x="80" y="0" text-anchor="middle" font-size="15" font-weight="bold" fill="#1E293B">B：網目状の分子</text>
+          <circle cx="80" cy="75" r="62" fill="#FEF2F2" stroke="#DC2626" stroke-width="1.5"/>
+          <g fill="none" stroke="#DC2626" stroke-width="2.2" stroke-linecap="round">
+            <path d="M30,55 q25,10 50,0 t50,8"/>
+            <path d="M32,95 q25,-8 50,2 t48,-6"/>
+            <path d="M50,30 q6,30 -2,60 M80,25 q4,32 0,66 M110,30 q-4,30 2,62"/>
+          </g>
+        </g>
+      </svg>
+    </div>
+    <ol class="abc">
+      <li>① 加熱すると軟化して溶けるプラスチックを何というか。また、その分子構造はA・Bのどちらか。</li>
+      <li>② 一度固まると加熱しても軟化しないプラスチックを何というか。また、その分子構造はA・Bのどちらか。</li>
+    </ol>
+  </div>
+  <div class="write"><div class="wline"></div><div class="wline"></div></div>
+  <button class="toggle-btn" onclick="tg(this)">解答を見る</button>
+  <div class="ans-panel"><span class="a">答え：①熱可塑性プラスチック・A（鎖状）　②熱硬化性プラスチック・B（網目状）</span>
+    <p class="exp"><b>熱可塑性＝鎖状の分子</b>：加熱すると分子の絡み合いや部分的な結合がほどけて組織が緩み、軟化する。<b>熱硬化性＝網目状の分子</b>：一度固まると加熱しても組織が緩まず、軟化しない。</p>
+    <div class="memo"><b>覚え方</b>：「<b>鎖はほどける、網はほどけない</b>」。可塑＝形を変えられる（塑性の「塑」）。</div>
+  </div>
+</div>
+
+<div class="q">
+  <div class="q-head"><span class="qnum">問50</span><span class="stars s3">★★★</span><span class="chip chigi">知技</span><span class="chip kata">記号</span><span class="chip pgc">教科書p.36</span></div>
+  <div class="q-body">
+    <p>次の①〜⑤の製品に使われているプラスチックは、熱可塑性・熱硬化性のどちらか。熱可塑性ならア、熱硬化性ならイと答えなさい。</p>
+    <ol class="abc">
+      <li>① ペットボトルの容器（PET樹脂）</li>
+      <li>② フライパンや鍋の取っ手（フェノール樹脂）</li>
+      <li>③ 食品用ラップ（ポリエチレンなど）</li>
+      <li>④ テレビなど家電製品の外装（ABS樹脂、ポリカーボネートなど）</li>
+      <li>⑤ 浴槽（アクリルなど）</li>
+    </ol>
+  </div>
+  <div class="write"><div class="wline"></div></div>
+  <button class="toggle-btn" onclick="tg(this)">解答を見る</button>
+  <div class="ans-panel"><span class="a">答え：①ア　②イ　③ア　④ア　⑤ア</span>
+    <p class="exp">教科書p.36 図3では、<b>熱硬化性の例はフライパンや鍋の取っ手（フェノール樹脂）だけ</b>。あとは全部熱可塑性。「熱いものに触れる場所＝溶けたら困る＝熱硬化性」と考えると納得できる。</p>
+    <div class="memo"><b>覚え方</b>：「<b>取っ手は熱くても溶けない→熱硬化性</b>」。迷ったら「加熱される製品か？」で判断。</div>
+  </div>
+</div>
+
+<div class="q">
+  <div class="q-head"><span class="qnum">問51</span><span class="stars s2">★★</span><span class="chip chigi">知技</span><span class="chip kata">○×</span><span class="chip pgc">教科書p.36</span></div>
+  <div class="q-body">
+    <p>プラスチックに共通する性質について、次の文が正しければ○、間違っていれば×を書きなさい。</p>
+    <ol class="abc">
+      <li>① 透明なものが多く、軽くて耐久性がある。</li>
+      <li>② 一般に、熱や電気をよく通す。</li>
+      <li>③ 着色は容易で、型を使った大量生産が可能である。</li>
+      <li>④ 強さや硬さ、耐熱性は金属より優れている。</li>
+    </ol>
+  </div>
+  <div class="write"><div class="wline"></div></div>
+  <button class="toggle-btn" onclick="tg(this)">解答を見る</button>
+  <div class="ans-panel"><span class="a">答え：①○　②×　③○　④×</span>
+    <p class="exp">②プラスチックは熱や電気を<b>通しにくい</b>（金属と逆！）。④強さ・硬さ・耐熱性は<b>金属ほど大きくない</b>。</p>
+    <div class="memo"><b>覚え方</b>：コンセントプラグの外側がプラスチックなのは<b>電気を通さない</b>から。</div>
+  </div>
+</div>
+
+<div class="q">
+  <div class="q-head"><span class="qnum">問52</span><span class="stars s2">★★</span><span class="chip chigi">知技</span><span class="chip kata">語句</span><span class="chip pgc">教科書p.37</span></div>
+  <div class="q-body">
+    <p>プラスチック（熱可塑性）の製造過程について、次の文の（　①　）・（　②　）にあてはまる言葉を答えなさい。</p>
+    <p>原油から分留した（　①　）（軽質油）を原料として、化学反応によりプラスチックを合成し、（　②　）（小粒）にする。それを加熱して溶かし、シート状にしたものを再加熱して軟化させ、型を使って成形する。</p>
+  </div>
+  <div class="write"><div class="wline"></div></div>
+  <button class="toggle-btn" onclick="tg(this)">解答を見る</button>
+  <div class="ans-panel"><span class="a">答え：①ナフサ　②ペレット</span>
+    <p class="exp">プラスチックの原料は<b>原油→ナフサ</b>。中間製品の小粒が<b>ペレット</b>。製造の流れ（原油→分留→ナフサ→合成→ペレット→加熱・成形）は並べ替え問題でも出る。</p>
+  </div>
+</div>
+
+<div class="q">
+  <div class="q-head"><span class="qnum">問53</span><span class="stars s2">★★</span><span class="chip chigi">知技</span><span class="chip kata">語句</span><span class="chip pgc">教科書p.36</span></div>
+  <div class="q-body">
+    <p>繊維と樹脂を複合させて強度を高めたプラスチックを強化プラスチックという。これをアルファベットで何というか。また、炭素繊維を使ったものを何というか。それぞれアルファベットで答えなさい。</p>
+  </div>
+  <div class="write"><div class="wline"></div></div>
+  <button class="toggle-btn" onclick="tg(this)">解答を見る</button>
+  <div class="ans-panel"><span class="a">答え：強化プラスチック＝FRP　炭素繊維のもの＝CFRP</span>
+    <p class="exp">FRP＝Fiber（繊維）Reinforced（強化）Plastics。頭に<b>C</b>arbon（炭素）がつくとCFRP。ガラス繊維を使ったものもある。</p>
+    <div class="memo"><b>覚え方</b>：<b>C＝カーボン（炭素）</b>が頭につくだけ。沖縄美ら海水族館の巨大水槽は「透明なアクリル板を何枚も重ねて接着」— これも出題候補。</div>
+  </div>
+</div>
+
+<div class="q">
+  <div class="q-head"><span class="qnum">問54</span><span class="stars s2">★★</span><span class="chip chigi">知技</span><span class="chip kata">記号</span><span class="chip pgc">教科書p.37</span></div>
+  <div class="q-body">
+    <p>新しい材料について、次の①・②の説明にあてはまるものを、あとの語群から選び、記号で答えなさい。</p>
+    <ol class="abc">
+      <li>① 炭素原子が網目のように結びついた構造で、軽くて強く、導電性が高い。飛行機などに利用される。</li>
+      <li>② 土や水の中にいるバクテリアによって分解されるプラスチック。育苗ポットなどに利用される。</li>
+    </ol>
+    <div class="gokun"><b>語群</b>ア：生分解性プラスチック　　イ：カーボンナノチューブ　　ウ：発泡プラスチック</div>
+  </div>
+  <div class="write"><div class="wline"></div></div>
+  <button class="toggle-btn" onclick="tg(this)">解答を見る</button>
+  <div class="ans-panel"><span class="a">答え：①イ　②ア</span>
+    <p class="exp">どちらも教科書p.37「資料 新しい材料」から。<b>カーボンナノチューブ＝軽い・強い・導電性</b>、<b>生分解性プラスチック＝バクテリアが分解</b>。</p>
+  </div>
+</div>
+
+<div class="q">
+  <div class="q-head"><span class="qnum">問55</span><span class="stars s2">★★</span><span class="chip shihan">思判表</span><span class="chip kata">記述</span><span class="chip pgc">教科書p.37</span></div>
+  <div class="q-body">
+    <p>生分解性プラスチックは、環境への負荷が少ない材料といわれる。その理由を説明しなさい。</p>
+  </div>
+  <div class="write"><div class="wline"></div><div class="wline"></div></div>
+  <button class="toggle-btn" onclick="tg(this)">解答を見る</button>
+  <div class="ans-panel"><span class="a">答え（例）：土や水の中にいるバクテリアによって分解されるので、ごみとして環境中に残りにくいから。</span>
+    <p class="exp">キーワードは<b>「バクテリア」「分解」</b>。環境の視点（技術の見方・考え方）とからめた記述問題として出やすい。</p>
+  </div>
+</div>
+
+<div class="q">
+  <div class="q-head"><span class="qnum">問56</span><span class="stars s1">★</span><span class="chip chigi">知技</span><span class="chip kata">○×</span><span class="chip pgc">教科書p.37</span></div>
+  <div class="q-body">
+    <p>プラスチックの加工について、次の文が正しければ○、間違っていれば×を書きなさい。</p>
+    <ol class="abc">
+      <li>① プラスチックの薄板を切るときは、プラスチックカッタでけがき線上に板厚の3分の1ぐらいの溝を付け、工作台の端に当てて割る。</li>
+      <li>② プラスチックの薄板を曲げるときは、曲げ用ヒータで加熱して曲げる。</li>
+      <li>③ 発泡プラスチックは、軽くて水に強く、熱が伝わりにくい性質をもつ。</li>
+    </ol>
+  </div>
+  <div class="write"><div class="wline"></div></div>
+  <button class="toggle-btn" onclick="tg(this)">解答を見る</button>
+  <div class="ans-panel"><span class="a">答え：①○　②○　③○</span>
+    <p class="exp">全部正しい。①「<b>板厚の1/3の溝→割る</b>」、②「<b>加熱して曲げる</b>」（熱可塑性の性質を利用）、③発泡プラスチックは組織の中に細かい空気の隙間があるため木材のように熱が伝わりにくい。</p>
+  </div>
+</div>
+
+<!-- ================= 単元7 ================= -->
+<h2 class="unit"><span class="no">単元7</span>丈夫な製品を作る工夫<span class="pg">教科書 p.52〜53</span></h2>
+<p class="unit-lead">付箋で追加指定された範囲＝先生が意識している証拠。図と「1:2:4」の計算は必ず仕上げる。</p>
+
+<div class="q">
+  <div class="q-head"><span class="qnum">問57</span><span class="stars s3">★★★</span><span class="chip chigi">知技</span><span class="chip kata">図・語群</span><span class="chip pgc">教科書p.53</span></div>
+  <div class="q-body">
+    <p>下の図①〜③は、構造を強くする方法を表したものである。それぞれの名称を、あとの語群から選び、記号で答えなさい。</p>
+    <div class="fig">
+      <svg viewBox="0 0 620 190" width="620" height="190" role="img" aria-label="構造を強くする方法">
+        <!-- ① 三角形の構造 -->
+        <g transform="translate(20,25)">
+          <rect x="10" y="10" width="130" height="110" fill="none" stroke="#8B6534" stroke-width="10"/>
+          <line x1="16" y1="114" x2="134" y2="16" stroke="#D97706" stroke-width="9"/>
+          <circle cx="75" cy="-2" r="13" fill="#1E3A8A"/><text x="75" y="3" text-anchor="middle" font-size="13" fill="#fff" font-weight="bold">①</text>
+          <text x="75" y="150" text-anchor="middle" font-size="12.5" fill="#475569">枠に斜め材を入れる</text>
+        </g>
+        <!-- ② 面構造 -->
+        <g transform="translate(230,25)">
+          <rect x="10" y="10" width="130" height="110" fill="#F0DCB8" stroke="#8B6534" stroke-width="4"/>
+          <g fill="#475569">
+            <circle cx="22" cy="22" r="2.5"/><circle cx="75" cy="22" r="2.5"/><circle cx="128" cy="22" r="2.5"/>
+            <circle cx="22" cy="65" r="2.5"/><circle cx="128" cy="65" r="2.5"/>
+            <circle cx="22" cy="108" r="2.5"/><circle cx="75" cy="108" r="2.5"/><circle cx="128" cy="108" r="2.5"/>
+          </g>
+          <circle cx="75" cy="-2" r="13" fill="#1E3A8A"/><text x="75" y="3" text-anchor="middle" font-size="13" fill="#fff" font-weight="bold">②</text>
+          <text x="75" y="150" text-anchor="middle" font-size="12.5" fill="#475569">面を板で固定する</text>
+        </g>
+        <!-- ③ 接合部の固定 -->
+        <g transform="translate(440,25)">
+          <rect x="10" y="10" width="130" height="110" fill="none" stroke="#8B6534" stroke-width="10"/>
+          <g fill="#94A3B8" stroke="#475569" stroke-width="1.5">
+            <path d="M16,16 h30 v12 h-18 v18 h-12 z"/>
+            <path d="M134,16 h-30 v12 h18 v18 h12 z"/>
+            <path d="M16,114 h30 v-12 h-18 v-18 h-12 z"/>
+            <path d="M134,114 h-30 v-12 h18 v-18 h12 z"/>
+          </g>
+          <circle cx="75" cy="-2" r="13" fill="#1E3A8A"/><text x="75" y="3" text-anchor="middle" font-size="13" fill="#fff" font-weight="bold">③</text>
+          <text x="75" y="150" text-anchor="middle" font-size="12.5" fill="#475569">角を金具などで固定する</text>
+        </g>
+      </svg>
+    </div>
+    <div class="gokun"><b>語群</b>ア：面構造　　イ：接合部の固定　　ウ：三角形の構造</div>
+  </div>
+  <div class="write"><div class="wline"></div></div>
+  <button class="toggle-btn" onclick="tg(this)">解答を見る</button>
+  <div class="ans-panel"><span class="a">答え：①ウ　②ア　③イ</span>
+    <p class="exp">構造を強くする3つの方法。長所・短所もセットで：<b>三角形</b>＝細い材料でも強くできる／空間が狭くなる。<b>面構造</b>＝補強の効果が大きい／使う材料が多くなる。<b>接合部の固定</b>＝内部空間を使える／太めの部材が必要。</p>
+    <div class="memo"><b>覚え方</b>：「<b>三角は最強の形</b>」。橋の鉄骨や鉄塔がぜんぶ三角形の組み合わせなのはこのため。</div>
+  </div>
+</div>
+
+<div class="q">
+  <div class="q-head"><span class="qnum">問58</span><span class="stars s3">★★★</span><span class="chip chigi">知技</span><span class="chip kata">語句</span><span class="chip pgc">教科書p.52</span></div>
+  <div class="q-body">
+    <p>段ボールなどで作った四角形のフレームは、横から押すと倒れやすい。これを丈夫にするために、Z型に折り曲げて対角線上に固定する部材を何というか。</p>
+  </div>
+  <div class="write"><div class="wline"></div></div>
+  <button class="toggle-btn" onclick="tg(this)">解答を見る</button>
+  <div class="ans-panel"><span class="a">答え：斜め材</span>
+    <p class="exp">四角形は横からの力に弱いが、<b>斜め材</b>を入れると三角形ができて変形しにくくなる（教科書p.52 レッツスタート）。建物の耐震補強で入れる斜めの部材（筋かい）も同じ原理。</p>
+  </div>
+</div>
+
+<div class="q">
+  <div class="q-head"><span class="qnum">問59</span><span class="stars s3">★★★</span><span class="chip shihan">思判表</span><span class="chip kata">図・計算</span><span class="chip pgc">教科書p.53</span></div>
+  <div class="q-body">
+    <p>下の図のように、断面の大きさが違う3本の木材Ⓐ〜Ⓒに、上から力を加えた。あとの問いに答えなさい。</p>
+    <div class="fig">
+      <svg viewBox="0 0 600 200" width="600" height="200" role="img" aria-label="断面と曲げ強さ">
+        <g text-anchor="middle">
+          <!-- A: 1x1 -->
+          <g transform="translate(70,30)">
+            <text x="30" y="0" font-size="15" font-weight="bold" fill="#1E293B">Ⓐ</text>
+            <line x1="30" y1="10" x2="30" y2="34" stroke="#DC2626" stroke-width="3.5"/><polygon points="30,44 22,31 38,31" fill="#DC2626"/>
+            <rect x="5" y="50" width="50" height="25" fill="#EAD1A8" stroke="#8B6534" stroke-width="1.5"/>
+            <text x="30" y="95" font-size="12" fill="#475569">幅1 × 高さ1</text>
+            <text x="30" y="130" font-size="13" fill="#1E293B">耐えられる力：1</text>
+          </g>
+          <!-- B: 幅2 -->
+          <g transform="translate(230,30)">
+            <text x="50" y="0" font-size="15" font-weight="bold" fill="#1E293B">Ⓑ</text>
+            <line x1="50" y1="10" x2="50" y2="34" stroke="#DC2626" stroke-width="3.5"/><polygon points="50,44 42,31 58,31" fill="#DC2626"/>
+            <rect x="0" y="50" width="100" height="25" fill="#EAD1A8" stroke="#8B6534" stroke-width="1.5"/>
+            <text x="50" y="95" font-size="12" fill="#475569">幅2 × 高さ1</text>
+            <text x="50" y="130" font-size="14" fill="#DC2626" font-weight="bold">耐えられる力：（ ① ）</text>
+          </g>
+          <!-- C: 高さ2 -->
+          <g transform="translate(430,10)">
+            <text x="30" y="0" font-size="15" font-weight="bold" fill="#1E293B">Ⓒ</text>
+            <line x1="30" y1="10" x2="30" y2="34" stroke="#DC2626" stroke-width="3.5"/><polygon points="30,44 22,31 38,31" fill="#DC2626"/>
+            <rect x="5" y="50" width="50" height="50" fill="#EAD1A8" stroke="#8B6534" stroke-width="1.5"/>
+            <text x="30" y="120" font-size="12" fill="#475569">幅1 × 高さ2</text>
+            <text x="30" y="150" font-size="14" fill="#DC2626" font-weight="bold">耐えられる力：（ ② ）</text>
+          </g>
+        </g>
+      </svg>
+      <div class="cap">Ⓐを基準（1）としたときに耐えられる力の大きさ</div>
+    </div>
+    <ol class="abc">
+      <li>① Ⓐに比べて幅が2倍のⒷは、Ⓐの何倍の力に耐えられるか。</li>
+      <li>② Ⓐに比べて高さが2倍のⒸは、Ⓐの何倍の力に耐えられるか。</li>
+      <li>③ 同じ断面形状の部材を使うとき、より強くするには、荷重方向に対してどのように部材を使うとよいか。</li>
+    </ol>
+  </div>
+  <div class="write"><div class="wline"></div><div class="wline"></div></div>
+  <button class="toggle-btn" onclick="tg(this)">解答を見る</button>
+  <div class="ans-panel"><span class="a">答え：①2倍　②4倍　③荷重方向の高さが高くなるように部材を使う。</span>
+    <p class="exp">曲げ強さの比は<b>Ⓐ：Ⓑ：Ⓒ＝1：2：4</b>。幅2倍→2倍だが、<b>高さ2倍→4倍</b>（高さは2乗で効く）。だから同じ部材でも、ⒷよりⒸのように<b>縦向き（高さが高くなる向き）</b>に使うほうが強い。</p>
+    <div class="memo"><b>覚え方</b>：「<b>幅はそのまま、高さは2乗</b>」。1：2：4の「4」は2×2。定規を平らに持つとしなるが、縦にすると曲がらないのと同じ！</div>
+  </div>
+</div>
+
+<div class="q">
+  <div class="q-head"><span class="qnum">問60</span><span class="stars s3">★★★</span><span class="chip chigi">知技</span><span class="chip kata">図・語群</span><span class="chip pgc">教科書p.53</span></div>
+  <div class="q-body">
+    <p>下の図①〜④は、曲げの作用に対して強くするために断面の形を工夫した部材である。それぞれの名称を、あとの語群から選び、記号で答えなさい。</p>
+    <div class="fig">
+      <svg viewBox="0 0 620 150" width="620" height="150" role="img" aria-label="断面形状の工夫">
+        <g fill="#CBD5E1" stroke="#475569" stroke-width="2">
+          <!-- I形 -->
+          <g transform="translate(50,30)">
+            <path d="M0,0 h60 v14 h-22 v52 h22 v14 h-60 v-14 h22 v-52 h-22 z"/>
+          </g>
+          <!-- H形 -->
+          <g transform="translate(200,30)">
+            <path d="M0,0 h14 v33 h32 v-33 h14 v80 h-14 v-33 h-32 v33 h-14 z"/>
+          </g>
+          <!-- 山形 -->
+          <g transform="translate(350,30)">
+            <path d="M0,0 h14 v66 h46 v14 h-60 z"/>
+          </g>
+          <!-- パイプ -->
+          <g transform="translate(480,30)">
+            <circle cx="40" cy="40" r="40"/>
+            <circle cx="40" cy="40" r="24" fill="#fff"/>
+          </g>
+        </g>
+        <g text-anchor="middle" font-size="14" font-weight="bold" fill="#1E3A8A">
+          <text x="80" y="140">①</text><text x="230" y="140">②</text><text x="380" y="140">③</text><text x="520" y="140">④</text>
+        </g>
+      </svg>
+    </div>
+    <div class="gokun"><b>語群</b>ア：山形　　イ：パイプ　　ウ：I形　　エ：H形</div>
+  </div>
+  <div class="write"><div class="wline"></div></div>
+  <button class="toggle-btn" onclick="tg(this)">解答を見る</button>
+  <div class="ans-panel"><span class="a">答え：①ウ（I形)　②エ（H形）　③ア（山形）　④イ（パイプ）</span>
+    <p class="exp">断面の形を工夫すると、材料を増やさずに曲げに強くできる。<b>アルファベットの形＝そのまま名前</b>。板材では「折り返し」「ふち巻き」「波形」「折り曲げ」という工夫もある。</p>
+    <div class="memo"><b>覚え方</b>：I形は縦に見ると「I」、90°回すと「H」。レールや鉄骨はI形・H形が多い。</div>
+  </div>
+</div>
+
+<div class="q">
+  <div class="q-head"><span class="qnum">問61</span><span class="stars s2">★★</span><span class="chip chigi">知技</span><span class="chip kata">記号</span><span class="chip pgc">教科書p.53</span></div>
+  <div class="q-body">
+    <p>部材を強くする方法として教科書に示されているものを、次のア〜エから<b>すべて</b>選びなさい。</p>
+    <ul class="choices">
+      <li>ア　断面形状を工夫する</li>
+      <li>イ　断面積を増やす</li>
+      <li>ウ　受ける力に耐えられる強い材料を使う</li>
+      <li>エ　部材の色を濃くする</li>
+    </ul>
+  </div>
+  <div class="write"><div class="wline"></div></div>
+  <button class="toggle-btn" onclick="tg(this)">解答を見る</button>
+  <div class="ans-panel"><span class="a">答え：ア・イ・ウ</span>
+    <p class="exp"><b>断面積を増やす</b>のは引っ張りや圧縮の力を受ける部材に有効（ただし材料費や内部空間に影響）。<b>強い材料の使用</b>は木材→金属など（重さや使い勝手が変わる点に注意）。</p>
+  </div>
+</div>
+
+<div class="q">
+  <div class="q-head"><span class="qnum">問62</span><span class="stars s2">★★</span><span class="chip chigi">知技</span><span class="chip kata">語群</span><span class="chip pgc">教科書p.53</span></div>
+  <div class="q-body">
+    <p>製品の耐久性を高める方法について、次の①・②の説明にあてはまるものを、あとの語群から選び、記号で答えなさい。</p>
+    <ol class="abc">
+      <li>① 環境から受ける刺激に耐えられるよう、適切な塗料や薬剤を用いて、材料の表面を処理する。</li>
+      <li>② 正確な部品加工や隙間の無い接合などにより、劣化の原因が製品に入り込むことを防ぐ。</li>
+    </ol>
+    <div class="gokun"><b>語群</b>ア：精度の高い加工　　イ：表面を保護する</div>
+  </div>
+  <div class="write"><div class="wline"></div></div>
+  <button class="toggle-btn" onclick="tg(this)">解答を見る</button>
+  <div class="ans-panel"><span class="a">答え：①イ　②ア</span>
+    <p class="exp">耐久性を高める2つの方法。製品の表面を保護すると、きず・汚れ・さび・変色などを防げる。塗料は<b>使用目的や使用条件に合わせて選択</b>する（p.52本文）。</p>
+  </div>
+</div>
+
+<div class="q">
+  <div class="q-head"><span class="qnum">問63</span><span class="stars s2">★★</span><span class="chip shihan">思判表</span><span class="chip kata">記述</span><span class="chip pgc">教科書p.52</span></div>
+  <div class="q-body">
+    <p>本棚の裏側には、うすい板（背板）が張られていることが多い。この背板が本棚を丈夫にする理由を、「構造」という言葉を使って説明しなさい。</p>
+  </div>
+  <div class="write"><div class="wline"></div><div class="wline"></div></div>
+  <button class="toggle-btn" onclick="tg(this)">解答を見る</button>
+  <div class="ans-panel"><span class="a">答え（例）：面を板で固定する面構造になり、補強の効果が大きく、横からの力による変形を防げるから。</span>
+    <p class="exp">教科書p.52「調べてみよう」で本棚の背板が<b>面構造</b>の例として登場。建物の耐震補強（X型の斜め材）＝三角形の構造、とセットで覚える。</p>
+  </div>
+</div>
+
+<div class="q">
+  <div class="q-head"><span class="qnum">問64</span><span class="stars s3">★★★</span><span class="chip shihan">思判表</span><span class="chip kata">記述</span><span class="chip pgc">教科書p.53</span></div>
+  <div class="q-body">
+    <p>幅の広い面を上にして置いた棚板が、本の重さで下に曲がってたわんでしまった。同じ板を使って、より大きな力に耐えられるようにするには、板をどの向きで使えばよいか。理由とともに説明しなさい。</p>
+  </div>
+  <div class="write"><div class="wline"></div><div class="wline"></div></div>
+  <button class="toggle-btn" onclick="tg(this)">解答を見る</button>
+  <div class="ans-panel"><span class="a">答え（例）：荷重方向（力のかかる方向）の高さが高くなる向き（板を縦向き）にして使う。高さが2倍になると約4倍の力に耐えられるようになるから。</span>
+    <p class="exp">問59の知識（1:2:4）を実生活に応用する問題。<b>「高さを高く」＋「2倍で4倍」</b>の2点が書ければ満点。思考・判断・表現の配点を取り切る練習として重要。</p>
+  </div>
+</div>
+
+<!-- ================= 巻末解答 ================= -->
+<div class="answers-title">
+  <h2>解答・解説（まとめ）</h2>
+  <p>全64問の解答一覧。丸付けはここで。解説・覚え方は各問題の下（画面表示時）にもあります。</p>
+</div>
+<div id="answers-container"></div>
+
+</div><!-- /.page -->
+
+<script>
+function tg(btn){
+  var p = btn.nextElementSibling;
+  p.classList.toggle('open');
+  btn.textContent = p.classList.contains('open') ? '解答を隠す' : '解答を見る';
+}
+function toggleAll(show){
+  document.querySelectorAll('.ans-panel').forEach(function(p){
+    p.classList.toggle('open', show);
+  });
+  document.querySelectorAll('.toggle-btn').forEach(function(b){
+    b.textContent = show ? '解答を隠す' : '解答を見る';
+  });
+}
+/* 巻末解答を各問題の解答パネルから自動生成（内容の食い違いを防ぐ） */
+(function(){
+  var container = document.getElementById('answers-container');
+  document.querySelectorAll('.q').forEach(function(q){
+    var num = q.querySelector('.qnum');
+    var panel = q.querySelector('.ans-panel');
+    if(!num || !panel) return;
+    var item = document.createElement('div');
+    item.className = 'ans-item';
+    var pg = q.querySelector('.chip.pgc');
+    item.innerHTML = '<div class="head"><span class="qq">' + num.textContent + '</span>' + (pg ? '<span class="pgx">（' + pg.textContent + '）</span>' : '') + '</div>' + panel.innerHTML;
+    container.appendChild(item);
+  });
+})();
+</script>
+</body>
+</html>
