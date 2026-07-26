@@ -24,7 +24,7 @@ body{
 
 /* ===== 表紙 ===== */
 .cover{
-  background:linear-gradient(135deg,#1E3A8A 0%,#2563EB 55%,#3B82F6 100%);
+  background:linear-gradient(135deg,#DB2777 0%,#F97316 55%,#FBBF24 100%);
   color:#fff;border-radius:16px;padding:34px 30px;margin-bottom:22px;
 }
 .cover .tag{display:inline-block;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.4);
@@ -233,6 +233,33 @@ table.map tr.hot td{background:#FFF8F3}
   h2.unit{display:flex!important}
   .unit-lead{display:block!important}
 }
+/* ===== たのしいデザイン(イラスト・マスコット・演出) ===== */
+.cover{position:relative;overflow:hidden}
+.cover .art{position:absolute;right:10px;bottom:-6px;width:185px;pointer-events:none}
+.cover .tag,.cover h1,.cover .sub,.cover .meta{position:relative;z-index:2}
+h2.unit .uic{font-size:22px;flex-shrink:0;line-height:1}
+.cheer{display:flex;align-items:center;gap:10px;margin:4px 2px 14px}
+.cheer .mascot{width:56px;height:56px;flex-shrink:0;filter:drop-shadow(0 2px 3px rgba(15,23,42,.18));animation:bob 3s ease-in-out infinite}
+.cheer .bubble{position:relative;background:#fff;border:2px solid var(--cc,#FDBA74);border-radius:14px;
+  padding:7px 14px;font-size:13.5px;font-weight:600;box-shadow:0 2px 6px rgba(15,23,42,.08)}
+.cheer .bubble::before{content:"";position:absolute;left:-9px;top:50%;transform:translateY(-50%);
+  border:8px solid transparent;border-right-color:var(--cc,#FDBA74);border-left:0}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+@media (hover:hover){
+  .q{transition:transform .15s,box-shadow .15s}
+  .q:hover{transform:translateY(-2px);box-shadow:0 4px 14px rgba(15,23,42,.13)}
+}
+.learn.on{animation:pop .35s ease}
+@keyframes pop{0%{transform:scale(1)}40%{transform:scale(1.28) rotate(-4deg)}100%{transform:scale(1)}}
+#cheerMsg{font-size:12.5px;font-weight:800;color:#C2410C;width:100%}
+.confetti{position:fixed;top:-14px;width:9px;height:14px;z-index:999;pointer-events:none;border-radius:2px;
+  animation:cfall var(--d,1.6s) ease-in forwards}
+@keyframes cfall{0%{transform:translate(0,0) rotate(0)}100%{transform:translate(var(--dx,0),105vh) rotate(var(--rot,540deg));opacity:.85}}
+@media (max-width:520px){.cover .art{width:120px;opacity:.5}}
+@media print{
+  .cheer,.confetti,#cheerMsg{display:none!important}
+  .cover .art{width:150px}
+}
 </style>
 </head>
 <body>
@@ -254,8 +281,25 @@ table.map tr.hot td{background:#FFF8F3}
   <span class="progress">覚えた <span id="learnCount">0</span>/<span id="learnTotal">62</span>問
     <span class="pbar"><i id="learnBar"></i></span></span>
   <button class="fb reset" id="resetLearned">リセット</button>
+  <span id="cheerMsg"></span>
 </div>
 </div>
+
+<svg style="display:none" aria-hidden="true">
+<symbol id="ouchi" viewBox="0 0 120 120">
+  <rect x="80" y="16" width="13" height="24" rx="3" fill="#FB923C"/>
+  <polygon points="60,4 116,52 4,52" fill="#F87171" stroke="#EF4444" stroke-width="2" stroke-linejoin="round"/>
+  <path d="M28 30 l2.5 6 6 2.5 -6 2.5 -2.5 6 -2.5 -6 -6 -2.5 6 -2.5 z" fill="#FDE68A"/>
+  <rect x="18" y="52" width="84" height="56" rx="12" fill="#FFF7E6" stroke="#FDBA74" stroke-width="3"/>
+  <circle cx="45" cy="74" r="4.5" fill="#1E293B"/>
+  <circle cx="75" cy="74" r="4.5" fill="#1E293B"/>
+  <path d="M50 84 Q60 93 70 84" fill="none" stroke="#1E293B" stroke-width="3.2" stroke-linecap="round"/>
+  <circle cx="33" cy="84" r="5.5" fill="#FDA4AF" opacity=".85"/>
+  <circle cx="87" cy="84" r="5.5" fill="#FDA4AF" opacity=".85"/>
+  <path d="M18 76 Q4 70 7 58" fill="none" stroke="#FDBA74" stroke-width="7" stroke-linecap="round"/>
+  <path d="M102 80 Q114 84 113 95" fill="none" stroke="#FDBA74" stroke-width="7" stroke-linecap="round"/>
+</symbol>
+</svg>
 
 <div class="cover">
   <span class="tag">2026年 夏テスト対策</span>
@@ -266,6 +310,21 @@ table.map tr.hot td{background:#FFF8F3}
     <span>1周目 約2.5時間</span>
     <span>2周目は間違えた問題＋★★★だけでOK</span>
   </div>
+  <svg class="art" viewBox="0 0 200 195" aria-hidden="true">
+    <circle cx="166" cy="30" r="15" fill="#FDE68A"/>
+    <g stroke="#FDE68A" stroke-width="3.5" stroke-linecap="round">
+      <line x1="166" y1="7" x2="166" y2="1"/><line x1="166" y1="53" x2="166" y2="59"/>
+      <line x1="143" y1="30" x2="137" y2="30"/><line x1="189" y1="30" x2="195" y2="30"/>
+      <line x1="150" y1="14" x2="146" y2="10"/><line x1="182" y1="46" x2="186" y2="50"/>
+      <line x1="182" y1="14" x2="186" y2="10"/><line x1="150" y1="46" x2="146" y2="50"/>
+    </g>
+    <ellipse cx="28" cy="34" rx="24" ry="10" fill="rgba(255,255,255,.55)"/>
+    <ellipse cx="52" cy="26" rx="16" ry="8" fill="rgba(255,255,255,.4)"/>
+    <use href="#ouchi" x="32" y="55" width="132" height="132"/>
+    <path d="M14 90 l3 7 7 3 -7 3 -3 7 -3 -7 -7 -3 7 -3 z" fill="rgba(255,255,255,.8)"/>
+    <path d="M182 110 l2.5 6 6 2.5 -6 2.5 -2.5 6 -2.5 -6 -6 -2.5 6 -2.5 z" fill="rgba(255,255,255,.7)"/>
+    <ellipse cx="98" cy="188" rx="72" ry="6" fill="rgba(0,0,0,.10)"/>
+  </svg>
 </div>
 
 <div class="howto">
@@ -293,8 +352,9 @@ table.map tr.hot td{background:#FFF8F3}
 </tbody>
 </table>
 <!-- ================= 単元1 ================= -->
-<h2 class="unit"><span class="no">単元1</span>人間にとっての住まい<span class="pg">教科書 p.232〜235</span></h2>
+<h2 class="unit" style="border-left-color:#EC4899"><span class="no" style="background:#EC4899">単元1</span><span class="uic">🏠</span>人間にとっての住まい<span class="pg">教科書 p.232〜235</span></h2>
 <p class="unit-lead">「住まいにはどんな働きがあるか」「なぜ住まいは人権といわれるのか」。導入問題として出やすいところ。</p>
+<div class="cheer" style="--cc:#F9A8D4"><svg class="mascot" viewBox="0 0 120 120"><use href="#ouchi"/></svg><div class="bubble">やあ、ぼく<b>おうちくん</b>！いっしょに85点とろう！まずはウォームアップ、「住まいの働き」はテストの最初に出やすいよ🏠</div></div>
 
 <div class="q">
   <div class="q-head"><span class="qnum">問1</span><span class="stars s3">★★★</span><span class="chip chigi">知技</span><span class="chip kata">語群</span><span class="chip pgc">教科書p.234</span></div>
@@ -302,6 +362,45 @@ table.map tr.hot td{background:#FFF8F3}
     <p>住まいの働きについて、次の文の（①）・（②）にあてはまる言葉を、あとの語群からそれぞれ選び、記号で答えなさい。</p>
     <p>「住まいは、暑さや寒さ、（①）、風雪雨などの家の外の厳しい環境や（②）から私たちを守っている。」</p>
     <div class="gokun"><b>語群</b>ア：騒音　　イ：日射　　ウ：外敵　　エ：地震</div>
+    <div class="fig">
+      <svg viewBox="0 0 460 192" width="420" role="img" aria-label="住まいが家族を守る様子">
+        <circle cx="52" cy="38" r="15" fill="#FBBF24"/>
+        <g stroke="#FBBF24" stroke-width="3" stroke-linecap="round">
+          <line x1="52" y1="14" x2="52" y2="7"/><line x1="52" y1="62" x2="52" y2="69"/>
+          <line x1="28" y1="38" x2="21" y2="38"/><line x1="76" y1="38" x2="83" y2="38"/>
+          <line x1="35" y1="21" x2="30" y2="16"/><line x1="69" y1="55" x2="74" y2="60"/>
+          <line x1="69" y1="21" x2="74" y2="16"/><line x1="35" y1="55" x2="30" y2="60"/>
+        </g>
+        <ellipse cx="388" cy="32" rx="34" ry="15" fill="#CBD5E1"/>
+        <ellipse cx="362" cy="39" rx="20" ry="11" fill="#E2E8F0"/>
+        <g stroke="#60A5FA" stroke-width="2.5" stroke-linecap="round">
+          <line x1="374" y1="52" x2="370" y2="64"/><line x1="390" y1="52" x2="386" y2="64"/>
+        </g>
+        <text x="408" y="64" font-size="14">❄</text>
+        <g stroke="#94A3B8" stroke-width="2.5" fill="none" stroke-linecap="round">
+          <path d="M8 96 q14 -9 30 0"/><path d="M14 113 q14 -9 30 0"/>
+        </g>
+        <g transform="translate(150,50)">
+          <polygon points="80,0 160,52 0,52" fill="#F87171" stroke="#EF4444" stroke-width="2" stroke-linejoin="round"/>
+          <rect x="14" y="52" width="132" height="66" fill="#FFF7E6" stroke="#FDBA74" stroke-width="3"/>
+          <rect x="32" y="68" width="42" height="30" rx="3" fill="#DBEAFE" stroke="#93C5FD" stroke-width="2"/>
+          <circle cx="45" cy="82" r="7" fill="#FDE68A"/>
+          <circle cx="42.5" cy="80" r="1.3" fill="#1E293B"/><circle cx="47.5" cy="80" r="1.3" fill="#1E293B"/>
+          <path d="M42 85 q3 3 6 0" fill="none" stroke="#1E293B" stroke-width="1.4" stroke-linecap="round"/>
+          <circle cx="62" cy="82" r="7" fill="#FDE68A"/>
+          <circle cx="59.5" cy="80" r="1.3" fill="#1E293B"/><circle cx="64.5" cy="80" r="1.3" fill="#1E293B"/>
+          <path d="M59 85 q3 3 6 0" fill="none" stroke="#1E293B" stroke-width="1.4" stroke-linecap="round"/>
+          <rect x="94" y="74" width="26" height="44" rx="3" fill="#FDBA74"/><circle cx="113" cy="97" r="2.5" fill="#B45309"/>
+        </g>
+        <g transform="translate(410,122)" fill="#64748B">
+          <ellipse cx="16" cy="28" rx="16" ry="10"/>
+          <polygon points="1,24 -7,13 6,17"/>
+          <circle cx="31" cy="17" r="8"/>
+          <polygon points="25,11 27,3 31,9"/><polygon points="34,10 38,4 39,11"/>
+        </g>
+        <text x="230" y="186" text-anchor="middle" font-size="12.5" fill="#475569">住まいは、きびしい環境から家族を守るシェルター</text>
+      </svg>
+    </div>
   </div>
   <div class="write"><div class="wline"></div></div>
   <button class="toggle-btn" onclick="tg(this)">解答を見る</button>
@@ -442,8 +541,9 @@ table.map tr.hot td{background:#FFF8F3}
 </div>
 
 <!-- ================= 単元2 ================= -->
-<h2 class="unit"><span class="no">単元2</span>生活行為と住空間<span class="pg">教科書 p.236〜237</span></h2>
+<h2 class="unit" style="border-left-color:#F97316"><span class="no" style="background:#F97316">単元2</span><span class="uic">🛋️</span>生活行為と住空間<span class="pg">教科書 p.236〜237</span></h2>
 <p class="unit-lead">空間の分類（生活行為による分類／使い方による分類）と、床座・いす座。用語の区別がそのままテストに出る。</p>
+<div class="cheer" style="--cc:#FDBA74"><svg class="mascot" viewBox="0 0 120 120"><use href="#ouchi"/></svg><div class="bubble">ここは用語の区別がカギ！<b>床座⇔いす座</b>、<b>引き戸⇔開き戸</b>はイラストとセットでおぼえよう✨</div></div>
 
 <div class="q">
   <div class="q-head"><span class="qnum">問11</span><span class="stars s3">★★★</span><span class="chip chigi">知技</span><span class="chip kata">語群</span><span class="chip pgc">教科書p.236</span></div>
@@ -456,6 +556,44 @@ table.map tr.hot td{background:#FFF8F3}
       <li>④ 入浴や洗面などのための空間</li>
     </ol>
     <div class="gokun"><b>語群</b>ア：家事作業の空間　　イ：生理・衛生の空間　　ウ：睡眠の空間　　エ：食事の空間</div>
+    <div class="fig">
+      <svg viewBox="0 0 480 132" width="440" role="img" aria-label="4つの生活行為のイラスト">
+        <g>
+          <rect x="4" y="14" width="110" height="104" rx="10" fill="#EFF6FF" stroke="#BFDBFE" stroke-width="2"/>
+          <rect x="20" y="80" width="80" height="14" rx="4" fill="#93C5FD"/>
+          <rect x="20" y="62" width="9" height="32" rx="3" fill="#60A5FA"/>
+          <rect x="32" y="72" width="20" height="9" rx="4" fill="#fff"/>
+          <circle cx="42" cy="64" r="8" fill="#FDE68A"/>
+          <text x="76" y="56" font-size="15" fill="#60A5FA" font-weight="bold">Z z…</text>
+          <circle cx="20" cy="28" r="11" fill="#2563EB"/><text x="20" y="33" text-anchor="middle" font-size="12" fill="#fff" font-weight="bold">①</text>
+        </g>
+        <g>
+          <rect x="124" y="14" width="110" height="104" rx="10" fill="#FFF7ED" stroke="#FED7AA" stroke-width="2"/>
+          <rect x="140" y="84" width="80" height="8" rx="3" fill="#D2A96C"/>
+          <rect x="146" y="92" width="7" height="18" fill="#B98A4E"/><rect x="206" y="92" width="7" height="18" fill="#B98A4E"/>
+          <path d="M155 84 a11 8 0 0 1 22 0 z" fill="#FB923C"/>
+          <path d="M185 84 a11 8 0 0 1 22 0 z" fill="#FBBF24"/>
+          <path d="M165 66 q3 -5 0 -10 M196 66 q3 -5 0 -10" stroke="#CBD5E1" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+          <circle cx="140" cy="28" r="11" fill="#F97316"/><text x="140" y="33" text-anchor="middle" font-size="12" fill="#fff" font-weight="bold">②</text>
+        </g>
+        <g>
+          <rect x="244" y="14" width="110" height="104" rx="10" fill="#F5F3FF" stroke="#DDD6FE" stroke-width="2"/>
+          <rect x="258" y="78" width="36" height="24" rx="5" fill="#94A3B8"/>
+          <rect x="252" y="84" width="8" height="4" rx="2" fill="#64748B"/><rect x="292" y="84" width="8" height="4" rx="2" fill="#64748B"/>
+          <path d="M270 70 q3 -5 0 -10 M282 70 q3 -5 0 -10" stroke="#CBD5E1" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+          <path d="M316 62 l10 -8 h14 l10 8 -6 8 -4 -4 v36 h-24 v-36 l-4 4 z" fill="#A5B4FC"/>
+          <circle cx="260" cy="28" r="11" fill="#8B5CF6"/><text x="260" y="33" text-anchor="middle" font-size="12" fill="#fff" font-weight="bold">③</text>
+        </g>
+        <g>
+          <rect x="364" y="14" width="110" height="104" rx="10" fill="#F0FDFA" stroke="#99F6E4" stroke-width="2"/>
+          <rect x="378" y="80" width="82" height="26" rx="12" fill="#fff" stroke="#5EEAD4" stroke-width="3"/>
+          <path d="M382 88 q8 -6 16 0 q8 6 16 0 q8 -6 16 0 q8 6 16 0" stroke="#60A5FA" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+          <circle cx="420" cy="68" r="10" fill="#FDE68A"/><path d="M416 71 q4 4 8 0" fill="none" stroke="#1E293B" stroke-width="1.5" stroke-linecap="round"/>
+          <path d="M400 54 q3 -5 0 -10 M438 54 q3 -5 0 -10" stroke="#CBD5E1" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+          <circle cx="380" cy="28" r="11" fill="#14B8A6"/><text x="380" y="33" text-anchor="middle" font-size="12" fill="#fff" font-weight="bold">④</text>
+        </g>
+      </svg>
+    </div>
   </div>
   <div class="write"><div class="wline"></div></div>
   <button class="toggle-btn" onclick="tg(this)">解答を見る</button>
@@ -568,6 +706,39 @@ table.map tr.hot td{background:#FFF8F3}
     <p>住まい方について、次の文の（①）〜（③）にあてはまる言葉を、あとの語群からそれぞれ選び、記号で答えなさい。</p>
     <p>「日本の伝統的な住まい方は、玄関で履物を脱いで一段高い床にあがり、座卓と座布団を使う（①）が特徴である。欧米の住まい方は、テーブル・いすなどの家具を使う（②）が特徴である。現代の日本の住まいでは、日本と欧米のそれぞれの特徴をいかした（③）の住まい方が多く見られる。」</p>
     <div class="gokun"><b>語群</b>ア：いす座　　イ：和洋折衷　　ウ：床座</div>
+    <div class="fig">
+      <svg viewBox="0 0 460 150" width="400" role="img" aria-label="2つの住まい方">
+        <g>
+          <rect x="8" y="18" width="210" height="118" rx="10" fill="#FEFCE8" stroke="#FDE68A" stroke-width="2"/>
+          <line x1="20" y1="112" x2="206" y2="112" stroke="#D6C08A" stroke-width="3"/>
+          <rect x="76" y="88" width="86" height="9" rx="3" fill="#B98A4E"/>
+          <rect x="84" y="97" width="8" height="14" fill="#8B6534"/><rect x="146" y="97" width="8" height="14" fill="#8B6534"/>
+          <ellipse cx="48" cy="108" rx="18" ry="6" fill="#FCA5A5"/>
+          <ellipse cx="48" cy="92" rx="13" ry="16" fill="#93C5FD"/>
+          <circle cx="48" cy="68" r="11" fill="#FDE68A"/>
+          <circle cx="44" cy="66" r="1.5" fill="#1E293B"/><circle cx="52" cy="66" r="1.5" fill="#1E293B"/>
+          <path d="M44 71 q4 4 8 0" fill="none" stroke="#1E293B" stroke-width="1.5" stroke-linecap="round"/>
+          <path d="M120 84 a9 7 0 0 1 18 0 z" fill="#FB923C"/>
+          <circle cx="113" cy="34" r="12" fill="#EC4899"/><text x="113" y="39" text-anchor="middle" font-size="13" fill="#fff" font-weight="bold">①</text>
+        </g>
+        <g>
+          <rect x="238" y="18" width="210" height="118" rx="10" fill="#EFF6FF" stroke="#BFDBFE" stroke-width="2"/>
+          <line x1="250" y1="112" x2="436" y2="112" stroke="#94A3B8" stroke-width="3"/>
+          <rect x="320" y="62" width="96" height="8" rx="3" fill="#D2A96C"/>
+          <rect x="328" y="70" width="7" height="42" fill="#B98A4E"/><rect x="398" y="70" width="7" height="42" fill="#B98A4E"/>
+          <rect x="268" y="76" width="34" height="7" rx="3" fill="#64748B"/>
+          <rect x="270" y="83" width="6" height="29" fill="#64748B"/><rect x="294" y="83" width="6" height="29" fill="#64748B"/>
+          <rect x="266" y="44" width="7" height="39" rx="3" fill="#64748B"/>
+          <ellipse cx="287" cy="62" rx="12" ry="15" fill="#86EFAC"/>
+          <circle cx="287" cy="38" r="11" fill="#FDE68A"/>
+          <circle cx="283" cy="36" r="1.5" fill="#1E293B"/><circle cx="291" cy="36" r="1.5" fill="#1E293B"/>
+          <path d="M283 41 q4 4 8 0" fill="none" stroke="#1E293B" stroke-width="1.5" stroke-linecap="round"/>
+          <path d="M360 56 a9 7 0 0 1 18 0 z" fill="#FBBF24"/>
+          <circle cx="343" cy="34" r="12" fill="#2563EB"/><text x="343" y="39" text-anchor="middle" font-size="13" fill="#fff" font-weight="bold">②</text>
+        </g>
+      </svg>
+      <div class="cap">①＝座卓と座布団　②＝テーブルといす</div>
+    </div>
   </div>
   <div class="write"><div class="wline"></div></div>
   <button class="toggle-btn" onclick="tg(this)">解答を見る</button>
@@ -587,6 +758,29 @@ table.map tr.hot td{background:#FFF8F3}
       <li>ウ　引き戸は、開けるための空間が必要である。</li>
       <li>エ　開き戸は、開けるための空間が必要である。</li>
     </ul>
+    <div class="fig">
+      <svg viewBox="0 0 440 140" width="360" role="img" aria-label="引き戸と開き戸(上から見た図)">
+        <g>
+          <line x1="20" y1="50" x2="200" y2="50" stroke="#94A3B8" stroke-width="7"/>
+          <rect x="55" y="44" width="70" height="12" rx="3" fill="#D2A96C" stroke="#8B6534" stroke-width="1.5"/>
+          <rect x="112" y="47" width="70" height="12" rx="3" fill="#EAD3A8" stroke="#8B6534" stroke-width="1.5"/>
+          <g stroke="#DC2626" stroke-width="3" fill="none" stroke-linecap="round">
+            <line x1="90" y1="30" x2="50" y2="30"/><polygon points="44,30 56,24 56,36" fill="#DC2626" stroke="none"/>
+          </g>
+          <text x="110" y="105" text-anchor="middle" font-size="14" font-weight="bold" fill="#1E293B">引き戸</text>
+          <text x="110" y="122" text-anchor="middle" font-size="11.5" fill="#64748B">横にスライドして開く</text>
+        </g>
+        <g>
+          <line x1="250" y1="50" x2="310" y2="50" stroke="#94A3B8" stroke-width="7"/>
+          <line x1="376" y1="50" x2="420" y2="50" stroke="#94A3B8" stroke-width="7"/>
+          <line x1="310" y1="50" x2="368" y2="94" stroke="#D2A96C" stroke-width="8" stroke-linecap="round"/>
+          <path d="M376 52 A66 66 0 0 1 312 96" fill="none" stroke="#DC2626" stroke-width="2.5" stroke-dasharray="5 4"/>
+          <polygon points="306,99 318,92 316,104" fill="#DC2626"/>
+          <text x="335" y="115" text-anchor="middle" font-size="14" font-weight="bold" fill="#1E293B" >開き戸</text>
+          <text x="335" y="130" text-anchor="middle" font-size="11.5" fill="#64748B">回転して開く</text>
+        </g>
+      </svg>
+    </div>
   </div>
   <div class="write"><div class="wline"></div></div>
   <button class="toggle-btn" onclick="tg(this)">解答を見る</button>
@@ -629,13 +823,32 @@ table.map tr.hot td{background:#FFF8F3}
   </div>
 </div>
 <!-- ================= 単元3 ================= -->
-<h2 class="unit"><span class="no">単元3</span>家族の変化と空間の使い方<span class="pg">教科書 p.238〜239</span></h2>
+<h2 class="unit" style="border-left-color:#8B5CF6"><span class="no" style="background:#8B5CF6">単元3</span><span class="uic">👨‍👩‍👧‍👦</span>家族の変化と空間の使い方<span class="pg">教科書 p.238〜239</span></h2>
 <p class="unit-lead">「食寝分離・就寝分離・プライバシーの尊重」の3つの考え方が最重要。間取り図問題もここで練習。</p>
+<div class="cheer" style="--cc:#C4B5FD"><svg class="mascot" viewBox="0 0 120 120"><use href="#ouchi"/></svg><div class="bubble"><b>食寝分離・就寝分離・プライバシーの尊重</b>——この3つをスラスラ言えたら勝ちだよ💪</div></div>
 
 <div class="q">
   <div class="q-head"><span class="qnum">問22</span><span class="stars s3">★★★</span><span class="chip chigi">知技</span><span class="chip kata">語句</span><span class="chip pgc">教科書p.238</span></div>
   <div class="q-body">
     <p>衛生面や精神面から、食事と就寝の空間を分けることを何というか。漢字4字で答えなさい。</p>
+    <div class="fig">
+      <svg viewBox="0 0 400 120" width="330" role="img" aria-label="食事の空間と就寝の空間を分ける">
+        <rect x="8" y="12" width="176" height="92" rx="10" fill="#FFF7ED" stroke="#FED7AA" stroke-width="2"/>
+        <rect x="216" y="12" width="176" height="92" rx="10" fill="#EFF6FF" stroke="#BFDBFE" stroke-width="2"/>
+        <rect x="192" y="6" width="16" height="104" rx="4" fill="#CBD5E1"/>
+        <rect x="36" y="66" width="90" height="8" rx="3" fill="#D2A96C"/>
+        <rect x="44" y="74" width="7" height="18" fill="#B98A4E"/><rect x="112" y="74" width="7" height="18" fill="#B98A4E"/>
+        <path d="M60 66 a10 8 0 0 1 20 0 z" fill="#FB923C"/>
+        <path d="M88 66 a10 8 0 0 1 20 0 z" fill="#FBBF24"/>
+        <text x="96" y="98" text-anchor="middle" font-size="12.5" font-weight="bold" fill="#C2410C">食事の空間</text>
+        <rect x="238" y="62" width="110" height="16" rx="6" fill="#93C5FD"/>
+        <rect x="244" y="54" width="24" height="10" rx="4" fill="#fff"/>
+        <circle cx="262" cy="48" r="9" fill="#FDE68A"/>
+        <text x="330" y="44" font-size="14" fill="#60A5FA" font-weight="bold">Z z…</text>
+        <text x="302" y="98" text-anchor="middle" font-size="12.5" font-weight="bold" fill="#1D4ED8">就寝の空間</text>
+      </svg>
+      <div class="cap">食べる部屋と寝る部屋を分ける＝？</div>
+    </div>
   </div>
   <div class="write"><div class="wline"></div></div>
   <button class="toggle-btn" onclick="tg(this)">解答を見る</button>
@@ -812,8 +1025,9 @@ table.map tr.hot td{background:#FFF8F3}
 </div>
 
 <!-- ================= 単元4 ================= -->
-<h2 class="unit"><span class="no">単元4</span>気候風土と伝統的な住まい<span class="pg">教科書 p.240〜241</span></h2>
+<h2 class="unit" style="border-left-color:#16A34A"><span class="no" style="background:#16A34A">単元4</span><span class="uic">🌿</span>気候風土と伝統的な住まい<span class="pg">教科書 p.240〜241</span></h2>
 <p class="unit-lead">図問題の本命。「地域×住まいの工夫」の組み合わせと、和室の名称・軒の働きは確実に出る。</p>
+<div class="cheer" style="--cc:#86EFAC"><svg class="mascot" viewBox="0 0 120 120"><use href="#ouchi"/></svg><div class="bubble">ここが<b>図問題の本命ゾーン</b>！「雪国は雁木、風には屋敷林…」地域と工夫のペアを声に出して覚えよう🌿</div></div>
 
 <div class="q">
   <div class="q-head"><span class="qnum">問31</span><span class="stars s3">★★★</span><span class="chip chigi">知技</span><span class="chip kata">語群</span><span class="chip pgc">教科書p.240</span></div>
@@ -1091,8 +1305,9 @@ table.map tr.hot td{background:#FFF8F3}
   </div>
 </div>
 <!-- ================= 単元5 ================= -->
-<h2 class="unit"><span class="no">単元5</span>家庭内事故への備え<span class="pg">教科書 p.242〜243</span></h2>
+<h2 class="unit" style="border-left-color:#DC2626"><span class="no" style="background:#DC2626">単元5</span><span class="uic">🚨</span>家庭内事故への備え<span class="pg">教科書 p.242〜243</span></h2>
 <p class="unit-lead">「幼児＝窒息が最多、高齢者＝溺死が最多」のグラフ問題と、ヒートショック対策4つが最頻出。</p>
+<div class="cheer" style="--cc:#FCA5A5"><svg class="mascot" viewBox="0 0 120 120"><use href="#ouchi"/></svg><div class="bubble"><b>幼児＝窒息、高齢者＝溺死</b>！グラフ問題はここで差がつくよ。ヒートショック対策4つもセットで🚨</div></div>
 
 <div class="q">
   <div class="q-head"><span class="qnum">問43</span><span class="stars s3">★★★</span><span class="chip chigi">知技</span><span class="chip kata">語群</span><span class="chip pgc">教科書p.242</span></div>
@@ -1198,6 +1413,24 @@ table.map tr.hot td{background:#FFF8F3}
   <button class="toggle-btn" onclick="tg(this)">解答を見る</button>
   <div class="ans-panel"><span class="a">答え：ア・イ・ウ</span>
     <p class="exp">エは<b>高齢者</b>の熱中症の特徴。幼児と高齢者の特徴を入れかえるひっかけに注意。</p>
+    <div class="fig">
+      <svg viewBox="0 0 300 120" width="250" role="img" aria-label="幼児は頭が大きく視野がせまい">
+        <circle cx="70" cy="46" r="24" fill="#FDE68A"/>
+        <path d="M50 34 q20 -14 40 0" fill="#8B6534"/>
+        <circle cx="62" cy="47" r="2.5" fill="#1E293B"/><circle cx="78" cy="47" r="2.5" fill="#1E293B"/>
+        <path d="M64 56 q6 5 12 0" fill="none" stroke="#1E293B" stroke-width="2" stroke-linecap="round"/>
+        <circle cx="54" cy="55" r="4" fill="#FDA4AF" opacity=".85"/><circle cx="86" cy="55" r="4" fill="#FDA4AF" opacity=".85"/>
+        <ellipse cx="70" cy="88" rx="15" ry="20" fill="#FCA5A5"/>
+        <g stroke="#F59E0B" stroke-width="2" stroke-dasharray="5 4" fill="none">
+          <line x1="92" y1="48" x2="180" y2="66"/><line x1="92" y1="52" x2="180" y2="96"/>
+        </g>
+        <rect x="196" y="60" width="90" height="8" rx="3" fill="#D2A96C"/>
+        <rect x="204" y="68" width="7" height="40" fill="#B98A4E"/><rect x="272" y="68" width="7" height="40" fill="#B98A4E"/>
+        <path d="M226 60 a10 8 0 0 1 20 0 z" fill="#F87171"/>
+        <text x="236" y="38" text-anchor="middle" font-size="16" font-weight="bold" fill="#DC2626">？</text>
+        <text x="150" y="116" text-anchor="middle" font-size="11.5" fill="#475569">頭が大きい＆視野がせまい→上の物が見えない！</text>
+      </svg>
+    </div>
     <div class="memo"><b>覚え方</b>：幼児は「<b>口に入れる・頭が重い・見えない</b>」の3点セット。</div>
   </div>
 </div>
@@ -1206,6 +1439,26 @@ table.map tr.hot td{background:#FFF8F3}
   <div class="q-head"><span class="qnum">問47</span><span class="stars s3">★★★</span><span class="chip chigi">知技</span><span class="chip kata">語句</span><span class="chip pgc">教科書p.243</span></div>
   <div class="q-body">
     <p>冬、暖かい部屋と寒いトイレ・脱衣室・浴室などとの温度差が大きくなると、血圧の大きな変動により心筋梗塞や脳卒中などを発症して倒れることがある。この現象を何というか。カタカナで答えなさい。</p>
+    <div class="fig">
+      <svg viewBox="0 0 400 125" width="330" role="img" aria-label="暖かい部屋から寒い浴室への移動">
+        <rect x="8" y="12" width="170" height="92" rx="10" fill="#FFEDD5" stroke="#FDBA74" stroke-width="2"/>
+        <rect x="222" y="12" width="170" height="92" rx="10" fill="#DBEAFE" stroke="#93C5FD" stroke-width="2"/>
+        <path d="M40 44 q4 -8 0 -16 M56 44 q4 -8 0 -16 M72 44 q4 -8 0 -16" stroke="#FB923C" stroke-width="3" fill="none" stroke-linecap="round"/>
+        <text x="93" y="92" text-anchor="middle" font-size="13" font-weight="bold" fill="#C2410C">暖かい部屋</text>
+        <text x="140" y="40" font-size="18">🔥</text>
+        <rect x="252" y="66" width="76" height="22" rx="9" fill="#fff" stroke="#60A5FA" stroke-width="2.5"/>
+        <text x="352" y="40" font-size="18">❄️</text>
+        <text x="307" y="92" text-anchor="middle" font-size="13" font-weight="bold" fill="#1D4ED8">寒い脱衣室・浴室</text>
+        <circle cx="196" cy="42" r="10" fill="#FDE68A"/>
+        <circle cx="192" cy="40" r="1.5" fill="#1E293B"/><circle cx="200" cy="40" r="1.5" fill="#1E293B"/>
+        <path d="M192 46 q4 -2 8 0" fill="none" stroke="#1E293B" stroke-width="1.5" stroke-linecap="round"/>
+        <ellipse cx="196" cy="64" rx="9" ry="13" fill="#94A3B8"/>
+        <g stroke="#DC2626" stroke-width="3.5" fill="none" stroke-linecap="round">
+          <line x1="180" y1="112" x2="212" y2="112"/><polygon points="220,112 208,105 208,119" fill="#DC2626" stroke="none"/>
+        </g>
+        <text x="196" y="20" text-anchor="middle" font-size="12" font-weight="bold" fill="#DC2626">急な温度差！</text>
+      </svg>
+    </div>
   </div>
   <div class="write"><div class="wline"></div></div>
   <button class="toggle-btn" onclick="tg(this)">解答を見る</button>
@@ -1304,8 +1557,9 @@ table.map tr.hot td{background:#FFF8F3}
 </div>
 
 <!-- ================= 単元6 ================= -->
-<h2 class="unit"><span class="no">単元6</span>室内環境と換気<span class="pg">教科書 p.244〜245</span></h2>
+<h2 class="unit" style="border-left-color:#0EA5E9"><span class="no" style="background:#0EA5E9">単元6</span><span class="uic">💨</span>室内環境と換気<span class="pg">教科書 p.244〜245</span></h2>
 <p class="unit-lead">結露→カビ・ダニ、シックハウス症候群、一酸化炭素、そして「効果的な換気」。図とセットで押さえる。</p>
+<div class="cheer" style="--cc:#7DD3FC"><svg class="mascot" viewBox="0 0 120 120"><use href="#ouchi"/></svg><div class="bubble">ラスト単元！<b>結露→カビ→換気</b>の流れでスッキリ理解しよう。ゴールはもう見えてるよ💨</div></div>
 
 <div class="q">
   <div class="q-head"><span class="qnum">問53</span><span class="stars s3">★★★</span><span class="chip chigi">知技</span><span class="chip kata">図+語句</span><span class="chip pgc">教科書p.244</span></div>
@@ -1360,6 +1614,27 @@ table.map tr.hot td{background:#FFF8F3}
   <button class="toggle-btn" onclick="tg(this)">解答を見る</button>
   <div class="ans-panel"><span class="a">答え：ア・ウ</span>
     <p class="exp">カビは<b>湿度が高い</b>ところで発生。対策＝<b>空気の循環</b>。だから「家具と後ろの壁の間にすき間をあける」「押入れにはすのこを敷く」が正しい（エは逆）。</p>
+    <div class="fig">
+      <svg viewBox="0 0 300 110" width="250" role="img" aria-label="家具と壁の間にすき間をあけて空気を通す">
+        <rect x="14" y="10" width="12" height="86" fill="#94A3B8"/>
+        <text x="20" y="108" text-anchor="middle" font-size="11" fill="#475569">壁</text>
+        <rect x="56" y="26" width="70" height="70" rx="4" fill="#D2A96C" stroke="#8B6534" stroke-width="2"/>
+        <rect x="64" y="36" width="54" height="22" rx="3" fill="#EAD3A8"/>
+        <rect x="64" y="64" width="54" height="22" rx="3" fill="#EAD3A8"/>
+        <text x="91" y="108" text-anchor="middle" font-size="11" fill="#475569">家具</text>
+        <path d="M38 84 q8 -22 0 -44 q-2 -8 4 -14" fill="none" stroke="#38BDF8" stroke-width="3.5" stroke-linecap="round"/>
+        <polygon points="42,20 34,28 46,30" fill="#38BDF8"/>
+        <text x="41" y="14" text-anchor="middle" font-size="11" font-weight="bold" fill="#0284C7">すき間</text>
+        <rect x="168" y="72" width="110" height="10" rx="3" fill="#EAD3A8" stroke="#B98A4E" stroke-width="1.5"/>
+        <g fill="#B98A4E">
+          <rect x="174" y="82" width="8" height="12"/><rect x="200" y="82" width="8" height="12"/>
+          <rect x="226" y="82" width="8" height="12"/><rect x="252" y="82" width="8" height="12"/>
+        </g>
+        <rect x="176" y="56" width="94" height="14" rx="7" fill="#93C5FD"/>
+        <path d="M186 46 q10 -8 22 0 M216 46 q10 -8 22 0" fill="none" stroke="#38BDF8" stroke-width="3" stroke-linecap="round"/>
+        <text x="223" y="108" text-anchor="middle" font-size="11" fill="#475569">すのこ＋布団（空気が通る）</text>
+      </svg>
+    </div>
     <div class="memo"><b>覚え方</b>：カビ対策は「<b>風の通り道をつくる</b>」——すき間・すのこ・換気。</div>
   </div>
 </div>
@@ -1519,6 +1794,8 @@ table.map tr.hot td{background:#FFF8F3}
   </div>
 </div>
 
+<div class="cheer" style="--cc:#FDBA74"><svg class="mascot" viewBox="0 0 120 120"><use href="#ouchi"/></svg><div class="bubble">全問おつかれさま！🎉 丸付けタイムだよ。まちがえた問題は「覚えた」を外しておくと、2周目がラクになるよ✏️</div></div>
+
 <!-- ================= 巻末解答 ================= -->
 <div class="answers-title">
   <h2>解答・解説（まとめ）</h2>
@@ -1584,7 +1861,7 @@ function toggleAll(show){
     sync(q, label, cb.checked);
     cb.addEventListener('change', function(){
       if(cb.checked){ learned[id] = 1; } else { delete learned[id]; }
-      save(); sync(q, label, cb.checked); update();
+      save(); sync(q, label, cb.checked); update(); celebrate();
     });
     head.appendChild(label);
   });
@@ -1619,6 +1896,42 @@ function toggleAll(show){
     var hb = document.getElementById('hideLearnedBtn');
     hb.classList.toggle('act', hideLearned);
     hb.textContent = hideLearned ? '覚えたを表示' : '覚えたを隠す';
+    var msgEl = document.getElementById('cheerMsg');
+    if(msgEl){
+      var p = pctNow(), m = '';
+      if(p >= 100) m = '🎉 全問マスター！おうちくんも大よろこび！本番もこの調子！';
+      else if(p >= 75) m = '🚀 あと少し！ラストスパート！';
+      else if(p >= 50) m = '💪 半分クリア！すごいぞ！';
+      else if(p >= 25) m = '🔥 4分の1突破！いい調子！';
+      else if(p > 0) m = '✨ その調子でコツコツいこう！';
+      msgEl.textContent = m;
+    }
+  }
+
+  function pctNow(){ return total ? Math.round(100 * Object.keys(learned).length / total) : 0; }
+  var prevPct = null;
+  function confetti(n){
+    var colors = ['#F87171','#FBBF24','#34D399','#60A5FA','#A78BFA','#F472B6'];
+    for(var i = 0; i < n; i++){
+      var c = document.createElement('div');
+      c.className = 'confetti';
+      c.style.left = (Math.random() * 100) + 'vw';
+      c.style.background = colors[i % colors.length];
+      c.style.setProperty('--dx', (Math.random() * 160 - 80) + 'px');
+      c.style.setProperty('--rot', (Math.random() * 720 - 360) + 'deg');
+      c.style.setProperty('--d', (1.2 + Math.random() * 1.3) + 's');
+      document.body.appendChild(c);
+      setTimeout((function(el){ return function(){ el.remove(); }; })(c), 2800);
+    }
+  }
+  function celebrate(){
+    var p = pctNow();
+    if(prevPct !== null){
+      [25, 50, 75, 100].forEach(function(m){
+        if(prevPct < m && p >= m){ confetti(m === 100 ? 110 : 40); }
+      });
+    }
+    prevPct = p;
   }
 
   document.querySelectorAll('.fb[data-star]').forEach(function(b){
@@ -1639,8 +1952,10 @@ function toggleAll(show){
       if(l){ l.querySelector('input').checked = false; sync(q, l, false); }
     });
     update();
+    prevPct = 0;
   });
   update();
+  prevPct = pctNow();
 })();
 </script>
 </body>
