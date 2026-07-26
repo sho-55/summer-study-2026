@@ -203,15 +203,58 @@ table.map tr.hot td{background:#FFF8F3}
   .ans-item .head{font-size:10pt}
   .memo{padding:4px 8px;margin-top:4px;font-size:8.5pt}
 }
+/* ===== 重要度フィルタ+覚えたチェック(画面のみ) ===== */
+.topbar{position:sticky;top:6px;z-index:50;display:flex;flex-direction:column;gap:6px;margin:0 0 10px}
+.topbar .ctrl{position:static;margin:0}
+.filterbar{display:flex;flex-wrap:wrap;gap:6px;align-items:center;background:#fff;border:1px solid var(--line-soft);
+  border-radius:12px;padding:8px 12px;box-shadow:0 1px 4px rgba(15,23,42,.12);font-size:12.5px}
+.filterbar .fbl{color:var(--sub);font-weight:700;font-size:12px}
+.fb{cursor:pointer;border:1.5px solid var(--line);background:#fff;border-radius:999px;
+  padding:4px 12px;font-size:12.5px;font-weight:700;color:var(--sub);transition:all .15s}
+.fb:hover{border-color:var(--blue);color:var(--blue-d)}
+.fb.act{background:var(--blue);border-color:var(--blue);color:#fff}
+.fb.act[data-star="3"]{background:#DC2626;border-color:#DC2626}
+.fb.act[data-star="2"]{background:#F97316;border-color:#F97316}
+.fb.act[data-star="1"]{background:#64748B;border-color:#64748B}
+.fb.act#hideLearnedBtn{background:#16A34A;border-color:#16A34A;color:#fff}
+.fb.reset{border-style:dashed;font-weight:600}
+.progress{display:flex;align-items:center;gap:8px;margin-left:auto;font-weight:800;color:#15803D;font-size:12.5px}
+.pbar{width:110px;height:8px;border-radius:999px;background:#E2E8F0;overflow:hidden}
+.pbar i{display:block;height:100%;background:linear-gradient(90deg,#16A34A,#4ADE80);width:0%;transition:width .25s}
+.learn{display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:700;color:#475569;cursor:pointer;
+  user-select:none;-webkit-user-select:none;border:1.5px solid var(--line);border-radius:999px;padding:2px 10px;background:#fff}
+.learn input{accent-color:#16A34A;width:15px;height:15px;margin:0;cursor:pointer}
+.learn.on{background:var(--green-bg);border-color:#86EFAC;color:#15803D}
+.q.learned{background:#F7FDF9;border-color:#BBF7D0}
+@media (max-width:480px){ .progress{margin-left:0;width:100%} }
+@media print{
+  .topbar,.learn{display:none!important}
+  .q{display:block!important;background:var(--card);border-color:var(--line-soft)}
+  h2.unit{display:flex!important}
+  .unit-lead{display:block!important}
+}
 </style>
 </head>
 <body>
 <div class="page">
 
+<div class="topbar">
 <div class="ctrl">
   <button onclick="toggleAll(true)">すべての解答を表示</button>
   <button onclick="toggleAll(false)">すべて隠す</button>
   <button onclick="window.print()">印刷 / PDF</button>
+</div>
+<div class="filterbar">
+  <span class="fbl">重要度:</span>
+  <button class="fb act" data-star="all">すべて</button>
+  <button class="fb" data-star="3">★★★</button>
+  <button class="fb" data-star="2">★★</button>
+  <button class="fb" data-star="1">★</button>
+  <button class="fb" id="hideLearnedBtn">覚えたを隠す</button>
+  <span class="progress">覚えた <span id="learnCount">0</span>/<span id="learnTotal">62</span>問
+    <span class="pbar"><i id="learnBar"></i></span></span>
+  <button class="fb reset" id="resetLearned">リセット</button>
+</div>
 </div>
 
 <div class="cover">
@@ -1511,6 +1554,93 @@ function toggleAll(show){
     item.innerHTML = '<div class="head"><span class="qq">' + num.textContent + '</span>' + (pg ? '<span class="pgx">（' + pg.textContent + '）</span>' : '') + '</div>' + panel.innerHTML;
     container.appendChild(item);
   });
+})();
+/* 重要度フィルタ+「覚えた」チェック(localStorage保存) */
+(function(){
+  var KEY = 'kateika2026-learned';
+  var learned = {};
+  try{ learned = JSON.parse(localStorage.getItem(KEY) || '{}'); }catch(e){ learned = {}; }
+  function save(){ try{ localStorage.setItem(KEY, JSON.stringify(learned)); }catch(e){} }
+
+  var qs = [].slice.call(document.querySelectorAll('.q'));
+  var total = qs.length;
+  var starFilter = 'all', hideLearned = false;
+  document.getElementById('learnTotal').textContent = total;
+
+  function sync(q, label, on){
+    q.classList.toggle('learned', on);
+    label.classList.toggle('on', on);
+  }
+  qs.forEach(function(q){
+    var numEl = q.querySelector('.qnum');
+    var head = q.querySelector('.q-head');
+    if(!numEl || !head) return;
+    var id = numEl.textContent.trim();
+    var label = document.createElement('label');
+    label.className = 'learn';
+    label.innerHTML = '<input type="checkbox">覚えた';
+    var cb = label.querySelector('input');
+    cb.checked = !!learned[id];
+    sync(q, label, cb.checked);
+    cb.addEventListener('change', function(){
+      if(cb.checked){ learned[id] = 1; } else { delete learned[id]; }
+      save(); sync(q, label, cb.checked); update();
+    });
+    head.appendChild(label);
+  });
+
+  function starOf(q){
+    var s = q.querySelector('.stars');
+    if(!s) return '1';
+    return s.classList.contains('s3') ? '3' : (s.classList.contains('s2') ? '2' : '1');
+  }
+
+  function update(){
+    qs.forEach(function(q){
+      var id = q.querySelector('.qnum').textContent.trim();
+      var show = (starFilter === 'all' || starOf(q) === starFilter) && !(hideLearned && learned[id]);
+      q.style.display = show ? '' : 'none';
+    });
+    document.querySelectorAll('h2.unit').forEach(function(h){
+      var no = h.querySelector('.no');
+      if(!no || no.textContent === 'MAP') return;
+      var el = h.nextElementSibling, any = false, lead = null;
+      while(el && el.tagName !== 'H2' && !el.classList.contains('answers-title')){
+        if(el.classList.contains('unit-lead')) lead = el;
+        if(el.classList.contains('q') && el.style.display !== 'none') any = true;
+        el = el.nextElementSibling;
+      }
+      h.style.display = any ? '' : 'none';
+      if(lead) lead.style.display = any ? '' : 'none';
+    });
+    var n = Object.keys(learned).length;
+    document.getElementById('learnCount').textContent = n;
+    document.getElementById('learnBar').style.width = (total ? (100 * n / total) : 0) + '%';
+    var hb = document.getElementById('hideLearnedBtn');
+    hb.classList.toggle('act', hideLearned);
+    hb.textContent = hideLearned ? '覚えたを表示' : '覚えたを隠す';
+  }
+
+  document.querySelectorAll('.fb[data-star]').forEach(function(b){
+    b.addEventListener('click', function(){
+      starFilter = b.getAttribute('data-star');
+      document.querySelectorAll('.fb[data-star]').forEach(function(x){ x.classList.toggle('act', x === b); });
+      update();
+    });
+  });
+  document.getElementById('hideLearnedBtn').addEventListener('click', function(){
+    hideLearned = !hideLearned; update();
+  });
+  document.getElementById('resetLearned').addEventListener('click', function(){
+    if(!confirm('「覚えた」チェックをすべてリセットしますか？')) return;
+    learned = {}; save();
+    qs.forEach(function(q){
+      var l = q.querySelector('.learn');
+      if(l){ l.querySelector('input').checked = false; sync(q, l, false); }
+    });
+    update();
+  });
+  update();
 })();
 </script>
 </body>
