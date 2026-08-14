@@ -1,0 +1,1398 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>保健体育 夏テスト予想問題集 2026</title>
+<style>
+:root{
+  --blue:#2563EB; --blue-d:#1D4ED8; --blue-bg:#DBEAFE;
+  --orange:#F97316; --orange-bg:#FFF7ED;
+  --red:#DC2626; --green:#16A34A; --green-bg:#F0FDF4;
+  --purple:#6D28D9; --purple-bg:#EDE9FE;
+  --ink:#1E293B; --sub:#475569; --line:#CBD5E1; --line-soft:#E2E8F0;
+  --bg:#F1F5F9; --card:#FFFFFF;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{
+  font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Yu Gothic Medium","Yu Gothic",Meiryo,sans-serif;
+  color:var(--ink); background:var(--bg); line-height:1.75; font-size:15px;
+  -webkit-text-size-adjust:100%;
+}
+.page{max-width:840px;margin:0 auto;padding:20px 16px 60px}
+
+/* ===== 表紙 ===== */
+.cover{
+  background:linear-gradient(135deg,#0369A1 0%,#0EA5E9 45%,#22C55E 100%);
+  color:#fff;border-radius:16px;padding:34px 30px;margin-bottom:22px;
+}
+.cover .tag{display:inline-block;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.4);
+  border-radius:999px;padding:3px 14px;font-size:12.5px;letter-spacing:.08em;margin-bottom:14px}
+.cover h1{margin:0 0 6px;font-size:27px;line-height:1.4}
+.cover .sub{font-size:14px;opacity:.92;margin:0}
+.cover .meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.cover .meta span{background:rgba(255,255,255,.14);border-radius:8px;padding:4px 12px;font-size:12.5px}
+
+/* ===== 共通見出し ===== */
+h2.unit{
+  display:flex;align-items:center;gap:10px;font-size:19px;margin:34px 0 6px;
+  padding:10px 14px;background:var(--card);border-left:6px solid var(--blue);
+  border-radius:8px;box-shadow:0 1px 3px rgba(15,23,42,.08);
+}
+h2.unit .no{
+  background:var(--blue);color:#fff;border-radius:8px;min-width:52px;text-align:center;
+  font-size:12.5px;padding:3px 8px;flex-shrink:0;
+}
+h2.unit .pg{font-size:12px;color:var(--sub);font-weight:normal;margin-left:auto;flex-shrink:0}
+.unit-lead{font-size:13px;color:var(--sub);margin:0 4px 14px}
+
+/* ===== 問題カード ===== */
+.q{
+  background:var(--card);border:1px solid var(--line-soft);border-radius:12px;
+  padding:16px 18px 14px;margin:14px 0;box-shadow:0 1px 2px rgba(15,23,42,.05);
+  break-inside:avoid;page-break-inside:avoid;
+}
+.q-head{display:flex;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:8px}
+.qnum{font-weight:800;color:var(--blue-d);font-size:16px}
+.stars{font-size:13px;font-weight:700;letter-spacing:.1em}
+.stars.s3{color:var(--red)}
+.stars.s2{color:var(--orange)}
+.stars.s1{color:#64748B}
+.chip{font-size:11px;border-radius:999px;padding:2px 10px;font-weight:600;white-space:nowrap}
+.chip.chigi{background:var(--blue-bg);color:var(--blue-d)}
+.chip.shihan{background:var(--purple-bg);color:var(--purple)}
+.chip.kata{background:#F1F5F9;color:var(--sub);border:1px solid var(--line-soft)}
+.chip.pgc{background:#FFFBEB;color:#92400E;border:1px solid #FDE68A;margin-left:auto}
+.ans-item .pgx{color:#92400E;font-size:10.5px;font-weight:600;margin-left:6px}
+.q-body p{margin:6px 0}
+.q-body ol.abc{margin:6px 0;padding-left:10px;list-style:none}
+.q-body ol.abc li{margin:3px 0}
+.choices{margin:8px 0 4px;padding:0;list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:4px 16px}
+.choices li{padding:2px 0}
+.choices.one-col{grid-template-columns:1fr}
+.gokun{
+  border:1.5px dashed var(--line);border-radius:10px;background:#F8FAFC;
+  padding:8px 14px;margin:10px 0;font-size:14px;
+}
+.gokun b{color:var(--blue-d);font-size:12px;display:block;margin-bottom:2px}
+.note{font-size:12.5px;color:var(--sub)}
+
+/* ===== 図版 ===== */
+.fig{margin:12px auto;text-align:center;max-width:100%;overflow-x:auto}
+.fig svg{max-width:100%;height:auto}
+.fig .cap{font-size:12px;color:var(--sub);margin-top:2px}
+
+/* ===== 解答トグル（画面のみ）===== */
+.toggle-btn{
+  display:inline-flex;align-items:center;gap:6px;cursor:pointer;
+  background:var(--green-bg);color:#15803D;border:1.5px solid #86EFAC;
+  border-radius:999px;padding:5px 16px;font-size:13px;font-weight:700;margin-top:10px;
+  transition:background .2s;
+}
+.toggle-btn:hover{background:#DCFCE7}
+.ans-panel{display:none;margin-top:10px;background:var(--green-bg);border-left:4px solid var(--green);
+  border-radius:0 10px 10px 0;padding:10px 14px;font-size:14px}
+.ans-panel.open{display:block}
+.ans-panel .a{font-weight:800;color:#15803D}
+.ans-panel .exp{margin-top:4px}
+.memo{
+  background:var(--orange-bg);border-left:4px solid var(--orange);border-radius:0 10px 10px 0;
+  padding:8px 12px;margin-top:8px;font-size:13.5px;
+}
+.memo b{color:#C2410C}
+
+/* ===== 書き込み欄（印刷時のみ表示）===== */
+.write{display:none}
+.write .wline{border-bottom:1px solid #94A3B8;height:9mm}
+.write.small .wline{height:8mm}
+
+/* ===== 単元マップ ===== */
+table.map{width:100%;border-collapse:collapse;background:var(--card);border-radius:12px;overflow:hidden;
+  box-shadow:0 1px 3px rgba(15,23,42,.08);font-size:13.5px;margin:12px 0}
+table.map th{background:#1E3A8A;color:#fff;padding:8px 10px;font-size:12.5px;text-align:left;white-space:nowrap}
+table.map td{padding:8px 10px;border-top:1px solid var(--line-soft);vertical-align:top}
+table.map td.imp{white-space:nowrap;font-weight:700}
+table.map tr.hot td{background:#FFF8F3}
+
+.howto{
+  background:var(--card);border:1.5px solid var(--blue-bg);border-radius:12px;
+  padding:14px 18px;margin:16px 0;font-size:14px;
+}
+.howto h3{margin:0 0 8px;font-size:15px;color:var(--blue-d)}
+.howto ol{margin:0;padding-left:22px}
+.howto li{margin:4px 0}
+
+/* ===== 巻末解答 ===== */
+.answers-title{
+  page-break-before:always;break-before:page;
+  background:linear-gradient(135deg,#14532D,#16A34A);color:#fff;border-radius:14px;
+  padding:20px 24px;margin:40px 0 18px;
+}
+.answers-title h2{margin:0;font-size:22px}
+.answers-title p{margin:4px 0 0;font-size:13px;opacity:.92}
+.ans-item{
+  background:var(--card);border:1px solid var(--line-soft);border-radius:12px;
+  padding:12px 16px;margin:10px 0;font-size:14px;break-inside:avoid;page-break-inside:avoid;
+}
+.ans-item .head{font-weight:800;color:#15803D;margin-bottom:2px}
+.ans-item .head .qq{color:var(--blue-d);margin-right:8px}
+.ans-item .exp{margin:2px 0}
+
+/* ===== 全体操作バー（画面のみ）===== */
+.ctrl{
+  position:sticky;top:8px;z-index:50;display:flex;gap:8px;justify-content:flex-end;
+  margin:0 0 8px;
+}
+.ctrl button{
+  cursor:pointer;border:1.5px solid var(--line);background:#fff;color:var(--sub);
+  border-radius:999px;padding:6px 14px;font-size:12.5px;font-weight:700;
+  box-shadow:0 1px 4px rgba(15,23,42,.12);transition:all .2s;
+}
+.ctrl button:hover{border-color:var(--blue);color:var(--blue-d)}
+
+/* ===== 印刷 ===== */
+@page{size:A4 portrait;margin:13mm 11mm}
+@media print{
+  body{background:#fff;font-size:10.5pt;line-height:1.65}
+  .page{max-width:none;padding:0}
+  .cover{border-radius:8px;padding:22px 24px;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .ctrl,.toggle-btn,.ans-panel{display:none!important}
+  .write{display:block;margin-top:8px}
+  .q{box-shadow:none;margin:9px 0;padding:12px 14px 10px}
+  h2.unit{box-shadow:none;page-break-after:avoid;margin-top:20px}
+  table.map th{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .answers-title,.chip,.stars,.memo,.gokun,.ans-item{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .fig svg{max-height:none}
+  a{color:inherit;text-decoration:none}
+}
+@media (max-width:480px){
+  body{font-size:14.5px}
+  .cover h1{font-size:22px}
+  .choices{grid-template-columns:1fr}
+}
+/* ===== 印刷圧縮（ページ数削減・見やすさ維持）===== */
+@media print{
+  body{font-size:9.8pt;line-height:1.55}
+  .cover{padding:16px 20px;margin-bottom:12px}
+  .cover h1{font-size:20px}
+  .cover .sub{font-size:11px}
+  .howto{padding:8px 14px;margin:8px 0;font-size:9.5pt}
+  .howto li{margin:2px 0}
+  table.map{font-size:9pt;margin:8px 0}
+  table.map th,table.map td{padding:4px 8px}
+  h2.unit{margin:12px 0 3px;padding:5px 10px;font-size:14.5px}
+  .unit-lead{margin:0 4px 7px;font-size:9pt}
+  .q{margin:5px 0;padding:8px 12px 7px;border-radius:8px}
+  .q-head{margin-bottom:4px;gap:6px}
+  .q-body p{margin:3px 0}
+  .q-body ol.abc{margin:3px 0}
+  .q-body ol.abc li{margin:1px 0}
+  .choices{gap:2px 12px;margin:4px 0 2px}
+  .gokun{padding:4px 10px;margin:5px 0}
+  .fig{margin:5px auto}
+  .fig svg{max-width:82%}
+  .write{margin-top:3px}
+  .write .wline{height:7mm}
+  .answers-title{padding:12px 18px;margin:16px 0 10px;border-radius:10px}
+  .answers-title h2{font-size:17px}
+  .answers-title p{font-size:10.5px}
+  #answers-container{column-count:2;column-gap:7mm}
+  .ans-item{margin:0 0 3mm;padding:7px 10px;font-size:9pt;border-radius:8px}
+  .ans-item .exp{margin:1px 0}
+  .ans-item .head{font-size:10pt}
+  .memo{padding:4px 8px;margin-top:4px;font-size:8.5pt}
+}
+/* ===== 重要度フィルタ+覚えたチェック(画面のみ) ===== */
+.topbar{position:sticky;top:6px;z-index:50;display:flex;flex-direction:column;gap:6px;margin:0 0 10px}
+.topbar .ctrl{position:static;margin:0}
+.filterbar{display:flex;flex-wrap:wrap;gap:6px;align-items:center;background:#fff;border:1px solid var(--line-soft);
+  border-radius:12px;padding:8px 12px;box-shadow:0 1px 4px rgba(15,23,42,.12);font-size:12.5px}
+.filterbar .fbl{color:var(--sub);font-weight:700;font-size:12px}
+.fb{cursor:pointer;border:1.5px solid var(--line);background:#fff;border-radius:999px;
+  padding:4px 12px;font-size:12.5px;font-weight:700;color:var(--sub);transition:all .15s}
+.fb:hover{border-color:var(--blue);color:var(--blue-d)}
+.fb.act{background:var(--blue);border-color:var(--blue);color:#fff}
+.fb.act[data-star="3"]{background:#DC2626;border-color:#DC2626}
+.fb.act[data-star="2"]{background:#F97316;border-color:#F97316}
+.fb.act[data-star="1"]{background:#64748B;border-color:#64748B}
+.fb.act#hideLearnedBtn{background:#16A34A;border-color:#16A34A;color:#fff}
+.fb.reset{border-style:dashed;font-weight:600}
+.progress{display:flex;align-items:center;gap:8px;margin-left:auto;font-weight:800;color:#15803D;font-size:12.5px}
+.pbar{width:110px;height:8px;border-radius:999px;background:#E2E8F0;overflow:hidden}
+.pbar i{display:block;height:100%;background:linear-gradient(90deg,#16A34A,#4ADE80);width:0%;transition:width .25s}
+.learn{display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:700;color:#475569;cursor:pointer;
+  user-select:none;-webkit-user-select:none;border:1.5px solid var(--line);border-radius:999px;padding:2px 10px;background:#fff}
+.learn input{accent-color:#16A34A;width:15px;height:15px;margin:0;cursor:pointer}
+.learn.on{background:var(--green-bg);border-color:#86EFAC;color:#15803D}
+.q.learned{background:#F7FDF9;border-color:#BBF7D0}
+@media (max-width:480px){ .progress{margin-left:0;width:100%} }
+@media print{
+  .topbar,.learn{display:none!important}
+  .q{display:block!important;background:var(--card);border-color:var(--line-soft)}
+  h2.unit{display:flex!important}
+  .unit-lead{display:block!important}
+}
+/* ===== たのしいデザイン(イラスト・マスコット・演出) ===== */
+.cover{position:relative;overflow:hidden}
+.cover .art{position:absolute;right:10px;bottom:-6px;width:185px;pointer-events:none}
+.cover .tag,.cover h1,.cover .sub,.cover .meta{position:relative;z-index:2}
+h2.unit .uic{font-size:22px;flex-shrink:0;line-height:1}
+.cheer{display:flex;align-items:center;gap:10px;margin:4px 2px 14px}
+.cheer .mascot{width:56px;height:56px;flex-shrink:0;filter:drop-shadow(0 2px 3px rgba(15,23,42,.18));animation:bob 3s ease-in-out infinite}
+.cheer .bubble{position:relative;background:#fff;border:2px solid var(--cc,#FDBA74);border-radius:14px;
+  padding:7px 14px;font-size:13.5px;font-weight:600;box-shadow:0 2px 6px rgba(15,23,42,.08)}
+.cheer .bubble::before{content:"";position:absolute;left:-9px;top:50%;transform:translateY(-50%);
+  border:8px solid transparent;border-right-color:var(--cc,#FDBA74);border-left:0}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+@media (hover:hover){
+  .q{transition:transform .15s,box-shadow .15s}
+  .q:hover{transform:translateY(-2px);box-shadow:0 4px 14px rgba(15,23,42,.13)}
+}
+.learn.on{animation:pop .35s ease}
+@keyframes pop{0%{transform:scale(1)}40%{transform:scale(1.28) rotate(-4deg)}100%{transform:scale(1)}}
+#cheerMsg{font-size:12.5px;font-weight:800;color:#C2410C;width:100%}
+.confetti{position:fixed;top:-14px;width:9px;height:14px;z-index:999;pointer-events:none;border-radius:2px;
+  animation:cfall var(--d,1.6s) ease-in forwards}
+@keyframes cfall{0%{transform:translate(0,0) rotate(0)}100%{transform:translate(var(--dx,0),105vh) rotate(var(--rot,540deg));opacity:.85}}
+@media (max-width:520px){.cover .art{width:120px;opacity:.5}}
+@media print{
+  .cheer,.confetti,#cheerMsg{display:none!important}
+  .cover .art{width:150px}
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+<div class="topbar">
+<div class="ctrl">
+  <button onclick="toggleAll(true)">すべての解答を表示</button>
+  <button onclick="toggleAll(false)">すべて隠す</button>
+  <button onclick="window.print()">印刷 / PDF</button>
+</div>
+<div class="filterbar">
+  <span class="fbl">重要度:</span>
+  <button class="fb act" data-star="all">すべて</button>
+  <button class="fb" data-star="3">★★★</button>
+  <button class="fb" data-star="2">★★</button>
+  <button class="fb" data-star="1">★</button>
+  <button class="fb" id="hideLearnedBtn">覚えたを隠す</button>
+  <span class="progress">覚えた <span id="learnCount">0</span>/<span id="learnTotal">40</span>問
+    <span class="pbar"><i id="learnBar"></i></span></span>
+  <button class="fb reset" id="resetLearned">リセット</button>
+  <span id="cheerMsg"></span>
+</div>
+</div>
+
+<svg style="display:none" aria-hidden="true">
+<symbol id="hotai" viewBox="0 0 120 120">
+  <!-- ほたいくん: サッカーボール型マスコット -->
+  <circle cx="60" cy="62" r="46" fill="#FFFFFF" stroke="#334155" stroke-width="3"/>
+  <polygon points="60,40 74,50 69,66 51,66 46,50" fill="#334155"/>
+  <polygon points="24,54 36,46 44,56 38,68 26,66" fill="#334155" opacity=".85"/>
+  <polygon points="96,54 84,46 76,56 82,68 94,66" fill="#334155" opacity=".85"/>
+  <polygon points="42,92 50,80 60,84 60,96" fill="#334155" opacity=".85"/>
+  <polygon points="78,92 70,80 60,84 60,96" fill="#334155" opacity=".7"/>
+  <!-- ハチマキ -->
+  <path d="M16 40 Q60 22 104 40 L102 50 Q60 34 18 50 Z" fill="#EF4444"/>
+  <path d="M100 42 q14 -6 16 2 q-8 8 -18 6" fill="#EF4444"/>
+  <!-- 顔 -->
+  <circle cx="47" cy="60" r="4.5" fill="#1E293B"/>
+  <circle cx="73" cy="60" r="4.5" fill="#1E293B"/>
+  <path d="M50 72 Q60 81 70 72" fill="none" stroke="#1E293B" stroke-width="3.2" stroke-linecap="round"/>
+  <circle cx="38" cy="70" r="5" fill="#FDA4AF" opacity=".85"/>
+  <circle cx="82" cy="70" r="5" fill="#FDA4AF" opacity=".85"/>
+  <!-- うで -->
+  <path d="M16 66 Q4 60 8 48" fill="none" stroke="#F97316" stroke-width="7" stroke-linecap="round"/>
+  <path d="M104 70 Q116 74 114 86" fill="none" stroke="#F97316" stroke-width="7" stroke-linecap="round"/>
+</symbol>
+</svg>
+
+<div class="cover">
+  <span class="tag">2026年 夏テスト対策</span>
+  <h1>保健体育 予想問題集<br>「健康な生活」＋「実技のポイント」</h1>
+  <p class="sub">テスト範囲：保健＝教科書 p.26〜35・ワーク p.8〜17 ／ 実技＝マット運動・短距離走・ハードル走・クロール（ワーク p.52〜69）　｜　全40問＋巻末解答</p>
+  <div class="meta">
+    <span>目標：85点</span>
+    <span>1周目 約2時間</span>
+    <span>2周目は間違えた問題＋★★★だけでOK</span>
+  </div>
+  <svg class="art" viewBox="0 0 200 195" aria-hidden="true">
+    <circle cx="166" cy="30" r="15" fill="#FDE68A"/>
+    <g stroke="#FDE68A" stroke-width="3.5" stroke-linecap="round">
+      <line x1="166" y1="7" x2="166" y2="1"/><line x1="166" y1="53" x2="166" y2="59"/>
+      <line x1="143" y1="30" x2="137" y2="30"/><line x1="189" y1="30" x2="195" y2="30"/>
+      <line x1="150" y1="14" x2="146" y2="10"/><line x1="182" y1="46" x2="186" y2="50"/>
+      <line x1="182" y1="14" x2="186" y2="10"/><line x1="150" y1="46" x2="146" y2="50"/>
+    </g>
+    <ellipse cx="28" cy="34" rx="24" ry="10" fill="rgba(255,255,255,.55)"/>
+    <ellipse cx="52" cy="26" rx="16" ry="8" fill="rgba(255,255,255,.4)"/>
+    <use href="#hotai" x="34" y="52" width="130" height="130"/>
+    <path d="M14 90 l3 7 7 3 -7 3 -3 7 -3 -7 -7 -3 7 -3 z" fill="rgba(255,255,255,.8)"/>
+    <path d="M182 110 l2.5 6 6 2.5 -6 2.5 -2.5 6 -2.5 -6 -6 -2.5 6 -2.5 z" fill="rgba(255,255,255,.7)"/>
+    <ellipse cx="98" cy="188" rx="72" ry="6" fill="rgba(0,0,0,.10)"/>
+  </svg>
+</div>
+
+<div class="howto">
+  <h3>この問題集の使い方</h3>
+  <ol>
+    <li><b>★★★（必出）</b>＝テストに出る可能性がとても高い基本事項。まずここを完璧に（これだけで70点台まで到達）。</li>
+    <li><b>★★（よく出る）</b>＝差がつく標準問題。85点にはここまで必要。</li>
+    <li><b>★（応用）</b>＝仕上げ用。時間がなければ後回しでOK。</li>
+    <li>画面では「解答を見る」をタップ。印刷すると解答欄つきのテスト形式になり、答えは巻末にまとまります。</li>
+    <li>問題番号の横のタグは学校テストの観点：<span class="chip chigi">知技</span>=知識・技能、<span class="chip shihan">思判表</span>=思考・判断・表現。</li>
+  </ol>
+</div>
+
+<h2 class="unit" style="border-left-color:#1E3A8A"><span class="no" style="background:#1E3A8A">MAP</span>単元別 重要度マップ</h2>
+<p class="unit-lead">テスト範囲全体の「どこが狙われやすいか」一覧。★★★の単元から仕上げよう。</p>
+<table class="map">
+<thead><tr><th>単元（範囲ページ）</th><th>重要度</th><th>問題</th><th>最重要ポイント</th></tr></thead>
+<tbody>
+<tr class="hot"><td>1. 健康の成り立ち（教科書p.26〜29／ワークp.8〜9）</td><td class="imp" style="color:#DC2626">★★★</td><td>問1〜6</td><td><b>主体の要因⇔環境の要因</b>の区別（素因／生活習慣・行動、物理化学的／生物学的／社会的）／死因の移り変わり（結核→がん）／ヘルスプロモーション／健康寿命</td></tr>
+<tr class="hot"><td>2. 運動と健康（教科書p.30〜31／ワークp.10〜11）</td><td class="imp" style="color:#DC2626">★★★</td><td>問7〜12</td><td>運動の効果（骨・肺・心臓・筋肉の発達）の図問題／運動の3条件（安全・効果・楽しい）／運動指針の数値／ロンドンバス調査／スポーツ障害</td></tr>
+<tr class="hot"><td>3. 食生活と健康（教科書p.32〜33／ワークp.12〜13）</td><td class="imp" style="color:#DC2626">★★★</td><td>問13〜18</td><td><b>基礎代謝量の定義</b>／栄養素の不足・とりすぎ（鉄→貧血、ビタミンA→視力低下、ナトリウム→高血圧）／朝食と体温のグラフ</td></tr>
+<tr><td>4. 休養・睡眠と健康（教科書p.34〜35／ワークp.14〜15）</td><td class="imp" style="color:#DC2626">★★★</td><td>問19〜22</td><td>疲労の自覚症状5分類／<b>成長ホルモン＝眠り始めの深い睡眠</b>／休養のとり方5つ／積極的休養（アクティブレスト）</td></tr>
+<tr><td>5. 調和のとれた生活（ワークp.16〜17）</td><td class="imp" style="color:#F97316">★★</td><td>問23〜24</td><td>運動・食事・休養睡眠はどれか一つ欠けてもダメ／○×のひっかけ（睡眠不足→食事多め？）</td></tr>
+<tr class="hot"><td>6. マット運動（ワークp.52〜53）</td><td class="imp" style="color:#DC2626">★★★</td><td>問25〜29</td><td>前転＝<b>かかとをおしりに巻き込む</b>／開脚前転＝つく<b>直前</b>に開脚／側方倒立回転＝両手の上を見て<b>三角形</b>・体重は<b>両肩</b>に</td></tr>
+<tr><td>7. 短距離走（ワークp.58〜59）</td><td class="imp" style="color:#F97316">★★</td><td>問30〜33</td><td><b>ピッチ（歩数）⇔ストライド（歩幅）</b>の区別／クラウチングスタート「用意」の姿勢／大またになりすぎは減速</td></tr>
+<tr><td>8. ハードル走（ワークp.62〜63）</td><td class="imp" style="color:#DC2626">★★★</td><td>問34〜37</td><td><b>3歩のリズム（着地足はゼロ）</b>／振り上げ脚はまっすぐ・親指は上／抜き脚は横に開き地面と平行／遠くから踏み切り近くに着地</td></tr>
+<tr><td>9. 水泳・クロール（ワークp.68〜69）</td><td class="imp" style="color:#F97316">★★</td><td>問38〜40</td><td>ストリームライン（水面と平行・腰おしりを曲げない）／腕の動きの順序（エントリー→キャッチ→プル→プッシュ→リカバリー）／呼吸は「パッ」</td></tr>
+</tbody>
+</table>
+<!-- ================= 単元1 健康の成り立ち ================= -->
+<h2 class="unit" style="border-left-color:#0EA5E9"><span class="no" style="background:#0EA5E9">単元1</span><span class="uic">🩺</span>健康の成り立ち<span class="pg">教科書 p.26〜29／ワーク p.8〜9</span></h2>
+<p class="unit-lead">「主体の要因」と「環境の要因」の区別が最重要。死因の移り変わりとヘルスプロモーションもセットで。</p>
+<div class="cheer" style="--cc:#7DD3FC"><svg class="mascot" viewBox="0 0 120 120"><use href="#hotai"/></svg><div class="bubble">やあ、ぼく<b>ほたいくん</b>！いっしょに85点めざそう！まずは保健の第1単元、「主体⇔環境」の区別からスタート⚽</div></div>
+
+<div class="q">
+  <div class="q-head"><span class="qnum">問1</span><span class="stars s3">★★★</span><span class="chip chigi">知技</span><span class="chip kata">語群</span><span class="chip pgc">教科書p.28</span></div>
+  <div class="q-body">
+    <p>日本人の死因の移り変わりについて、次の文の（①）〜（③）にあてはまる言葉を、あとの語群からそれぞれ選び、記号で答えなさい。</p>
+    <p>「日本ではかつて、結核や肺炎などの（①）が死因の上位にあったが、個人の栄養状態や生活環境の改善、保健・医療水準の向上などによって急激に減少した。その一方で、食生活の変化や運動不足、人口の高齢化などによって、がん・心臓病・脳卒中といった（②）などが死因の上位を占めるようになった。1947年の死因第1位は（③）である。」</p>
+    <div class="gokun"><b>語群</b>ア：生活習慣病　　イ：感染症　　ウ：結核　　エ：がん</div>
+  </div>
+  <div class="write"><div class="wline"></div></div>
+  <button class="toggle-btn" onclick="tg(this)">解答を見る</button>
+  <div class="ans-panel"><span class="a">答え：①イ（感染症）　②ア（生活習慣病）　③ウ（結核）</span>
+    <p class="exp">昔＝<b>感染症</b>（結核・肺炎）→ 今＝<b>生活習慣病</b>（がん・心臓病・脳卒中）。2022年の第1位は<b>がん</b>、1947年の第1位は<b>結核</b>。年号と死因の組み合わせで出る。</p>
+    <div class="memo"><b>覚え方</b>：「<b>昔はうつる病気、今はくらしの病気</b>」。1947＝結核、2022＝がん。</div>
+  </div>
+</div>
+
+<div class="q">
+  <div class="q-head"><span class="qnum">問2</span><span class="stars s3">★★★</span><span class="chip chigi">知技</span><span class="chip kata">図＋記号</span><span class="chip pgc">教科書p.29</span></div>
+  <div class="q-body">
+    <p>図は、病気や健康に関係する要因を整理したものである。図の（Ａ）〜（Ｃ）にあてはまる言葉を、あとの語群からそれぞれ選び、記号で答えなさい。</p>
+    <div class="fig">
+      <svg viewBox="0 0 620 220" width="560" role="img" aria-label="主体の要因と環境の要因の図">
+        <ellipse cx="310" cy="110" rx="52" ry="78" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+        <circle cx="310" cy="63" r="20" fill="#FDE68A" stroke="#F59E0B" stroke-width="2"/>
+        <text x="310" y="117" text-anchor="middle" font-size="15" font-weight="bold" fill="#B45309">主体</text>
+        <rect x="8" y="12" width="216" height="70" rx="10" fill="#DBEAFE" stroke="#60A5FA" stroke-width="2"/>
+        <text x="116" y="38" text-anchor="middle" font-size="13" font-weight="bold" fill="#1D4ED8">（Ａ）的環境の要因</text>
+        <text x="116" y="58" text-anchor="middle" font-size="10.5" fill="#334155">温度、湿度、</text>
+        <text x="116" y="73" text-anchor="middle" font-size="10.5" fill="#334155">有害化学物質、放射線 など</text>
+        <rect x="396" y="12" width="216" height="70" rx="10" fill="#DCFCE7" stroke="#4ADE80" stroke-width="2"/>
+        <text x="504" y="38" text-anchor="middle" font-size="13" font-weight="bold" fill="#15803D">（Ｂ）的環境の要因</text>
+        <text x="504" y="58" text-anchor="middle" font-size="10.5" fill="#334155">細菌、ウイルス、</text>
+        <text x="504" y="73" text-anchor="middle" font-size="10.5" fill="#334155">動物、植物、昆虫 など</text>
+        <rect x="8" y="142" width="216" height="70" rx="10" fill="#FCE7F3" stroke="#F472B6" stroke-width="2"/>
+        <text x="116" y="168" text-anchor="middle" font-size="13" font-weight="bold" fill="#BE185D">（Ｃ）的環境の要因</text>
+        <text x="116" y="188" text-anchor="middle" font-size="10.5" fill="#334155">人間関係、保健・医療制度、</text>
+        <text x="116" y="203" text-anchor="middle" font-size="10.5" fill="#334155">労働条件、経済状況 など</text>
+        <rect x="396" y="142" width="216" height="70" rx="10" fill="#FFEDD5" stroke="#FB923C" stroke-width="2"/>
+        <text x="504" y="168" text-anchor="middle" font-size="13" font-weight="bold" fill="#C2410C">主体の要因</text>
+        <text x="504" y="188" text-anchor="middle" font-size="10.5" fill="#334155">素因（体質・性・年齢・抵抗力）</text>
+        <text x="504" y="203" text-anchor="middle" font-size="10.5" fill="#334155">生活習慣・行動（運動・食事など）</text>
+        <g stroke="#94A3B8" stroke-width="2">
+          <line x1="224" y1="50" x2="266" y2="78"/><line x1="396" y1="50" x2="354" y2="78"/>
+          <line x1="224" y1="172" x2="266" y2="144"/><line x1="396" y1="172" x2="354" y2="144"/>
+        </g>
+      </svg>
+    </div>
+    <div class="gokun"><b>語群</b>ア：生物学　　イ：社会　　ウ：物理・化学</div>
+  </div>
+  <div class="write"><div class="wline"></div></div>
+  <button class="toggle-btn" onclick="tg(this)">解答を見る</button>
+  <div class="ans-panel"><span class="a">答え：Ａ＝ウ（物理・化学）　Ｂ＝ア（生物学）　Ｃ＝イ（社会）</span>
+    <p class="exp">環境の要因は3つ。<b>物理・化学的</b>＝温度・湿度・有害化学物質・放射線、<b>生物学的</b>＝細菌・ウイルス・動物・昆虫、<b>社会的</b>＝人間関係・保健医療制度・労働条件・経済状況。</p>
+    <div class="memo"><b>覚え方</b>：「<b>ぶつり（モノ）・いきもの・ひとの世の中</b>」の3つ。生き物が出てきたら生物学的！</div>
+  </div>
+</div>
+
+<div class="q">
+  <div class="q-head"><span class="qnum">問3</span><span class="stars s3">★★★</span><span class="chip chigi">知技</span><span class="chip kata">記号</span><span class="chip pgc">教科書p.29</span></div>
+  <div class="q-body">
+    <p>主体の要因は、「素因」と「生活習慣・行動」に分けられる。次のア〜カを「素因」と「生活習慣・行動」に分け、それぞれ記号で答えなさい。</p>
+    <ul class="choices">
+      <li>ア：体質</li><li>イ：運動</li><li>ウ：年齢</li>
+      <li>エ：食事</li><li>オ：抵抗力</li><li>カ：休養・睡眠</li>
+    </ul>
+  </div>
+  <div class="write"><div class="wline"></div><div class="wline"></div></div>
+  <button class="toggle-btn" onclick="tg(this)">解答を見る</button>
+  <div class="ans-panel"><span class="a">答え：素因＝ア・ウ・オ　　生活習慣・行動＝イ・エ・カ</span>
+    <p class="exp">素因＝<b>体質・性・年齢・抵抗力</b>（生まれつき・変えにくいもの）。生活習慣・行動＝<b>運動・食事・休養・睡眠</b>（自分で変えられるもの）。</p>
+    <div class="memo"><b>覚え方</b>：素因は「<b>たい・せい・ねん・てい</b>」（体質・性・年齢・抵抗力）。</div>
+  </div>
+</div>
+
+<div class="q">
+  <div class="q-head"><span class="qnum">問4</span><span class="stars s3">★★★</span><span class="chip chigi">知技</span><span class="chip kata">語句</span><span class="chip pgc">教科書p.29</span></div>
+  <div class="q-body">
+    <p>健康を実現するには、個人の努力と、それを実現するための社会的な取り組みの両方が必要である、という考え方を何というか。カタカナで答えなさい。</p>
+  </div>
+  <div class="write"><div class="wline"></div></div>
+  <button class="toggle-btn" onclick="tg(this)">解答を見る</button>
+  <div class="ans-panel"><span class="a">答え：ヘルスプロモーション</span>
+    <p class="exp">「個人の取り組み＋<b>健康を支援する環境づくり</b>」で目標（生活の質の向上）に向かう坂道を緩くする、という図で説明される考え方。</p>
+    <div class="memo"><b>覚え方</b>：ヘルス（健康）をプロモーション（後押し）するのは<b>本人と社会の両方</b>。</div>
+  </div>
+</div>
+
+<div class="q">
+  <div class="q-head"><span class="qnum">問5</span><span class="stars s2">★★</span><span class="chip chigi">知技</span><span class="chip kata">語句</span><span class="chip pgc">ワークp.9</span></div>
+  <div class="q-body">
+    <p>国連の世界保健機関（WHO）が提唱した指標で、平均寿命から、寝たきりや認知症など介護状態の期間を差し引いた期間のことを何というか。漢字4字で答えなさい。</p>
+  </div>
+  <div class="write"><div class="wline"></div></div>
+  <button class="toggle-btn" onclick="tg(this)">解答を見る</button>
+  <div class="ans-panel"><span class="a">答え：健康寿命</span>
+    <p class="exp">「平均寿命 − 介護状態の期間 ＝ <b>健康寿命</b>」。グラフでは健康寿命・平均寿命ともに年々<b>増えている</b>ことも読み取りポイント。</p>
+  </div>
+</div>
+
+<div class="q">
+  <div class="q-head"><span class="qnum">問6</span><span class="stars s2">★★</span><span class="chip chigi">思判表</span><span class="chip kata">○×</span><span class="chip pgc">教科書p.28〜29</span></div>
+  <div class="q-body">
+    <p>健康の成り立ちについて、次の文が正しければ○、間違っていれば×を書きなさい。</p>
+    <ol class="abc">
+      <li>① 病気は、主体と環境のバランスが崩れた状態といえる。</li>
+      <li>② 現代の日本では、10歳〜39歳の死因の第1位はがんである。</li>
+      <li>③ 健康は、主体と環境を良好に保つことによって成り立つ。</li>
+    </ol>
+  </div>
+  <div class="write"><div class="wline"></div></div>
+  <button class="toggle-btn" onclick="tg(this)">解答を見る</button>
+  <div class="ans-panel"><span class="a">答え：①○　②×　③○</span>
+    <p class="exp">②のひっかけ：10〜39歳の死因第1位は<b>自殺</b>（他の先進諸国と比べても自殺率が高いことが問題になっている）。全体の第1位（がん）と混同しない。</p>
+  </div>
+</div>
+
+<!-- ================= 単元2 運動と健康 ================= -->
+<h2 class="unit" style="border-left-color:#F97316"><span class="no" style="background:#F97316">単元2</span><span class="uic">🏃</span>運動と健康<span class="pg">教科書 p.30〜31／ワーク p.10〜11</span></h2>
+<p class="unit-lead">運動の効果を体の部位ごとに答える図問題が本命。運動の3条件と運動指針の数値もよく出る。</p>
+<div class="cheer" style="--cc:#FDBA74"><svg class="mascot" viewBox="0 0 120 120"><use href="#hotai"/></svg><div class="bubble">運動の効果は「<b>どこが・どうなる</b>」をセットで覚えるのがコツ！図を見ながらいこう🏃</div></div>
+
+<div class="q">
+  <div class="q-head"><span class="qnum">問7</span><span class="stars s3">★★★</span><span class="chip chigi">知技</span><span class="chip kata">図＋語群</span><span class="chip pgc">教科書p.30</span></div>
+  <div class="q-body">
+    <p>図は運動の効果を表したものである。（①）〜（④）にあてはまる言葉を、あとの語群からそれぞれ選び、記号で答えなさい。</p>
+    <div class="fig">
+      <svg viewBox="0 0 640 240" width="580" role="img" aria-label="運動の効果の人体図">
+        <ellipse cx="150" cy="40" rx="17" ry="19" fill="#FDE68A" stroke="#F59E0B" stroke-width="2"/>
+        <rect x="128" y="60" width="44" height="78" rx="16" fill="#FEF3C7" stroke="#F59E0B" stroke-width="2"/>
+        <path d="M128 72 q-22 10 -26 34" fill="none" stroke="#F59E0B" stroke-width="9" stroke-linecap="round"/>
+        <path d="M172 72 q22 10 26 34" fill="none" stroke="#F59E0B" stroke-width="9" stroke-linecap="round"/>
+        <path d="M138 138 q-4 34 -8 62" fill="none" stroke="#F59E0B" stroke-width="11" stroke-linecap="round"/>
+        <path d="M162 138 q4 34 8 62" fill="none" stroke="#F59E0B" stroke-width="11" stroke-linecap="round"/>
+        <path d="M138 82 q10 10 0 22 q-8 8 2 16" fill="none" stroke="#FB7185" stroke-width="7" stroke-linecap="round"/>
+        <path d="M158 84 a9 11 0 1 0 0.1 0" fill="#FCA5A5" stroke="#EF4444" stroke-width="2"/>
+        <g font-size="12.5" fill="#334155">
+          <text x="252" y="34">●緊張・ストレスを和らげる（気分転換）</text>
+          <text x="252" y="72">●（①）の発達 … 太く、長くなる。密度が高くなる</text>
+          <text x="252" y="110">●（②）の発達 … 1回の呼吸量が多くなる</text>
+          <text x="252" y="148">●（③）の発達 … 拍出量が多く、拍出力が強くなる</text>
+          <text x="252" y="186">●（④）の発達 … 太くなり、体脂肪が少なくなる</text>
+          <text x="252" y="224">●毛細血管の発達／肥満の防止</text>
+        </g>
+        <g stroke="#94A3B8" stroke-width="1.5">
+          <line x1="160" y1="30" x2="246" y2="30"/>
+          <line x1="146" y1="185" x2="246" y2="68"/>
+          <line x1="146" y1="92" x2="246" y2="106"/>
+          <line x1="162" y1="95" x2="246" y2="144"/>
+          <line x1="196" y1="102" x2="246" y2="182"/>
+        </g>
+      </svg>
+    </div>
+    <div class="gokun"><b>語群</b>ア：心臓　　イ：骨　　ウ：筋肉　　エ：肺</div>
+  </div>
+  <div class="write"><div class="wline"></div></div>
+  <button class="toggle-btn" onclick="tg(this)">解答を見る</button>
+  <div class="ans-panel"><span class="a">答え：①イ（骨）　②エ（肺）　③ア（心臓）　④ウ（筋肉）</span>
+    <p class="exp">キーワードで判定：「太く・長く・密度」＝<b>骨</b>／「呼吸量・肺活量」＝<b>肺</b>／「拍出量・拍出力」＝<b>心臓</b>／「太くなる・体脂肪が少なく」＝<b>筋肉</b>。</p>
+    <div class="memo"><b>覚え方</b>：「<b>拍</b>」の字が出たら心臓、「<b>呼吸</b>」なら肺、「<b>密度</b>」なら骨。</div>
+  </div>
+</div>
+
+<div class="q">
+  <div class="q-head"><span class="qnum">問8</span><span class="stars s3">★★★</span><span class="chip chigi">知技</span><span class="chip kata">語句</span><span class="chip pgc">教科書p.31</span></div>
+  <div class="q-body">
+    <p>健康づくりのための運動に必要な三つの条件は、「①（　　）であること」「②（　　）があること」「③（　　）こと」である。（　　）にあてはまる言葉をそれぞれ答えなさい。</p>
+  </div>
+  <div class="write"><div class="wline"></div></div>
+  <button class="toggle-btn" onclick="tg(this)">解答を見る</button>
+  <div class="ans-panel"><span class="a">答え：①安全　②効果　③楽しい</span>
+    <p class="exp">強すぎる運動は<b>安全</b>とはいえず、軽すぎる運動では<b>効果</b>が期待できない。<b>楽しく</b>なければ長続きしない。3つセットで記述させる問題が定番。</p>
+    <div class="memo"><b>覚え方</b>：「<b>あん・こう・たの</b>」（安全・効果・楽しい）。あんこうは食べたのしい！</div>
+  </div>
+</div>
+
+<div class="q">
+  <div class="q-head"><span class="qnum">問9</span><span class="stars s2">★★</span><span class="chip chigi">知技</span><span class="chip kata">表＋記号</span><span class="chip pgc">教科書p.31</span></div>
+  <div class="q-body">
+    <p>中学生・高校生の運動指針について、表の（①）〜（③）にあてはまるものを、あとの語群からそれぞれ選び、記号で答えなさい。</p>
+    <div class="fig">
+      <svg viewBox="0 0 470 150" width="430" role="img" aria-label="運動指針の表">
+        <rect x="0" y="0" width="470" height="150" rx="10" fill="#F8FAFC" stroke="#CBD5E1"/>
+        <line x1="118" y1="0" x2="118" y2="150" stroke="#CBD5E1"/>
+        <line x1="235" y1="0" x2="235" y2="150" stroke="#CBD5E1"/>
+        <line x1="352" y1="0" x2="352" y2="150" stroke="#CBD5E1"/>
+        <line x1="0" y1="36" x2="470" y2="36" stroke="#CBD5E1"/>
+        <line x1="0" y1="86" x2="470" y2="86" stroke="#CBD5E1"/>
+        <g font-size="12" font-weight="bold" fill="#0F172A">
+          <text x="59" y="23" text-anchor="middle">　</text>
+          <text x="176" y="23" text-anchor="middle">持久力を高める</text>
+          <text x="293" y="23" text-anchor="middle">筋力を高める</text>
+          <text x="411" y="23" text-anchor="middle">柔軟性を高める</text>
+        </g>
+        <g font-size="11.5" fill="#334155">
+          <text x="59" y="64" text-anchor="middle">運動の種類</text>
+          <text x="176" y="58" text-anchor="middle">ウオーキング、</text>
+          <text x="176" y="74" text-anchor="middle">ジョギング、水泳</text>
+          <text x="293" y="64" text-anchor="middle">（①）</text>
+          <text x="411" y="64" text-anchor="middle">（②）</text>
+          <text x="59" y="122" text-anchor="middle">時間・頻度</text>
+          <text x="176" y="114" text-anchor="middle">10〜30分</text>
+          <text x="176" y="132" text-anchor="middle">（③）以上</text>
+          <text x="293" y="114" text-anchor="middle">10〜30分</text>
+          <text x="293" y="132" text-anchor="middle">週2日程度</text>
+          <text x="411" y="122" text-anchor="middle">5〜30分</text>
+        </g>
+      </svg>
+    </div>
+    <div class="gokun"><b>語群</b>ア：ストレッチング　　イ：筋力トレーニング　　ウ：週3日　　エ：週5日</div>
+  </div>
+  <div class="write"><div class="wline"></div></div>
+  <button class="toggle-btn" onclick="tg(this)">解答を見る</button>
+  <div class="ans-panel"><span class="a">答え：①イ（筋力トレーニング）　②ア（ストレッチング）　③ウ（週3日）</span>
+    <p class="exp">数値セット：持久力＝<b>10〜30分・週3日以上</b>／筋力＝<b>10〜30分・週2日程度</b>／柔軟性＝<b>5〜30分</b>。持久力の運動は「ややきつい〜かなりきつい」強さ。</p>
+    <div class="memo"><b>覚え方</b>：「<b>持久はサン（3日）、筋肉はニ（2日）</b>」。</div>
+  </div>
+</div>
+
+<div class="q">
+  <div class="q-head"><span class="qnum">問10</span><span class="stars s3">★★★</span><span class="chip chigi">知技</span><span class="chip kata">語群</span><span class="chip pgc">教科書p.31</span></div>
+  <div class="q-body">
+    <p>中学生の時期の運動について、次の文の（①）〜（③)にあてはまる言葉を、あとの語群からそれぞれ選び、記号で答えなさい。</p>
+    <p>「中学生の時期は、特に（①）や筋力が著しく発達する時期なので、これらを高める運動を（②）的に行うのが望ましい。ただし、骨や関節が著しく発育している時期でもあり、これらに負担のかかる運動を繰り返し行っていると（③）を起こすこともあるので、注意が必要である。」</p>
+    <div class="gokun"><b>語群</b>ア：スポーツ障害　　イ：持久力　　ウ：継続　　エ：瞬発力</div>
+  </div>
+  <div class="write"><div class="wline"></div></div>
+  <button class="toggle-btn" onclick="tg(this)">解答を見る</button>
+  <div class="ans-panel"><span class="a">答え：①イ（持久力）　②ウ（継続）　③ア（スポーツ障害）</span>
+    <p class="exp">中学生期に発達するのは「<b>持久力と筋力</b>」（瞬発力ではない）。やりすぎると<b>スポーツ障害</b>（筋肉痛ではない）——ワークのまとめ問題そのままの形。</p>
+  </div>
+</div>
+
+<div class="q">
+  <div class="q-head"><span class="qnum">問11</span><span class="stars s2">★★</span><span class="chip shihan">思判表</span><span class="chip kata">記述</span><span class="chip pgc">ワークp.10</span></div>
+  <div class="q-body">
+    <p>1950年代にイギリスのモリス博士は、2階建てロンドンバスの「運転手」と「車掌」の心臓発作と心臓病による死亡率を調査した。その結果、発生率・死亡率が高かったのは<b>どちら</b>か。また、その理由を「運動」という言葉を使って簡単に説明しなさい。</p>
+  </div>
+  <div class="write"><div class="wline"></div><div class="wline"></div></div>
+  <button class="toggle-btn" onclick="tg(this)">解答を見る</button>
+  <div class="ans-panel"><span class="a">答え：運転手。（例）車掌は2階に上がるなど体を動かすが、運転手は座ったままで運動が不足するから。</span>
+    <p class="exp">運動不足が心臓病の一因になることを示した有名な調査。ワークではグラフのＡ・Ｂどちらが運転手かを図から判断させる形で出る——「<b>体を動かす車掌のほうが低い</b>」と覚えておけば、どちらの線が示されても判断できる。</p>
+  </div>
+</div>
+
+<div class="q">
+  <div class="q-head"><span class="qnum">問12</span><span class="stars s1">★</span><span class="chip chigi">知技</span><span class="chip kata">○×</span><span class="chip pgc">ワークp.11／教科書p.30</span></div>
+  <div class="q-body">
+    <p>運動と健康について、次の文が正しければ○、間違っていれば×を書きなさい。</p>
+    <ol class="abc">
+      <li>① 運動不足は、体力の低下だけでなく、肥満症や動脈硬化、糖尿病などの生活習慣病の原因になる。</li>
+      <li>② スクリーンタイム（テレビ・スマートフォンなどの視聴時間）が長くなるほど、体力合計点は高くなる傾向がある。</li>
+      <li>③ 運動不足が一因と考えられる病気には、心臓病・高血圧症・腰痛症・不眠症などがある。</li>
+    </ol>
+  </div>
+  <div class="write"><div class="wline"></div></div>
+  <button class="toggle-btn" onclick="tg(this)">解答を見る</button>
+  <div class="ans-panel"><span class="a">答え：①○　②×　③○</span>
+    <p class="exp">②はグラフの読み取りひっかけ：スクリーンタイムが上がると体力合計点は<b>下がる</b>。③はワークの一覧（心臓病・高血圧症・肥満症・動脈硬化症・糖尿病・腰痛症・不眠症・認知症）から。</p>
+  </div>
+</div>
+
+<!-- ================= 単元3 食生活と健康 ================= -->
+<h2 class="unit" style="border-left-color:#16A34A"><span class="no" style="background:#16A34A">単元3</span><span class="uic">🍚</span>食生活と健康<span class="pg">教科書 p.32〜33／ワーク p.12〜13</span></h2>
+<p class="unit-lead">「基礎代謝量」の定義は記述で書けるように。栄養素の不足・とりすぎの対応表は暗記必須。</p>
+<div class="cheer" style="--cc:#86EFAC"><svg class="mascot" viewBox="0 0 120 120"><use href="#hotai"/></svg><div class="bubble">栄養素は「<b>足りないと→どうなる</b>」の矢印で覚えるよ！鉄→貧血、ビタミンA→視力！🍌</div></div>
+
+<div class="q">
+  <div class="q-head"><span class="qnum">問13</span><span class="stars s3">★★★</span><span class="chip chigi">知技</span><span class="chip kata">語句</span><span class="chip pgc">教科書p.32</span></div>
+  <div class="q-body">
+    <p>じっとしているときにも、生命を維持するために最小限必要なエネルギーの消費量のことを何というか。漢字5字で答えなさい。</p>
+  </div>
+  <div class="write"><div class="wline"></div></div>
+  <button class="toggle-btn" onclick="tg(this)">解答を見る</button>
+  <div class="ans-panel"><span class="a">答え：基礎代謝量</span>
+    <p class="exp">定義ごと覚える：「<b>生命を維持するために最小限必要な</b>エネルギーの消費量」。1日の消費エネルギー＝<b>基礎代謝量＋生活活動や運動によって消費するエネルギー量</b>。</p>
+    <div class="memo"><b>覚え方</b>：「基礎」＝何もしなくても使う土台のエネルギー。</div>
+  </div>
+</div>
+
+<div class="q">
+  <div class="q-head"><span class="qnum">問14</span><span class="stars s3">★★★</span><span class="chip chigi">知技</span><span class="chip kata">記号</span><span class="chip pgc">教科書p.33</span></div>
+  <div class="q-body">
+    <p>栄養素が不足すると起こる障害の例について、次の①〜④の栄養素と、その不足による障害ア〜エの組み合わせとして正しいものを、それぞれ記号で答えなさい。</p>
+    <ol class="abc">
+      <li>① たんぱく質　　② カルシウム　　③ 鉄　　④ ビタミンＡ</li>
+    </ol>
+    <ul class="choices">
+      <li>ア：貧血、疲れやすい、息切れ</li>
+      <li>イ：視力低下、抵抗力低下、皮膚病</li>
+      <li>ウ：体力低下、筋肉量の減少</li>
+      <li>エ：骨や歯の発育不良</li>
+    </ul>
+  </div>
+  <div class="write"><div class="wline"></div></div>
+  <button class="toggle-btn" onclick="tg(this)">解答を見る</button>
+  <div class="ans-panel"><span class="a">答え：①ウ　②エ　③ア　④イ</span>
+    <p class="exp">対応表：たんぱく質→<b>体力低下・筋肉量減少</b>／カルシウム→<b>骨や歯</b>／鉄→<b>貧血</b>／ビタミンＡ→<b>視力低下・皮膚病</b>。中学生期は発育や月経で貧血になりやすいので<b>たんぱく質と鉄</b>を意識的にとる。</p>
+    <div class="memo"><b>覚え方</b>：「<b>カル骨・鉄血・Ａ目</b>」（カルシウム＝骨、鉄＝血、ビタミンＡ＝目）。</div>
+  </div>
+</div>
+
+<div class="q">
+  <div class="q-head"><span class="qnum">問15</span><span class="stars s3">★★★</span><span class="chip chigi">知技</span><span class="chip kata">記号</span><span class="chip pgc">教科書p.33</span></div>
+  <div class="q-body">
+    <p>栄養素のとりすぎによる障害について、次の①・②にあてはまるものを、あとの語群からそれぞれ選び、記号で答えなさい。</p>
+    <ol class="abc">
+      <li>① 脂肪のとりすぎ　→（　　）</li>
+      <li>② ナトリウム（食塩）のとりすぎ　→（　　）</li>
+    </ol>
+    <div class="gokun"><b>語群</b>ア：高血圧　　イ：肥満、動脈硬化、大腸がん　　ウ：貧血</div>
+  </div>
+  <div class="write"><div class="wline"></div></div>
+  <button class="toggle-btn" onclick="tg(this)">解答を見る</button>
+  <div class="ans-panel"><span class="a">答え：①イ　②ア</span>
+    <p class="exp">脂肪とりすぎ→<b>肥満・動脈硬化・大腸がん</b>、食塩（ナトリウム）とりすぎ→<b>高血圧</b>。不足だけでなく「とりすぎ」も障害になるのがポイント。</p>
+    <div class="memo"><b>覚え方</b>：「<b>塩と血圧はセット</b>」。しょっぱい→血圧上がる。</div>
+  </div>
+</div>
+
+<div class="q">
+  <div class="q-head"><span class="qnum">問16</span><span class="stars s2">★★</span><span class="chip shihan">思判表</span><span class="chip kata">図＋記述</span><span class="chip pgc">教科書p.33</span></div>
+  <div class="q-body">
+    <p>グラフは、朝食をとった場合と抜いた場合の体温の変化を表している。朝食をとった場合はＡ・Ｂのどちらか。また、朝食を抜くと体にどのような影響があるか、簡単に説明しなさい。</p>
+    <div class="fig">
+      <svg viewBox="0 0 440 190" width="400" role="img" aria-label="朝食と体温のグラフ">
+        <line x1="52" y1="18" x2="52" y2="150" stroke="#64748B" stroke-width="1.6"/>
+        <line x1="52" y1="150" x2="420" y2="150" stroke="#64748B" stroke-width="1.6"/>
+        <text x="20" y="30" font-size="11" fill="#475569">体温(℃)</text>
+        <text x="30" y="52" font-size="10.5" fill="#475569">36.5</text>
+        <text x="30" y="112" font-size="10.5" fill="#475569">36.0</text>
+        <g font-size="10.5" fill="#475569">
+          <text x="66" y="166" text-anchor="middle">6時</text>
+          <text x="130" y="166" text-anchor="middle">7</text>
+          <text x="190" y="166" text-anchor="middle">8</text>
+          <text x="250" y="166" text-anchor="middle">9</text>
+          <text x="310" y="166" text-anchor="middle">10</text>
+          <text x="370" y="166" text-anchor="middle">12時</text>
+          <text x="66" y="182" text-anchor="middle">起床</text>
+          <text x="130" y="182" text-anchor="middle">朝食</text>
+        </g>
+        <path d="M66 128 L130 104 L190 96 L250 52 L310 44 L370 46" fill="none" stroke="#F97316" stroke-width="3"/>
+        <path d="M66 140 L130 134 L190 128 L250 88 L310 96 L370 72" fill="none" stroke="#64748B" stroke-width="3" stroke-dasharray="7 5"/>
+        <text x="392" y="46" font-size="12.5" font-weight="bold" fill="#C2410C">Ａ</text>
+        <text x="392" y="74" font-size="12.5" font-weight="bold" fill="#475569">Ｂ</text>
+      </svg>
+    </div>
+  </div>
+  <div class="write"><div class="wline"></div><div class="wline"></div></div>
+  <button class="toggle-btn" onclick="tg(this)">解答を見る</button>
+  <div class="ans-panel"><span class="a">答え：Ａ。（例）朝食を抜くと体温が上がらず、体も脳も十分に働かない。</span>
+    <p class="exp">朝食をとると<b>朝食後に体温がしっかり上がる</b>（Ａの線）。夜食をとると胃や腸に負担がかかり、翌日朝食を抜くことにつながる、という流れも記述で出やすい。</p>
+  </div>
+</div>
+
+<div class="q">
+  <div class="q-head"><span class="qnum">問17</span><span class="stars s2">★★</span><span class="chip chigi">知技</span><span class="chip kata">記号</span><span class="chip pgc">教科書p.32</span></div>
+  <div class="q-body">
+    <p>12〜14歳の男子（身体活動レベル「普通」）の1日のエネルギー摂取量の目安として最も適切なものを、次のア〜エから1つ選び、記号で答えなさい。</p>
+    <ul class="choices">
+      <li>ア：約1,600kcal</li><li>イ：約2,100kcal</li>
+      <li>ウ：約2,600kcal</li><li>エ：約3,100kcal</li>
+    </ul>
+  </div>
+  <div class="write"><div class="wline"></div></div>
+  <button class="toggle-btn" onclick="tg(this)">解答を見る</button>
+  <div class="ans-panel"><span class="a">答え：ウ（約2,600kcal）</span>
+    <p class="exp">12〜14歳・普通レベルは<b>男子2,600kcal／女子2,400kcal</b>。ちなみに、ごはん1杯（140g）＝約220kcal、普通の歩行で消費するのは1分あたり約3kcal。</p>
+    <div class="memo"><b>覚え方</b>：「中学生男子は<b>ニーロクマル（2600）</b>」。</div>
+  </div>
+</div>
+
+<div class="q">
+  <div class="q-head"><span class="qnum">問18</span><span class="stars s1">★</span><span class="chip chigi">知技</span><span class="chip kata">○×</span><span class="chip pgc">ワークp.12</span></div>
+  <div class="q-body">
+    <p>食生活について、次の文が正しければ○、間違っていれば×を書きなさい。</p>
+    <ol class="abc">
+      <li>① 朝食をとると体温が上がり、脳や体が十分に働くようになる。</li>
+      <li>② 夜食をとった翌日は、胃腸を休めるために朝食を抜いたほうがよい。</li>
+      <li>③ たんぱく質が不足すると、視力低下や皮膚病を引き起こすことがある。</li>
+    </ol>
+  </div>
+  <div class="write"><div class="wline"></div></div>
+  <button class="toggle-btn" onclick="tg(this)">解答を見る</button>
+  <div class="ans-panel"><span class="a">答え：①○　②×　③×</span>
+    <p class="exp">②朝食は抜いては<b>いけない</b>（体も脳も働かなくなる）。③視力低下・皮膚病は<b>ビタミンＡ</b>の不足。たんぱく質の不足は体力低下・筋肉量の減少——ワークそのままのひっかけ。</p>
+  </div>
+</div>
+<!-- ================= 単元4 休養・睡眠と健康 ================= -->
+<h2 class="unit" style="border-left-color:#6D28D9"><span class="no" style="background:#6D28D9">単元4</span><span class="uic">😴</span>休養・睡眠と健康<span class="pg">教科書 p.34〜35／ワーク p.14〜15</span></h2>
+<p class="unit-lead">成長ホルモンが「いつ」出るかはグラフ問題で最頻出。疲労の5分類と休養のとり方5つも押さえよう。</p>
+<div class="cheer" style="--cc:#C4B5FD"><svg class="mascot" viewBox="0 0 120 120"><use href="#hotai"/></svg><div class="bubble">成長ホルモンは「<b>眠り始めの深い睡眠</b>」で大量に出るよ！5〜6時間目じゃないから気をつけて😴</div></div>
+
+<div class="q">
+  <div class="q-head"><span class="qnum">問19</span><span class="stars s3">★★★</span><span class="chip chigi">知技</span><span class="chip kata">語群</span><span class="chip pgc">教科書p.34／ワークp.14</span></div>
+  <div class="q-body">
+    <p>心身の疲労について、次の文の（①）〜（④）にあてはまる言葉を、あとの語群からそれぞれ選び、記号で答えなさい。</p>
+    <p>「労働や勉強などを長時間続けると、眠気や目の乾き、（①）などの症状を示す疲労や（②）が起こりやすくなり、それらが蓄積すると、（③）力が低下して（④）にかかりやすくなる。また、胃潰瘍や高血圧、鬱病など、いろいろな健康障害を引き起こすこともある。」</p>
+    <div class="gokun"><b>語群</b>ア：ストレス　　イ：感染症　　ウ：不安　　エ：抵抗</div>
+  </div>
+  <div class="write"><div class="wline"></div></div>
+  <button class="toggle-btn" onclick="tg(this)">解答を見る</button>
+  <div class="ans-panel"><span class="a">答え：①ウ（不安）　②ア（ストレス）　③エ（抵抗）　④イ（感染症）</span>
+    <p class="exp">流れで覚える：疲労・ストレスが<b>蓄積</b>→<b>抵抗力が低下</b>→<b>感染症</b>にかかりやすい→さらに胃潰瘍・高血圧・心臓病・脳卒中・鬱病などの健康障害へ。ワークのまとめ問題そのままの形。</p>
+  </div>
+</div>
+
+<div class="q">
+  <div class="q-head"><span class="qnum">問20</span><span class="stars s2">★★</span><span class="chip chigi">知技</span><span class="chip kata">記号</span><span class="chip pgc">教科書p.34</span></div>
+  <div class="q-body">
+    <p>疲労の自覚症状は5つに分類される。次の①〜③の症状は、あとのア〜オのどの分類にあてはまるか、それぞれ記号で答えなさい。</p>
+    <ol class="abc">
+      <li>① 眠い、横になりたい、あくびが出る、やる気が乏しい</li>
+      <li>② 頭が痛い、頭が重い、気分が悪い、めまいがする</li>
+      <li>③ 目がしょぼつく、目が疲れる、目が乾く、物がぼやける</li>
+    </ol>
+    <div class="gokun"><b>語群</b>ア：不安定感　　イ：眠気感　　ウ：ぼやけ感　　エ：だるさ感　　オ：不快感</div>
+  </div>
+  <div class="write"><div class="wline"></div></div>
+  <button class="toggle-btn" onclick="tg(this)">解答を見る</button>
+  <div class="ans-panel"><span class="a">答え：①イ（眠気感）　②オ（不快感）　③ウ（ぼやけ感）</span>
+    <p class="exp">5分類＝<b>眠気感・不安定感・不快感・だるさ感・ぼやけ感</b>。「頭が痛い・気分が悪い」＝不快感、「腕・腰・足がだるい、肩が凝る」＝だるさ感、「不安・いらいら」＝不安定感。</p>
+    <div class="memo"><b>覚え方</b>：「<b>ねむ・ふあん・ふかい・だる・ぼやけ</b>」とリズムで5つ。</div>
+  </div>
+</div>
+
+<div class="q">
+  <div class="q-head"><span class="qnum">問21</span><span class="stars s3">★★★</span><span class="chip chigi">知技</span><span class="chip kata">図＋語句</span><span class="chip pgc">教科書p.35</span></div>
+  <div class="q-body">
+    <p>グラフは一晩の睡眠の深さの変化を表している。体の成長だけでなく疲労回復にも重要な役割を果たす「成長ホルモン」が大量に出されるのは、グラフのア〜ウのどの時間帯か。記号で答え、その時間帯がどんな睡眠のときかも答えなさい。</p>
+    <div class="fig">
+      <svg viewBox="0 0 440 180" width="400" role="img" aria-label="睡眠の深さと時間のグラフ">
+        <line x1="50" y1="14" x2="50" y2="140" stroke="#64748B" stroke-width="1.6"/>
+        <line x1="50" y1="140" x2="420" y2="140" stroke="#64748B" stroke-width="1.6"/>
+        <text x="24" y="26" font-size="10.5" fill="#475569">浅い</text>
+        <text x="24" y="136" font-size="10.5" fill="#475569">深い</text>
+        <text x="14" y="80" font-size="10.5" fill="#475569">睡眠の</text>
+        <text x="14" y="94" font-size="10.5" fill="#475569">深さ</text>
+        <g font-size="10.5" fill="#475569">
+          <text x="50" y="156" text-anchor="middle">寝つく</text>
+          <text x="110" y="156" text-anchor="middle">1</text>
+          <text x="170" y="156" text-anchor="middle">2</text>
+          <text x="230" y="156" text-anchor="middle">3</text>
+          <text x="290" y="156" text-anchor="middle">5</text>
+          <text x="350" y="156" text-anchor="middle">6</text>
+          <text x="412" y="156" text-anchor="middle">7時間</text>
+          <text x="420" y="132" text-anchor="end" font-size="11">目覚め</text>
+        </g>
+        <path d="M50 20 C70 130 92 132 108 128 C122 60 138 52 152 120 C168 128 184 46 200 100 C218 120 236 40 254 84 C272 104 292 34 312 62 C332 78 360 26 412 22"
+          fill="none" stroke="#6D28D9" stroke-width="3"/>
+        <rect x="52" y="16" width="100" height="124" fill="#8B5CF6" opacity=".12"/>
+        <rect x="160" y="16" width="100" height="124" fill="#F59E0B" opacity=".12"/>
+        <rect x="300" y="16" width="112" height="124" fill="#10B981" opacity=".12"/>
+        <text x="102" y="34" text-anchor="middle" font-size="13" font-weight="bold" fill="#6D28D9">ア</text>
+        <text x="210" y="34" text-anchor="middle" font-size="13" font-weight="bold" fill="#B45309">イ</text>
+        <text x="356" y="46" text-anchor="middle" font-size="13" font-weight="bold" fill="#047857">ウ</text>
+      </svg>
+    </div>
+  </div>
+  <div class="write"><div class="wline"></div></div>
+  <button class="toggle-btn" onclick="tg(this)">解答を見る</button>
+  <div class="ans-panel"><span class="a">答え：ア。眠り始めの頃の深い睡眠のとき。</span>
+    <p class="exp">一晩のうちに深い睡眠と浅い睡眠が何度か繰り返され、成長ホルモンは<b>眠り始めの頃の深い睡眠</b>のときに大量に出る。「7時間睡眠の5〜6時間目の浅い睡眠のとき」は<b>×</b>（ワークのひっかけ）。</p>
+    <div class="memo"><b>覚え方</b>：「<b>成長ホルモンは寝てすぐ・深いとき</b>」。夜ふかしで眠り始めを削るともったいない！</div>
+  </div>
+</div>
+
+<div class="q">
+  <div class="q-head"><span class="qnum">問22</span><span class="stars s2">★★</span><span class="chip chigi">知技</span><span class="chip kata">○×</span><span class="chip pgc">ワークp.14〜15</span></div>
+  <div class="q-body">
+    <p>休養・睡眠について、次の文が正しければ○、間違っていれば×を書きなさい。</p>
+    <ol class="abc">
+      <li>① 休養のとり方には、睡眠、休息、入浴、栄養補給、軽い運動などがある。</li>
+      <li>② 平日に睡眠が足りなくても、週末にたくさん眠れば問題ない。</li>
+      <li>③ 運動で体が疲れたとき、あえて軽い運動を行って血行をよくし疲労回復を早めることを積極的休養（アクティブレスト）という。</li>
+      <li>④ 寝る前にスマートフォンを見たり、ゲームをしたりすると眠れなくなる。</li>
+    </ol>
+  </div>
+  <div class="write"><div class="wline"></div></div>
+  <button class="toggle-btn" onclick="tg(this)">解答を見る</button>
+  <div class="ans-panel"><span class="a">答え：①○　②×　③○　④○</span>
+    <p class="exp">①休養のとり方5つは<b>睡眠・休息・入浴・栄養補給・軽い運動</b>。③積極的休養で行うのは<b>軽い運動</b>（ストレッチング・ウォーキング）。激しい運動は逆効果。④画面の光は睡眠障害のもと。体内時計は<b>朝の太陽の光</b>でリセットされる。</p>
+  </div>
+</div>
+
+<!-- ================= 単元5 調和のとれた生活 ================= -->
+<h2 class="unit" style="border-left-color:#DC2626"><span class="no" style="background:#DC2626">単元5</span><span class="uic">⚖️</span>調和のとれた生活<span class="pg">ワーク p.16〜17</span></h2>
+<p class="unit-lead">運動・食事・休養睡眠の3つはワンセット。○×のひっかけパターンを確実に。</p>
+<div class="cheer" style="--cc:#FCA5A5"><svg class="mascot" viewBox="0 0 120 120"><use href="#hotai"/></svg><div class="bubble">保健のラスト単元！「<b>どれか一つでも欠けたらダメ</b>」がキーワードだよ⚖️</div></div>
+
+<div class="q">
+  <div class="q-head"><span class="qnum">問23</span><span class="stars s2">★★</span><span class="chip chigi">知技</span><span class="chip kata">○×</span><span class="chip pgc">ワークp.16</span></div>
+  <div class="q-body">
+    <p>調和のとれた生活について、次の文が正しければ○、間違っていれば×を書きなさい。</p>
+    <ol class="abc">
+      <li>① 睡眠不足のときは、食事を多めにとってバランスをとるのがよい。</li>
+      <li>② 早く就寝すると朝の目覚めがよく、朝食もしっかり食べられる。</li>
+      <li>③ 運動不足のときは、栄養過多にならないように食事を抜くとよい。</li>
+      <li>④ 運動、食事、休養・睡眠のどれかひとつでも不適切な状態になると悪影響が起こる。</li>
+    </ol>
+  </div>
+  <div class="write"><div class="wline"></div></div>
+  <button class="toggle-btn" onclick="tg(this)">解答を見る</button>
+  <div class="ans-panel"><span class="a">答え：①×　②○　③×　④○</span>
+    <p class="exp">①③のひっかけ：睡眠不足を食事で、運動不足を欠食で「埋め合わせ」することは<b>できない</b>。それぞれを適切に整えるしかない、が正解の考え方。</p>
+  </div>
+</div>
+
+<div class="q">
+  <div class="q-head"><span class="qnum">問24</span><span class="stars s1">★</span><span class="chip chigi">知技</span><span class="chip kata">語句</span><span class="chip pgc">ワークp.16</span></div>
+  <div class="q-body">
+    <p>中国の書物『論語』の「過ぎたるは猶及ばざるが如し」という言葉のように、行きすぎることも不足することもない状態が大切だと孔子が説いた考え方を、漢字2字で何というか。</p>
+  </div>
+  <div class="write"><div class="wline"></div></div>
+  <button class="toggle-btn" onclick="tg(this)">解答を見る</button>
+  <div class="ans-panel"><span class="a">答え：中庸</span>
+    <p class="exp">運動・食事・休養睡眠も<b>過不足なく偏りなく</b>＝「中庸」であることがちょうどよい状態。ワークのプラスONEコラムから。</p>
+  </div>
+</div>
+
+<!-- ================= 単元6 マット運動 ================= -->
+<h2 class="unit" style="border-left-color:#2563EB"><span class="no" style="background:#2563EB">単元6</span><span class="uic">🤸</span>マット運動<span class="pg">ワーク p.52〜53</span></h2>
+<p class="unit-lead">ここから実技分野。技ごとの「ポイントの言葉」がそのまま穴埋めで出る。前転系→後転系→回転系の順に整理。</p>
+<div class="cheer" style="--cc:#93C5FD"><svg class="mascot" viewBox="0 0 120 120"><use href="#hotai"/></svg><div class="bubble">実技編スタート！マット運動は「<b>かかと・直前・三角形・両肩</b>」の4つの言葉が超重要🤸</div></div>
+
+<div class="q">
+  <div class="q-head"><span class="qnum">問25</span><span class="stars s3">★★★</span><span class="chip chigi">知技</span><span class="chip kata">図＋語句</span><span class="chip pgc">ワークp.52</span></div>
+  <div class="q-body">
+    <p>図は前転の連続動作である。前転について、次の文の（①）・（②）にあてはまる言葉を答えなさい。</p>
+    <p>「前転は、回転する時に（①）を高く振り上げ、腰を一度伸ばして倒れる勢いを使う。回転した後は、（②）を素早くおしりに巻き込むように引きつける。」</p>
+    <div class="fig">
+      <svg viewBox="0 0 460 130" width="420" role="img" aria-label="前転の連続図">
+        <rect x="10" y="104" width="440" height="10" rx="5" fill="#BFDBFE"/>
+        <g stroke="#1E3A8A" stroke-width="4" fill="none" stroke-linecap="round">
+          <circle cx="48" cy="58" r="9" fill="#DBEAFE"/>
+          <path d="M52 67 L64 88 M64 88 L54 104 M64 88 L76 102 M50 72 L34 88"/>
+        </g>
+        <g stroke="#1E3A8A" stroke-width="4" fill="none" stroke-linecap="round">
+          <circle cx="150" cy="80" r="9" fill="#DBEAFE"/>
+          <path d="M156 86 Q170 92 178 104 M160 74 L184 46 M156 88 L136 100"/>
+        </g>
+        <g stroke="#1E3A8A" stroke-width="4" fill="none" stroke-linecap="round">
+          <circle cx="248" cy="92" r="9" fill="#DBEAFE"/>
+          <path d="M254 86 Q268 74 260 60 M258 82 Q276 84 282 96"/>
+        </g>
+        <g stroke="#1E3A8A" stroke-width="4" fill="none" stroke-linecap="round">
+          <circle cx="352" cy="60" r="9" fill="#DBEAFE"/>
+          <path d="M354 69 Q352 86 344 96 M344 96 L338 104 M344 92 Q356 96 360 104 M350 76 L338 86"/>
+        </g>
+        <g fill="#DC2626" font-size="11">
+          <text x="150" y="30" text-anchor="middle">（①）を高く振り上げる</text>
+          <text x="352" y="30" text-anchor="middle">（②）を巻き込む</text>
+        </g>
+        <g stroke="#DC2626" stroke-width="1.5">
+          <line x1="164" y1="34" x2="180" y2="48"/>
+          <line x1="352" y1="34" x2="348" y2="52"/>
+        </g>
+        <path d="M96 60 q12 -8 24 0" fill="none" stroke="#94A3B8" stroke-width="2" marker-end=""/>
+        <path d="M198 60 q12 -8 24 0" fill="none" stroke="#94A3B8" stroke-width="2"/>
+        <path d="M300 60 q12 -8 24 0" fill="none" stroke="#94A3B8" stroke-width="2"/>
+      </svg>
+      <div class="cap">前転の流れ（イメージ図）</div>
+    </div>
+  </div>
+  <div class="write"><div class="wline"></div></div>
+  <button class="toggle-btn" onclick="tg(this)">解答を見る</button>
+  <div class="ans-panel"><span class="a">答え：①足　②かかと</span>
+    <p class="exp">ワークの学習のまとめそのまま。マットへの接触順序「<b>手→後頭部→首→肩→背中→腰→おしり→足</b>」も書けるように。あごを引くのもポイント。</p>
+    <div class="memo"><b>覚え方</b>：「<b>てあたま くびかた せなか こしおしり あし</b>」と唱えて順番暗記。</div>
+  </div>
+</div>
+
+<div class="q">
+  <div class="q-head"><span class="qnum">問26</span><span class="stars s3">★★★</span><span class="chip chigi">知技</span><span class="chip kata">語句</span><span class="chip pgc">ワークp.52〜53</span></div>
+  <div class="q-body">
+    <p>開脚前転では、足がマットにつく（　　）に素早く開脚する。（　　）にあてはまる言葉を答えなさい。</p>
+  </div>
+  <div class="write"><div class="wline"></div></div>
+  <button class="toggle-btn" onclick="tg(this)">解答を見る</button>
+  <div class="ans-panel"><span class="a">答え：直前</span>
+    <p class="exp">「足がマットにつく<b>直前</b>に開脚」→ 太ももの内側に手をつき、手でマットを力強く押して起き上がる。開脚後転も同じく「マットに足がつく直前に開脚」。</p>
+    <div class="memo"><b>覚え方</b>：「開くのは<b>着く直前</b>」。早く開きすぎると回転が止まる！</div>
+  </div>
+</div>
+
+<div class="q">
+  <div class="q-head"><span class="qnum">問27</span><span class="stars s3">★★★</span><span class="chip chigi">知技</span><span class="chip kata">語群</span><span class="chip pgc">ワークp.53</span></div>
+  <div class="q-body">
+    <p>側方倒立回転について、次の文の（①）・（②）にあてはまる言葉を、あとの語群からそれぞれ選び、記号で答えなさい。</p>
+    <p>「側方倒立回転で床に手をつく時は、ひじを伸ばし、体重を順に（①）に乗せる。このとき、（②）の上を見て三角形をつくるようにする。」</p>
+    <div class="gokun"><b>語群</b>ア：両手　　イ：両肩　　ウ：腰</div>
+  </div>
+  <div class="write"><div class="wline"></div></div>
+  <button class="toggle-btn" onclick="tg(this)">解答を見る</button>
+  <div class="ans-panel"><span class="a">答え：①イ（両肩）　②ア（両手）</span>
+    <p class="exp">体重を乗せるのは<b>両肩</b>、見るのは<b>両手の上</b>（両手と目で三角形）。「腰を高く振り上げ、ひじを伸ばして手をつく」→「手で押して起き上がる」の流れ。倒立前転でも「両手の上を見て三角形」は共通。</p>
+    <div class="memo"><b>覚え方</b>：「<b>見るのは手、乗せるのは肩</b>」。</div>
+  </div>
+</div>
+
+<div class="q">
+  <div class="q-head"><span class="qnum">問28</span><span class="stars s2">★★</span><span class="chip shihan">思判表</span><span class="chip kata">記述</span><span class="chip pgc">ワークp.53</span></div>
+  <div class="q-body">
+    <p>側方倒立回転で回転する時に、遠心力をつけるためにはどうしたらよいか。「腰」「ひじ」という言葉を使って簡単に説明しなさい。</p>
+  </div>
+  <div class="write"><div class="wline"></div><div class="wline"></div></div>
+  <button class="toggle-btn" onclick="tg(this)">解答を見る</button>
+  <div class="ans-panel"><span class="a">答え：（例）腰を高く上げ、ひじを伸ばして、体重を両肩に乗せて回転する。</span>
+    <p class="exp">ワークの記述問題そのままの形。「腰を高く」「ひじを伸ばす」の2要素が入っていれば得点できる。</p>
+  </div>
+</div>
+
+<div class="q">
+  <div class="q-head"><span class="qnum">問29</span><span class="stars s2">★★</span><span class="chip chigi">知技</span><span class="chip kata">○×</span><span class="chip pgc">ワークp.52〜53</span></div>
+  <div class="q-body">
+    <p>マット運動について、次の文が正しければ○、間違っていれば×を書きなさい。</p>
+    <ol class="abc">
+      <li>① 前転では、回転した後、かかとを素早くおしりに巻き込むように引きつける。</li>
+      <li>② 開脚後転では、開脚立ちになった時にひざを曲げるとうまく起き上がれる。</li>
+      <li>③ 技を組み合わせる時は、演技の開始と終わりの体の向きは同じにして、全体がスムーズな流れになるように構成する。</li>
+    </ol>
+  </div>
+  <div class="write"><div class="wline"></div></div>
+  <button class="toggle-btn" onclick="tg(this)">解答を見る</button>
+  <div class="ans-panel"><span class="a">答え：①○　②×　③○</span>
+    <p class="exp">②はつまずきCheckのひっかけ：開脚立ちで<b>ひざが曲がるのは失敗例</b>。両手を耳の横につき、マットを強く押して勢いよく回転するのが正しい。</p>
+  </div>
+</div>
+<!-- ================= 単元7 短距離走 ================= -->
+<h2 class="unit" style="border-left-color:#EA580C"><span class="no" style="background:#EA580C">単元7</span><span class="uic">🏁</span>短距離走<span class="pg">ワーク p.58〜59</span></h2>
+<p class="unit-lead">「ピッチ⇔ストライド」の用語の区別が最重要。クラウチングスタートの3つの合図もセットで。</p>
+<div class="cheer" style="--cc:#FDBA74"><svg class="mascot" viewBox="0 0 120 120"><use href="#hotai"/></svg><div class="bubble">ピッチは「<b>回転数</b>」、ストライドは「<b>歩幅</b>」！取りちがえないでね🏁</div></div>
+
+<div class="q">
+  <div class="q-head"><span class="qnum">問30</span><span class="stars s3">★★★</span><span class="chip chigi">知技</span><span class="chip kata">記号</span><span class="chip pgc">ワークp.58〜59</span></div>
+  <div class="q-body">
+    <p>短距離走に関する次の①・②の説明にあてはまる用語を、あとの語群からそれぞれ選び、記号で答えなさい。</p>
+    <ol class="abc">
+      <li>① 走っている時の、一定時間内の脚の回転数（歩数）</li>
+      <li>② 走っている時の、1歩の歩幅</li>
+    </ol>
+    <div class="gokun"><b>語群</b>ア：ストライド　　イ：キック　　ウ：ピッチ</div>
+  </div>
+  <div class="write"><div class="wline"></div></div>
+  <button class="toggle-btn" onclick="tg(this)">解答を見る</button>
+  <div class="ans-panel"><span class="a">答え：①ウ（ピッチ）　②ア（ストライド）</span>
+    <p class="exp">素早く加速するには「<b>ピッチを最高に高め、ピッチを維持したままストライドを広げる</b>」。ピッチを高めすぎるとストライドがせまくなり効率が悪くなる、という関係も出る。</p>
+    <div class="memo"><b>覚え方</b>：「ピッチ＝<b>ピチピチ回転</b>、ストライド＝<b>ストライーンと1歩</b>」。</div>
+  </div>
+</div>
+
+<div class="q">
+  <div class="q-head"><span class="qnum">問31</span><span class="stars s2">★★</span><span class="chip chigi">知技</span><span class="chip kata">図＋語群</span><span class="chip pgc">ワークp.58</span></div>
+  <div class="q-body">
+    <p>図はクラウチングスタートの「用意（セット）」の姿勢である。次の文の（①）・（②）にあてはまる言葉を、あとの語群からそれぞれ選び、記号で答えなさい。</p>
+    <p>「用意では、ひざを軽く伸ばして腰を上げて静止する。このとき、（①）のラインより高い位置で（②）の高さを維持する。」</p>
+    <div class="fig">
+      <svg viewBox="0 0 475 150" width="420" role="img" aria-label="クラウチングスタート用意の姿勢">
+        <rect x="10" y="128" width="380" height="9" rx="4" fill="#FDBA74"/>
+        <g stroke="#7C2D12" stroke-width="4.5" fill="none" stroke-linecap="round">
+          <circle cx="86" cy="82" r="10" fill="#FFEDD5"/>
+          <path d="M95 88 Q140 74 178 66"/>
+          <path d="M100 92 L104 128 M178 66 Q200 84 214 128"/>
+          <path d="M178 66 Q206 96 244 118 L262 128"/>
+          <path d="M96 92 L82 128"/>
+        </g>
+        <line x1="60" y1="60" x2="340" y2="60" stroke="#DC2626" stroke-width="1.8" stroke-dasharray="6 4"/>
+        <text x="346" y="64" font-size="11.5" fill="#DC2626">（①）のライン</text>
+        <line x1="150" y1="40" x2="185" y2="62" stroke="#2563EB" stroke-width="1.5"/>
+        <text x="120" y="34" font-size="11.5" fill="#2563EB">（②）：ラインより高く</text>
+      </svg>
+    </div>
+    <div class="gokun"><b>語群</b>ア：腰　　イ：肩　　ウ：ひざ</div>
+  </div>
+  <div class="write"><div class="wline"></div></div>
+  <button class="toggle-btn" onclick="tg(this)">解答を見る</button>
+  <div class="ans-panel"><span class="a">答え：①イ（肩）　②ア（腰）</span>
+    <p class="exp">「<b>肩のラインより高い位置で腰の高さを維持</b>」。合図の流れは「位置について（両手を肩幅に開き、ひじを伸ばして指をつける）→用意（腰を上げ静止・ひざの角度は90〜100°）→ドン（深く前傾して走り出す）」。</p>
+  </div>
+</div>
+
+<div class="q">
+  <div class="q-head"><span class="qnum">問32</span><span class="stars s2">★★</span><span class="chip chigi">知技</span><span class="chip kata">○×</span><span class="chip pgc">ワークp.59</span></div>
+  <div class="q-body">
+    <p>短距離走について、次の文が正しければ○、間違っていれば×を書きなさい。</p>
+    <ol class="abc">
+      <li>① ストライドを広げるほど大またになり、スピードが上がる。</li>
+      <li>② ピッチを高めるためには腕を素早く振ることを意識する。</li>
+      <li>③ スタートでは、体を前に倒し、低い姿勢から走り出す。</li>
+    </ol>
+  </div>
+  <div class="write"><div class="wline"></div></div>
+  <button class="toggle-btn" onclick="tg(this)">解答を見る</button>
+  <div class="ans-panel"><span class="a">答え：①×　②○　③○</span>
+    <p class="exp">①はワークそのままのひっかけ：ストライドを広げすぎると<b>大またになりすぎて減速</b>する。広げるのは<b>数センチ</b>でよい。②腕と脚の動きは連動しているので、腕を素早く振るとピッチが高まる。</p>
+  </div>
+</div>
+
+<div class="q">
+  <div class="q-head"><span class="qnum">問33</span><span class="stars s1">★</span><span class="chip chigi">知技</span><span class="chip kata">語群</span><span class="chip pgc">ワークp.58</span></div>
+  <div class="q-body">
+    <p>短距離走の運動局面は、「スタート→（①）→（②）→フィニッシュ」の順である。（①）・（②）にあてはまる言葉を、あとの語群からそれぞれ選び、記号で答えなさい。</p>
+    <div class="gokun"><b>語群</b>ア：中間疾走　　イ：加速</div>
+  </div>
+  <div class="write"><div class="wline"></div></div>
+  <button class="toggle-btn" onclick="tg(this)">解答を見る</button>
+  <div class="ans-panel"><span class="a">答え：①イ（加速）　②ア（中間疾走）</span>
+    <p class="exp">スタート→<b>加速</b>→<b>中間疾走</b>→フィニッシュ。加速の局面で「低い姿勢のまま、斜め前方の地面を見ながら走る」のがポイント。</p>
+  </div>
+</div>
+
+<!-- ================= 単元8 ハードル走 ================= -->
+<h2 class="unit" style="border-left-color:#0D9488"><span class="no" style="background:#0D9488">単元8</span><span class="uic">🚧</span>ハードル走<span class="pg">ワーク p.62〜63</span></h2>
+<p class="unit-lead">「3歩のリズム」の数え方（着地足＝ゼロ）と、振り上げ脚⇔抜き脚の使い分けが二大テーマ。</p>
+<div class="cheer" style="--cc:#5EEAD4"><svg class="mascot" viewBox="0 0 120 120"><use href="#hotai"/></svg><div class="bubble">「<b>ゼロ・イチ・ニ・サン</b>」で3歩目に踏み切り！着地した足はゼロと数えるんだ🚧</div></div>
+
+<div class="q">
+  <div class="q-head"><span class="qnum">問34</span><span class="stars s3">★★★</span><span class="chip chigi">知技</span><span class="chip kata">語句</span><span class="chip pgc">ワークp.62〜63</span></div>
+  <div class="q-body">
+    <p>ハードル走のインターバルの走り方について、次の文の（①）・（②）にあてはまる言葉を答えなさい。</p>
+    <p>「ハードル走のインターバルは、着地足を（①）と数え、（②）歩目で踏み切る。心の中で『ゼロ・イチ・ニ・サン』または『（タ）・タ・タ・ターン』と数えるとよい。」</p>
+  </div>
+  <div class="write"><div class="wline"></div></div>
+  <button class="toggle-btn" onclick="tg(this)">解答を見る</button>
+  <div class="ans-panel"><span class="a">答え：①ゼロ　②3（サン）</span>
+    <p class="exp">着地した足を<b>ゼロ</b>と数え、<b>3歩のリズム</b>で走って3歩目で踏み切る。リズミカルな走りとは、インターバルにおける素早いピッチのこと。</p>
+    <div class="memo"><b>覚え方</b>：「<b>タ・タ・タ・ターン</b>」のターンで踏み切り！</div>
+  </div>
+</div>
+
+<div class="q">
+  <div class="q-head"><span class="qnum">問35</span><span class="stars s3">★★★</span><span class="chip chigi">知技</span><span class="chip kata">図＋語群</span><span class="chip pgc">ワークp.63</span></div>
+  <div class="q-body">
+    <p>図はハードルを越える時の姿勢である。次の文の（①）〜（③）にあてはまる言葉を、あとの語群からそれぞれ選び、記号で答えなさい。</p>
+    <p>「なめらかにハードルを越えるには、振り上げ脚は足の親指に力を入れて（①）に向け、まっすぐ前に上げる。抜き脚はひざを曲げて（②）に開き、地面と（③）に上げる。」</p>
+    <div class="fig">
+      <svg viewBox="0 0 525 170" width="470" role="img" aria-label="ハードリングの姿勢">
+        <rect x="10" y="148" width="400" height="9" rx="4" fill="#99F6E4"/>
+        <rect x="196" y="84" width="8" height="64" fill="#0F766E"/>
+        <rect x="168" y="78" width="64" height="10" rx="3" fill="#14B8A6"/>
+        <g stroke="#134E4A" stroke-width="4.5" fill="none" stroke-linecap="round">
+          <circle cx="196" cy="30" r="10" fill="#CCFBF1"/>
+          <path d="M204 38 Q222 44 238 40"/>
+          <path d="M204 44 Q230 52 268 46"/>
+          <path d="M200 40 Q196 62 188 70"/>
+          <path d="M188 70 Q160 74 138 66"/>
+          <path d="M204 46 Q216 66 246 72 L268 68"/>
+        </g>
+        <g font-size="11.5">
+          <text x="300" y="42" fill="#DC2626">振り上げ脚：まっすぐ前へ</text>
+          <text x="300" y="60" fill="#DC2626">親指は（①）に向ける</text>
+          <text x="24" y="46" fill="#2563EB">抜き脚：ひざを曲げて</text>
+          <text x="24" y="64" fill="#2563EB">（②）に開く</text>
+        </g>
+        <line x1="272" y1="52" x2="290" y2="52" stroke="#DC2626" stroke-width="1.5"/>
+        <line x1="120" y1="58" x2="134" y2="64" stroke="#2563EB" stroke-width="1.5"/>
+      </svg>
+    </div>
+    <div class="gokun"><b>語群</b>ア：横　　イ：上　　ウ：平行　　エ：垂直</div>
+  </div>
+  <div class="write"><div class="wline"></div></div>
+  <button class="toggle-btn" onclick="tg(this)">解答を見る</button>
+  <div class="ans-panel"><span class="a">答え：①イ（上）　②ア（横）　③ウ（平行）</span>
+    <p class="exp">振り上げ脚＝<b>まっすぐ前・親指は上</b>／抜き脚＝<b>ひざを曲げて横に開き、地面と平行</b>。振り上げ脚を「横から回して上げる」のは<b>×</b>（つまずき例）。</p>
+    <div class="memo"><b>覚え方</b>:「<b>振り上げはまっすぐ、抜きは横</b>」。</div>
+  </div>
+</div>
+
+<div class="q">
+  <div class="q-head"><span class="qnum">問36</span><span class="stars s3">★★★</span><span class="chip chigi">知技</span><span class="chip kata">語群</span><span class="chip pgc">ワークp.63</span></div>
+  <div class="q-body">
+    <p>ハードルの越え方について、次の文の（①）・（②）にあてはまる言葉を、あとの語群からそれぞれ選び、記号で答えなさい。</p>
+    <p>「ハードルを越えるには、スピードをつけて（①）から踏み切り、ハードルの（②）に着地する。」</p>
+    <div class="gokun"><b>語群</b>ア：近く　　イ：遠く</div>
+  </div>
+  <div class="write"><div class="wline"></div></div>
+  <button class="toggle-btn" onclick="tg(this)">解答を見る</button>
+  <div class="ans-panel"><span class="a">答え：①イ（遠く）　②ア（近く）</span>
+    <p class="exp">「<b>遠くから踏み切って、近くに着地</b>」。逆（近くで踏み切り）だと高くとび上がってしまい減速する。着地する時は<b>腰の真下</b>に足をつく。</p>
+    <div class="memo"><b>覚え方</b>：「<b>とおくからふみきり、ちかくにちゃくち</b>」。とお→ちか！</div>
+  </div>
+</div>
+
+<div class="q">
+  <div class="q-head"><span class="qnum">問37</span><span class="stars s2">★★</span><span class="chip chigi">知技</span><span class="chip kata">語句</span><span class="chip pgc">ワークp.62〜63</span></div>
+  <div class="q-body">
+    <p>ハードル走の運動局面は、「アプローチ→（①）→（②）→（①）→フィニッシュ」の順で表される。また、ハードルを越えて着地する時は、（③）の真下に足をつく。（①）〜（③）にあてはまる言葉を答えなさい。</p>
+  </div>
+  <div class="write"><div class="wline"></div></div>
+  <button class="toggle-btn" onclick="tg(this)">解答を見る</button>
+  <div class="ans-panel"><span class="a">答え：①ハードリング　②インターバル　③腰</span>
+    <p class="exp">ハードルを越える局面＝<b>ハードリング</b>、ハードル間を走る局面＝<b>インターバル</b>。着地は<b>腰の真下</b>——「腰」は漢字で書けるように。</p>
+  </div>
+</div>
+
+<!-- ================= 単元9 水泳・クロール ================= -->
+<h2 class="unit" style="border-left-color:#0284C7"><span class="no" style="background:#0284C7">単元9</span><span class="uic">🏊</span>水泳・クロール<span class="pg">ワーク p.68〜69</span></h2>
+<p class="unit-lead">ラスト単元！ストリームラインの説明記述と、腕の動き5局面の順序が出題ポイント。</p>
+<div class="cheer" style="--cc:#7DD3FC"><svg class="mascot" viewBox="0 0 120 120"><use href="#hotai"/></svg><div class="bubble">あと3問でコンプリート！クロールは「<b>エン・キャッチ・プル・プッシュ・リカバリー</b>」のリズムで🏊</div></div>
+
+<div class="q">
+  <div class="q-head"><span class="qnum">問38</span><span class="stars s3">★★★</span><span class="chip chigi">知技</span><span class="chip kata">図＋記号</span><span class="chip pgc">ワークp.68</span></div>
+  <div class="q-body">
+    <p>図はクロールの腕の動きである。①〜③の局面の名前を、あとの語群からそれぞれ選び、記号で答えなさい。</p>
+    <div class="fig">
+      <svg viewBox="0 0 460 150" width="420" role="img" aria-label="クロールの腕の動き">
+        <rect x="0" y="60" width="460" height="80" fill="#E0F2FE"/>
+        <line x1="0" y1="60" x2="460" y2="60" stroke="#38BDF8" stroke-width="2"/>
+        <g font-size="11.5" fill="#0F172A" font-weight="bold">
+          <text x="55" y="20" text-anchor="middle">① 手を水に入れる</text>
+          <text x="175" y="20" text-anchor="middle">水をつかむ→かく</text>
+          <text x="305" y="20" text-anchor="middle">② 水を押し出す</text>
+          <text x="420" y="20" text-anchor="middle">③ 手を戻す</text>
+        </g>
+        <g stroke="#0369A1" stroke-width="4" fill="none" stroke-linecap="round">
+          <path d="M30 66 Q52 56 76 70" />
+          <circle cx="46" cy="76" r="8" fill="#BAE6FD"/>
+          <path d="M140 70 Q168 84 196 96"/>
+          <circle cx="158" cy="76" r="8" fill="#BAE6FD"/>
+          <path d="M270 92 Q296 100 330 88"/>
+          <circle cx="288" cy="78" r="8" fill="#BAE6FD"/>
+          <path d="M390 48 Q416 32 444 52"/>
+          <circle cx="404" cy="66" r="8" fill="#BAE6FD"/>
+        </g>
+        <g stroke="#94A3B8" stroke-width="2" fill="none">
+          <path d="M96 84 l22 0 M112 78 l8 6 -8 6"/>
+          <path d="M226 92 l22 0 M242 86 l8 6 -8 6"/>
+          <path d="M352 80 l22 0 M368 74 l8 6 -8 6"/>
+        </g>
+      </svg>
+    </div>
+    <div class="gokun"><b>語群</b>ア：プッシュ　　イ：リカバリー　　ウ：エントリー</div>
+  </div>
+  <div class="write"><div class="wline"></div></div>
+  <button class="toggle-btn" onclick="tg(this)">解答を見る</button>
+  <div class="ans-panel"><span class="a">答え：①ウ（エントリー）　②ア（プッシュ）　③イ（リカバリー）</span>
+    <p class="exp">順序は「<b>エントリー（入れる）→キャッチ（つかむ）→プル（かく）→プッシュ（押し出す）→リカバリー（戻す）</b>」。手のひらを<b>後方</b>に向けて、胴体の下の水を<b>太もも</b>までかく。</p>
+    <div class="memo"><b>覚え方</b>：「<b>入れて・つかんで・かいて・押して・戻す</b>」。</div>
+  </div>
+</div>
+
+<div class="q">
+  <div class="q-head"><span class="qnum">問39</span><span class="stars s3">★★★</span><span class="chip shihan">思判表</span><span class="chip kata">記述</span><span class="chip pgc">ワークp.69</span></div>
+  <div class="q-body">
+    <p>水の抵抗が少ない「ストリームライン」をつくるために注意すべきことを、「水面と平行」「腰やおしり」という言葉を使って説明しなさい。</p>
+  </div>
+  <div class="write"><div class="wline"></div><div class="wline"></div></div>
+  <button class="toggle-btn" onclick="tg(this)">解答を見る</button>
+  <div class="ans-panel"><span class="a">答え：（例）手の指先から足のつま先までまっすぐ伸ばし、腰やおしりを曲げずに、水面と平行になるようにする。</span>
+    <p class="exp">ワークの記述問題そのまま。ポイントは「<b>まっすぐ伸ばす</b>」「<b>腰やおしりを曲げない</b>」「<b>水面と平行</b>」の3要素。ひざを伸ばす・両腕で両耳をはさむ・あごを引く、も補足で書けるとなおよい。</p>
+  </div>
+</div>
+
+<div class="q">
+  <div class="q-head"><span class="qnum">問40</span><span class="stars s2">★★</span><span class="chip chigi">知技</span><span class="chip kata">語群</span><span class="chip pgc">ワークp.69</span></div>
+  <div class="q-body">
+    <p>クロールの脚の動きと呼吸について、次の文の（①）〜（③）にあてはまる言葉を、あとの語群からそれぞれ選び、記号で答えなさい。</p>
+    <p>「脚の動きは、（①）を伸ばして、ひざは曲げすぎず伸ばしすぎずに、（②）から大きくけり下ろす。呼吸は、手のかきに合わせて（③）しながら顔を横に向け、口が水面に出た時に『パッ』と強く息をはいた反動で息をすう。」</p>
+    <div class="gokun"><b>語群</b>ア：太もも　　イ：ローリング　　ウ：足首</div>
+  </div>
+  <div class="write"><div class="wline"></div></div>
+  <button class="toggle-btn" onclick="tg(this)">解答を見る</button>
+  <div class="ans-panel"><span class="a">答え：①ウ（足首）　②ア（太もも）　③イ（ローリング）</span>
+    <p class="exp">キック＝<b>足首を伸ばし、太ももから大きくけり下ろす</b>。呼吸＝<b>ローリング（体をねじる）</b>しながら顔を横へ。「パッ」と<b>はく</b>のが先で、その反動で「ハッ」とすう。</p>
+    <div class="memo"><b>覚え方</b>：「<b>はいてからすう</b>」——水泳の呼吸は吐くのが先！</div>
+  </div>
+</div>
+<!-- ================= 巻末解答 ================= -->
+<div class="answers-title">
+  <h2>解答・解説（まとめ）</h2>
+  <p>全40問の解答一覧。丸付けはここで。解説・覚え方は各問題の下（画面表示時）にもあります。</p>
+</div>
+<div id="answers-container"></div>
+
+</div><!-- /.page -->
+<script>
+function tg(btn){
+  var p = btn.nextElementSibling;
+  p.classList.toggle('open');
+  btn.textContent = p.classList.contains('open') ? '解答を隠す' : '解答を見る';
+}
+function toggleAll(show){
+  document.querySelectorAll('.ans-panel').forEach(function(p){
+    p.classList.toggle('open', show);
+  });
+  document.querySelectorAll('.toggle-btn').forEach(function(b){
+    b.textContent = show ? '解答を隠す' : '解答を見る';
+  });
+}
+/* 巻末解答を各問題の解答パネルから自動生成（内容の食い違いを防ぐ） */
+(function(){
+  var container = document.getElementById('answers-container');
+  document.querySelectorAll('.q').forEach(function(q){
+    var num = q.querySelector('.qnum');
+    var panel = q.querySelector('.ans-panel');
+    if(!num || !panel) return;
+    var item = document.createElement('div');
+    item.className = 'ans-item';
+    var pg = q.querySelector('.chip.pgc');
+    item.innerHTML = '<div class="head"><span class="qq">' + num.textContent + '</span>' + (pg ? '<span class="pgx">（' + pg.textContent + '）</span>' : '') + '</div>' + panel.innerHTML;
+    container.appendChild(item);
+  });
+})();
+/* 重要度フィルタ+「覚えた」チェック(localStorage保存) */
+(function(){
+  var KEY = 'hotai2026-learned';
+  var learned = {};
+  try{ learned = JSON.parse(localStorage.getItem(KEY) || '{}'); }catch(e){ learned = {}; }
+  function save(){ try{ localStorage.setItem(KEY, JSON.stringify(learned)); }catch(e){} }
+
+  var qs = [].slice.call(document.querySelectorAll('.q'));
+  var total = qs.length;
+  var starFilter = 'all', hideLearned = false;
+  document.getElementById('learnTotal').textContent = total;
+
+  function sync(q, label, on){
+    q.classList.toggle('learned', on);
+    label.classList.toggle('on', on);
+  }
+  qs.forEach(function(q){
+    var numEl = q.querySelector('.qnum');
+    var head = q.querySelector('.q-head');
+    if(!numEl || !head) return;
+    var id = numEl.textContent.trim();
+    var label = document.createElement('label');
+    label.className = 'learn';
+    label.innerHTML = '<input type="checkbox">覚えた';
+    var cb = label.querySelector('input');
+    cb.checked = !!learned[id];
+    sync(q, label, cb.checked);
+    cb.addEventListener('change', function(){
+      if(cb.checked){ learned[id] = 1; } else { delete learned[id]; }
+      save(); sync(q, label, cb.checked); update(); celebrate();
+    });
+    head.appendChild(label);
+  });
+
+  function starOf(q){
+    var s = q.querySelector('.stars');
+    if(!s) return '1';
+    return s.classList.contains('s3') ? '3' : (s.classList.contains('s2') ? '2' : '1');
+  }
+
+  function update(){
+    qs.forEach(function(q){
+      var id = q.querySelector('.qnum').textContent.trim();
+      var show = (starFilter === 'all' || starOf(q) === starFilter) && !(hideLearned && learned[id]);
+      q.style.display = show ? '' : 'none';
+    });
+    document.querySelectorAll('h2.unit').forEach(function(h){
+      var no = h.querySelector('.no');
+      if(!no || no.textContent === 'MAP') return;
+      var el = h.nextElementSibling, any = false, lead = null;
+      while(el && el.tagName !== 'H2' && !el.classList.contains('answers-title')){
+        if(el.classList.contains('unit-lead')) lead = el;
+        if(el.classList.contains('q') && el.style.display !== 'none') any = true;
+        el = el.nextElementSibling;
+      }
+      h.style.display = any ? '' : 'none';
+      if(lead) lead.style.display = any ? '' : 'none';
+    });
+    var n = Object.keys(learned).length;
+    document.getElementById('learnCount').textContent = n;
+    document.getElementById('learnBar').style.width = (total ? (100 * n / total) : 0) + '%';
+    var hb = document.getElementById('hideLearnedBtn');
+    hb.classList.toggle('act', hideLearned);
+    hb.textContent = hideLearned ? '覚えたを表示' : '覚えたを隠す';
+    var msgEl = document.getElementById('cheerMsg');
+    if(msgEl){
+      var p = pctNow(), m = '';
+      if(p >= 100) m = '🎉 全問マスター！ほたいくんも大よろこび！本番もこの調子！';
+      else if(p >= 75) m = '🚀 あと少し！ラストスパート！';
+      else if(p >= 50) m = '💪 半分クリア！すごいぞ！';
+      else if(p >= 25) m = '🔥 4分の1突破！いい調子！';
+      else if(p > 0) m = '✨ その調子でコツコツいこう！';
+      msgEl.textContent = m;
+    }
+  }
+
+  function pctNow(){ return total ? Math.round(100 * Object.keys(learned).length / total) : 0; }
+  var prevPct = null;
+  function confetti(n){
+    var colors = ['#F87171','#FBBF24','#34D399','#60A5FA','#A78BFA','#F472B6'];
+    for(var i = 0; i < n; i++){
+      var c = document.createElement('div');
+      c.className = 'confetti';
+      c.style.left = (Math.random() * 100) + 'vw';
+      c.style.background = colors[i % colors.length];
+      c.style.setProperty('--dx', (Math.random() * 160 - 80) + 'px');
+      c.style.setProperty('--rot', (Math.random() * 720 - 360) + 'deg');
+      c.style.setProperty('--d', (1.2 + Math.random() * 1.3) + 's');
+      document.body.appendChild(c);
+      setTimeout((function(el){ return function(){ el.remove(); }; })(c), 2800);
+    }
+  }
+  function celebrate(){
+    var p = pctNow();
+    if(prevPct !== null){
+      [25, 50, 75, 100].forEach(function(m){
+        if(prevPct < m && p >= m){ confetti(m === 100 ? 110 : 40); }
+      });
+    }
+    prevPct = p;
+  }
+
+  document.querySelectorAll('.fb[data-star]').forEach(function(b){
+    b.addEventListener('click', function(){
+      starFilter = b.getAttribute('data-star');
+      document.querySelectorAll('.fb[data-star]').forEach(function(x){ x.classList.toggle('act', x === b); });
+      update();
+    });
+  });
+  document.getElementById('hideLearnedBtn').addEventListener('click', function(){
+    hideLearned = !hideLearned; update();
+  });
+  document.getElementById('resetLearned').addEventListener('click', function(){
+    if(!confirm('「覚えた」チェックをすべてリセットしますか？')) return;
+    learned = {}; save();
+    qs.forEach(function(q){
+      var l = q.querySelector('.learn');
+      if(l){ l.querySelector('input').checked = false; sync(q, l, false); }
+    });
+    update();
+    prevPct = 0;
+  });
+  update();
+  prevPct = pctNow();
+})();
+</script>
+</body>
+</html>

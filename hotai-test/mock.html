@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>保健体育 夏テスト予想 模擬テスト 2026</title>
+<style>
+:root{
+  --blue:#2563EB; --blue-d:#1D4ED8; --blue-bg:#DBEAFE;
+  --orange:#F97316; --red:#DC2626; --green:#16A34A; --green-bg:#F0FDF4;
+  --purple:#6D28D9; --purple-bg:#EDE9FE;
+  --ink:#1E293B; --sub:#475569; --line:#CBD5E1; --line-soft:#E2E8F0;
+  --bg:#F1F5F9; --card:#FFFFFF;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{
+  font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Yu Gothic Medium","Yu Gothic",Meiryo,sans-serif;
+  color:var(--ink); background:var(--bg); line-height:1.8; font-size:15px;
+  -webkit-text-size-adjust:100%;
+}
+.page{max-width:840px;margin:0 auto;padding:20px 16px 60px}
+
+/* ===== テストヘッダー ===== */
+.test-head{
+  background:var(--card);border:2.5px solid var(--ink);border-radius:6px;
+  padding:18px 22px;margin-bottom:8px;
+}
+.test-head .row1{display:flex;flex-wrap:wrap;align-items:baseline;gap:10px;border-bottom:2px solid var(--ink);padding-bottom:10px}
+.test-head h1{margin:0;font-size:21px;letter-spacing:.04em}
+.test-head .row1 .grade{font-size:13px;color:var(--sub)}
+.test-head .row2{display:flex;flex-wrap:wrap;gap:14px;align-items:center;margin-top:12px;font-size:13.5px}
+.namebox{display:flex;align-items:center;gap:6px;margin-left:auto}
+.namebox .nb{border:1.5px solid var(--ink);width:170px;height:34px;border-radius:4px;background:#fff}
+.scorebox{display:flex;align-items:center;gap:6px}
+.scorebox .sb{border:1.5px solid var(--ink);width:82px;height:34px;border-radius:4px;background:#fff;position:relative}
+.scorebox .sb::after{content:"／100";position:absolute;right:6px;bottom:2px;font-size:11px;color:var(--sub)}
+.notice{
+  background:var(--card);border:1px solid var(--line-soft);border-radius:8px;
+  padding:10px 16px;margin:10px 0 20px;font-size:13px;color:var(--sub);
+}
+.notice b{color:var(--ink)}
+
+/* ===== 大問 ===== */
+.daimon{
+  background:var(--card);border:1px solid var(--line-soft);border-radius:12px;
+  padding:16px 20px;margin:16px 0;box-shadow:0 1px 2px rgba(15,23,42,.05);
+}
+.daimon-head{
+  display:flex;align-items:center;gap:10px;flex-wrap:wrap;
+  border-bottom:2px solid var(--ink);padding-bottom:8px;margin-bottom:12px;
+}
+.daimon-head .dn{
+  background:var(--ink);color:#fff;border-radius:6px;padding:2px 12px;
+  font-size:15px;font-weight:800;flex-shrink:0;
+}
+.daimon-head .dt{font-weight:700;font-size:16px}
+.daimon-head .pts{margin-left:auto;font-size:12px;color:var(--sub);white-space:nowrap}
+.chip{font-size:11px;border-radius:999px;padding:1px 9px;font-weight:600;white-space:nowrap}
+.chip.chigi{background:var(--blue-bg);color:var(--blue-d)}
+.chip.shihan{background:var(--purple-bg);color:var(--purple)}
+.subq{margin:12px 0}
+.subq .sq{font-weight:700}
+.subq .haiten{font-size:12px;color:var(--sub)}
+ol.abc{margin:6px 0;padding-left:10px;list-style:none}
+ol.abc li{margin:4px 0}
+.gokun{
+  border:1.5px dashed var(--line);border-radius:10px;background:#F8FAFC;
+  padding:8px 14px;margin:10px 0;font-size:14px;
+}
+.gokun b{color:var(--blue-d);font-size:12px;display:block;margin-bottom:2px}
+.choices{margin:8px 0 4px;padding:0;list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:4px 16px}
+.choices li{padding:2px 0}
+.choices.one-col{grid-template-columns:1fr}
+
+/* ===== 解答記入欄 ===== */
+.ansline{display:inline-block;min-width:110px;border-bottom:1.5px solid var(--ink);height:1.5em;vertical-align:bottom;margin:0 4px}
+.ansline.wide{min-width:220px}
+table.ansgrid{border-collapse:collapse;margin:10px 0;width:100%}
+table.ansgrid th{background:#F1F5F9;font-size:12px;font-weight:600;color:var(--sub)}
+table.ansgrid th,table.ansgrid td{border:1.5px solid var(--ink);padding:6px 8px;text-align:center;min-width:52px;height:34px}
+.kijutsu{border:1.5px solid var(--ink);border-radius:4px;min-height:64px;margin:8px 0;background:#fff}
+.kijutsu.tall{min-height:84px}
+
+/* ===== 図版 ===== */
+.fig{margin:12px auto;text-align:center;max-width:100%;overflow-x:auto}
+.fig svg{max-width:100%;height:auto}
+.fig .cap{font-size:12px;color:var(--sub);margin-top:2px}
+
+/* ===== 巻末解答 ===== */
+.mock-answers{display:none}
+.mock-answers.open{display:block}
+.answers-title{
+  page-break-before:always;break-before:page;
+  background:linear-gradient(135deg,#14532D,#16A34A);color:#fff;border-radius:14px;
+  padding:20px 24px;margin:40px 0 18px;
+}
+.answers-title h2{margin:0;font-size:22px}
+.answers-title p{margin:4px 0 0;font-size:13px;opacity:.92}
+.ans-item{
+  background:var(--card);border:1px solid var(--line-soft);border-radius:12px;
+  padding:12px 16px;margin:10px 0;font-size:14px;break-inside:avoid;page-break-inside:avoid;
+}
+.ans-item .head{font-weight:800;color:#15803D;margin-bottom:4px;font-size:15px}
+.ans-item p{margin:4px 0}
+.ans-item .a{font-weight:700;color:#15803D}
+.memo{
+  background:#FFF7ED;border-left:4px solid var(--orange);border-radius:0 10px 10px 0;
+  padding:8px 12px;margin-top:8px;font-size:13.5px;
+}
+.memo b{color:#C2410C}
+.goukaku{
+  background:var(--card);border:1.5px solid var(--line-soft);border-radius:12px;
+  padding:12px 18px;margin:14px 0;font-size:14px;
+}
+.goukaku b{color:var(--blue-d)}
+
+/* ===== 操作バー（画面のみ）===== */
+.ctrl{position:sticky;top:8px;z-index:50;display:flex;gap:8px;justify-content:flex-end;margin:0 0 8px}
+.ctrl button{
+  cursor:pointer;border:1.5px solid var(--line);background:#fff;color:var(--sub);
+  border-radius:999px;padding:6px 14px;font-size:12.5px;font-weight:700;
+  box-shadow:0 1px 4px rgba(15,23,42,.12);transition:all .2s;
+}
+.ctrl button:hover{border-color:var(--blue);color:var(--blue-d)}
+
+/* ===== 印刷 ===== */
+@page{size:A4 portrait;margin:13mm 11mm}
+@media print{
+  body{background:#fff;font-size:10.5pt;line-height:1.7}
+  .page{max-width:none;padding:0}
+  .ctrl{display:none!important}
+  .daimon{box-shadow:none;margin:10px 0}
+  .mock-answers{display:block!important}
+  .answers-title,.chip,.memo,.gokun{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .daimon-head .dn{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .subq{page-break-inside:avoid}
+  .daimon{page-break-before:always}
+  .notice + .daimon{page-break-before:auto}
+}
+@media (max-width:480px){
+  body{font-size:14.5px}
+  .choices{grid-template-columns:1fr}
+  .namebox .nb{width:120px}
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+<div class="ctrl">
+  <button onclick="toggleAnswers()" id="ansbtn">解答・解説を表示</button>
+  <button onclick="window.print()">印刷 / PDF</button>
+</div>
+
+<div class="test-head">
+  <div class="row1">
+    <h1>保健体育　夏テスト予想　模擬テスト</h1>
+    <span class="grade">第1学年</span>
+  </div>
+  <div class="row2">
+    <span>制限時間：<b>40分</b></span>
+    <span>満点：<b>100点</b></span>
+    <div class="namebox"><span>氏名</span><span class="nb"></span></div>
+    <div class="scorebox"><span>得点</span><span class="sb"></span></div>
+  </div>
+</div>
+
+<div class="notice">
+  <b>注意</b>：出題範囲は保健（教科書p.26〜35・ワークp.8〜17）と実技（マット運動・短距離走・ハードル走・クロール）。（　）内は観点別の配点です（<span class="chip chigi">知技</span>＝知識・技能、<span class="chip shihan">思判表</span>＝思考・判断・表現）。記述問題は文の形で答えること。
+</div>
+
+<!-- ================= 大問1 ================= -->
+<div class="daimon">
+  <div class="daimon-head">
+    <span class="dn">1</span><span class="dt">健康の成り立ち</span>
+    <span class="pts"><span class="chip chigi">知技</span> 2×7＋<span class="chip shihan">思判表</span> 3×2＝20点</span>
+  </div>
+
+  <div class="subq">
+    <p><span class="sq">問1</span>　病気の要因について、次の文の（①）〜（④）にあてはまる言葉を、あとの語群からそれぞれ選び、記号で答えなさい。<span class="haiten">（知技 2×4＝8点）</span></p>
+    <p>「約80年前の日本では、死因の上位は結核などの（①）であったが、現代ではがん、心臓病、脳卒中などの（②）となっている。病気は、その人個人の（③）の要因と、個人を取り巻く（④）の要因が関わり合って起きる。」</p>
+    <div class="gokun"><b>語群</b>ア：主体　　イ：感染症　　ウ：環境　　エ：生活習慣病　　オ：認知症</div>
+    <table class="ansgrid" style="width:70%">
+      <tr><th>①</th><th>②</th><th>③</th><th>④</th></tr>
+      <tr><td></td><td></td><td></td><td></td></tr>
+    </table>
+  </div>
+
+  <div class="subq">
+    <p><span class="sq">問2</span>　次の①〜③は、環境の要因のうちどれにあてはまるか。あとの語群からそれぞれ選び、記号で答えなさい。<span class="haiten">（知技 2×3＝6点）</span></p>
+    <ol class="abc">
+      <li>① 温度、湿度、有害化学物質、放射線</li>
+      <li>② 細菌、ウイルス、動物、昆虫</li>
+      <li>③ 人間関係、保健・医療制度、経済状況</li>
+    </ol>
+    <div class="gokun"><b>語群</b>ア：社会的環境の要因　　イ：物理・化学的環境の要因　　ウ：生物学的環境の要因</div>
+    <table class="ansgrid" style="width:60%">
+      <tr><th>①</th><th>②</th><th>③</th></tr>
+      <tr><td></td><td></td><td></td></tr>
+    </table>
+  </div>
+
+  <div class="subq">
+    <p><span class="sq">問3</span>　健康の実現には、一人一人が生活を見直すなどの個人の努力のほかに、どのようなことが必要とされるか。「社会」という言葉を使って簡単に説明しなさい。（このような考え方をヘルスプロモーションという。）<span class="haiten">（思判表 3点）</span></p>
+    <div class="kijutsu"></div>
+  </div>
+
+  <div class="subq">
+    <p><span class="sq">問4</span>　「健康寿命」とはどのような指標か。「平均寿命」「介護」という言葉を使って説明しなさい。<span class="haiten">（思判表 3点）</span></p>
+    <div class="kijutsu"></div>
+  </div>
+</div>
+
+<!-- ================= 大問2 ================= -->
+<div class="daimon">
+  <div class="daimon-head">
+    <span class="dn">2</span><span class="dt">運動と健康</span>
+    <span class="pts"><span class="chip chigi">知技</span> 2×7＋<span class="chip shihan">思判表</span> 3×2＝20点</span>
+  </div>
+
+  <div class="subq">
+    <p><span class="sq">問1</span>　運動と健康について、次の文の（①）〜（④）にあてはまる言葉を、あとの語群からそれぞれ選び、記号で答えなさい。<span class="haiten">（知技 2×4＝8点）</span></p>
+    <p>「適度な運動は、（①）や肺、骨や筋肉など体の各器官を発達させ、（②）を保つだけでなく、緊張・（③）を和らげるためにも効果的である。機械化や自動化などによる現代生活の運動不足は、体力の低下や、（④）、糖尿病、動脈硬化など、生活習慣病の原因になっている。」</p>
+    <div class="gokun"><b>語群</b>ア：ストレス　　イ：心臓　　ウ：肥満症　　エ：健康　　オ：体重</div>
+    <table class="ansgrid" style="width:70%">
+      <tr><th>①</th><th>②</th><th>③</th><th>④</th></tr>
+      <tr><td></td><td></td><td></td><td></td></tr>
+    </table>
+  </div>
+
+  <div class="subq">
+    <p><span class="sq">問2</span>　健康づくりのための運動について、正しいものをそれぞれ記号で選びなさい。<span class="haiten">（知技 2×3＝6点）</span></p>
+    <ol class="abc">
+      <li>① 健康づくりのためには、安全で、効果があり、（　ア　きびしい　／　イ　楽しい　）という3つの条件を満たす運動を生活に取り入れることが大切である。</li>
+      <li>② 中学生の時期は、（　ア　持久力　／　イ　瞬発力　）や筋力を高める運動を行うとよい。</li>
+      <li>③ ただし、骨や関節に負担のかかる運動を過度に行って（　ア　筋肉痛　／　イ　スポーツ障害　）を起こさないように注意する。</li>
+    </ol>
+    <table class="ansgrid" style="width:60%">
+      <tr><th>①</th><th>②</th><th>③</th></tr>
+      <tr><td></td><td></td><td></td></tr>
+    </table>
+  </div>
+
+  <div class="subq">
+    <p><span class="sq">問3</span>　グラフは、1950年代にイギリスのモリス博士が調査した、2階建てロンドンバスの運転手と車掌の心臓発作の発生率である。<span class="haiten">（思判表 3×2＝6点）</span></p>
+    <div class="fig">
+      <svg viewBox="0 0 420 190" width="380" role="img" aria-label="ロンドンバス調査のグラフ">
+        <line x1="60" y1="16" x2="60" y2="150" stroke="#64748B" stroke-width="1.6"/>
+        <line x1="60" y1="150" x2="390" y2="150" stroke="#64748B" stroke-width="1.6"/>
+        <text x="16" y="30" font-size="11" fill="#475569">発生率</text>
+        <g font-size="10.5" fill="#475569">
+          <text x="110" y="168" text-anchor="middle">35-44</text>
+          <text x="225" y="168" text-anchor="middle">45-54</text>
+          <text x="340" y="168" text-anchor="middle">55-64（歳）</text>
+        </g>
+        <path d="M110 128 L225 84 L340 28" fill="none" stroke="#2563EB" stroke-width="3"/>
+        <path d="M110 140 L225 112 L340 62" fill="none" stroke="#F97316" stroke-width="3"/>
+        <circle cx="110" cy="128" r="4" fill="#2563EB"/><circle cx="225" cy="84" r="4" fill="#2563EB"/><circle cx="340" cy="28" r="4" fill="#2563EB"/>
+        <circle cx="110" cy="140" r="4" fill="#F97316"/><circle cx="225" cy="112" r="4" fill="#F97316"/><circle cx="340" cy="62" r="4" fill="#F97316"/>
+        <text x="354" y="28" font-size="13" font-weight="bold" fill="#1D4ED8">Ａ</text>
+        <text x="354" y="66" font-size="13" font-weight="bold" fill="#C2410C">Ｂ</text>
+      </svg>
+    </div>
+    <ol class="abc">
+      <li>① 折れ線Ａは、運転手・車掌のどちらを示すと考えられるか。<br>答え：<span class="ansline"></span></li>
+      <li>② ①のように考えた理由を、「運動」という言葉を使って説明しなさい。</li>
+    </ol>
+    <div class="kijutsu"></div>
+  </div>
+</div>
+
+<!-- ================= 大問3 ================= -->
+<div class="daimon">
+  <div class="daimon-head">
+    <span class="dn">3</span><span class="dt">食生活・休養と睡眠・調和のとれた生活</span>
+    <span class="pts"><span class="chip chigi">知技</span> 2×7＋<span class="chip shihan">思判表</span> 3×2＝20点</span>
+  </div>
+
+  <div class="subq">
+    <p><span class="sq">問1</span>　エネルギーの消費と食事について、正しいものをそれぞれ記号で選びなさい。<span class="haiten">（知技 2×3＝6点）</span></p>
+    <ol class="abc">
+      <li>① 生きていくために必要な最小限のエネルギーの消費量を、（　ア　活動　／　イ　基礎　）代謝量という。</li>
+      <li>② エネルギーは（　ア　食事　／　イ　睡眠　）で補給する。</li>
+      <li>③ 活動量が少ないときは、エネルギー過多にならないように、（　ア　運動　／　イ　休養　）を多く取り入れるようにする。</li>
+    </ol>
+    <table class="ansgrid" style="width:60%">
+      <tr><th>①</th><th>②</th><th>③</th></tr>
+      <tr><td></td><td></td><td></td></tr>
+    </table>
+  </div>
+
+  <div class="subq">
+    <p><span class="sq">問2</span>　次の①・②の栄養素が不足すると起こる障害を、あとの語群からそれぞれ選び、記号で答えなさい。<span class="haiten">（知技 2×2＝4点）</span></p>
+    <ol class="abc">
+      <li>① 鉄　　② ビタミンＡ</li>
+    </ol>
+    <div class="gokun"><b>語群</b>ア：視力低下、抵抗力低下、皮膚病　　イ：貧血、疲れやすい、息切れ　　ウ：骨や歯の発育不良</div>
+    <table class="ansgrid" style="width:45%">
+      <tr><th>①</th><th>②</th></tr>
+      <tr><td></td><td></td></tr>
+    </table>
+  </div>
+
+  <div class="subq">
+    <p><span class="sq">問3</span>　休養・睡眠について、次の文が正しければ○、間違っていれば×を書きなさい。<span class="haiten">（知技 2×2＝4点）</span></p>
+    <ol class="abc">
+      <li>① 7時間の睡眠では、5〜6時間目の浅い睡眠のときに成長ホルモンが大量に出る。</li>
+      <li>② 休養の中には、軽い運動など、体を動かすものも含まれる。</li>
+    </ol>
+    <table class="ansgrid" style="width:45%">
+      <tr><th>①</th><th>②</th></tr>
+      <tr><td></td><td></td></tr>
+    </table>
+  </div>
+
+  <div class="subq">
+    <p><span class="sq">問4</span>　朝食を抜くと、体にどのような影響があるか。「体温」という言葉を使って説明しなさい。<span class="haiten">（思判表 3点）</span></p>
+    <div class="kijutsu"></div>
+  </div>
+
+  <div class="subq">
+    <p><span class="sq">問5</span>　「積極的休養（アクティブレスト）」とはどのような休養のとり方か。「軽い運動」「血行」という言葉を使って説明しなさい。<span class="haiten">（思判表 3点）</span></p>
+    <div class="kijutsu"></div>
+  </div>
+</div>
+
+<!-- ================= 大問4 ================= -->
+<div class="daimon">
+  <div class="daimon-head">
+    <span class="dn">4</span><span class="dt">マット運動・短距離走</span>
+    <span class="pts"><span class="chip chigi">知技</span> 2×7＋<span class="chip shihan">思判表</span> 3×2＝20点</span>
+  </div>
+
+  <div class="subq">
+    <p><span class="sq">問1</span>　マット運動について、次の（①）〜（③）にあてはまる言葉を記入しなさい。<span class="haiten">（知技 2×3＝6点）</span></p>
+    <ol class="abc">
+      <li>① 前転は、回転する時に（　　）を高く振り上げ、腰を一度伸ばして倒れる勢いを使う。</li>
+      <li>② 回転した後は、（　　）を素早くおしりに巻き込むように引きつける。</li>
+      <li>③ 開脚前転では、足がマットにつく（　　）に素早く開脚する。</li>
+    </ol>
+    <table class="ansgrid" style="width:60%">
+      <tr><th>①</th><th>②</th><th>③</th></tr>
+      <tr><td></td><td></td><td></td></tr>
+    </table>
+  </div>
+
+  <div class="subq">
+    <p><span class="sq">問2</span>　側方倒立回転で床に手をつく時は、ひじを伸ばし、体重を順にどこに乗せるか。漢字2字で答えなさい。<span class="haiten">（知技 2点）</span></p>
+    <p>答え：<span class="ansline"></span></p>
+  </div>
+
+  <div class="subq">
+    <p><span class="sq">問3</span>　短距離走に関する次の①・②の説明にあてはまる用語を、あとの語群からそれぞれ選び、記号で答えなさい。<span class="haiten">（知技 2×2＝4点）</span></p>
+    <ol class="abc">
+      <li>① 走っている時の、一定時間内の脚の回転数（歩数）</li>
+      <li>② 走っている時の、1歩の歩幅</li>
+    </ol>
+    <div class="gokun"><b>語群</b>ア：ストライド　　イ：キック　　ウ：ピッチ</div>
+    <table class="ansgrid" style="width:45%">
+      <tr><th>①</th><th>②</th></tr>
+      <tr><td></td><td></td></tr>
+    </table>
+  </div>
+
+  <div class="subq">
+    <p><span class="sq">問4</span>　次の文が正しければ○、間違っていれば×を書きなさい。<span class="haiten">（知技 2点）</span></p>
+    <ol class="abc">
+      <li>① ストライドを広げるほど大またになり、スピードが上がる。</li>
+    </ol>
+    <p>答え：<span class="ansline"></span></p>
+  </div>
+
+  <div class="subq">
+    <p><span class="sq">問5</span>　側方倒立回転で回転する時に、遠心力をつけるためにはどうしたらよいか。「腰」「ひじ」という言葉を使って説明しなさい。<span class="haiten">（思判表 3点）</span></p>
+    <div class="kijutsu"></div>
+  </div>
+
+  <div class="subq">
+    <p><span class="sq">問6</span>　短距離走のスタートで素早く加速するための姿勢のポイントを、「前」「低い」という言葉を使って説明しなさい。<span class="haiten">（思判表 3点）</span></p>
+    <div class="kijutsu"></div>
+  </div>
+</div>
+
+<!-- ================= 大問5 ================= -->
+<div class="daimon">
+  <div class="daimon-head">
+    <span class="dn">5</span><span class="dt">ハードル走・水泳（クロール）</span>
+    <span class="pts"><span class="chip chigi">知技</span> 2×7＋<span class="chip shihan">思判表</span> 3×2＝20点</span>
+  </div>
+
+  <div class="subq">
+    <p><span class="sq">問1</span>　ハードル走について、次の（①）〜（④）にあてはまる言葉を記入しなさい。<span class="haiten">（知技 2×4＝8点）</span></p>
+    <ol class="abc">
+      <li>① ハードル走のインターバルは、着地足を（　　）と数え、3歩目で踏み切る。</li>
+      <li>② なめらかにハードルを越えるには、振り上げ脚は足の親指に力を入れて（　　）に向け、まっすぐ前に上げる。</li>
+      <li>③ 抜き脚はひざを曲げて（　　）に開き、地面と平行に上げる。</li>
+      <li>④ ハードルを越えて着地する時は、（　　）の真下に足をつく。</li>
+    </ol>
+    <table class="ansgrid" style="width:70%">
+      <tr><th>①</th><th>②</th><th>③</th><th>④</th></tr>
+      <tr><td></td><td></td><td></td><td></td></tr>
+    </table>
+  </div>
+
+  <div class="subq">
+    <p><span class="sq">問2</span>　ハードルを越えるときの踏み切りと着地について、正しいものを次のア・イから1つ選び、記号で答えなさい。<span class="haiten">（知技 2点）</span></p>
+    <ul class="choices one-col">
+      <li>ア：ハードルの近くで踏み切り、ハードルから遠くに着地する。</li>
+      <li>イ：ハードルの遠くから踏み切り、ハードルの近くに着地する。</li>
+    </ul>
+    <p>答え：<span class="ansline"></span></p>
+  </div>
+
+  <div class="subq">
+    <p><span class="sq">問3</span>　クロールの腕の動きは5つの局面に分けられる。（①）・（②）にあてはまる局面の名前を、あとの語群からそれぞれ選び、記号で答えなさい。<span class="haiten">（知技 2×2＝4点）</span></p>
+    <p>エントリー（手を水に入れる）→（①）（水をつかむ）→プル（水をかく）→（②）（水を押し出す）→リカバリー（手を戻す）</p>
+    <div class="gokun"><b>語群</b>ア：プッシュ　　イ：キャッチ　　ウ：ローリング</div>
+    <table class="ansgrid" style="width:45%">
+      <tr><th>①</th><th>②</th></tr>
+      <tr><td></td><td></td></tr>
+    </table>
+  </div>
+
+  <div class="subq">
+    <p><span class="sq">問4</span>　水の抵抗が少ない「ストリームライン」をつくるために注意すべきことを、「水面と平行」「腰やおしり」という言葉を使って説明しなさい。<span class="haiten">（思判表 3点）</span></p>
+    <div class="kijutsu"></div>
+  </div>
+
+  <div class="subq">
+    <p><span class="sq">問5</span>　クロールの呼吸では、口が水面に出た時に「パッ」と強く息をはくとよい。その理由を簡単に説明しなさい。<span class="haiten">（思判表 3点）</span></p>
+    <div class="kijutsu"></div>
+  </div>
+</div>
+
+<p style="text-align:center;color:var(--sub);font-size:13px;margin:24px 0">— 問題はここまでです。見直しをしましょう —</p>
+<!-- ================= 解答・解説 ================= -->
+<div class="mock-answers" id="mockAnswers">
+<div class="answers-title">
+  <h2>模擬テスト 解答・解説</h2>
+  <p>配点どおりに自己採点しよう。記述は「キーワード」が入っていれば正解。</p>
+</div>
+
+<div class="goukaku">
+  <b>得点の目安</b>：85〜100点＝目標達成◎ そのまま本番へ ／ 70〜84点＝間違えた単元だけ問題集をもう1周 ／ 69点以下＝問題集の★★★を総復習してから再挑戦
+</div>
+
+<div class="ans-item">
+  <div class="head">大問1　健康の成り立ち（20点）</div>
+  <p><span class="a">問1　①イ（感染症）　②エ（生活習慣病）　③ア（主体）　④ウ（環境）</span>（各2点）</p>
+  <p class="exp">昔＝感染症（結核）→今＝生活習慣病（がん・心臓病・脳卒中）。病気＝主体の要因×環境の要因。</p>
+  <p><span class="a">問2　①イ（物理・化学的）　②ウ（生物学的）　③ア（社会的）</span>（各2点）　生き物が出てきたら生物学的。</p>
+  <p><span class="a">問3　（例）健康を支援する環境づくりなど、社会的な取り組み（社会全体で健康を支えること）が必要。</span>（3点：「社会的な取り組み」の趣旨で満点）</p>
+  <p><span class="a">問4　（例）平均寿命から、寝たきりや認知症など介護状態の期間を差し引いた期間のこと。</span>（3点：「平均寿命−介護状態の期間」で満点）</p>
+</div>
+
+<div class="ans-item">
+  <div class="head">大問2　運動と健康（20点）</div>
+  <p><span class="a">問1　①イ（心臓）　②エ（健康）　③ア（ストレス）　④ウ（肥満症）</span>（各2点）</p>
+  <p><span class="a">問2　①イ（楽しい）　②ア（持久力）　③イ（スポーツ障害）</span>（各2点）</p>
+  <p class="exp">運動の3条件＝安全・効果・楽しい。中学生期に発達するのは持久力と筋力。</p>
+  <p><span class="a">問3　①運転手　②（例）車掌は2階に上がったりして体を動かすが、運転手は座ったままで運動が不足するから。</span>（各3点）</p>
+</div>
+
+<div class="ans-item">
+  <div class="head">大問3　食生活・休養と睡眠・調和のとれた生活（20点）</div>
+  <p><span class="a">問1　①イ（基礎）　②ア（食事）　③ア（運動）</span>（各2点）</p>
+  <p><span class="a">問2　①イ（貧血）　②ア（視力低下）</span>（各2点）　カル骨・鉄血・Ａ目！</p>
+  <p><span class="a">問3　①×　②○</span>（各2点）　①成長ホルモンは<b>眠り始めの頃の深い睡眠</b>のときに大量に出る。</p>
+  <p><span class="a">問4　（例）体温が上がらず、体も脳も十分に働かない。</span>（3点）</p>
+  <p><span class="a">問5　（例）運動で体が疲れたとき、あえて軽い運動を行うことで全身の血行がよくなり、疲労回復が早まるという休養のとり方。</span>（3点：「軽い運動」＋「血行がよくなる」で満点）</p>
+</div>
+
+<div class="ans-item">
+  <div class="head">大問4　マット運動・短距離走（20点）</div>
+  <p><span class="a">問1　①足　②かかと　③直前</span>（各2点）</p>
+  <p><span class="a">問2　両肩</span>（2点）　見るのは「両手の上」（三角形）、乗せるのは「両肩」。</p>
+  <p><span class="a">問3　①ウ（ピッチ）　②ア（ストライド）</span>（各2点）</p>
+  <p><span class="a">問4　×</span>（2点）　広げすぎると大またになりすぎて減速。広げるのは数センチでよい。</p>
+  <p><span class="a">問5　（例）腰を高く上げ、ひじを伸ばして、体重を両肩に乗せて回転する。</span>（3点：「腰を高く」＋「ひじを伸ばす」で満点）</p>
+  <p><span class="a">問6　（例）体を前に倒し、低い姿勢から前方に体を投げ出すように走り出す。</span>（3点：「前に倒す」＋「低い姿勢」で満点）</p>
+</div>
+
+<div class="ans-item">
+  <div class="head">大問5　ハードル走・水泳（クロール）（20点）</div>
+  <p><span class="a">問1　①ゼロ　②上　③横　④腰</span>（各2点）</p>
+  <p class="exp">「ゼロ・イチ・ニ・サン」の3歩のリズム。振り上げ脚＝まっすぐ・親指は上、抜き脚＝横に開き地面と平行。</p>
+  <p><span class="a">問2　イ</span>（2点）　「遠くから踏み切り、近くに着地」。逆だと高くとび上がって減速する。</p>
+  <p><span class="a">問3　①イ（キャッチ）　②ア（プッシュ）</span>（各2点）　入れて→つかんで→かいて→押して→戻す。</p>
+  <p><span class="a">問4　（例）手の指先から足のつま先までまっすぐ伸ばし、腰やおしりを曲げずに、水面と平行になるようにする。</span>（3点：「腰やおしりを曲げない」＋「水面と平行」で満点）</p>
+  <p><span class="a">問5　（例）強く息をはくと、その反動で自然に息をすうことができるから。</span>（3点：「はいた反動ですう」の趣旨で満点）</p>
+  <div class="memo"><b>覚え方</b>：水泳の呼吸は「<b>はいてからすう</b>」。「パッ」（はく）→「ハッ」（すう）。</div>
+</div>
+</div><!-- /.mock-answers -->
+
+</div><!-- /.page -->
+<script>
+function toggleAnswers(){
+  var a = document.getElementById('mockAnswers');
+  var b = document.getElementById('ansbtn');
+  a.classList.toggle('open');
+  b.textContent = a.classList.contains('open') ? '解答・解説を隠す' : '解答・解説を表示';
+  if(a.classList.contains('open')){ a.scrollIntoView({behavior:'smooth'}); }
+}
+</script>
+</body>
+</html>
