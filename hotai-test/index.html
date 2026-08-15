@@ -82,6 +82,14 @@ h2.unit .pg{font-size:12px;color:var(--sub);font-weight:normal;margin-left:auto;
 .fig{margin:12px auto;text-align:center;max-width:100%;overflow-x:auto}
 .fig svg{max-width:100%;height:auto}
 .fig .cap{font-size:12px;color:var(--sub);margin-top:2px}
+.motion-redraw{position:relative;width:min(100%,760px);margin:0 auto;overflow:hidden;border-radius:10px;background:#fff}
+.motion-redraw img{display:block;width:100%;height:auto;border-radius:10px}
+.motion-redraw.hurdle{padding-top:34px}
+.motion-redraw .callout{position:absolute;padding:3px 8px;border-radius:8px;background:rgba(255,255,255,.92);font-size:12px;font-weight:800;line-height:1.35;box-shadow:0 1px 4px rgba(15,23,42,.12)}
+.motion-redraw .red{color:#DC2626}.motion-redraw .blue{color:#1D4ED8}
+.motion-redraw .guide{position:absolute;border-top:2px dashed #DC2626;height:0}
+.motion-redraw .phase{position:absolute;top:3%;transform:translateX(-50%);padding:2px 6px;border-radius:7px;background:rgba(255,255,255,.9);color:#075985;font-size:10.5px;font-weight:800;line-height:1.25;white-space:nowrap}
+@media(max-width:560px){.motion-redraw .callout{font-size:9px;padding:2px 5px}.motion-redraw .phase{font-size:8px}}
 
 /* ===== 解答トグル（画面のみ）===== */
 .toggle-btn{
@@ -192,6 +200,12 @@ table.map tr.hot td{background:#FFF8F3}
   .gokun{padding:4px 10px;margin:5px 0}
   .fig{margin:5px auto}
   .fig svg{max-width:82%}
+  .motion-redraw{max-width:82%}
+  .motion-redraw.roll{max-width:62%}
+  .motion-redraw.start{max-width:55%}
+  .motion-redraw.hurdle{max-width:38%}
+  .motion-redraw.crawl{max-width:60%}
+  .motion-redraw .callout{font-size:8pt}.motion-redraw .phase{font-size:7.4pt}
   .write{margin-top:3px}
   .write .wline{height:7mm}
   .answers-title{padding:12px 18px;margin:16px 0 10px;border-radius:10px}
@@ -896,35 +910,46 @@ h2.unit .uic{font-size:22px;flex-shrink:0;line-height:1}
     <p>図は前転の連続動作である。前転について、次の文の（①）・（②）にあてはまる言葉を答えなさい。</p>
     <p>「前転は、回転する時に（①）を高く振り上げ、腰を一度伸ばして倒れる勢いを使う。回転した後は、（②）を素早くおしりに巻き込むように引きつける。」</p>
     <div class="fig">
-      <svg viewBox="0 0 460 130" width="420" role="img" aria-label="前転の連続図">
-        <rect x="10" y="104" width="440" height="10" rx="5" fill="#BFDBFE"/>
-        <g stroke="#1E3A8A" stroke-width="4" fill="none" stroke-linecap="round">
-          <circle cx="48" cy="58" r="9" fill="#DBEAFE"/>
-          <path d="M52 67 L64 88 M64 88 L54 104 M64 88 L76 102 M50 72 L34 88"/>
+      <svg viewBox="0 0 520 160" width="470" role="img" aria-label="体育着の人物による前転の連続動作">
+        <defs><marker id="rollArrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0L8 4L0 8Z" fill="#64748B"/></marker></defs>
+        <rect x="8" y="132" width="504" height="12" rx="6" fill="#BFDBFE"/>
+        <!-- 1: crouch and reach -->
+        <g transform="translate(12 34)" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="38" cy="24" r="14" fill="#F6C7A8" stroke="#172554" stroke-width="3"/><path d="M25 20q13-17 28 0" fill="#1F2937"/>
+          <path d="M40 40Q53 58 58 78L37 84Q32 62 29 45Z" fill="#2563EB" stroke="#172554" stroke-width="3"/>
+          <path d="M31 47Q19 61 9 75" fill="none" stroke="#F6C7A8" stroke-width="9"/><circle cx="8" cy="76" r="5" fill="#F6C7A8"/>
+          <path d="M42 83Q28 98 22 110M50 83Q63 96 70 109" fill="none" stroke="#1E3A8A" stroke-width="11"/><path d="M15 111h16M64 111h16" stroke="#0F172A" stroke-width="5"/>
         </g>
-        <g stroke="#1E3A8A" stroke-width="4" fill="none" stroke-linecap="round">
-          <circle cx="150" cy="80" r="9" fill="#DBEAFE"/>
-          <path d="M156 86 Q170 92 178 104 M160 74 L184 46 M156 88 L136 100"/>
+        <!-- 2: hands down, leg lifted -->
+        <g transform="translate(118 37)" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="43" cy="63" r="14" fill="#F6C7A8" stroke="#172554" stroke-width="3"/><path d="M31 59q13-17 27 0" fill="#1F2937"/>
+          <path d="M55 58Q78 52 94 69L78 87Q58 79 45 75Z" fill="#2563EB" stroke="#172554" stroke-width="3"/>
+          <path d="M48 74Q30 87 25 104M60 78Q45 93 42 108" fill="none" stroke="#F6C7A8" stroke-width="9"/><path d="M19 109h13M36 111h13" stroke="#0F172A" stroke-width="5"/>
+          <path d="M83 81Q104 91 115 108" fill="none" stroke="#1E3A8A" stroke-width="11"/><path d="M87 82Q102 52 119 22" fill="none" stroke="#1E3A8A" stroke-width="11"/><path d="M114 18l12-8" stroke="#0F172A" stroke-width="5"/>
         </g>
-        <g stroke="#1E3A8A" stroke-width="4" fill="none" stroke-linecap="round">
-          <circle cx="248" cy="92" r="9" fill="#DBEAFE"/>
-          <path d="M254 86 Q268 74 260 60 M258 82 Q276 84 282 96"/>
+        <!-- 3: tucked roll -->
+        <g transform="translate(265 51) rotate(-20 55 55)" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="30" cy="76" r="14" fill="#F6C7A8" stroke="#172554" stroke-width="3"/><path d="M18 72q13-17 27 0" fill="#1F2937"/>
+          <path d="M42 70Q64 45 83 54Q94 63 83 80Q61 88 42 83Z" fill="#2563EB" stroke="#172554" stroke-width="3"/>
+          <path d="M77 76Q99 87 105 66Q106 50 94 39" fill="none" stroke="#1E3A8A" stroke-width="11"/><path d="M93 38l-1-12" stroke="#0F172A" stroke-width="5"/>
+          <path d="M47 82Q63 101 86 94" fill="none" stroke="#F6C7A8" stroke-width="8"/>
         </g>
-        <g stroke="#1E3A8A" stroke-width="4" fill="none" stroke-linecap="round">
-          <circle cx="352" cy="60" r="9" fill="#DBEAFE"/>
-          <path d="M354 69 Q352 86 344 96 M344 96 L338 104 M344 92 Q356 96 360 104 M350 76 L338 86"/>
+        <!-- 4: heels tucked, stand -->
+        <g transform="translate(402 31)" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="47" cy="27" r="14" fill="#F6C7A8" stroke="#172554" stroke-width="3"/><path d="M34 23q13-17 28 0" fill="#1F2937"/>
+          <path d="M45 43Q55 61 51 82L29 82Q27 61 32 44Z" fill="#2563EB" stroke="#172554" stroke-width="3"/>
+          <path d="M33 49Q18 65 15 82M48 48Q60 62 63 76" fill="none" stroke="#F6C7A8" stroke-width="9"/>
+          <path d="M34 82Q21 96 27 111M47 82Q61 97 56 111" fill="none" stroke="#1E3A8A" stroke-width="11"/><path d="M20 112h14M49 112h14" stroke="#0F172A" stroke-width="5"/>
         </g>
         <g fill="#DC2626" font-size="11">
-          <text x="150" y="30" text-anchor="middle">（①）を高く振り上げる</text>
-          <text x="352" y="30" text-anchor="middle">（②）を巻き込む</text>
+          <text x="215" y="20" text-anchor="middle">（①）を高く振り上げる</text>
+          <text x="452" y="20" text-anchor="middle">（②）を巻き込む</text>
         </g>
         <g stroke="#DC2626" stroke-width="1.5">
-          <line x1="164" y1="34" x2="180" y2="48"/>
-          <line x1="352" y1="34" x2="348" y2="52"/>
+          <line x1="220" y1="24" x2="238" y2="47"/>
+          <line x1="452" y1="24" x2="457" y2="51"/>
         </g>
-        <path d="M96 60 q12 -8 24 0" fill="none" stroke="#94A3B8" stroke-width="2" marker-end=""/>
-        <path d="M198 60 q12 -8 24 0" fill="none" stroke="#94A3B8" stroke-width="2"/>
-        <path d="M300 60 q12 -8 24 0" fill="none" stroke="#94A3B8" stroke-width="2"/>
+        <path d="M96 80Q111 64 126 80M245 79Q260 63 275 79M382 80Q397 64 412 80" fill="none" stroke="#64748B" stroke-width="2.5" marker-end="url(#rollArrow)"/>
       </svg>
       <div class="cap">前転の流れ（イメージ図）</div>
     </div>
@@ -1022,19 +1047,21 @@ h2.unit .uic{font-size:22px;flex-shrink:0;line-height:1}
     <p>図はクラウチングスタートの「用意（セット）」の姿勢である。次の文の（①）・（②）にあてはまる言葉を、あとの語群からそれぞれ選び、記号で答えなさい。</p>
     <p>「用意では、ひざを軽く伸ばして腰を上げて静止する。このとき、（①）のラインより高い位置で（②）の高さを維持する。」</p>
     <div class="fig">
-      <svg viewBox="0 0 475 150" width="420" role="img" aria-label="クラウチングスタート用意の姿勢">
-        <rect x="10" y="128" width="380" height="9" rx="4" fill="#FDBA74"/>
-        <g stroke="#7C2D12" stroke-width="4.5" fill="none" stroke-linecap="round">
-          <circle cx="86" cy="82" r="10" fill="#FFEDD5"/>
-          <path d="M95 88 Q140 74 178 66"/>
-          <path d="M100 92 L104 128 M178 66 Q200 84 214 128"/>
-          <path d="M178 66 Q206 96 244 118 L262 128"/>
-          <path d="M96 92 L82 128"/>
+      <svg viewBox="0 0 520 190" width="470" role="img" aria-label="体育着の選手によるクラウチングスタート用意の姿勢">
+        <rect x="10" y="160" width="430" height="12" rx="6" fill="#FDBA74"/>
+        <g stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="104" cy="101" r="18" fill="#F6C7A8" stroke="#431407" stroke-width="3"/><path d="M87 96q17-21 35 0" fill="#1F2937"/>
+          <path d="M121 96Q178 72 246 76L236 117Q174 113 118 116Z" fill="#F97316" stroke="#7C2D12" stroke-width="4"/>
+          <path d="M127 113Q106 126 95 157M151 110Q136 133 132 159" fill="none" stroke="#F6C7A8" stroke-width="13"/><path d="M86 161h19M123 162h19" stroke="#431407" stroke-width="6"/>
+          <path d="M232 113Q277 118 303 157" fill="none" stroke="#1E3A8A" stroke-width="17"/><path d="M231 114Q279 86 331 122Q350 136 376 154" fill="none" stroke="#1E3A8A" stroke-width="17"/>
+          <path d="M294 160h25M370 158h31" stroke="#0F172A" stroke-width="7"/>
+          <path d="M234 76Q262 79 274 94" fill="none" stroke="#F6C7A8" stroke-width="12"/>
         </g>
-        <line x1="60" y1="60" x2="340" y2="60" stroke="#DC2626" stroke-width="1.8" stroke-dasharray="6 4"/>
-        <text x="346" y="64" font-size="11.5" fill="#DC2626">（①）のライン</text>
-        <line x1="150" y1="40" x2="185" y2="62" stroke="#2563EB" stroke-width="1.5"/>
-        <text x="120" y="34" font-size="11.5" fill="#2563EB">（②）：ラインより高く</text>
+        <line x1="60" y1="105" x2="420" y2="105" stroke="#DC2626" stroke-width="1.8" stroke-dasharray="6 4"/>
+        <text x="426" y="109" font-size="13" font-weight="bold" fill="#DC2626">（①）のライン</text>
+        <line x1="255" y1="38" x2="242" y2="72" stroke="#2563EB" stroke-width="2"/>
+        <text x="215" y="31" font-size="13" font-weight="bold" fill="#2563EB">（②）：ラインより高く</text>
+        <g fill="#7C2D12" font-size="11" font-weight="bold"><text x="74" y="185">指先を地面へ</text><text x="290" y="185">スターティングブロック</text></g>
       </svg>
     </div>
     <div class="gokun"><b>語群</b>ア：腰　　イ：肩　　ウ：ひざ</div>
@@ -1101,26 +1128,28 @@ h2.unit .uic{font-size:22px;flex-shrink:0;line-height:1}
     <p>図はハードルを越える時の姿勢である。次の文の（①）〜（③）にあてはまる言葉を、あとの語群からそれぞれ選び、記号で答えなさい。</p>
     <p>「なめらかにハードルを越えるには、振り上げ脚は足の親指に力を入れて（①）に向け、まっすぐ前に上げる。抜き脚はひざを曲げて（②）に開き、地面と（③）に上げる。」</p>
     <div class="fig">
-      <svg viewBox="0 0 525 170" width="470" role="img" aria-label="ハードリングの姿勢">
-        <rect x="10" y="148" width="400" height="9" rx="4" fill="#99F6E4"/>
-        <rect x="196" y="84" width="8" height="64" fill="#0F766E"/>
-        <rect x="168" y="78" width="64" height="10" rx="3" fill="#14B8A6"/>
-        <g stroke="#134E4A" stroke-width="4.5" fill="none" stroke-linecap="round">
-          <circle cx="196" cy="30" r="10" fill="#CCFBF1"/>
-          <path d="M204 38 Q222 44 238 40"/>
-          <path d="M204 44 Q230 52 268 46"/>
-          <path d="M200 40 Q196 62 188 70"/>
-          <path d="M188 70 Q160 74 138 66"/>
-          <path d="M204 46 Q216 66 246 72 L268 68"/>
+      <svg viewBox="0 0 560 220" width="500" role="img" aria-label="体育着の選手によるハードリングの姿勢">
+        <defs><marker id="legArrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0L8 4L0 8Z" fill="#DC2626"/></marker></defs>
+        <rect x="8" y="198" width="440" height="12" rx="6" fill="#99F6E4"/>
+        <rect x="252" y="112" width="10" height="86" fill="#0F766E"/>
+        <rect x="211" y="102" width="92" height="14" rx="4" fill="#14B8A6" stroke="#134E4A" stroke-width="2"/>
+        <g stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="228" cy="49" r="18" fill="#F6C7A8" stroke="#134E4A" stroke-width="3"/><path d="M211 44q17-21 35 0" fill="#1F2937"/>
+          <path d="M241 60Q269 68 292 90L269 116Q239 99 216 78Z" fill="#14B8A6" stroke="#134E4A" stroke-width="4"/>
+          <path d="M247 69Q282 64 315 48M230 74Q203 83 181 98" fill="none" stroke="#F6C7A8" stroke-width="12"/><circle cx="318" cy="47" r="6" fill="#F6C7A8"/><circle cx="178" cy="100" r="6" fill="#F6C7A8"/>
+          <!-- lead leg straight forward -->
+          <path d="M270 113Q322 119 379 112Q417 107 451 93" fill="none" stroke="#1E3A8A" stroke-width="18"/><path d="M449 93l27-5" stroke="#0F172A" stroke-width="8"/>
+          <!-- trail leg bent sideways and parallel -->
+          <path d="M269 114Q237 139 196 137Q164 136 144 153Q125 168 106 169" fill="none" stroke="#1E3A8A" stroke-width="18"/><path d="M98 170h-23" stroke="#0F172A" stroke-width="8"/>
         </g>
+        <path d="M380 80Q422 70 461 77" fill="none" stroke="#DC2626" stroke-width="2.5" marker-end="url(#legArrow)"/>
+        <path d="M172 121Q126 117 91 139" fill="none" stroke="#2563EB" stroke-width="2.5"/>
         <g font-size="11.5">
-          <text x="300" y="42" fill="#DC2626">振り上げ脚：まっすぐ前へ</text>
-          <text x="300" y="60" fill="#DC2626">親指は（①）に向ける</text>
-          <text x="24" y="46" fill="#2563EB">抜き脚：ひざを曲げて</text>
-          <text x="24" y="64" fill="#2563EB">（②）に開く</text>
+          <text x="382" y="47" fill="#DC2626" font-weight="bold">振り上げ脚：まっすぐ前へ</text>
+          <text x="382" y="64" fill="#DC2626" font-weight="bold">親指は（①）に向ける</text>
+          <text x="20" y="100" fill="#2563EB" font-weight="bold">抜き脚：ひざを曲げて</text>
+          <text x="20" y="117" fill="#2563EB" font-weight="bold">（②）に開き（③）に上げる</text>
         </g>
-        <line x1="272" y1="52" x2="290" y2="52" stroke="#DC2626" stroke-width="1.5"/>
-        <line x1="120" y1="58" x2="134" y2="64" stroke="#2563EB" stroke-width="1.5"/>
       </svg>
     </div>
     <div class="gokun"><b>語群</b>ア：横　　イ：上　　ウ：平行　　エ：垂直</div>
@@ -1170,29 +1199,25 @@ h2.unit .uic{font-size:22px;flex-shrink:0;line-height:1}
   <div class="q-body">
     <p>図はクロールの腕の動きである。①〜③の局面の名前を、あとの語群からそれぞれ選び、記号で答えなさい。</p>
     <div class="fig">
-      <svg viewBox="0 0 460 150" width="420" role="img" aria-label="クロールの腕の動き">
-        <rect x="0" y="60" width="460" height="80" fill="#E0F2FE"/>
-        <line x1="0" y1="60" x2="460" y2="60" stroke="#38BDF8" stroke-width="2"/>
+      <svg viewBox="0 0 560 210" width="500" role="img" aria-label="水着の選手によるクロールの腕の連続動作">
+        <defs><marker id="swimArrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0L8 4L0 8Z" fill="#64748B"/></marker></defs>
+        <rect x="0" y="57" width="560" height="145" rx="14" fill="#E0F2FE"/>
+        <path d="M0 65Q28 55 56 65T112 65T168 65T224 65T280 65T336 65T392 65T448 65T504 65T560 65" fill="none" stroke="#38BDF8" stroke-width="4"/>
         <g font-size="11.5" fill="#0F172A" font-weight="bold">
-          <text x="55" y="20" text-anchor="middle">① 手を水に入れる</text>
-          <text x="175" y="20" text-anchor="middle">水をつかむ→かく</text>
-          <text x="305" y="20" text-anchor="middle">② 水を押し出す</text>
-          <text x="420" y="20" text-anchor="middle">③ 手を戻す</text>
+          <text x="62" y="24" text-anchor="middle">① 手を水に入れる</text>
+          <text x="205" y="24" text-anchor="middle">水をつかむ→かく</text>
+          <text x="350" y="24" text-anchor="middle">② 水を押し出す</text>
+          <text x="500" y="24" text-anchor="middle">③ 手を戻す</text>
         </g>
-        <g stroke="#0369A1" stroke-width="4" fill="none" stroke-linecap="round">
-          <path d="M30 66 Q52 56 76 70" />
-          <circle cx="46" cy="76" r="8" fill="#BAE6FD"/>
-          <path d="M140 70 Q168 84 196 96"/>
-          <circle cx="158" cy="76" r="8" fill="#BAE6FD"/>
-          <path d="M270 92 Q296 100 330 88"/>
-          <circle cx="288" cy="78" r="8" fill="#BAE6FD"/>
-          <path d="M390 48 Q416 32 444 52"/>
-          <circle cx="404" cy="66" r="8" fill="#BAE6FD"/>
+        <!-- four readable swimmer poses -->
+        <g stroke-linecap="round" stroke-linejoin="round">
+          <g transform="translate(13 78)"><circle cx="29" cy="31" r="12" fill="#F6C7A8" stroke="#075985" stroke-width="2.5"/><path d="M18 27q11-14 23 0" fill="#1F2937"/><path d="M41 34Q74 42 105 37" fill="none" stroke="#0369A1" stroke-width="17"/><path d="M105 37l28-8M103 41l29 13" stroke="#1E3A8A" stroke-width="7"/><path d="M44 31Q64 14 91 8" fill="none" stroke="#F6C7A8" stroke-width="9"/><path d="M43 39Q67 50 87 61" fill="none" stroke="#F6C7A8" stroke-width="9"/></g>
+          <g transform="translate(150 78)"><circle cx="29" cy="31" r="12" fill="#F6C7A8" stroke="#075985" stroke-width="2.5"/><path d="M18 27q11-14 23 0" fill="#1F2937"/><path d="M41 34Q74 42 105 37" fill="none" stroke="#0369A1" stroke-width="17"/><path d="M105 37l28-8M103 41l29 13" stroke="#1E3A8A" stroke-width="7"/><path d="M44 32Q65 48 60 76" fill="none" stroke="#F6C7A8" stroke-width="9"/><path d="M45 38Q76 42 93 57" fill="none" stroke="#F6C7A8" stroke-width="9"/></g>
+          <g transform="translate(287 78)"><circle cx="29" cy="31" r="12" fill="#F6C7A8" stroke="#075985" stroke-width="2.5"/><path d="M18 27q11-14 23 0" fill="#1F2937"/><path d="M41 34Q74 42 105 37" fill="none" stroke="#0369A1" stroke-width="17"/><path d="M105 37l28-8M103 41l29 13" stroke="#1E3A8A" stroke-width="7"/><path d="M44 35Q76 62 103 70" fill="none" stroke="#F6C7A8" stroke-width="9"/><path d="M44 31Q62 20 86 21" fill="none" stroke="#F6C7A8" stroke-width="9"/></g>
+          <g transform="translate(424 78)"><circle cx="29" cy="31" r="12" fill="#F6C7A8" stroke="#075985" stroke-width="2.5"/><path d="M18 27q11-14 23 0" fill="#1F2937"/><path d="M41 34Q74 42 105 37" fill="none" stroke="#0369A1" stroke-width="17"/><path d="M105 37l28-8M103 41l29 13" stroke="#1E3A8A" stroke-width="7"/><path d="M44 31Q66 3 94 8Q106 10 112 19" fill="none" stroke="#F6C7A8" stroke-width="9"/><path d="M44 39Q68 50 87 60" fill="none" stroke="#F6C7A8" stroke-width="9"/></g>
         </g>
-        <g stroke="#94A3B8" stroke-width="2" fill="none">
-          <path d="M96 84 l22 0 M112 78 l8 6 -8 6"/>
-          <path d="M226 92 l22 0 M242 86 l8 6 -8 6"/>
-          <path d="M352 80 l22 0 M368 74 l8 6 -8 6"/>
+        <g stroke="#64748B" stroke-width="2.5" fill="none" marker-end="url(#swimArrow)">
+          <path d="M137 177h20"/><path d="M274 177h20"/><path d="M411 177h20"/>
         </g>
       </svg>
     </div>
@@ -1241,6 +1266,39 @@ h2.unit .uic{font-size:22px;flex-shrink:0;line-height:1}
 
 </div><!-- /.page -->
 <script>
+/* 運動図は旧SVGを使わず、新規描画した人体イラストへ完全差し替え */
+(function(){
+  var redraws = [
+    {
+      aria:'体育着の人物による前転の連続動作', kind:'roll', src:'assets/figures/forward-roll.jpg',
+      alt:'体育着の生徒が前転する4段階の連続動作',
+      labels:'<span class="callout red" style="left:29%;top:2%">（①）を高く振り上げる</span><span class="callout red" style="right:5%;top:5%">（②）をおしりへ巻き込む</span>'
+    },
+    {
+      aria:'体育着の選手によるクラウチングスタート用意の姿勢', kind:'start', src:'assets/figures/crouch-start.jpg',
+      alt:'スターティングブロックを使ったクラウチングスタートの用意姿勢',
+      labels:'<span class="callout blue" style="left:48%;top:3%">（②）腰は肩のラインより高く</span><i class="guide" style="left:8%;top:31%;width:64%"></i><span class="callout red" style="right:4%;top:25%">（①）のライン</span>'
+    },
+    {
+      aria:'体育着の選手によるハードリングの姿勢', kind:'hurdle', src:'assets/figures/hurdle.jpg',
+      alt:'振り上げ脚を前へ伸ばし抜き脚を横に曲げてハードルを越える生徒',
+      labels:'<span class="callout blue" style="left:1%;top:2%">抜き脚：ひざを曲げて<br>（②）へ・地面と（③）</span><span class="callout red" style="right:1%;top:2%">振り上げ脚：前へ<br>親指は（①）</span>'
+    },
+    {
+      aria:'水着の選手によるクロールの腕の連続動作', kind:'crawl', src:'assets/figures/crawl-phases.jpg',
+      alt:'水着の生徒が行うクロールの腕の4つの局面',
+      labels:'<span class="phase" style="left:12.5%">① 手を水に入れる</span><span class="phase" style="left:37.5%">水をつかむ→かく</span><span class="phase" style="left:62.5%">② 水を押し出す</span><span class="phase" style="left:87.5%">③ 手を戻す</span>'
+    }
+  ];
+  redraws.forEach(function(item){
+    var old = document.querySelector('svg[aria-label="' + item.aria + '"]');
+    if(!old) return;
+    var box = document.createElement('div');
+    box.className = 'motion-redraw ' + item.kind;
+    box.innerHTML = '<img src="' + item.src + '" alt="' + item.alt + '">' + item.labels;
+    old.replaceWith(box);
+  });
+})();
 function tg(btn){
   var p = btn.nextElementSibling;
   p.classList.toggle('open');
